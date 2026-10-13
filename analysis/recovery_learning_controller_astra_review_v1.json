@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "kind": "independent_recovery_learning_controller_astra_review",
+  "reviewer": "confirmation_execution_review independent Astra assignment",
+  "recovery_learning_controller_review_passed": true,
+  "execution_authorized": false,
+  "controller": "scripts/run_recovery_learning_queue_v1.py",
+  "controller_sha256": "a616e832c5b6a0c6960852d82d34dbeef0b89cef7aeb20b7411fd1b5d4b55ff9",
+  "tests": "tests/test_recovery_learning_queue_v1.py",
+  "test_sha256": "ddfc09dd3c096bdc598b15aa9730343cf67ebc81c0c9ae99507d2435f33c5dfa",
+  "adoption_schema_sha256": "37d077afb992d7528fb165b61159961fb81394885b9459c891c30cfc7dda4b7f",
+  "candidate": "configs/recovery_projection_candidate_v2.json",
+  "candidate_sha256": "09f62bbb2001e36bda12d56d261788764710b4ec91eca17af91e0470e9068b47",
+  "dependency_sha256": {
+    "gnrl/train_recovery_v1.py": "7bab87b2e3db2f818441306c0a70dc4e0364d055695a75e89d6c83f0ed126dbe",
+    "gnrl/recovery_evaluate_v1.py": "e90ccc42e41531766dec1286a35b7d35b541051d914855b2e690cc0cd1e28347",
+    "scripts/run_recovery_acquisition_v1.py": "a0e89b52a13d1541676498cb734a45034761c66e277706e575605599cf14ac3c",
+    "scripts/run_recovery_diagnostic_queue_v1.py": "072fbb138bfebfc05860553b957ca6299d079af133162a76d99d06ce8cbed538"
+  },
+  "validation": {
+    "command": "C:\\Users\\zrx\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe -B -m unittest tests.test_recovery_learning_queue_v1 tests.test_recovery_evaluate_v1 tests.test_train_recovery_v1 -v",
+    "controller_pure_fixtures_passed": 15,
+    "evaluator_pure_fixtures_passed": 16,
+    "trainer_pure_fixtures_passed": 15,
+    "combined_pure_fixtures_passed": 46,
+    "real_workers_spawned": 0,
+    "real_environment_calls": 0,
+    "real_model_or_tokenizer_loads": 0,
+    "remote_actions": 0,
+    "partial_experiment_outcomes_read": 0,
+    "source_edits_by_reviewer": 0
+  },
+  "findings": [],
+  "reviewed_contracts": {
+    "entry": "A candidate is not adoption. The explicit root parent adoption must bind the exact controller/test/candidate and passed trainer/evaluator reviews. Complete prior score/Q status, actual diagnostic result and independent complete diagnostic result review must all report scientific training_gate_passed exactly true; false/null cannot enter. Review hashes bind prior adoption/status/locks/result/costs/score records, and prior recorded processes must have exited.",
+    "source_and_model_integrity": "All prior locked bytes are inherited unchanged. Complete current source inventory, original336/runtime9, full base model and starting canonical adapter inventory are rechecked between stages. Every completed trained adapter is checked for added/deleted files before and after subsequent stages; locked hashes detect changed bytes. Four distinct actual adapter directories plus common token audit and reviewed final training states are locked and validated before any seen48 evaluation.",
+    "training": "Actual trainer CLI passes the same initial canonical adapter, complete selection directory, original BC and correct per-arm labels. The common score-to-SFT token/context audit precedes all training. Reviewed trainer supplies fixed same-index 4BC+4recovery schedule, 100 new updates, 400+400 exposures, trainable existing adapter and fresh optimizer. Controller checks all800 forward/backward pairs,100 step metrics, exact target totals, finite losses, final-only inventory and matching audit/schedule/protocol. Loss is used solely for technical validation and never for checkpoint or scientific success selection.",
+    "resource_and_process_ownership": "All eight worker stages are serial physicalGPU2 launches through launch_gpu.py using project Python. System Python requires pidfd support. Spawn-to-start-tick capture is signal-blocked; termination/timeout enters owned-session cleanup, with no retry. Global Unix/monotonic deadline inherits the original171840-second study clock, including waits/hash checks, with30-second cleanup reserve. Audit ceiling1800seconds; each training/evaluation ceiling7200seconds. No unseen stage exists.",
+    "cost_lineage": "Shared environment/generation/scoring counters start at the actual completed diagnostic totals and chain all four evaluations without a reset or duplicate scoring charge. Stage and global ceilings and started/completed equality are checked. All192 trace/event streams later independently reconcile evaluation steps, generated tokens and policy calls. Training forward/backward/update and input/target/prompt exposure totals are reported separately, preserving differing label lengths rather than claiming equal compute.",
+    "complete_result_barrier": "Controller accepts each evaluation using technical metadata and byte hashes only. All eight stages must exit successfully and all four48-task evaluation outputs must be complete and locked before finalize reads any episode/event outcomes. The durable unblinding marker is written before the first outcome read. Validation checks exact fixed48 order, actual raw terminal/won state, unrepaired raw completion, admissibility, causal context, token totals and complete event-stream equality before computing paired comparisons.",
+    "missingness_and_decision": "Any technical or budget failure produces192 null outcome cells, null contrasts and null practical-screen flag. It preserves whether outcome reading started, completed cumulative costs and available interrupted worker cost ledger; a previously written provisional result lock is invalidated. Complete scientific failure remains false rather than null. The screen exactly requires reference>=3/48 additional successes versus both equally trained recovery controls and strictly greater success than frozen BC. It reports all four counts, paired gains/losses, six family and scene denominators, and never auto-launches further experiments."
+  },
+  "practical_limits": [
+    "This is a source/interface and pure-fixture implementation review, not an acquisition/diagnostic/learning result review or permission to deploy or launch.",
+    "No live process termination, actual GPU/model/tokenizer, simulator, or future remote inventory was exercised. Those identities, byte hashes and resources remain runtime adoption and postqueue verification requirements.",
+    "Successful metadata and stored transitions can establish internal evidence consistency; they do not replace real simulator execution or independent complete-result review.",
+    "Interrupted work may have unknown cost after a durable started record. The controller preserves available logs/receipts and does not claim completed-stage totals account for all interrupted work."
+  ]
+}

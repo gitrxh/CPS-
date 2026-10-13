@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "kind": "independent_recovery_training_astra_review",
+  "reviewer": "confirmation_execution_review independent Astra assignment",
+  "recovery_training_review_passed": true,
+  "execution_authorized": false,
+  "module": "gnrl/train_recovery_v1.py",
+  "module_sha256": "7bab87b2e3db2f818441306c0a70dc4e0364d055695a75e89d6c83f0ed126dbe",
+  "tests": "tests/test_train_recovery_v1.py",
+  "test_sha256": "5cef7114fef8beb189ca8aa4c7797692bdc846cf1f46c19e2218d2eb08a16752",
+  "candidate": "configs/recovery_projection_candidate_v2.json",
+  "candidate_sha256": "09f62bbb2001e36bda12d56d261788764710b4ec91eca17af91e0470e9068b47",
+  "read_only_dependencies": {
+    "gnrl/train_sft.py": "0aeee657295e4736de78d9c56cb4929e08652fcd1498d7ce1154f5c39f679345",
+    "gnrl/policy.py": "c36ecf8c81df6cceffcdce784a88a81809afd8b55df6fc5fcd8330bf1397b82e"
+  },
+  "verification": {
+    "pure_fixture_command": "C:\\Users\\zrx\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe -B -m unittest tests.test_train_recovery_v1 -v",
+    "pure_fixtures_passed": 15,
+    "models_loaded": 0,
+    "real_tokenizers_loaded": 0,
+    "real_environment_calls": 0,
+    "remote_actions": 0,
+    "source_edits_by_reviewer": 0
+  },
+  "unresolved_findings": [],
+  "resolved_findings": [
+    {
+      "problem": "Initial joint token audit checked cross-arm prompt agreement but did not bind complete selection/scoring artifacts or prove selected score and SFT token/context equality.",
+      "resolution": "The reviewed revision requires --selection-dir for audit and training, binds its complete file inventory, validates all 180 complete selection slots and corresponding scoring events/cost ledger/arm labels, and compares each eligible selected label's actual SFT prompt hash, action-plus-EOS hash, prompt/target token counts and causal context hash to its frozen adapted-reference score. Training re-reads and revalidates these bytes and requires exact recomputed joint-audit equality.",
+      "verification": "Read the actual token_audit call path through encoded_record and verify_score_sft; independently ran mismatch and complete-artifact fixtures."
+    }
+  ],
+  "verified_contracts": [
+    "Exactly 100 optimizer updates, each interleaving four original BC and four recovery examples, with 400+400 total exposures. Independent private shuffles use seeds 613300 and 613301 and reshuffle on wrap; the exact ordered index schedule is shared across all arms.",
+    "All arms require identical ordered anchor identities and task/history/observation/admissible contexts. Only the action target differs. The student allowlist strips oracle, future, score and state fields, including extra history fields.",
+    "The original canonical60 BC bytes are fixed and must decode to 349 examples. Every label and every scheduled exposure is token-audited, with target, prompt and input totals for all three arms. Different target lengths are reported rather than padded or resampled.",
+    "The frozen original base and complete canonical final adapter inventory are verified. PeftModel.from_pretrained loads the existing adapter with is_trainable=True, one default adapter only, and trainable parameters are restricted to LoRA. No new stacked adapter or prior optimizer state is loaded.",
+    "A fresh AdamW uses learning rate 0.0002 and weight decay zero. Training uses seed42, bfloat16, gradient norm clipping1, context2048/action64 and action-plus-EOS loss weighted by target tokens over the complete eight-example accumulation window.",
+    "The GPU guard is called before tokenizer/model loading and the worker accepts only logical cuda:0. Imports and pure fixtures load no real tokenizer, torch model or simulator.",
+    "Started forwards and completed backward exposures are recorded separately. Nonfinite loss/gradients, exceptions and stage budget failures cannot yield a complete training summary. Only successful step100 saves an eligible final adapter; its training state binds exact token/exposure totals, protocol, initial adapter, schedule and joint audit.",
+    "Final adapter inventory is saved only after successful final serialization and is included in completion evidence. Training loss is expressly not interpreted as task success."
+  ],
+  "scope_limits": [
+    "This is approval of the reviewed local training component, not training adoption or launch authorization. Actual training remains conditional on the complete fixed train-only diagnostic gate passing.",
+    "The future controller must enforce physical GPU2 through launch_gpu.py, immutable adopted input/source/runtime inventories, cumulative budgets, process ownership and cleanup, and recheck each final adapter before any held-out rollout.",
+    "The component does not authorize held-out evaluation. All three complete final adapters must be locked before the first research48 evaluation, as required by candidate v2.",
+    "The review used code inspection and pure fixtures; it makes no claim about real training stability or eventual task-success gains."
+  ]
+}

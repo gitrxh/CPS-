@@ -1,0 +1,65 @@
+{
+  "kind": "independent_recovery_learning_postqueue_verifier_astra_review",
+  "schema_version": 1,
+  "reviewer": "successful_path_queue independent Astra assignment",
+  "recovery_learning_postqueue_verifier_review_passed": true,
+  "execution_authorized": false,
+  "verifier": "analysis/verify_recovery_learning_postqueue_v1.py",
+  "verifier_sha256": "e36d02816f65b510351f21a1eb201ee39bbb6015c3af85ac28f96032b2219ffc",
+  "test": "analysis/test_verify_recovery_learning_postqueue_v1.py",
+  "test_sha256": "d05d64c0102b5afa38e15fea4a2aae0c1717ebcac7933b1e4d97c27e20f37155",
+  "helper_sha256": "efa7ce6466394f410848cc61bc55626573035a0d42cceb7b2b84ac270eee24e6",
+  "helper_unchanged": true,
+  "candidate_sha256": "09f62bbb2001e36bda12d56d261788764710b4ec91eca17af91e0470e9068b47",
+  "source_evidence": {
+    "analysis/verify_recovery_learning_postqueue_v1.py": "e36d02816f65b510351f21a1eb201ee39bbb6015c3af85ac28f96032b2219ffc",
+    "analysis/test_verify_recovery_learning_postqueue_v1.py": "d05d64c0102b5afa38e15fea4a2aae0c1717ebcac7933b1e4d97c27e20f37155",
+    "analysis/verify_recovery_diagnostic_postqueue_v1.py": "efa7ce6466394f410848cc61bc55626573035a0d42cceb7b2b84ac270eee24e6",
+    "scripts/run_recovery_learning_queue_v1.py": "a616e832c5b6a0c6960852d82d34dbeef0b89cef7aeb20b7411fd1b5d4b55ff9",
+    "gnrl/recovery_evaluate_v1.py": "e90ccc42e41531766dec1286a35b7d35b541051d914855b2e690cc0cd1e28347",
+    "analysis/review_recovery_learning_complete_v1.py": "aac58559220062ed6ccc9bf179910a01218b732bb83a11841a0dc6d288969613",
+    "configs/recovery_projection_candidate_v2.json": "09f62bbb2001e36bda12d56d261788764710b4ec91eca17af91e0470e9068b47"
+  },
+  "initial_verifier_sha256": "963e0e935ced758d1babd0bf82e1aab589bec8a956ecee624206d6b0f5fb909e",
+  "initial_test_sha256": "8e33fc0b994b1205fc704018ca90dce56ed6c2b8891bab0cd182fd760713e763",
+  "verification": {
+    "command": "C:\\Users\\zrx\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe -B -m unittest analysis.test_verify_recovery_learning_postqueue_v1 analysis.test_verify_recovery_diagnostic_postqueue_v1 -v",
+    "learning_fixtures_passed": 14,
+    "frozen_helper_fixtures_passed": 8,
+    "total_fixtures_passed": 22,
+    "ast_parse_passed": true,
+    "real_processes_spawned": 0,
+    "real_environment_calls": 0,
+    "model_or_tokenizer_calls": 0,
+    "remote_actions": 0,
+    "partial_outcomes_read": 0
+  },
+  "resolved_findings": [
+    {
+      "problem": "Adapter and base file sets were checked only before measurement. A file added while hashing could be absent from the returned supposedly complete inventory.",
+      "resolution": "After measuring all adapter maps, enumerate each directory again and require exact equality with its measured map. Base measurement now checks the full28 set before and after hashing, enforces recorded byte sizes and calls the deadline check before enumeration.",
+      "evidence": "Temporary-byte fixtures inject late adapter/base files during real SHA256 reads and require rejection. Existing added-file, modified-byte, missing-lock and wrong-arm checks continue passing."
+    },
+    {
+      "problem": "Metadata reading delegated arbitrary adopted paths to JSON parsing; a mistaken path or resolved alias naming an outcome/trace file could violate the postqueue no-parse boundary before its schema failure.",
+      "resolution": "A local read_metadata wrapper refuses reserved outcome/trace basenames both before and after normalized workspace resolution. Adoption, job, status and subsequent metadata reads use it; hashes may still stream those files as opaque bytes.",
+      "evidence": "Direct episodes/events/result paths and a resolved result alias are rejected before read_json is called; workspace escapes and malformed paths remain rejected."
+    }
+  ],
+  "verified_contracts": [
+    "Exactly eight stages in the controller order; all returncode0 and owned cleanup true. Recorded positive PID/start/session identities are checked before stage metadata and again after measurements. The pinned helper rejects live leaders, PID reuse and live owned members; no process is signalled.",
+    "Explicit expected adoption SHA and controller PID/start ticks bind the job receipt and project cwd. Original parent adoption, final queue status, lock table and job bytes are rechecked at the end.",
+    "Three training summaries/states require100updates,800exposures,400+400 components and exact common-audit target totals. Four evaluation technical summaries require48/48/48 completion with zero errors and opaque episode hash bindings. Full result semantics remain the independent result reviewer responsibility.",
+    "The cumulative environment ledger begins at the diagnostic predecessor and chains all four evaluations without reset or duplicate scoring. Started/completed calls, active calls, unknown-generation flags, global and per-stage limits are fail-closed.",
+    "Deadline comes from the same main-study start and inherited absolute deadline with exact171840 duration; measurement is capped at300seconds and preserves30seconds reserve. Every file read chunk uses the pinned helper deadline check; exhaustion cannot produce a success return.",
+    "All advertised workspace/original336/runtime9 maps are actual measured hashes. Base uses all28 actual files. All four adapter maps are freshly measured, have exact role paths and mandatory adapter/config/state files, and the canonical11 map matches initialization. No missing, extra or changed file is silently ignored.",
+    "The receipt matches the consumer kind and fields, including all_models_locked_sha256 and all_models_adapter_sha256. No episodes/events/result content is parsed; technical metadata does not distinguish a positive from a negative practical screen.",
+    "Normalized project-relative paths prevent workspace escape and output is an exclusive new file. Failure raises rather than emits a successful receipt. No model, environment, subprocess, network or deployment operation is present."
+  ],
+  "unresolved_findings": [],
+  "scope_limits": [
+    "This is local source and pure-fixture review, not real postqueue verification or execution adoption.",
+    "Measurement is a bounded sequence of ordinary filesystem reads, not an atomic filesystem snapshot. Recorded byte measurements and directory checks are evidence at verification time; no file-lock or shared-asset mutation is introduced.",
+    "The verifier establishes integrity and complete technical metadata. The separate full192 reviewer checks actual transitions, training logs and independent outcome arithmetic. Positive exploratory results never authorize unseen, new seeds or a goal-completion claim."
+  ]
+}

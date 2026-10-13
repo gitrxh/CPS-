@@ -1,0 +1,119 @@
+{
+  "version": 1,
+  "created_local_date": "2026-10-13",
+  "status": "registered_method_extension_after_phase0_feasibility_audit_before_phase1_learning_outcomes",
+  "phase0_unchanged": true,
+  "decision": "Use native-planner canonical demonstrations, then reverse complete two-object delivery blocks. Audit all 20 already-frozen two-object training tasks before GPU scoring. This is the next practical exact-state experiment; arbitrary longer action permutations are deprioritized.",
+  "observations_motivating_extension": {
+    "raw_trace_source": "/home/jsy/GNRL_20261012/data/expert_train120_raw.jsonl",
+    "read_only_snapshot_sha256": "a82d204053801a9969867d4e114108f53caf8217d5994f3c1f03a15a240ef57c",
+    "observed_rows": 120,
+    "successful_by_family": {
+      "look_at_obj_in_light": 20,
+      "pick_and_place_simple": 19,
+      "pick_clean_then_place_in_recep": 20,
+      "pick_cool_then_place_in_recep": 20,
+      "pick_heat_then_place_in_recep": 20,
+      "pick_two_obj_and_place": 8
+    },
+    "two_object_successful_trace_medians": {"actions": 56.0, "information_actions": 25.5},
+    "two_object_source_failures": "12 of 20 handcoded traces failed by the 100-step limit. Observed causes include holding a correct second object while delaying the available placement, selecting irrelevant objects, and placing two correct objects in different same-type receptacles. These are trace observations, not a proven diagnosis of the expert implementation.",
+    "goal_semantics": "Inspected game PDDL binds a single existential receptacle variable around two distinct object variables. Both objects must be in the same receptacle instance. Object type or receptacle type equality alone does not satisfy that goal.",
+    "native_planner_smoke": "A separate real-simulator smoke produced an 8-action successful, replay-verified native-planner trace on the first frozen two-object task.",
+    "compiler_smoke": {"output": "outputs/two_blocks_smoke_v1", "tasks": 1, "pool_size": 2, "actions_per_trajectory": 8, "environment_steps_including_replay": 32, "wall_seconds": 4.529885761963669, "full_state_and_multiset_match": true},
+    "interpretation": "The smoke proves one executable nontrivial alternative. It does not establish 10-task coverage or downstream learning benefit. Reduced action count versus the noisy handcoded trace is data-quality improvement, not evidence for reference-aware projection."
+  },
+  "primary_implemented_extension": {
+    "module": "gnrl.two_object_blocks",
+    "tests": "tests/test_two_object_blocks.py",
+    "input": "Frozen raw train120 trajectory JSONL, including failed handcoded trajectories; task identities and initial states remain fixed.",
+    "teacher": "Official native planner via AlfworldReplayEnv(expert_type='planner'). Teacher plan and raw symbolic metadata are offline proposal information only.",
+    "canonical_baseline": "Fresh native-planner trajectory, independently replayed to success. It replaces the noisy handcoded trace for this phase's matched comparison.",
+    "candidate_algorithm": [
+      "Load one game per process at a time, using the frozen task seed and episode limit.",
+      "Collect a successful native plan within 24 actions; independently replay every action and compare states and emitted observations.",
+      "Inspect grounded hold-removal and inReceptacle-addition effects to identify exactly two distinct goal-object deliveries into one identical target receptacle instance.",
+      "Reverse the object delivery order. For each object, use live facts to locate its current source; navigate only if needed; open its source only if required; take the object; navigate to the one fixed target; open that target only if required; place the object.",
+      "Check every command against current admissibility before executing it. Respect the one-object inventory constraint by completing the first delivery before the second pickup.",
+      "Reject redundant information actions, physical no-ops, repeated physical states, premature termination, wrong target instances, or non-successful completion.",
+      "Require exact equality of complete adapter terminal state and exact action multiset with the native canonical plan. This preserves action count and fixed additive operator cost. Do not insert padding actions to force matching.",
+      "Independently replay the reversed trajectory from reset, keeping actual observations throughout. Retain original and reversed paths in the same candidate pool only after both checks pass.",
+      "If reversal is ineligible, retain only the valid canonical original and record the precise reason. A native-plan or replay failure prevents declaring the full cohort complete."
+    ],
+    "partial_order_constraints": [
+      "Each object's pickup precedes its placement.",
+      "Opening a closed source precedes pickup; opening a closed target precedes placement.",
+      "Navigation places the agent at the required receptacle before manipulation.",
+      "Single-slot inventory forces placement of one held object before another pickup.",
+      "Shared source/target opening occurs once when required, rather than being duplicated with the reordered block.",
+      "Two completed delivery blocks may exchange order only if live execution and strict final-state verification pass."
+    ],
+    "same_endpoint_scope": "Comparison uses the unchanged state_contract_v1 fields. Hidden native planner numeric cost is not asserted to be exposed; its preservation follows from the same exact action multiset in the fixed official action-cost domain.",
+    "causal_student_data": "Each student input contains only task, actual prior observation/action history, current observation and the same admissible-command list protocol. No planner plan, target IDs, raw facts or future observations are inserted into prompts.",
+    "outputs": ["candidate_pools.jsonl", "canonical_baseline.jsonl", "events.jsonl", "summary.json", "config.json"],
+    "compatibility": "Candidate pools satisfy existing gnrl.macro_project.validate_pool. Existing macro_project --pools scores entire trajectories using summed action-token-plus-EOS log probabilities under fresh causal histories; greedy selection remains explicitly non-MH.",
+    "cpu_command_argv": ["python", "-m", "gnrl.two_object_blocks", "--input", "data/expert_train120_raw.jsonl", "--output", "outputs/two_blocks_v1", "--max-games", "20", "--max-plan-steps", "24", "--max-env-steps", "20000", "--max-wall-seconds", "1800", "--minimum-covered-tasks", "10"]
+  },
+  "fixed_budgets_and_gates": {
+    "tasks": "All 20 two-object tasks already selected in the original train120 manifest, including handcoded failures; no selection using dev or unseen outcomes.",
+    "cpu_max_environment_steps_including_all_replay": 20000,
+    "cpu_max_wall_seconds": 1800,
+    "native_and_recipe_max_actions_each": 24,
+    "proposals_per_canonical_plan": 1,
+    "retained_pool_max_size": 2,
+    "coverage_gate": "All 20 canonical tasks must complete without technical/replay errors, and at least 10 must have a distinct reversed delivery path passing exact state, multiset and full-replay checks.",
+    "gate_scope": "This phase predefines coverage in distinct tasks. A two-member pool has only one alternative; the phase0 20-alternatives threshold is not silently reapplied or reinterpreted.",
+    "score_budget": {"max_score_seconds": 3600, "max_scored_action_tokens": 1000000, "max_forward_tokens": 20000000},
+    "no_partial_pool_selection": "If scoring cannot complete every member of a task's pool, omit that task from both selection arms and mark the phase incomplete. Do not launch matched training until every planned task identity is present in all arms.",
+    "negative_result": "Failure to reach the fixed coverage gate is a valid bounded feasibility result. Do not tune the gate after observing success rates or pad trajectories to create apparent support."
+  },
+  "matched_learning_experiment": {
+    "full_cohort": "Use all 120 successful replay-verified native-planner task traces once acquisition completes. Replace the 20 two-object identity pools with the compiler's canonical/reversed pools; keep the other 100 tasks identical across arms.",
+    "assembly_module": "scripts/build_phase1_pools.py",
+    "arms": [
+      {"name": "canonical_baseline", "selection": "Native planner's original delivery order; identity elsewhere."},
+      {"name": "uniform_valid", "selection": "Uniform choice from exactly the same verified pool, including canonical original."},
+      {"name": "learner_selected", "selection": "Maximum complete-trajectory sum log probability under frozen reference policy; identity included as fallback."}
+    ],
+    "required_pairing": "Verify unique identical gamefile/seed identities, initial states, task order, candidate-pool hashes, and equal per-task action multisets across all three arms. Record every training and evaluation manifest hash.",
+    "pilot_training": {"model": "Qwen2.5-3B-Instruct", "optimizer_steps": 100, "batch_size": 1, "gradient_accumulation": 8, "learning_rate": 0.0002, "lora_rank": 16, "seed": 42, "max_context_tokens": 2048},
+    "pilot_evaluation": "Same frozen dev24 task manifest, same generated-command decoding with admissible lists, same episode limit and seed for all arms. Require full evaluation completion without technical errors before comparing.",
+    "interpretation": "The confirmatory mechanism contrast is learner-selected versus uniform selection from identical verified pools; canonical baseline controls the native-planner data improvement. Phase0 handcoded107 and phase1 planner120 differ in cohort and data quality, so their success difference cannot be labelled BRP gain.",
+    "precision_limit": "Only four dev24 tasks belong to the two-object family. Per-family successes are descriptive and highly uncertain; the 24-task pilot cannot support a precise generalization or statistical-significance claim. No automatic test-set expansion or tuning on unseen outcomes.",
+    "next_learning_gate": "A directional dev signal may justify prespecified extra seeds and a locked unseen evaluation. Higher constructed reference likelihood, lower training loss, or shorter canonical traces alone do not satisfy that gate.",
+    "budget_matching": "Same architecture, LoRA settings, optimizer updates and example sampling scheme. Report actual target-token exposure and all acquisition/scoring costs; do not call fixed updates equal total compute."
+  },
+  "fallback_options_if_exact_block_coverage_fails": [
+    {
+      "priority": 2,
+      "name": "Native-plan partial-order schedules",
+      "scope": "Still exact state and exact action multiset.",
+      "implementation": "Partition native plans at empty-inventory delivery milestones, preserve intra-block navigation/open/take/place dependencies and enumerate at most 8 topological schedules per task. Validate each live and reject all information-only or navigation-only changes. Search may extend beyond 8 primitive steps because the reordered unit is a complete delivery, not a randomly shuffled action.",
+      "budget": {"max_tasks": 20, "max_candidates_per_task": 8, "max_env_steps": 40000, "max_wall_seconds": 1800},
+      "reason_not_first": "Two-object tasks offer only two complete delivery orders; the implemented direct reversal already covers the strongest obvious alternative. More topological schedules may mostly vary dispensable opens or navigation, so require changed useful manipulation order."
+    },
+    {
+      "priority": 3,
+      "name": "Length-and-cost-matched successful-path pools",
+      "scope": "Explicitly a new outcome-constrained trajectory study, not exact-state BRP.",
+      "implementation": "On a preregistered training-only manifest, enumerate up to 8 grounded assignments of valid goal objects and a single valid goal receptacle/device from official metadata and typed initial facts. Use native planning or fixed live-executed task recipes; never alter the game goal. For two-object goals choose two distinct IDs and one common target; for clean/heat/cool goals preserve treatment-before-final-placement. Retain only actual terminal successes, then group trajectories by identical action count and total audited operator cost. Choose the eligible group using a deterministic policy-independent rule before reference scoring.",
+      "same_pool_controls": "Train canonical-group-first, uniform-group and reference-selected arms on identical tasks and candidate groups; add an explicit length/cost-only selector if variable-length groups are later allowed.",
+      "budget": {"max_tasks": 60, "tasks_per_family": 10, "max_grounded_assignments_per_task": 8, "max_env_steps_including_replay": 100000, "max_wall_seconds": 3600},
+      "gate": "At least 10 distinct training tasks with two nontrivial successful trajectories in one fixed length/cost group. Final structured states may differ by object identity and are reported; success-only matching is not mislabelled exact equivalence.",
+      "confound_control": "All selectors receive the same privileged planner candidate set. Do not compare a privileged short-plan generator only against noisy raw experts and call the difference learner-native projection.",
+      "status": "Not implemented or launched by this proposal. Requires a new phase/version and cost-contract audit before execution."
+    }
+  ],
+  "deprioritized": [
+    "Increasing random primitive-action permutations without dependency constraints: many candidates violate location or inventory preconditions.",
+    "Reordering only shelf/counter navigation aliases: does not establish meaningful task-plan diversity.",
+    "Adding observation calls or loops to equalize length: manufactures support and teaches redundant actions.",
+    "Reusing stale observations after reordering: creates false training histories.",
+    "Starting full agent RL before isolating the demonstrated data-quality and selection effects."
+  ],
+  "primary_sources": [
+    {"url": "https://github.com/alfworld/alfworld/blob/aaba6870f86c5be6a08a491f32a50b906227bc3e/alfworld/data/alfred.pddl", "supports": "Pickup requires empty inventory and accessible source; placement requires holding object and target access; navigation and opens have grounded state effects."},
+    {"url": "https://github.com/alfworld/alfworld/blob/aaba6870f86c5be6a08a491f32a50b906227bc3e/alfworld/agents/environment/alfred_tw_env.py", "supports": "Native planner expert uses policy_commands and exposes expert action through the wrapper."},
+    {"url": "https://github.com/microsoft/TextWorld/blob/main/textworld/envs/pddl/pddl.py", "supports": "Live command execution, raw state facts, admissible commands and environment goal checks."}
+  ]
+}

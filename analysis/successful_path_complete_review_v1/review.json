@@ -1,0 +1,1263 @@
+{
+  "kind": "independent_complete_successful_path_result_review",
+  "complete": true,
+  "all_three_summary_barrier_passed_before_episode_reads": true,
+  "denominator_per_arm": 24,
+  "all_scientific_failures_retained": true,
+  "arms": {
+    "canonical": {
+      "denominator": 24,
+      "successes": 15,
+      "failures": 9,
+      "success_rate": 0.625,
+      "environment_steps": 1032,
+      "invalid_actions": 710,
+      "invalid_action_rate": 0.687984496124031,
+      "episode_lengths_including_failures": [
+        4,
+        100,
+        3,
+        5,
+        4,
+        4,
+        14,
+        24,
+        100,
+        7,
+        100,
+        9,
+        11,
+        7,
+        100,
+        16,
+        100,
+        100,
+        7,
+        100,
+        8,
+        100,
+        100,
+        9
+      ],
+      "mean_steps_all24": 43,
+      "median_steps_all24": 12.5,
+      "unsuccessful_100_step_episodes": 9,
+      "stop_reasons_including_failures": {
+        "environment_done": 24
+      },
+      "generated_tokens": 7100,
+      "reported_forward_tokens": 1514836,
+      "evaluation_elapsed_seconds": 534.7645247170003,
+      "training": {
+        "optimizer_steps": 100,
+        "target_tokens": 6510,
+        "input_tokens": 574931,
+        "prompt_tokens": 568421,
+        "sampled_examples": 800,
+        "training_examples": 349,
+        "elapsed_seconds": 241.09796912199818
+      }
+    },
+    "uniform": {
+      "denominator": 24,
+      "successes": 9,
+      "failures": 15,
+      "success_rate": 0.375,
+      "environment_steps": 1570,
+      "invalid_actions": 746,
+      "invalid_action_rate": 0.4751592356687898,
+      "episode_lengths_including_failures": [
+        6,
+        100,
+        3,
+        100,
+        4,
+        4,
+        100,
+        8,
+        25,
+        100,
+        100,
+        6,
+        6,
+        100,
+        8,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "mean_steps_all24": 65.41666666666667,
+      "median_steps_all24": 100.0,
+      "unsuccessful_100_step_episodes": 15,
+      "stop_reasons_including_failures": {
+        "environment_done": 24
+      },
+      "generated_tokens": 11527,
+      "reported_forward_tokens": 2550054,
+      "evaluation_elapsed_seconds": 864.7596066559781,
+      "training": {
+        "optimizer_steps": 100,
+        "target_tokens": 6512,
+        "input_tokens": 574523,
+        "prompt_tokens": 568011,
+        "sampled_examples": 800,
+        "training_examples": 349,
+        "elapsed_seconds": 241.1769753319677
+      }
+    },
+    "reference": {
+      "denominator": 24,
+      "successes": 7,
+      "failures": 17,
+      "success_rate": 0.2916666666666667,
+      "environment_steps": 1772,
+      "invalid_actions": 1248,
+      "invalid_action_rate": 0.7042889390519187,
+      "episode_lengths_including_failures": [
+        6,
+        100,
+        3,
+        5,
+        100,
+        4,
+        100,
+        100,
+        100,
+        27,
+        100,
+        14,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        13
+      ],
+      "mean_steps_all24": 73.83333333333333,
+      "median_steps_all24": 100.0,
+      "unsuccessful_100_step_episodes": 17,
+      "stop_reasons_including_failures": {
+        "environment_done": 24
+      },
+      "generated_tokens": 12180,
+      "reported_forward_tokens": 2694792,
+      "evaluation_elapsed_seconds": 918.6159890539711,
+      "training": {
+        "optimizer_steps": 100,
+        "target_tokens": 6515,
+        "input_tokens": 574012,
+        "prompt_tokens": 567497,
+        "sampled_examples": 800,
+        "training_examples": 349,
+        "elapsed_seconds": 241.3152299510548
+      }
+    }
+  },
+  "families": {
+    "look_at_obj_in_light": {
+      "denominator": 4,
+      "canonical": {
+        "successes": 3,
+        "failures": 1,
+        "steps": 112,
+        "invalid_actions": 99,
+        "generated_tokens": 638
+      },
+      "uniform": {
+        "successes": 2,
+        "failures": 2,
+        "steps": 209,
+        "invalid_actions": 45,
+        "generated_tokens": 1440
+      },
+      "reference": {
+        "successes": 3,
+        "failures": 1,
+        "steps": 114,
+        "invalid_actions": 91,
+        "generated_tokens": 799
+      }
+    },
+    "pick_and_place_simple": {
+      "denominator": 4,
+      "canonical": {
+        "successes": 4,
+        "failures": 0,
+        "steps": 46,
+        "invalid_actions": 19,
+        "generated_tokens": 365
+      },
+      "uniform": {
+        "successes": 3,
+        "failures": 1,
+        "steps": 116,
+        "invalid_actions": 26,
+        "generated_tokens": 898
+      },
+      "reference": {
+        "successes": 1,
+        "failures": 3,
+        "steps": 304,
+        "invalid_actions": 278,
+        "generated_tokens": 2122
+      }
+    },
+    "pick_clean_then_place_in_recep": {
+      "denominator": 4,
+      "canonical": {
+        "successes": 2,
+        "failures": 2,
+        "steps": 216,
+        "invalid_actions": 153,
+        "generated_tokens": 1539
+      },
+      "uniform": {
+        "successes": 2,
+        "failures": 2,
+        "steps": 231,
+        "invalid_actions": 171,
+        "generated_tokens": 1733
+      },
+      "reference": {
+        "successes": 2,
+        "failures": 2,
+        "steps": 241,
+        "invalid_actions": 174,
+        "generated_tokens": 1570
+      }
+    },
+    "pick_cool_then_place_in_recep": {
+      "denominator": 4,
+      "canonical": {
+        "successes": 3,
+        "failures": 1,
+        "steps": 134,
+        "invalid_actions": 82,
+        "generated_tokens": 866
+      },
+      "uniform": {
+        "successes": 2,
+        "failures": 2,
+        "steps": 214,
+        "invalid_actions": 93,
+        "generated_tokens": 1635
+      },
+      "reference": {
+        "successes": 0,
+        "failures": 4,
+        "steps": 400,
+        "invalid_actions": 263,
+        "generated_tokens": 2567
+      }
+    },
+    "pick_heat_then_place_in_recep": {
+      "denominator": 4,
+      "canonical": {
+        "successes": 1,
+        "failures": 3,
+        "steps": 307,
+        "invalid_actions": 227,
+        "generated_tokens": 2237
+      },
+      "uniform": {
+        "successes": 0,
+        "failures": 4,
+        "steps": 400,
+        "invalid_actions": 253,
+        "generated_tokens": 2979
+      },
+      "reference": {
+        "successes": 0,
+        "failures": 4,
+        "steps": 400,
+        "invalid_actions": 263,
+        "generated_tokens": 2634
+      }
+    },
+    "pick_two_obj_and_place": {
+      "denominator": 4,
+      "canonical": {
+        "successes": 2,
+        "failures": 2,
+        "steps": 217,
+        "invalid_actions": 130,
+        "generated_tokens": 1455
+      },
+      "uniform": {
+        "successes": 0,
+        "failures": 4,
+        "steps": 400,
+        "invalid_actions": 158,
+        "generated_tokens": 2842
+      },
+      "reference": {
+        "successes": 1,
+        "failures": 3,
+        "steps": 313,
+        "invalid_actions": 179,
+        "generated_tokens": 2488
+      }
+    }
+  },
+  "reference_comparisons": {
+    "canonical": {
+      "gains": 0,
+      "losses": 8,
+      "ties_success": 7,
+      "ties_failure": 9,
+      "ties": 16,
+      "paired_task_ids": {
+        "gains": [],
+        "losses": [
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_and_place_simple-SprayBottle-None-Toilet-418/trial_T20190906_190942_706186/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_and_place_simple-Vase-None-CoffeeTable-207/trial_T20190909_091246_807206/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_and_place_simple-Mug-None-SideTable-329/trial_T20190909_032340_274147/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_cool_then_place_in_recep-Bread-None-CounterTop-7/trial_T20190909_045605_307949/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_cool_then_place_in_recep-Plate-None-Cabinet-27/trial_T20190906_173120_350651/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_cool_then_place_in_recep-Cup-None-Microwave-17/trial_T20190906_192817_654400/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_heat_then_place_in_recep-Mug-None-Cabinet-26/trial_T20190909_062333_424779/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_two_obj_and_place-SprayBottle-None-GarbageCan-419/trial_T20190908_164236_518264/game.tw-pddl"
+        ],
+        "ties_success": [
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/look_at_obj_in_light-Pillow-None-DeskLamp-323/trial_T20190908_053153_077977/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/look_at_obj_in_light-AlarmClock-None-DeskLamp-323/trial_T20190909_044715_250790/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/look_at_obj_in_light-KeyChain-None-DeskLamp-327/trial_T20190906_202601_548273/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_and_place_simple-SoapBottle-None-CounterTop-417/trial_T20190910_112922_368384/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_clean_then_place_in_recep-SoapBar-None-Drawer-423/trial_T20190906_202340_749336/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_clean_then_place_in_recep-ButterKnife-None-DiningTable-16/trial_T20190909_114508_617301/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_two_obj_and_place-ToiletPaper-None-Drawer-423/trial_T20190907_111251_461099/game.tw-pddl"
+        ],
+        "ties_failure": [
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/look_at_obj_in_light-CD-None-DeskLamp-302/trial_T20190907_154618_526741/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_clean_then_place_in_recep-Cloth-None-Drawer-423/trial_T20190908_140701_251653/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_clean_then_place_in_recep-ButterKnife-None-Drawer-30/trial_T20190908_052007_212776/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_cool_then_place_in_recep-Tomato-None-Microwave-18/trial_T20190909_012524_159092/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_heat_then_place_in_recep-Tomato-None-Fridge-24/trial_T20190908_033721_967359/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_heat_then_place_in_recep-Plate-None-Cabinet-1/trial_T20190908_070946_578973/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_heat_then_place_in_recep-Potato-None-Fridge-11/trial_T20190909_011341_436523/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_two_obj_and_place-Knife-None-Drawer-18/trial_T20190907_065232_689984/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_two_obj_and_place-CreditCard-None-Safe-323/trial_T20190907_001129_214240/game.tw-pddl"
+        ]
+      },
+      "reference_minus_control_successes": -8,
+      "rate_difference": -0.3333333333333333
+    },
+    "uniform": {
+      "gains": 3,
+      "losses": 5,
+      "ties_success": 4,
+      "ties_failure": 12,
+      "ties": 16,
+      "paired_task_ids": {
+        "gains": [
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/look_at_obj_in_light-KeyChain-None-DeskLamp-327/trial_T20190906_202601_548273/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_clean_then_place_in_recep-SoapBar-None-Drawer-423/trial_T20190906_202340_749336/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_two_obj_and_place-ToiletPaper-None-Drawer-423/trial_T20190907_111251_461099/game.tw-pddl"
+        ],
+        "losses": [
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_and_place_simple-SprayBottle-None-Toilet-418/trial_T20190906_190942_706186/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_and_place_simple-Mug-None-SideTable-329/trial_T20190909_032340_274147/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_clean_then_place_in_recep-Cloth-None-Drawer-423/trial_T20190908_140701_251653/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_cool_then_place_in_recep-Bread-None-CounterTop-7/trial_T20190909_045605_307949/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_cool_then_place_in_recep-Tomato-None-Microwave-18/trial_T20190909_012524_159092/game.tw-pddl"
+        ],
+        "ties_success": [
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/look_at_obj_in_light-Pillow-None-DeskLamp-323/trial_T20190908_053153_077977/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/look_at_obj_in_light-AlarmClock-None-DeskLamp-323/trial_T20190909_044715_250790/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_and_place_simple-SoapBottle-None-CounterTop-417/trial_T20190910_112922_368384/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_clean_then_place_in_recep-ButterKnife-None-DiningTable-16/trial_T20190909_114508_617301/game.tw-pddl"
+        ],
+        "ties_failure": [
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/look_at_obj_in_light-CD-None-DeskLamp-302/trial_T20190907_154618_526741/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_and_place_simple-Vase-None-CoffeeTable-207/trial_T20190909_091246_807206/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_clean_then_place_in_recep-ButterKnife-None-Drawer-30/trial_T20190908_052007_212776/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_cool_then_place_in_recep-Plate-None-Cabinet-27/trial_T20190906_173120_350651/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_cool_then_place_in_recep-Cup-None-Microwave-17/trial_T20190906_192817_654400/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_heat_then_place_in_recep-Tomato-None-Fridge-24/trial_T20190908_033721_967359/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_heat_then_place_in_recep-Plate-None-Cabinet-1/trial_T20190908_070946_578973/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_heat_then_place_in_recep-Mug-None-Cabinet-26/trial_T20190909_062333_424779/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_heat_then_place_in_recep-Potato-None-Fridge-11/trial_T20190909_011341_436523/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_two_obj_and_place-SprayBottle-None-GarbageCan-419/trial_T20190908_164236_518264/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_two_obj_and_place-Knife-None-Drawer-18/trial_T20190907_065232_689984/game.tw-pddl",
+          "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_two_obj_and_place-CreditCard-None-Safe-323/trial_T20190907_001129_214240/game.tw-pddl"
+        ]
+      },
+      "reference_minus_control_successes": -2,
+      "rate_difference": -0.08333333333333333
+    }
+  },
+  "matched_tasks": [
+    {
+      "index": 0,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/look_at_obj_in_light-Pillow-None-DeskLamp-323/trial_T20190908_053153_077977/game.tw-pddl",
+      "family": "look_at_obj_in_light",
+      "seed": 20261012,
+      "arms": {
+        "canonical": {
+          "success": true,
+          "steps": 4,
+          "invalid_actions": 0,
+          "generated_tokens": 29,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "uniform": {
+          "success": true,
+          "steps": 6,
+          "invalid_actions": 0,
+          "generated_tokens": 42,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "reference": {
+          "success": true,
+          "steps": 6,
+          "invalid_actions": 0,
+          "generated_tokens": 41,
+          "stop_reason": "environment_done",
+          "terminal": true
+        }
+      }
+    },
+    {
+      "index": 1,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/look_at_obj_in_light-CD-None-DeskLamp-302/trial_T20190907_154618_526741/game.tw-pddl",
+      "family": "look_at_obj_in_light",
+      "seed": 20261012,
+      "arms": {
+        "canonical": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 98,
+          "generated_tokens": 549,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "uniform": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 24,
+          "generated_tokens": 707,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "reference": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 90,
+          "generated_tokens": 698,
+          "stop_reason": "environment_done",
+          "terminal": true
+        }
+      }
+    },
+    {
+      "index": 2,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/look_at_obj_in_light-AlarmClock-None-DeskLamp-323/trial_T20190909_044715_250790/game.tw-pddl",
+      "family": "look_at_obj_in_light",
+      "seed": 20261012,
+      "arms": {
+        "canonical": {
+          "success": true,
+          "steps": 3,
+          "invalid_actions": 0,
+          "generated_tokens": 23,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "uniform": {
+          "success": true,
+          "steps": 3,
+          "invalid_actions": 0,
+          "generated_tokens": 23,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "reference": {
+          "success": true,
+          "steps": 3,
+          "invalid_actions": 0,
+          "generated_tokens": 23,
+          "stop_reason": "environment_done",
+          "terminal": true
+        }
+      }
+    },
+    {
+      "index": 3,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/look_at_obj_in_light-KeyChain-None-DeskLamp-327/trial_T20190906_202601_548273/game.tw-pddl",
+      "family": "look_at_obj_in_light",
+      "seed": 20261012,
+      "arms": {
+        "canonical": {
+          "success": true,
+          "steps": 5,
+          "invalid_actions": 1,
+          "generated_tokens": 37,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "uniform": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 21,
+          "generated_tokens": 668,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "reference": {
+          "success": true,
+          "steps": 5,
+          "invalid_actions": 1,
+          "generated_tokens": 37,
+          "stop_reason": "environment_done",
+          "terminal": true
+        }
+      }
+    },
+    {
+      "index": 4,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_and_place_simple-SprayBottle-None-Toilet-418/trial_T20190906_190942_706186/game.tw-pddl",
+      "family": "pick_and_place_simple",
+      "seed": 20261012,
+      "arms": {
+        "canonical": {
+          "success": true,
+          "steps": 4,
+          "invalid_actions": 0,
+          "generated_tokens": 36,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "uniform": {
+          "success": true,
+          "steps": 4,
+          "invalid_actions": 0,
+          "generated_tokens": 36,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "reference": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 97,
+          "generated_tokens": 610,
+          "stop_reason": "environment_done",
+          "terminal": true
+        }
+      }
+    },
+    {
+      "index": 5,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_and_place_simple-SoapBottle-None-CounterTop-417/trial_T20190910_112922_368384/game.tw-pddl",
+      "family": "pick_and_place_simple",
+      "seed": 20261012,
+      "arms": {
+        "canonical": {
+          "success": true,
+          "steps": 4,
+          "invalid_actions": 0,
+          "generated_tokens": 36,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "uniform": {
+          "success": true,
+          "steps": 4,
+          "invalid_actions": 0,
+          "generated_tokens": 36,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "reference": {
+          "success": true,
+          "steps": 4,
+          "invalid_actions": 0,
+          "generated_tokens": 36,
+          "stop_reason": "environment_done",
+          "terminal": true
+        }
+      }
+    },
+    {
+      "index": 6,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_and_place_simple-Vase-None-CoffeeTable-207/trial_T20190909_091246_807206/game.tw-pddl",
+      "family": "pick_and_place_simple",
+      "seed": 20261012,
+      "arms": {
+        "canonical": {
+          "success": true,
+          "steps": 14,
+          "invalid_actions": 0,
+          "generated_tokens": 125,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "uniform": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 26,
+          "generated_tokens": 758,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "reference": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 95,
+          "generated_tokens": 802,
+          "stop_reason": "environment_done",
+          "terminal": true
+        }
+      }
+    },
+    {
+      "index": 7,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_and_place_simple-Mug-None-SideTable-329/trial_T20190909_032340_274147/game.tw-pddl",
+      "family": "pick_and_place_simple",
+      "seed": 20261012,
+      "arms": {
+        "canonical": {
+          "success": true,
+          "steps": 24,
+          "invalid_actions": 19,
+          "generated_tokens": 168,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "uniform": {
+          "success": true,
+          "steps": 8,
+          "invalid_actions": 0,
+          "generated_tokens": 68,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "reference": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 86,
+          "generated_tokens": 674,
+          "stop_reason": "environment_done",
+          "terminal": true
+        }
+      }
+    },
+    {
+      "index": 8,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_clean_then_place_in_recep-Cloth-None-Drawer-423/trial_T20190908_140701_251653/game.tw-pddl",
+      "family": "pick_clean_then_place_in_recep",
+      "seed": 20261012,
+      "arms": {
+        "canonical": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 58,
+          "generated_tokens": 893,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "uniform": {
+          "success": true,
+          "steps": 25,
+          "invalid_actions": 8,
+          "generated_tokens": 201,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "reference": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 81,
+          "generated_tokens": 505,
+          "stop_reason": "environment_done",
+          "terminal": true
+        }
+      }
+    },
+    {
+      "index": 9,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_clean_then_place_in_recep-SoapBar-None-Drawer-423/trial_T20190906_202340_749336/game.tw-pddl",
+      "family": "pick_clean_then_place_in_recep",
+      "seed": 20261012,
+      "arms": {
+        "canonical": {
+          "success": true,
+          "steps": 7,
+          "invalid_actions": 0,
+          "generated_tokens": 59,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "uniform": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 87,
+          "generated_tokens": 810,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "reference": {
+          "success": true,
+          "steps": 27,
+          "invalid_actions": 3,
+          "generated_tokens": 217,
+          "stop_reason": "environment_done",
+          "terminal": true
+        }
+      }
+    },
+    {
+      "index": 10,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_clean_then_place_in_recep-ButterKnife-None-Drawer-30/trial_T20190908_052007_212776/game.tw-pddl",
+      "family": "pick_clean_then_place_in_recep",
+      "seed": 20261012,
+      "arms": {
+        "canonical": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 94,
+          "generated_tokens": 520,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "uniform": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 76,
+          "generated_tokens": 669,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "reference": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 89,
+          "generated_tokens": 748,
+          "stop_reason": "environment_done",
+          "terminal": true
+        }
+      }
+    },
+    {
+      "index": 11,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_clean_then_place_in_recep-ButterKnife-None-DiningTable-16/trial_T20190909_114508_617301/game.tw-pddl",
+      "family": "pick_clean_then_place_in_recep",
+      "seed": 20261012,
+      "arms": {
+        "canonical": {
+          "success": true,
+          "steps": 9,
+          "invalid_actions": 1,
+          "generated_tokens": 67,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "uniform": {
+          "success": true,
+          "steps": 6,
+          "invalid_actions": 0,
+          "generated_tokens": 53,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "reference": {
+          "success": true,
+          "steps": 14,
+          "invalid_actions": 1,
+          "generated_tokens": 100,
+          "stop_reason": "environment_done",
+          "terminal": true
+        }
+      }
+    },
+    {
+      "index": 12,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_cool_then_place_in_recep-Bread-None-CounterTop-7/trial_T20190909_045605_307949/game.tw-pddl",
+      "family": "pick_cool_then_place_in_recep",
+      "seed": 20261012,
+      "arms": {
+        "canonical": {
+          "success": true,
+          "steps": 11,
+          "invalid_actions": 0,
+          "generated_tokens": 91,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "uniform": {
+          "success": true,
+          "steps": 6,
+          "invalid_actions": 0,
+          "generated_tokens": 49,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "reference": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 46,
+          "generated_tokens": 626,
+          "stop_reason": "environment_done",
+          "terminal": true
+        }
+      }
+    },
+    {
+      "index": 13,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_cool_then_place_in_recep-Plate-None-Cabinet-27/trial_T20190906_173120_350651/game.tw-pddl",
+      "family": "pick_cool_then_place_in_recep",
+      "seed": 20261012,
+      "arms": {
+        "canonical": {
+          "success": true,
+          "steps": 7,
+          "invalid_actions": 0,
+          "generated_tokens": 55,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "uniform": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 59,
+          "generated_tokens": 762,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "reference": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 51,
+          "generated_tokens": 646,
+          "stop_reason": "environment_done",
+          "terminal": true
+        }
+      }
+    },
+    {
+      "index": 14,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_cool_then_place_in_recep-Tomato-None-Microwave-18/trial_T20190909_012524_159092/game.tw-pddl",
+      "family": "pick_cool_then_place_in_recep",
+      "seed": 20261012,
+      "arms": {
+        "canonical": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 80,
+          "generated_tokens": 610,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "uniform": {
+          "success": true,
+          "steps": 8,
+          "invalid_actions": 0,
+          "generated_tokens": 59,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "reference": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 89,
+          "generated_tokens": 538,
+          "stop_reason": "environment_done",
+          "terminal": true
+        }
+      }
+    },
+    {
+      "index": 15,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_cool_then_place_in_recep-Cup-None-Microwave-17/trial_T20190906_192817_654400/game.tw-pddl",
+      "family": "pick_cool_then_place_in_recep",
+      "seed": 20261012,
+      "arms": {
+        "canonical": {
+          "success": true,
+          "steps": 16,
+          "invalid_actions": 2,
+          "generated_tokens": 110,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "uniform": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 34,
+          "generated_tokens": 765,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "reference": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 77,
+          "generated_tokens": 757,
+          "stop_reason": "environment_done",
+          "terminal": true
+        }
+      }
+    },
+    {
+      "index": 16,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_heat_then_place_in_recep-Tomato-None-Fridge-24/trial_T20190908_033721_967359/game.tw-pddl",
+      "family": "pick_heat_then_place_in_recep",
+      "seed": 20261012,
+      "arms": {
+        "canonical": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 81,
+          "generated_tokens": 769,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "uniform": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 49,
+          "generated_tokens": 774,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "reference": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 92,
+          "generated_tokens": 600,
+          "stop_reason": "environment_done",
+          "terminal": true
+        }
+      }
+    },
+    {
+      "index": 17,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_heat_then_place_in_recep-Plate-None-Cabinet-1/trial_T20190908_070946_578973/game.tw-pddl",
+      "family": "pick_heat_then_place_in_recep",
+      "seed": 20261012,
+      "arms": {
+        "canonical": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 70,
+          "generated_tokens": 759,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "uniform": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 68,
+          "generated_tokens": 785,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "reference": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 59,
+          "generated_tokens": 762,
+          "stop_reason": "environment_done",
+          "terminal": true
+        }
+      }
+    },
+    {
+      "index": 18,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_heat_then_place_in_recep-Mug-None-Cabinet-26/trial_T20190909_062333_424779/game.tw-pddl",
+      "family": "pick_heat_then_place_in_recep",
+      "seed": 20261012,
+      "arms": {
+        "canonical": {
+          "success": true,
+          "steps": 7,
+          "invalid_actions": 0,
+          "generated_tokens": 57,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "uniform": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 94,
+          "generated_tokens": 673,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "reference": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 53,
+          "generated_tokens": 613,
+          "stop_reason": "environment_done",
+          "terminal": true
+        }
+      }
+    },
+    {
+      "index": 19,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_heat_then_place_in_recep-Potato-None-Fridge-11/trial_T20190909_011341_436523/game.tw-pddl",
+      "family": "pick_heat_then_place_in_recep",
+      "seed": 20261012,
+      "arms": {
+        "canonical": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 76,
+          "generated_tokens": 652,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "uniform": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 42,
+          "generated_tokens": 747,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "reference": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 59,
+          "generated_tokens": 659,
+          "stop_reason": "environment_done",
+          "terminal": true
+        }
+      }
+    },
+    {
+      "index": 20,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_two_obj_and_place-SprayBottle-None-GarbageCan-419/trial_T20190908_164236_518264/game.tw-pddl",
+      "family": "pick_two_obj_and_place",
+      "seed": 20261012,
+      "arms": {
+        "canonical": {
+          "success": true,
+          "steps": 8,
+          "invalid_actions": 0,
+          "generated_tokens": 76,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "uniform": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 14,
+          "generated_tokens": 757,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "reference": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 36,
+          "generated_tokens": 771,
+          "stop_reason": "environment_done",
+          "terminal": true
+        }
+      }
+    },
+    {
+      "index": 21,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_two_obj_and_place-Knife-None-Drawer-18/trial_T20190907_065232_689984/game.tw-pddl",
+      "family": "pick_two_obj_and_place",
+      "seed": 20261012,
+      "arms": {
+        "canonical": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 86,
+          "generated_tokens": 604,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "uniform": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 37,
+          "generated_tokens": 752,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "reference": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 82,
+          "generated_tokens": 778,
+          "stop_reason": "environment_done",
+          "terminal": true
+        }
+      }
+    },
+    {
+      "index": 22,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_two_obj_and_place-CreditCard-None-Safe-323/trial_T20190907_001129_214240/game.tw-pddl",
+      "family": "pick_two_obj_and_place",
+      "seed": 20261012,
+      "arms": {
+        "canonical": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 44,
+          "generated_tokens": 702,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "uniform": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 26,
+          "generated_tokens": 686,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "reference": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 61,
+          "generated_tokens": 830,
+          "stop_reason": "environment_done",
+          "terminal": true
+        }
+      }
+    },
+    {
+      "index": 23,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_two_obj_and_place-ToiletPaper-None-Drawer-423/trial_T20190907_111251_461099/game.tw-pddl",
+      "family": "pick_two_obj_and_place",
+      "seed": 20261012,
+      "arms": {
+        "canonical": {
+          "success": true,
+          "steps": 9,
+          "invalid_actions": 0,
+          "generated_tokens": 73,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "uniform": {
+          "success": false,
+          "steps": 100,
+          "invalid_actions": 81,
+          "generated_tokens": 647,
+          "stop_reason": "environment_done",
+          "terminal": true
+        },
+        "reference": {
+          "success": true,
+          "steps": 13,
+          "invalid_actions": 0,
+          "generated_tokens": 109,
+          "stop_reason": "environment_done",
+          "terminal": true
+        }
+      }
+    }
+  ],
+  "reference_strictly_exceeds_both_controls": false,
+  "initial_observation_and_admissible_equality": true,
+  "raw_initial_state_comparison_available": false,
+  "verified_file_sha256": {
+    "configs/successful_path_learning_adoption_v1.json": "588c1dfb69ed41ed13b70891e36dabb84846135e7271fde2bebda9b3e273c10c",
+    "outputs/successful_path_eval_canonical_dev24_v1/summary.json": "bade139db799696a0b00a01445b60673d56f98c7312913b1e9882ff09b330cd4",
+    "outputs/successful_path_eval_uniform_dev24_v1/summary.json": "d481e3b09a5d2711760d4066bc15a4cf7dc9cebef078b113e14b1f083a6a0d2f",
+    "outputs/successful_path_eval_reference_dev24_v1/summary.json": "451423491ac15a698fe5b819c1b9a0e1151f73192600752e0a21df311d077c71",
+    "outputs/successful_path_learning_queue_v1/status.json": "76a3c543e39f1018f22fe28d7840c459e13561680b0772e192f53a5e3c4a3563",
+    "outputs/successful_path_learning_queue_v1/locked_sha256.json": "3e139a80e20bbc67c8f0b21563154ca95f32f2884358de1192f4d49dac92d839",
+    "outputs/successful_path_learning_queue_v1/all_training_complete.json": "382bc1a4b1c50018bb081448a5119d4e4dfaa8163decff1c3728142c9cc7fd0d",
+    "data/manifests/dev24.json": "7cee405bdadb61c0193cbe10c72f96b145b7796d88c52cd20974a4603efa03a6",
+    "outputs/successful_path_learning_queue_v1/original_game_locks.json": "fe8904d8081ac6025557f46fc37ae3323b8da041bb4ac65bface9d2de3d622e3",
+    "outputs/successful_path_learning_queue_v1/token_exposure_audit.json": "eaffe6db9e635285afa7fab77eb2941b13c532fbc71246762f64521395dda078",
+    "checkpoints/successful_path_canonical_seed42_v1/summary.json": "7c10205a3125fcb3689eea9843a6978e2389d07ae57256123e65507bc699a41f",
+    "checkpoints/successful_path_canonical_seed42_v1/config.json": "e9b65cb71f074a018f3a5f3aa4050438edbda6004a5ca05432f1c75443eb785d",
+    "checkpoints/successful_path_canonical_seed42_v1/final/training_state.json": "d34d7a4fac3b26e8125c203ec9ecda76705ee9a382cd10473897dd6d5464f5de",
+    "checkpoints/successful_path_canonical_seed42_v1/final/adapter_config.json": "2f000ede54b315cf82c51790d96c6c719cf2e1e02620c7dff2dc920263f6e598",
+    "checkpoints/successful_path_canonical_seed42_v1/metrics.jsonl": "ecf3a3aacf48603c4ec423f3b55996ec7914ae3c3170ea60726a37d39171f225",
+    "outputs/successful_path_eval_canonical_dev24_v1/config.json": "e205dd33095af7b443113398e7b7544b49ccd21817c52fee1a18d59c9bfc6c67",
+    "outputs/successful_path_eval_canonical_dev24_v1/episodes.jsonl": "e354d01e739337aa6f917c8eb4b91490b708ea02c8d5d9fb6879ee184330fe1c",
+    "checkpoints/successful_path_uniform_seed42_v1/summary.json": "c4030a6db13b0ae8c276c5bc652ab792f6cfe7bcd58b3cc6f6649a8f2c3f2077",
+    "checkpoints/successful_path_uniform_seed42_v1/config.json": "0c7f144366f7fece99663f97450ec8af12be4f540806b4390c0668d8f8b90636",
+    "checkpoints/successful_path_uniform_seed42_v1/final/training_state.json": "801589fdfb325da2c4f7d589a4e925de8063a1b94aa0dd447c8362fbc61d3e05",
+    "checkpoints/successful_path_uniform_seed42_v1/final/adapter_config.json": "2008399640ebe05d7791f5a2aa997f8c7e563501c3d332f2d26456d7602c055b",
+    "checkpoints/successful_path_uniform_seed42_v1/metrics.jsonl": "8564d17418e25e320282b08864087dbfb74f4e04b48e9927d34e7b4c9648db39",
+    "outputs/successful_path_eval_uniform_dev24_v1/config.json": "9b174faa30138c60ff43156352ef66b106832d907b239bcc2f02253c9ea15774",
+    "outputs/successful_path_eval_uniform_dev24_v1/episodes.jsonl": "e54f5308daa303304c9d5093bec2122d9d8e762766f18f91bc746f4f4f38281f",
+    "checkpoints/successful_path_reference_seed42_v1/summary.json": "9319a3848888581719d2892e3b654db29ebc5fb2d031060c364f539a5006df6e",
+    "checkpoints/successful_path_reference_seed42_v1/config.json": "73765b71baec9baeb79fbbd5654b347fb356d0d7e03061f87aebac937b7a7164",
+    "checkpoints/successful_path_reference_seed42_v1/final/training_state.json": "df0f2afe49b094b27b35b6b39bc525d62d52777513fe671e9ba3532abd3e28f9",
+    "checkpoints/successful_path_reference_seed42_v1/final/adapter_config.json": "e674c9add942680579399e968cf84b00600802a83758ae9309cd4403726a2baf",
+    "checkpoints/successful_path_reference_seed42_v1/metrics.jsonl": "35c2995d0aa0648a5450245888d170061dd25e0cde75bb4d44f763e42bef120c",
+    "outputs/successful_path_eval_reference_dev24_v1/config.json": "61550554c826e09fdece4c59125969bb38a1ca0fb6c9535f7c511e18b596fb29",
+    "outputs/successful_path_eval_reference_dev24_v1/episodes.jsonl": "3cf9c4c496403cdcab54893de39391b6abf31d887f55c40322a6ae3a7c0ad07c",
+    "outputs/successful_path_learning_queue_v1/complete_batch_report.json": "fe069c4b199ae59ca5ff54de1169eb3e7becba9969d78f042462e2fca9af1973",
+    "outputs/successful_path_selection_v1/selection_summary.json": "8d71ce092f035bab21ebd55d68e526e6232f5d46a2e1da085b380ca0304bb915",
+    "outputs/successful_paths_cpu_v2/summary.json": "fc7cb1a513d29ae317b66f863e3c3e9e86579567bf28a337d8ad4c4cd7ce0bd4",
+    "outputs/successful_paths_cpu_v1/summary.json": "a5fc62b13fc0b60179da366f19fe44ab9da4acecae8fb2b1a415455f3e4e71c0"
+  },
+  "checkpoint_weight_hash_receipts_not_reread": {
+    "canonical": {
+      "checkpoints/successful_path_canonical_seed42_v1/final/adapter_model.safetensors": "10246cb6815734b36fe8e7a4d2d94e9a66fb357b8cbff4de77f0eb7391d03cc8"
+    },
+    "uniform": {
+      "checkpoints/successful_path_uniform_seed42_v1/final/adapter_model.safetensors": "6299466995830cd8a23b8ee269f673f72724fe95da9b6559a9c037f86b522b51"
+    },
+    "reference": {
+      "checkpoints/successful_path_reference_seed42_v1/final/adapter_model.safetensors": "f4fbfc025ebd4330a0a988e36f4cda5f66748e35ceaa005b71ee4da5328c9925"
+    }
+  },
+  "costs": {
+    "scoring": {
+      "scored_action_tokens": 6552,
+      "forward_tokens": 569004,
+      "cache_hits": 209,
+      "model_calls": 796,
+      "wall_seconds": 78.24726840702351
+    },
+    "acquisition": {
+      "environment_step_calls_started": 1874,
+      "reset_calls_started": 292,
+      "wall_seconds": 351.8951287799864,
+      "historical_costs": {
+        "prior_failed_acquisition_environment_steps": 507,
+        "prior_failed_acquisition_resets": 102,
+        "canonical_preflight_environment_steps": 0,
+        "canonical_preflight_resets": 60,
+        "prior_failure_sha256": "a5fc62b13fc0b60179da366f19fe44ab9da4acecae8fb2b1a415455f3e4e71c0",
+        "preflight_sha256": "4428906492dcc75b8633707fdf2c8f7328e49d015368b1df9bb21ddd1f05fe8b"
+      },
+      "cumulative_environment_step_calls_started": 2381,
+      "cumulative_reset_calls_started": 454
+    },
+    "failed_v1_acquisition_steps": 507,
+    "queue_stage_wall_seconds": {
+      "select": 131.87777528498555,
+      "token_exposure_audit": 59.5477850639727,
+      "train_canonical": 247.39678074599942,
+      "train_uniform": 247.19321894302266,
+      "train_reference": 247.29990459996043,
+      "eval_canonical": 536.3638806599774,
+      "eval_uniform": 866.360938960046,
+      "eval_reference": 920.6226943149813
+    }
+  },
+  "scope": "Single seed, reused exploratory dev24. No confirmatory claim or new-run authorization.",
+  "verification_limits": [
+    "First observations/admissibles compared directly; raw initial states are not recorded.",
+    "Game and weight hashes cross-checked through locked receipts; original games and large adapter weights are not reread locally.",
+    "Generated tokens/invalid actions recomputed from transitions; forward-token totals reported from locked evaluator summaries."
+  ]
+}

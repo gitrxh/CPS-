@@ -1,0 +1,160 @@
+{
+  "schema_version": "1.0",
+  "created_local_date": "2026-10-12",
+  "status": "proposed_preregistration_before_pilot_results",
+  "scope": "Independent scientific review and proposed ALFWorld experiment design; no experiments or remote actions performed by this reviewer.",
+  "source_report": "D:\\download\\deep-research-report.md",
+  "skill_workflow": "C:\\Users\\zrx\\.codex\\skills\\academic-research\\workflows\\experiment-design.md",
+  "decision": {
+    "overall": "GO for a bounded feasibility audit, conditional GO for training; do not presume horizon-1 BRP is nontrivial.",
+    "central_hypothesis": "Among replay-valid successful trajectories derived from the same demonstrations, reference-policy-conditioned selection improves downstream imitation relative to equally valid, equally budgeted alternatives.",
+    "horizon_one_prediction": "Exact task-changing alternatives will often be absent. This is an inference from the action semantics, not an empirical finding. Measure it before allocating major GPU time.",
+    "principal_report_correction": "Distinguish environment consistency, nontrivial behavioral diversity, learner-likelihood improvement, and downstream success. None implies the others.",
+    "claim_scope": "An ALFWorld text-environment result establishes a bounded simulator result, not general agent, embodied-control, or production-tool generality."
+  },
+  "verified_primary_evidence": [
+    {
+      "id": "sampling_paper",
+      "url": "https://arxiv.org/abs/2610.02140",
+      "finding": "The cited paper exists: Finetuning with Sampling: SFT Learns Better Than You Think, by Aayush Karan, Sitan Chen, and Yilun Du, submitted October 1, 2026. It transforms demonstrations before SFT; its static reasoning results do not establish agent gains."
+    },
+    {
+      "id": "sampling_implementation",
+      "url": "https://github.com/aakaran/finetuning-with-sampling/blob/aa7080885f114fdc5d141f19c09f53008a1c061e/boost_sci.py",
+      "revision": "aa7080885f114fdc5d141f19c09f53008a1c061e",
+      "finding": "get_logprobs_vLLM returns mean token log probability (line 76); the acceptance branch compares that score greedily (line 189). This code segment does not implement the Hastings proposal ratio. Correctness is graded after generation. It supports a heuristic baseline, not a claim of exact conditional sampling."
+    },
+    {
+      "id": "alfworld_readme",
+      "url": "https://github.com/alfworld/alfworld/tree/aaba6870f86c5be6a08a491f32a50b906227bc3e",
+      "revision": "aaba6870f86c5be6a08a491f32a50b906227bc3e",
+      "finding": "ALFWorld provides text and embodied environments. The text interface exposes admissible commands; its README explicitly says these are unavailable in AlfredThorEnv and BUTLER generates commands without using them. Candidate-list evaluation must therefore be labelled as a distinct information regime."
+    },
+    {
+      "id": "alfworld_pddl",
+      "url": "https://github.com/alfworld/alfworld/blob/aaba6870f86c5be6a08a491f32a50b906227bc3e/alfworld/data/alfred.pddl",
+      "finding": "Task-changing actions usually modify grounded object, receptacle, or location predicates. Inventory and help both set checked(agent); examination sets checked(entity). Repeated information actions can therefore collide, and physical-state-only comparisons can conceal differences. Navigation also records a cost. This source does not prove every task-changing equivalence class is singleton."
+    },
+    {
+      "id": "alfworld_grammar",
+      "url": "https://github.com/alfworld/alfworld/blob/aaba6870f86c5be6a08a491f32a50b906227bc3e/alfworld/data/alfred.twl2",
+      "finding": "Commands use fixed templates, including take-object-from-receptacle and move-object-to-receptacle. Feedback is action-dependent. Equal symbolic successors can produce different observations; a free language paraphrase is not automatically another executable command."
+    },
+    {
+      "id": "textworld_execution",
+      "url": "https://github.com/microsoft/TextWorld/blob/main/textworld/envs/pddl/pddl.py",
+      "revision_note": "Inspected live main on 2026-10-12; implementation must pin and inspect the actually installed TextWorld revision separately.",
+      "finding": "PddlEnv deduplicates admissible command strings. step strips whitespace then matches a valid command exactly. Invalid commands produce a no-change response. Facts, valid actions, goal status and move count are available internally or through requested infos. The existence of these fields does not establish a safe deep-copy API."
+    },
+    {
+      "id": "alfworld_wrapper",
+      "url": "https://github.com/alfworld/alfworld/blob/aaba6870f86c5be6a08a491f32a50b906227bc3e/alfworld/agents/environment/alfred_tw_env.py",
+      "finding": "The wrapper implements six task families, separate training and evaluation paths, name randomization, and a stateful handcoded expert. It filters unsupported or unsolvable game files. Pin the resulting task manifest and reset wrapper/expert state as well as simulator state."
+    },
+    {
+      "id": "alfworld_paper",
+      "url": "https://arxiv.org/abs/2010.03768",
+      "finding": "The ALFWorld preprint was submitted in 2020 and presented at ICLR 2021. Text-world findings are not by themselves embodied-world findings."
+    }
+  ],
+  "mathematical_and_semantic_requirements": {
+    "local_set": "C_t = {a in deduplicated executable commands: augmented_state(T(s_t,a)) equals augmented_state(s^E_{t+1})}. Log the original action separately; it does not count as an alternative.",
+    "exact_enumeration": "For fully enumerated finite C_t, compute q(a|h_t)=exp(log pi_ref(a|h_t)-logsumexp_C log pi_ref). Direct categorical sampling is simpler and more auditable than MCMC. Argmax is a distinct greedy baseline.",
+    "log_probability": "Use the sum of action-token log probabilities with a fixed action terminator, identical chat template and deployment-visible history. Mean token score and length penalties define different objectives and must be labelled. Record normalized diagnostic scores separately.",
+    "candidate_set_limit": "Normalizing over a sampled candidate pool conditions on that pool, not the complete feasible action or trajectory set. Report proposal mechanism, deduplication, inclusion rules and pool size; do not claim an exact global projection.",
+    "augmented_state": "Include all dynamic simulator predicates with stable object identities, relevant numeric fluents, terminal/goal status, remaining horizon, constraints, random state where relevant, and any environment wrapper state affecting future observations or rewards. Keep name mapping fixed. Compare raw structured values before hashing. Never silently drop checked predicates, object identities, costs, or time limits to manufacture joins.",
+    "history_distinction": "World-state equality does not imply equality of a history-conditioned policy. Keep actual branch observations and rebuild every subsequent prompt. A demonstration action suffix can be replayed after a valid rejoin; its old observation strings and old learner likelihoods cannot simply be copied.",
+    "local_training_scope": "Independent single-decision examples at original expert histories can remain valid without concatenating them into a supposedly transformed trajectory. Their loss tests local conditional imitation, not full path-space projection.",
+    "trajectory_scoring": "For whole-trajectory selection, rescore all changed and downstream policy decisions under the regenerated causal history. At deterministic, fixed-start ALFWorld trajectories, environment probability factors are constant over valid trajectories; do not include observation tokens in the policy action score.",
+    "stochastic_extension": "Shared transition kernels cancel in importance ratios only when proposal and target use the same kernels, start distribution, support and observation process. Privileged conditioning and resampling must be accounted for. This is a later theoretical extension, not needed for the MVP."
+  },
+  "stage_zero_feasibility_audit": {
+    "data": "Use only official training games. Select 120 games, 20 per task family when available, by a recorded deterministic seed. Record all missing, unsupported, unsolved and timed-out games. Use no evaluation outcomes for gate decisions.",
+    "seed": 20261012,
+    "expert": "Pin handcoded versus planner expert; replay its full trace to verified terminal success before branching. Freeze game files, domain, grammar, naming configuration and expert code hashes.",
+    "restoration": "Prefer fresh environment load plus exact prefix replay as a correctness reference. Optimize with snapshots only after byte/structured-equivalence tests against that reference. Copying a Python wrapper alone is insufficient evidence of simulator restoration.",
+    "enumeration": "At each audited expert state, enumerate every unique admissible command from the restored state, execute it independently, and compare augmented successors. Audit complete states; cap at 100000 candidate environment transitions, selecting states with a prespecified task-stratified shuffle and reporting incomplete coverage. Account separately for reset/prefix/suffix replay cost.",
+    "required_strata": [
+      "Original expert action",
+      "Distinct command implementing the same grounded operator or spelling alias",
+      "Information-only action or task-progress no-op",
+      "Distinct task-changing grounded action with an exact equal successor",
+      "Invalid command",
+      "Valid command with unequal successor"
+    ],
+    "metrics": [
+      "Fraction of audited states with a distinct exact-equivalent task-changing alternative, excluding identity, aliases and no-ops",
+      "Exact equivalence-class sizes and cardinality after each exclusion",
+      "Task and task-family coverage, not only pooled transition rate",
+      "Fraction of states with a nontrivial alternative exceeding expert log probability by more than 0.0001 nats",
+      "Replay determinism and validity error counts",
+      "Environment steps including unsuccessful candidates, resets and replays; model tokens and GPU seconds separately"
+    ],
+    "gate": "Suggested operational thresholds, not literature standards: proceed with horizon-1 training only if at least 5% of audited task-changing decision states have a nontrivial equivalent alternative, with at least 20 such states across at least 10 distinct training tasks. Otherwise freeze horizon-1 as a negative feasibility result and move to the macro pilot. Never change the equivalence definition after seeing failures without versioning a new experiment.",
+    "validity_gate": "Every retained training trace must pass complete replay with zero known inconsistent transitions. Any retained mismatch blocks training until fixed; the report's 99% validity threshold is too permissive for this deterministic controlled experiment.",
+    "inference_limit": "A singleton class after exhaustive horizon-1 enumeration supports a local negative result for those audited states. Failure to find a branch under bounded macro search establishes only failure under that search budget."
+  },
+  "macro_action_fallback": {
+    "trigger": "The preregistered horizon-1 gate fails, or all alternatives are aliases/information-only actions.",
+    "initial_horizons": [2, 4, 8],
+    "definition": "Replace an expert segment a_t through a_{t+L-1} with a different executable L-action sequence starting from the same restored state and ending at the same augmented state. Fixed length initially controls horizon and short-sequence bias.",
+    "candidate_budget": "At most 32 unique candidate branches per selected anchor per horizon. Use the same frozen anchor manifest across selectors. Count every attempted branch and replay. Specify the deterministic stopping rule before launch.",
+    "proposal": "Use a mixture of original expert segment and explicitly described privileged proposals or bounded admissible-action search. Execute after every decision and generate the next prompt from actual feedback. Compare uniform valid-branch selection with reference-likelihood selection from exactly the same candidate pool.",
+    "meaningful_alternatives": "Prefer reordered independent task operations or different useful subplans. Exclude insertion of redundant inspections, self-loops and navigation detours as evidence for the core task-behavior hypothesis, while reporting these separately.",
+    "caution": "Two- and four-step joins may also be sparse. Reordering delivery of two required objects can require longer segments. Expansion to longer task-milestone segments or complete successful paths is a separately preregistered second phase, not an automatic claim that short macro BRP works.",
+    "suffix": "Re-execute all original suffix actions from the candidate endpoint. Keep actual emitted observations, verify terminal success and episode limits, and recompute all causal-history action scores.",
+    "variable_length": "Only after the fixed-length experiment: allow explicit cost-bounded variable-length segments and record remaining horizon and path cost. Call this cost-constrained milestone matching rather than exact augmented-state equality if time or cost differs. Include a shortest-path/length-matched selector control.",
+    "stop": "If bounded macro search yields fewer than 20 nontrivial verified substitutions across 10 tasks, report insufficient feasible support under the budget. Do not run an expensive BRP-versus-SFT claim on effectively identical data."
+  },
+  "training_and_controls": {
+    "shared_setup": "Freeze base checkpoint/revision, tokenizer, prompt, action protocol, LoRA or full-SFT choice, optimizer, loss mask, context truncation, train episodes and split manifests. Train only action tokens. Proposal-only future expert information must never enter student prompts or evaluation context.",
+    "resource_plan": "Start with a 3B model and parameter-efficient SFT on authorized A100 hardware after the CPU feasibility gate. Exact memory and throughput depend on A100 capacity and context length and must be measured; do not reuse H100-equivalent budget guesses as measured A100 costs.",
+    "seeds": [42, 123, 456],
+    "mandatory_arms": [
+      {"name": "frozen_base", "purpose": "Establish headroom and base-policy rollout success."},
+      {"name": "expert_sft", "purpose": "Unmodified verified demonstrations with identical learner/training budget."},
+      {"name": "replay_identity_sft", "purpose": "Run replay and data-processing pipeline while retaining original actions; detect pipeline or formatting confounds."},
+      {"name": "uniform_valid_branch_sft", "purpose": "Select uniformly from the same verified candidate pool; isolate the reference-policy selector from search, diversity and privileged information."},
+      {"name": "reference_selected_brp_sft", "purpose": "Prespecified categorical conditional sampler, with greedy argmax as a separately labelled ablation."},
+      {"name": "compute_matched_success_rejection_sft", "purpose": "Reference-policy rollout and retain successes under matched environment and token budgets; report if successful-data scarcity prevents data-volume matching."}
+    ],
+    "negative_controls": [
+      "Identity-only pools must yield the same data and loss targets as expert SFT.",
+      "Shuffling learner scores within each valid candidate pool should remove any specific advantage of learner-aware selection; use shared pools and seeds.",
+      "Observation-only equivalence may be audited against structured state to measure false joins; do not silently promote it to the main verifier.",
+      "Token-only rewrite with stale observations is an optional intentionally inconsistent baseline. Measure its invalid-transition rate and label it clearly. Its failure alone does not validate BRP.",
+      "If macro paths differ in length, include length-only and cost-matched selection to separate probability conditioning from shorter demonstrations.",
+      "A no-privileged-future proposal ablation isolates privileged search benefit; inference prompts remain identical in every arm."
+    ],
+    "later_baselines": "Add DAgger with recorded expert-query and environment costs, and a verified recent agent-training baseline before broad competitiveness claims. RL, retention, cross-model transfer and multiple environments are follow-up studies, not prerequisites to the first feasibility result.",
+    "budget_matching": "Report both fixed-data/fixed-update comparisons and all-in acquisition-plus-training cost. A single match on GPU time does not match environment calls, oracle queries or generated tokens. Publish each count and disclose unmatched dimensions.",
+    "information_regime": "Choose free-form canonical-action generation as the main deployable regime; privileged admissible lists may be used for offline branch verification. If evaluation chooses among admissible commands, label all arms as candidate-list agents and run them under identical information access."
+  },
+  "evaluation_and_analysis": {
+    "split_policy": "Select hyperparameters on a training holdout or a fixed seen-development split. Lock the complete official unseen evaluation manifest before training. Do not tune or select checkpoints on unseen outcomes. Publish actual counts and reasons for exclusions instead of assuming a canonical subset size.",
+    "primary_endpoint": "Episode success within a fixed action limit on the locked unseen split, paired by task and evaluated under the same decoding configuration for all arms.",
+    "secondary_endpoints": ["Seen success", "Invalid-action rate", "Episode length and environment cost per success", "Nontrivial substitution coverage", "Reference sequence log-probability change", "Per-family success", "Recovery from preregistered perturbations if run"],
+    "primary_contrast": "Reference-selected BRP SFT minus expert SFT. Uniform-valid-branch SFT is the required mechanism contrast. Predeclare any additional confirmatory comparisons and their multiplicity correction.",
+    "statistics": "Store per-task per-training-seed binary outcomes. Report each seed and the seed-averaged paired task difference. Use a paired task-cluster bootstrap for a 95% task-sampling interval; treat all evaluations of a task as one cluster. Report seed variability separately and state that three seeds weakly characterize training randomness. Do not treat transitions, token samples, or repeated task evaluations as independent tasks.",
+    "power": "Before full training, calculate detectable paired differences from a pilot on the development split, never the unseen split. Small standard evaluation sets can leave a 5 percentage-point effect inconclusive. A positive point estimate with an interval spanning zero is preliminary evidence, not confirmed improvement.",
+    "model_selection": "One preregistered checkpoint rule shared across arms; no best-of-many unseen runs. Log aborted runs, numerical failures and deviations. Do not retry unfavorable but valid seeds.",
+    "retention": "Do not claim reduced forgetting unless a prespecified disjoint prior-capability evaluation is actually run. Target-task success alone does not measure retention."
+  },
+  "minimal_honest_success_criteria": {
+    "engineering_success": "A reproducible branch/replay pipeline, exhaustive audited horizon-1 counts, a trace-validity checker, and explicit feasibility outcome. A verified singleton result is a useful completed experiment.",
+    "feasibility_success": "At least 20 nontrivial replay-valid substitutions across at least 10 training tasks, with documented support coverage; this establishes manipulable data, not learning benefit.",
+    "pilot_learning_signal": "A positive seed-averaged unseen success difference with complete replay validity and cost accounting; label inconclusive uncertainty honestly.",
+    "confirmatory_learning_success": "Positive prespecified primary effect with a 95% interval excluding zero under the stated task-cluster analysis, and consistent direction across the three reported training seeds. Report effect size; 5 percentage points is a practical target rather than a post-hoc significance substitute.",
+    "mechanism_success": "Reference-selected BRP improves over uniform selection from the same valid pool after controlling length and acquisition/training budgets. Higher reference score alone is built into the selector and is not independent confirmation of the hypothesis.",
+    "no_overclaim": "No claim of exact MCMC, global KL reduction, true on-policy data, cross-environment generality, superior efficiency or reduced forgetting without their separate assumptions and measurements."
+  },
+  "required_run_artifacts": [
+    "Pinned code, model, tokenizer, dependency and environment versions",
+    "Task manifests, split hashes, all seeds and expert-generation failures",
+    "Original and candidate actions, actual observations, stable structured states and admissibility records",
+    "Candidate origin, deduplication identity, semantic category, equivalence decisions and replay outcomes",
+    "Raw summed log probabilities and separate normalized scores, prompts and masking configuration",
+    "Acquisition, verification, training and evaluation cost ledgers",
+    "Per-task per-seed outcomes, all checkpoints considered and recorded protocol deviations"
+  ]
+}

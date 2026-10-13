@@ -1,0 +1,140 @@
+{
+  "version": 1,
+  "created_local_date": "2026-10-13",
+  "status": "candidate_only_not_approved_not_launched",
+  "execution_authorized_by_this_file": false,
+  "purpose": "Prespecify a bounded confirmation of the existing phase1 selector, conditional on its directional development-screen result. This file creates no queue, job, or automatic permission to evaluate unseen tasks.",
+  "information_available_at_drafting": {
+    "phase1_learning_outcomes_known": false,
+    "known_dev24_results": {"base_successes": 1, "handcoded107_sft100_successes": 6},
+    "interpretation": "The known results concern ordinary SFT, different data quality and a different cohort. They do not establish an effect of reference-aware selection.",
+    "known_feasibility": "The completed v1 two-object compiler has 20 verified canonical tasks and 18 tasks with a verified distinct reversed path. Native120 acquisition and phase1 scoring/training outcomes are not used to choose this plan.",
+    "phase1_queue_implementation": "A missing-config preflight failure executed no score/train stage. The existing v2 launcher uses the original protocol with a fresh queue directory. This candidate does not modify either queue or any locked source.",
+    "pre_learning_selection_update_received_during_drafting": {"complete_pools": 120, "two_path_pools": 18, "identity_pools": 102, "learner_changed_from_canonical": 9, "uniform_changed_from_canonical": 7, "learning_outcomes_still_unknown": true},
+    "dilution_limit": "Only9/120 trajectories differ between learner and canonical. Actual learner-versus-uniform disagreement must be counted from candidate IDs; the9 and7 change counts alone imply only a2-to16 range. Changed-trajectory fractions are not changed-target-token or gradient-exposure fractions. The18-task candidate-coverage gate is distinct from9 learner-selected changes and is not altered."
+  },
+  "reference_locks": {
+    "configs/phase1_proposal_candidates.json": "3e62bbe6f95c16c91757703ea94eaf629700a66b647874b84cdbc4c270155168",
+    "data/manifests/train120.json": "724c18f5711bfb3d9ef002005dda34c40471617eb44f921c78f8fa7f42759af0",
+    "data/manifests/dev24.json": "7cee405bdadb61c0193cbe10c72f96b145b7796d88c52cd20974a4603efa03a6",
+    "data/manifests/unseen_locked.json": "c46b7d5a4e0092bcc401543ecb4eb68fea821f8ee069b8b2f778e0fc554bc2fd"
+  },
+  "entry_decision": {
+    "technical_prerequisites": [
+      "All three phase1 arms have the same ordered 120 task/seed identities, valid pool hashes, verified replay, identical per-task initial states, terminal states, and action multisets.",
+      "All three final seed42 checkpoints completed exactly 100 optimizer steps and their configs/data/model/source hashes match the phase1 protocol.",
+      "Each phase1 development evaluation completed the identical 24-task manifest without technical errors, using generated commands, the same environment seed and episode limits.",
+      "Freeze the complete phase1 outcome table, logs, source hashes, three data files, candidate pools, reference model, and final checkpoints before deciding the gate."
+    ],
+    "positive_direction_rule": "Enter the proposed confirmation only if learner_selected has strictly more dev24 successes than canonical_baseline AND strictly more than uniform_valid. Equality against either arm fails this screen. Use final checkpoint results only.",
+    "not_evidence_of_confirmation": "One seed and 24 development tasks have low power; one extra success can open this screen. Development selection exaggerates observed differences and does not confer significance or demonstrate a mechanism. No p-value, training loss, likelihood gain, or invalid-action rate can substitute for the frozen success-count rule.",
+    "technical_failure": "If any prerequisite is incomplete, classify the screen as technically indeterminate. Do not treat missing tasks as failures or wins, and do not use a partial comparison to enter confirmation.",
+    "approval_state": "Even when the directional gate passes, this remains a candidate until the parent/user research workflow explicitly adopts a version before unseen evaluation. Passing the gate does not itself execute anything."
+  },
+  "frozen_estimand_and_data": {
+    "arms": ["canonical_baseline", "uniform_valid", "learner_selected"],
+    "data_paths": {
+      "canonical_baseline": "outputs/phase1_assembly_v1/canonical_baseline.jsonl",
+      "uniform_valid": "outputs/phase1_selection_v1/uniform_valid.jsonl",
+      "learner_selected": "outputs/phase1_selection_v1/learner_selected.jsonl"
+    },
+    "data_rule": "Reuse byte-identical complete phase1 arm data files for every training seed. Lock their SHA256 values in an adopted execution manifest before training; no rescoring, candidate regeneration, task replacement, filtering, or new uniform draw.",
+    "selection_reference": "The same frozen phase1 reference policy and full-trajectory sum of action-token-plus-EOS log probabilities; greedy argmax remains a heuristic, not MH sampling.",
+    "scope": "The comparison estimates performance for these frozen 120-task data realizations and this candidate generator. Uniform selection has one fixed seed42 realization. Training-seed replication does not estimate variation over independently generated pools or independently drawn uniform datasets.",
+    "mechanism_comparator": "learner_selected versus uniform_valid is the primary reference-aware-selection contrast. learner_selected versus canonical_baseline checks improvement beyond the native-planner canonical data. Both are required for the proposed positive interpretation.",
+    "claims_excluded": ["MH correctness or equilibrium sampling", "benefit of arbitrary environment-consistent transformations", "superiority across candidate-generation seeds", "an isolated BRP effect from handcoded107 versus planner120", "equal total compute from equal optimizer steps"]
+  },
+  "training_plan": {
+    "all_seeds": [42, 123, 456],
+    "additional_seeds": [123, 456],
+    "reuse_seed42_final_checkpoints": true,
+    "additional_training_jobs": 6,
+    "model": "Qwen2.5-3B-Instruct",
+    "model_path": "/home/jsy/zhangranxu-adrs-week-20260929/models/Qwen2.5-3B-Instruct",
+    "optimizer_steps": 100,
+    "batch_size": 1,
+    "gradient_accumulation": 8,
+    "learning_rate": 0.0002,
+    "lora_rank": 16,
+    "lora_alpha": 32,
+    "lora_dropout": 0.05,
+    "max_context_tokens": 2048,
+    "max_action_tokens": 64,
+    "max_target_tokens": 2000000,
+    "checkpoint_rule": "Use only the final checkpoint at optimizer step100. Inherit all remaining trainer, optimizer, scheduler, precision, tokenization and example-sampling settings from the hash-locked phase1 implementation. No epoch expansion, intermediate-checkpoint selection, or tuning.",
+    "fixed_job_order": ["123/canonical_baseline", "123/uniform_valid", "123/learner_selected", "456/learner_selected", "456/uniform_valid", "456/canonical_baseline"],
+    "new_dev_evaluations": 0,
+    "post_screen_rule": "After adoption, complete the fixed training and unseen batch without another development-performance gate. Hash all nine eligible checkpoint artifacts and the exact evaluation schedule before the first unseen run."
+  },
+  "one_locked_unseen_batch": {
+    "manifest": "data/manifests/unseen_locked.json",
+    "split": "valid_unseen",
+    "task_count": 134,
+    "number_of_models": 9,
+    "planned_episodes": 1206,
+    "episode_max_steps": 100,
+    "maximum_environment_steps_before_retries": 120600,
+    "maximum_environment_steps_including_two_full_evaluation_retries": 147400,
+    "environment_seed": 20261012,
+    "selection": "generate",
+    "do_sample": false,
+    "max_context_tokens": 2048,
+    "max_action_tokens": 64,
+    "max_generated_tokens_per_model": 900000,
+    "token_budget_rationale": "134 episodes times100 action steps times64 maximum generated tokens is857600;900000 prevents the dev-oriented default100000 from truncating the locked full evaluation.",
+    "fixed_model_order": ["42/canonical_baseline", "42/uniform_valid", "42/learner_selected", "123/uniform_valid", "123/learner_selected", "123/canonical_baseline", "456/learner_selected", "456/canonical_baseline", "456/uniform_valid"],
+    "identity_gate": "Require exactly134 unique manifest tasks in the manifest order for each model, identical environment seed/settings, complete summary, zero technical errors, and no overlap with train120 or dev24. Validate manifest/source/model hashes before every launch.",
+    "meaning_of_once": "One preregistered evaluation batch of all nine models. It is not one episode per task across the entire study. Technical retries below may repeat a model's batch but never select the better result.",
+    "result_access": "During the batch, review only liveness, resource use and technical completion. Do not use interim success counts to change models, seeds, ordering, budgets, tasks or stop rules. Report all nine complete results together.",
+    "after_unblinding": "This unseen split becomes used evidence after inspection. Further methods informed by these outcomes cannot claim it is an untouched confirmatory set."
+  },
+  "analysis_and_claim_rules": {
+    "primary_outcome": "Episode success under the fixed100-step protocol, counted as1/0 for every completed task. Policy failures, invalid commands and step-limit losses are scientific outcomes, not technical exclusions.",
+    "primary_estimands": ["Mean across the three training seeds of the paired134-task learner_selected minus uniform_valid success-rate difference", "Mean across the three training seeds of the paired134-task learner_selected minus canonical_baseline success-rate difference"],
+    "mandatory_table": "Publish every arm/seed success count out of134, both paired differences for each seed, paired gain/loss/tie counts, and the unweighted mean across the three seed-specific success rates. Do not present402 correlated episodes as402 independent task replications.",
+    "uncertainty": {
+      "method": "Crossed bootstrap over training seeds and scene clusters, with all arms paired in every draw. Infer each task's scene cluster from the final integer in its task-directory name; tasks in the same scene, including different task families, stay together. Construct and hash the complete cluster map before reading unseen results. If parsing fails, stop analysis setup rather than silently switch clusters.",
+      "draws": 50000,
+      "rng_seed": 99173,
+      "algorithm": "For each draw, sample three training-seed indices with replacement; independently sample the observed number of unique scene clusters with replacement. Carry every task in each sampled cluster with its multiplicity. Compute the task-weighted success-rate difference within each sampled seed and then average the three values. Use the same seed and scene draws for both contrasts.",
+      "intervals": "Use percentile97.5-percent two-sided intervals (quantiles0.0125 and0.9875) for each of the two prespecified contrasts. This is a Bonferroni-style adjustment for two comparisons, targeting95-percent simultaneous coverage if individual bootstrap coverage is adequate.",
+      "manifest_only_scene_audit": {"distinct_scene_clusters": 4, "task_counts_by_scene": {"10": 77, "219": 11, "308": 27, "424": 19}, "inspected_evaluation_outcomes": false},
+      "limitations": "Three seeds and only four independent scene labels provide very weak information on optimizer and environment variability; one scene supplies77 of134 tasks. Scene-cluster resampling is highly approximate with four clusters. Intervals are exploratory model-based uncertainty summaries, not exact randomization inference, reliable nominal-coverage guarantees, or proof of population-wide causality. The complete finite134-task benchmark means themselves are directly observed. A passed support rule does not justify a statistically confirmed new-room generalization claim. No power claim is made."
+    },
+    "support_rule": "Call the result bounded replication support for this frozen selector only if both mean differences are positive, both adjusted bootstrap lower bounds exceed zero, and both paired differences are strictly positive for each of all three training seeds. Failure of any condition is reported as mixed, inconclusive, or adverse according to the actual table; do not hide positive descriptive estimates.",
+    "no_optional_stopping": "Analyze after all planned jobs complete. Never append seeds, tasks, updates, candidate searches or reruns because an interval crosses zero, a p-value is near a threshold, or an effect is small. Technical budget exhaustion yields incomplete confirmation, not an excuse to change the plan.",
+    "multiplicity_and_selection": "Disclose phase0 feasibility work, phase1 development screening, the known base/handcoded comparisons and all subsequent registered variants. The bootstrap adjustment covers only the two primary unseen contrasts; it does not erase project-wide researcher selection. No p-values for pooled dev-plus-unseen results, no choosing the best seed, and no post hoc switching the primary family or metric.",
+    "secondary_descriptive_only": ["Per-family successes including the17 two-object unseen tasks", "Invalid-command rate with total action attempts as denominator", "Episode action count with step-limit failures retained", "Actual target-token exposures and generated tokens", "Acquisition, scoring, training and evaluation costs"],
+    "scope_of_positive_result": "Even a positive result supports generalization of the frozen greedy selection recipe on this ALFWorld protocol. It does not uniquely prove the hypothesized causal mechanism, generalize beyond this uniform draw, or establish results in other environments."
+  },
+  "finite_budget_and_failures": {
+    "proposed_physical_gpu": 2,
+    "max_concurrent_gpu_jobs": 1,
+    "new_training_seconds_per_job": 3600,
+    "unseen_evaluation_seconds_per_model": 7200,
+    "maximum_active_gpu_stage_wall_seconds_including_retries": 108000,
+    "maximum_queue_elapsed_seconds_including_waits": 172800,
+    "planned_gpu_jobs": 15,
+    "max_technical_retry_jobs_total": 2,
+    "max_retries_per_failed_job": 1,
+    "max_total_gpu_job_launches": 17,
+    "no_new_acquisition_or_scoring": true,
+    "retry_allowed": "Only an identified transient infrastructure failure such as GPU unavailability, transport/storage interruption or externally terminated process may receive one exact same-config, same-seed retry in a fresh directory. Preserve failed logs and outputs, apply the global two-retry cap, and accept the first complete technically valid run without comparing performance.",
+    "retry_not_allowed_as_technical": "Low reward, invalid commands, episode timeout at100 actions, low success, a weak interval, optimizer divergence, missing100 updates from a token budget, reproducible OOM, source/hash mismatch, replay/state mismatch or exhausting a stage budget cannot be repaired by changing settings within this confirmation. Stop with the corresponding technical/incomplete or scientific outcome and propose a new explicitly separate protocol if needed.",
+    "evaluation_failure_handling": "Any technical episode error invalidates that model's full evaluation for the complete-batch analysis. Do not drop that task, impute its reward or substitute another task. An eligible infrastructure retry repeats the entire134-task evaluation; otherwise confirmation is incomplete.",
+    "safety_of_execution": "Use existing GPU allocation/UUID lock checks and terminate only the owned process group on timeout. Never reclaim another job's GPU or overwrite locked artifacts. Candidate approval must precede any new execution."
+  },
+  "if_no_phase1_directional_benefit": {
+    "action": "Do not launch these additional seeds or access unseen134. Report the complete development counts and end the positive efficacy claim for this version of two-object reference-aware selection. Lack of directional benefit in this low-power screen is not proof that every environment-consistent method is ineffective.",
+    "allowed_train_only_diagnostics_after_separate_adoption": [
+      "Tabulate eligible/noneligible tasks, candidate lengths, exact state/multiset evidence and meaningful manipulation differences using only the frozen training pools.",
+      "Count learner/original and learner/uniform agreement, full-sequence score margins and manipulation-token contributions. Check whether most gains reflect generic navigation likelihood rather than useful action ordering.",
+      "Audit actual causal prompt truncation, target-token exposure and whether task/object-relevant history survives the2048-token context limit.",
+      "Inspect the two rejected reversal tasks for train-only dependency or equal-multiset limitations, without altering the completed study or gate.",
+      "Assess whether a broader partial-order exact-state generator can produce useful alternatives across more task families before committing to another learning comparison."
+    ],
+    "bounded_diagnostic_candidate": {"max_training_tasks": 120, "max_new_environment_steps": 20000, "max_cpu_wall_seconds": 1800, "additional_gpu_training_jobs": 0, "additional_dev_or_unseen_episodes": 0},
+    "new_route_candidate": "Prefer a training-only feasibility prototype for dependency-preserving partial-order plan alternatives across families. If exact-state support remains narrow, propose a separately labelled successful-path projection study with explicit matched length/cost strata and same-pool uniform control. Do not relax endpoint equality while retaining the exact-state BRP label.",
+    "required_new_registration": "Any revised data generator, selector, context, update count or family focus is a new method/version requiring a new plan before evaluation. Preserve the failed screen in the study ledger. The repeatedly used dev24 remains exploratory; keep unseen134 untouched until a later independently frozen batch is adopted."
+  }
+}

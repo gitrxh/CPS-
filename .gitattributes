@@ -1,0 +1,3 @@
+# Historical experiment receipts bind byte-level SHA256 values.
+# Preserve original bytes, including line endings, in every checkout.
+* -text

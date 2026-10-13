@@ -1,0 +1,71 @@
+{
+  "kind": "recovery_learning_queue_adoption_schema_description",
+  "version": 1,
+  "execution_authorized": false,
+  "controller": "scripts/run_recovery_learning_queue_v1.py",
+  "command": "/usr/bin/python3 scripts/run_recovery_learning_queue_v1.py --adoption-json <new-root-adoption.json>",
+  "required_parent_fields": {
+    "kind": "recovery_learning_parent_adoption",
+    "version": 1,
+    "adopted": true,
+    "adopted_by": "root_after_independent_GPT_6_Astra_review",
+    "physical_gpu": 2,
+    "authorized_stages": ["joint_token_audit", "train_expert_recovery", "train_uniform_viable_recovery", "train_reference_conditional_recovery", "eval_frozen_canonical_BC", "eval_uniform_viable_recovery", "eval_expert_recovery", "eval_reference_conditional_recovery"],
+    "candidate": "configs/recovery_projection_candidate_v2.json",
+    "controller_review": "Independent review with recovery_learning_controller_review_passed=true, controller_sha256, test_sha256 and candidate_sha256 matching current bytes",
+    "training_review": "analysis/recovery_training_astra_review_v1.json",
+    "evaluator_review": "analysis/recovery_evaluator_review_v1.json",
+    "diagnostic_parent_adoption": "Previously adopted score/Q parent JSON",
+    "diagnostic_status": "Prior diagnostic output_paths.queue/status.json",
+    "diagnostic_locks": "Prior diagnostic output_paths.queue/locked_sha256.json",
+    "diagnostic_result_review": "Output of analysis/review_recovery_diagnostic_complete_v1.py after complete score/Q",
+    "diagnostic_controller_identity": {"pid": "Recorded positive Linux PID", "start_ticks": "Recorded positive /proc start ticks"},
+    "input_inventory": "Exact inherited acquisition input inventory path",
+    "bc_data": "Original canonical60 JSONL with fixed SHA0cc074e4f07ce999a889b84ba9a3fe2ae44fec5e5ac81c2c0623764859e7fe70",
+    "source_inventory": "Exact full current remote gnrl/scripts/tests Python inventory after separately authorized phase deployment",
+    "file_sha256": "Map binding all current sources, reviews, candidate, every prior diagnostic lock unchanged, prior adoption/status/lock table, original BC bytes, seen48 manifest, core/full model provenance and initial adapter files",
+    "original_file_sha256": "Exact inherited 336 absolute game/metadata file hashes",
+    "runtime_file_sha256": "Exact inherited nine runtime hashes including resolved system controller and project worker interpreters",
+    "output_paths": {
+      "queue": "Fresh standalone outputs/recovery_projection_* directory",
+      "joint_token_audit": "Fresh standalone outputs/recovery_projection_*.json file",
+      "train_expert_recovery": "Fresh checkpoints/recovery_projection_* directory",
+      "train_uniform_viable_recovery": "Fresh checkpoints/recovery_projection_* directory",
+      "train_reference_conditional_recovery": "Fresh checkpoints/recovery_projection_* directory",
+      "eval_frozen_canonical_BC": "Fresh outputs/recovery_projection_* directory",
+      "eval_uniform_viable_recovery": "Fresh outputs/recovery_projection_* directory",
+      "eval_expert_recovery": "Fresh outputs/recovery_projection_* directory",
+      "eval_reference_conditional_recovery": "Fresh outputs/recovery_projection_* directory"
+    }
+  },
+  "diagnostic_review_contract": {
+    "kind": "recovery_complete_diagnostic_result_review",
+    "complete": true,
+    "gate_evaluable": true,
+    "errors": [],
+    "recovery_diagnostic_result_review_passed": true,
+    "training_gate_passed": true,
+    "bindings": ["adoption_sha256", "diagnostic_status_sha256", "diagnostic_locks_sha256", "diagnostic_result_sha256", "diagnostic_cost_sha256", "score_records_sha256"],
+    "failure": "Integrity review true with scientific training_gate_passed false never permits entry. No continuation or threshold changes. This contract is the independent result-review output, not the remote postqueue integrity receipt."
+  },
+  "execution_contract": [
+    "No phase deployment while acquisition or score/Q workers/controller remain alive. Entry verifies recorded previous PID/start identities and zero live members in owned worker sessions without signalling any previous process.",
+    "All output paths must be new, distinct and non-nested; none can overlap prior phase directories. The token-audit file must be outside the queue directory; outputs/ exists before launch.",
+    "Every launch is serial physical GPU2 through launch_gpu.py and the project worker interpreter; only the controller uses system Python pidfd. Spawn and identity capture are protected from termination signals and every exit cleans only the owned session.",
+    "Global Unix and monotonic deadlines are inherited from diagnostic status and original main-study start; SIGALRM enforces the same 171840-second study window with30-second cleanup reserve. No wall reset for this phase, no retry.",
+    "Joint tokenizer audit alone has1800-second ceiling within the remaining global budget. Three training jobs each have7200-second ceiling and2m target tokens. All training uses original BC349 plus same eligible recovery contexts,100updates,400+400 exposures and reviewed settings.",
+    "All three final checkpoints and unchanged original canonical checkpoint are byte-locked and validated against joint audit plus training configs/summaries before first evaluation. Full adapter directory inventories and all source/model/input/runtime bytes are rechecked between stages.",
+    "Training exposure logs must contain800 matching forward/backward pairs;100 step metrics and final summary must agree with their target counts, finite losses and fixed schedule. Training costs are reported separately from cumulative environment/generation/scoring ledger, preserving original both-reference scoring exactly once.",
+    "Four evaluations follow frozen canonical, uniform, expert, reference order. Each48 tasks, seed20261012, greedy original prompt,100steps,2048context,64action,350k generated,7200seconds. Their cumulative ledger starts with actual diagnostic final totals and chains each completed evaluation. No unseen calls.",
+    "No episode/events outcomes are read by this controller before all192 complete and byte-locked. At unblinding, persistent state is updated before reading files. Full state/transition/success/admissibility/context/token validation and event-stream equality precede paired comparisons.",
+    "Any technical failure invalidates all192 outcomes and comparisons. Report retains whether unblinding started, last fully completed cost totals and latest interrupted worker durable ledger if available. Incomplete started calls can have unknown costs; surviving worker logs remain evidence, never zero-fill them.",
+    "Complete result reports all4 success counts, paired gains/losses on fixed48,6families and each scene denominator. Practical exploratory screen requires reference gain>=3 vs both recovery controls and strict gain over canonical. Final state needs_astra_learning_result_review never auto-launches seeds or unseen."
+  ],
+  "local_verification": {
+    "command": "C:\\Users\\zrx\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe -B -m unittest tests.test_recovery_learning_queue_v1 tests.test_recovery_evaluate_v1 tests.test_train_recovery_v1 -v",
+    "real_processes_spawned": 0,
+    "real_environment_calls": 0,
+    "model_or_tokenizer_calls": 0,
+    "deployments": 0
+  }
+}

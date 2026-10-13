@@ -1,0 +1,61 @@
+{
+  "status": "local_implementation_candidate_only_not_adopted_not_deployed",
+  "execution_authorized": false,
+  "candidate": "analysis/successful_path_confirmation_candidate_v1.json",
+  "candidate_sha256": "19538894e51b1ee546c8461a6500100fbb6d33ae4f352c531e5d8153522083f9",
+  "controller": "analysis/run_successful_path_confirmation_candidate_v1.py",
+  "fixture_tests": "analysis/test_successful_path_confirmation_candidate_v1.py",
+  "future_command": ["/usr/bin/python3", "analysis/run_successful_path_confirmation_candidate_v1.py", "--adoption-json", "<future parent receipt>"],
+  "required_adoption_fields": {
+    "schema_version": 1,
+    "kind": "successful_path_confirmation_adoption",
+    "adopted": true,
+    "adopted_by": "root_after_independent_GPT_6_Astra_review",
+    "scope": "fixed60_three_seed_single_unseen134_batch",
+    "physical_gpu": 2,
+    "current_learning_adoption": "configs/successful_path_learning_adoption_v1.json",
+    "current_learning_locks": "outputs/successful_path_learning_queue_v1/locked_sha256.json",
+    "entry_review": "<future complete current batch and directional gate review JSON>",
+    "execution_review": "<future independent confirmation implementation review JSON>",
+    "runtime": {
+      "controller": {"resolved": "/usr/bin/python3.10", "executable_sha256": "<actual frozen binary SHA256>"},
+      "worker": {"resolved": "<resolved original project Python>", "executable_sha256": "<actual frozen binary SHA256>"}
+    },
+    "file_sha256": "Union of current learning adoption file_sha256 and final current_learning_locks, plus current adoption/lock manifests, confirmation candidate/controller/tests/this schema/prior review, analysis/review_successful_path_complete_batch_v1.py (shared validate_episode helper), future entry/execution reviews, unseen manifest, core9 and full28 model inventories. All immutable bytes must match.",
+    "original_file_sha256": "Inherit all168 current training/dev original locks and add each unseen game plus sibling traj_data.json (268 entries); every unseen game hash must equal unseen_locked manifest. No game observations/outcomes read during planning.",
+    "output_paths": {
+      "queue": "outputs/successful_path_confirmation_<new_version>",
+      "checkpoints": {
+        "42": "Exact canonical/uniform/reference mapping from completed current learning adoption",
+        "123": "New canonical/uniform/reference mapping, each checkpoints/successful_path_confirmation_...",
+        "456": "New canonical/uniform/reference mapping, each checkpoints/successful_path_confirmation_..."
+      },
+      "evaluations": "Nine-key mapping (42/canonical etc.) to distinct new outputs/successful_path_confirmation_... directories"
+    }
+  },
+  "entry_review_required_fields": {
+    "confirmation_entry_gate_passed": true,
+    "current_learning_adoption_sha256": "<bound current adoption>",
+    "complete_batch_report_sha256": "<bound complete current report>"
+  },
+  "execution_review_required_fields": {
+    "confirmation_execution_review_passed": true,
+    "candidate_sha256": "19538894e51b1ee546c8461a6500100fbb6d33ae4f352c531e5d8153522083f9",
+    "controller_sha256": "<reviewed candidate controller bytes>"
+  },
+  "implementation_notes": [
+    "This file describes a future receipt; its adopted:true example is not an actual adoption and cannot execute the controller.",
+    "No changes to current gnrl/scripts/tests files. Existing source inventory must still match the completed current adoption. Additional analysis code is explicitly hash-bound by the future receipt.",
+    "Seed42 is validated against actual complete development episodes only after the separate future adoption exists. Final-step100 checkpoints alone are eligible. No current outcome is read by importing or testing this implementation.",
+    "Tokenization is not repeated: the original complete349-example causal token/hash audit, three data hashes, policy/tokenizer/trainer hashes and full model inventory remain frozen. Recompute only exact800 sampled indices and resulting target/input exposure for each seed123/456, retaining all original per-example hashes and history-drop counts. Validate original seed42 sampling/exposure as an internal consistency check.",
+    "Six fixed new trainings complete before every one of the nine final models and token audits is locked. No new development evaluation occurs.",
+    "GPU2 only, serial launch_gpu UUID guard; system-Python pidfd controller and original project-Python workers. No retry/resume/overwrite.",
+    "48h is the hard global ceiling including waits/verification/audits. Reserve15s for owned cleanup; stage runtime is min(2h training or4h evaluation, remaining global time minus cleanup reserve). A global timer interrupts preflight/hash work as well. Maximal stage allowances are not a completion guarantee.",
+    "Per-episode monitoring reads only identity/seed/error/stop_reason and record counts. It does not use success, family outcomes or policy quality for decisions. Monitor is asynchronous after JSONL flush and may observe a technical error after the next episode has started; terminate the owned session promptly and retain this accounting limitation.",
+    "All134 episodes for all9 models must be technically complete and hash-locked before performance unblinding. Incomplete output retains all1206 planned cells with observed_blinded/technical_error/missing status, null outcome and no primary contrast or practical-target assessment.",
+    "Persist outcome_unblinded=true and a timestamp immediately before opening any outcome file after the all-nine barrier. If later validation, hashing or budget checks fail, the incomplete report explicitly records that unblinding had begun; observed cells then use observed_validation_incomplete instead of observed_blinded. All1206 reported outcomes remain null and no contrasts are assessed in either incomplete case.",
+    "After the all-nine barrier, reuse the hash-locked complete-review validate_episode helper: verify success against actual won flags, observation continuity, no actions after done, raw completion/action equality and command membership. Recheck generated-token bounds and summary step/token/rate totals before any primary analysis. Each final training_state must match step100, its seed audit target tokens and causal protocol.",
+    "Completed analysis reports all nine counts, full task table, per-seed paired gains/losses/ties, family/scene tables, equal-scene and leave-one-scene-out sensitivity, and fixed50000-draw crossed seed/scene percentile bootstrap as descriptive only. Both practical comparisons require at least21 aggregate extra successes and each seed strictly positive.",
+    "After either complete or incomplete termination, parent/Astra review is required for interpretation or any further work. No automatic follow-up is authorized."
+  ]
+}

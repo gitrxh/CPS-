@@ -1,0 +1,35 @@
+{
+  "contract_version": 1,
+  "environment": "ALFWorld TextWorld PddlEnv",
+  "canonical_equality_fields": ["facts", "moves", "elapsed_steps", "max_steps", "score", "reward", "won", "lost", "terminated", "truncated", "done", "admissible_commands"],
+  "fact_identity": "Sorted raw PddlEnv _facts with predicate, argument ID and argument type. Numbered entities and location IDs are retained; observations and demangled text are not equality proxies.",
+  "restore": "Seeded reset and execution of original prefix, verified against recorded canonical state and observation. Native planner state is not deep-copied.",
+  "reward_semantics": "Official PddlEnv step returns cumulative binary goal score, not an incremental reward delta.",
+  "information_action_filter_version": 1,
+  "information_only_templates": ["look", "inventory", "help", "examine <object-or-receptacle>"],
+  "information_filter_rationale": "These official commands can add checked predicates. A fact change alone does not make them task-changing alternatives. Exclude them independently of the unchanged-world-facts filter on both expert and candidate sides.",
+  "numeric_fluents": {
+    "total_cost_in_raw_facts": false,
+    "digit_only_distance_assignments_in_raw_facts": false,
+    "omission_source": "TextWorld PddlState initializer explicitly discards total-cost assignments and other assignments whose expression string satisfies str.isdigit(), described in source as distance relations. Non-integer numeric formats are not covered by that filter.",
+    "operator_costs_from_official_domain": {"look": 0, "inventory": 0, "help": 0, "examine": 0, "go to": 1, "open": 1, "close": 1, "take": 1, "move": 1, "heat": 5, "clean": 5, "cool": 5, "use": 5, "slice": 5},
+    "not_equal_to_moves": true,
+    "macro_v1_required_invariant": "Candidate and expert macro must have identical exact action multisets and equal lengths. Within one fixed game, official action costs are fixed per action type, so this conserves total macro operator cost even though total-cost is absent from the canonical signature.",
+    "invariant_scope": "This is an inferred cost invariant for permutations in the verified official domain, not a direct reading of accumulated native planner cost. Any new grammar, cost schema, or non-permutation macro requires a new contract audit.",
+    "distances": "Distance assignments are static task data; same-game comparison and recorded game file SHA-256 keep them fixed. They are not dynamic location state. atlocation and objectatlocation predicates retain location IDs.",
+    "backend_behavior": "Official PddlEnv goal/reward/done are derived from check_goal and boolean score; accumulated planning cost is not its reward or episode budget. Do not describe the current signature as every numeric/native planner field."
+  },
+  "explicit_limits": [
+    "No claim of complete stochastic wrapper or policy state equivalence. The handcoded expert's internal history and RNG state are not fields of the canonical signature.",
+    "Grammar feedback and last command may differ after a state-equivalent branch; all branch and suffix observations must therefore be obtained by actual execution.",
+    "Seeded replay verification is empirical for each recorded trajectory; it does not establish universal simulator determinism.",
+    "The native Fast Downward handle can be process-global. Do not interleave independently loaded ALFWorld games within one process; use one active game or separate processes.",
+    "Current source audit covers official upstream sources and a local ALFWorld source tree; installed-version behavior must also pass actual simulator smoke and replay checks."
+  ],
+  "sources": [
+    {"url": "https://raw.githubusercontent.com/microsoft/TextWorld/main/textworld/envs/pddl/pddl.py", "supports": "Raw facts, moves, admissible commands, score and terminal implementation"},
+    {"url": "https://raw.githubusercontent.com/microsoft/TextWorld/main/textworld/envs/pddl/logic/__init__.py", "supports": "Numeric assignment omissions, native state load and operator effect propagation"},
+    {"url": "https://raw.githubusercontent.com/alfworld/alfworld/master/alfworld/data/alfred.pddl", "supports": "checked effects, locations and action costs"},
+    {"url": "https://raw.githubusercontent.com/alfworld/alfworld/master/alfworld/data/alfred.twl2", "supports": "Official command templates"}
+  ]
+}

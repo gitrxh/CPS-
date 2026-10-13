@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "kind": "independent_confirmation_candidate_execution_review",
+  "reviewed_utc": "2026-10-12T18:07:58.429234+00:00",
+  "candidate_sha256": "19538894e51b1ee546c8461a6500100fbb6d33ae4f352c531e5d8153522083f9",
+  "scope": "Local read-only protocol and execution feasibility review; no current development outcomes or unseen observations/outcomes accessed.",
+  "verdict": "Candidate design is coherent. Three concrete execution/reporting points must be resolved explicitly in a later reviewed execution version; this review authorizes no work.",
+  "execution_authorized": false,
+  "current_learning_gate_assessed": false,
+  "evidence_sha256": {
+    "analysis/successful_path_confirmation_candidate_v1.json": "19538894e51b1ee546c8461a6500100fbb6d33ae4f352c531e5d8153522083f9",
+    "configs/successful_path_learning_candidate_v1.json": "a30c05eeabbbdb58bfa9a2514948a7ada838dd7fdfbafada2bba45325be0be29",
+    "configs/successful_path_learning_adoption_v1.json": "588c1dfb69ed41ed13b70891e36dabb84846135e7271fde2bebda9b3e273c10c",
+    "outputs/successful_path_selection_v1/selection_summary.json": "8d71ce092f035bab21ebd55d68e526e6232f5d46a2e1da085b380ca0304bb915",
+    "outputs/successful_path_learning_queue_v1/token_exposure_audit.json": "eaffe6db9e635285afa7fab77eb2941b13c532fbc71246762f64521395dda078",
+    "gnrl/evaluate.py": "759a8892b6e53c617b554e4d13c3fb73da67601184f674eb62d799d69c87d8c9",
+    "scripts/run_successful_path_learning_v1.py": "99926d02303f56de560f1589109685ab3f863e058393d2eefb1c8f256c945f6c",
+    "gnrl/successful_path_token_audit_v1.py": "0e231ecb8b6840a536888219c74b42883f2c8ced6dd25d56812f93d253e5598b"
+  },
+  "positive_checks": [
+    {
+      "topic": "generation budget",
+      "result": "PASS",
+      "calculation": "134 * 100 * 64 = 857600 generated tokens per model; 900000 exceeds this maximum by 42400. Existing policy uses max_new_tokens=64 and counts emitted tokens, including EOS when emitted. The scored-token budget is inert for generate mode. This ceiling prevents generation-token truncation, but does not guarantee the four-hour wall limit."
+    },
+    {
+      "topic": "seed42 reuse",
+      "result": "CONDITIONAL PASS",
+      "detail": "Reuse only current successful-path same60 final-step100 adapters after all three complete dev24 evaluations and independent strict directional review. Candidate correctly excludes old120-task/intermediate checkpoints. Local selection summary hashes match all three listed datasets and pairing receipt; local exposure audit confirms 349 examples and target/input totals. No current held-out outcome or final-checkpoint eligibility was assessed."
+    },
+    {
+      "topic": "nine models before unseen",
+      "result": "PASS AS SPECIFICATION",
+      "detail": "All six new trainings plus three eligible seed42 adapters must be complete, audited and fully hash-locked before any of 1206 unseen episodes. Fixed order, one common unseen manifest, GPU2 serial execution, no new dev evaluations and all-nine unblinding avoid performance-conditioned scheduling."
+    },
+    {
+      "topic": "48-hour feasibility",
+      "result": "FEASIBLE AS A HARD STOP, NOT A COMPLETION GUARANTEE",
+      "detail": "The proposed historical extrapolation is only a planning estimate; no unseen rollout was needed or inspected. Four hours per evaluation is executable through the existing evaluator CLI. Existing learning controller itself remains an eight-hour/dev24 controller and must not be reused unchanged as the confirmation controller."
+    }
+  ],
+  "findings": [
+    {
+      "id": "F1",
+      "severity": "execution_blocker_before_adoption",
+      "topic": "Technical-stop and missing-outcome semantics conflict with the frozen evaluator",
+      "evidence": [
+        "gnrl/evaluate.py:116 catches each environment exception, records success=False and error, then continues the game loop.",
+        "gnrl/evaluate.py:132 and :133 produce success_rate_attempted and planned lower-bound values that include technical rows in denominators.",
+        "Candidate fixed_budgets_and_failures requires stopping at the first technical failure and says technical missing outcomes must not be counted as scientific failure."
+      ],
+      "required_resolution": "The later reviewed controller must detect technical error records without reading success fields and stop/clean its owned evaluation process at that boundary, or the candidate must explicitly define stop-after-the-current-stage before adoption. Reporting must not treat the existing evaluator success=False/error rows or planned lower bounds as complete confirmation outcomes. Record every planned seed/task/arm cell as observed 0/1 only for completed scientific episodes, technical_error or missing otherwise; retain errors, attempted/completed/missing counts and costs. Suppress primary contrasts, practical pass/fail and completed-subset comparisons whenever any of the 1206 required cells is technical/missing. Define that a terminal incomplete report is still emitted even though all-nine performance unblinding is unavailable."
+    },
+    {
+      "id": "F2",
+      "severity": "required_implementation_boundary",
+      "topic": "The current token audit and queue cannot directly execute the new seeds/budgets",
+      "evidence": [
+        "gnrl/successful_path_token_audit_v1.py audit() calls sample_indices(len(keys)) with its default seed42 and reports seed42 settings.",
+        "scripts/run_successful_path_learning_v1.py hardcodes training seed42, 8-hour total, 2-hour stage, three fresh trainings and dev24/100000 generated tokens."
+      ],
+      "required_resolution": "Create a separately reviewed future execution version after the current frozen queue exits; do not alter current sources. Make audit seed explicit for 123 and 456 while preserving the exact trainer shuffle and common indices. Bind each new run to its own audit target-token count. Set evaluator CLI max-generated-tokens=900000 and max-wall-seconds=14400 explicitly and controller global=172800; retain system-Python pidfd controller and original project-Python workers. The existing helper sample_indices already accepts a seed, so no sampling-rule change is needed."
+    },
+    {
+      "id": "F3",
+      "severity": "budget_clarification",
+      "topic": "Maximum serial stage allowances consume the entire global budget before overhead",
+      "evidence": [
+        "6 * 7200 + 9 * 14400 = 172800 seconds = the complete 48-hour global ceiling.",
+        "GPU2 waits, full model/source/checkpoint verification, seed-token audits and owned-process cleanup are additional elapsed work."
+      ],
+      "required_resolution": "State explicitly that stage limits are individual ceilings, not reserved guarantees: later stages receive at most the remaining global time and a budget-induced incomplete batch is permitted even when no stage exceeded its individual allowance. Account for verification/waits/audits inside the deadline and predeclare a finite cleanup grace. Do not claim 48 hours accommodates all worst-case stage limits plus overhead, and do not enlarge budgets after outcomes. This clarification does not require increasing the proposed 48-hour ceiling."
+    }
+  ],
+  "reporting_boundary": {
+    "scientific_failures": "Invalid actions, environment termination without success, and 100-step failures remain observed zero outcomes.",
+    "technical_or_absent": "Do not silently recode as zero or drop from a favorable subset; preserve an explicit status for every planned cell and report incomplete confirmation.",
+    "complete_batch": "Only a complete verified 1206-cell batch supports the candidate primary contrasts and practical replication target."
+  },
+  "local_evidence_limitations": [
+    "Canonical/uniform/reference JSONL, CPU pool JSONL and pairing receipt are not present locally; their listed hashes were cross-checked against the available hash-matching selection summary, not rehashed from unavailable bytes. Later adoption must verify actual bytes.",
+    "Final seed42 checkpoints and current dev outcomes were intentionally not read; eligibility remains unresolved until the ongoing batch and independent review complete."
+  ],
+  "actions_taken": {
+    "new_local_files": [
+      "analysis/confirmation_candidate_review_v1.json"
+    ],
+    "remote_reads": 0,
+    "remote_writes": 0,
+    "remote_source_changes": 0,
+    "model_jobs": 0,
+    "environment_jobs": 0,
+    "partial_dev_outcomes_read": false
+  }
+}

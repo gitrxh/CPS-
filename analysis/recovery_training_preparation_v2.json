@@ -1,0 +1,60 @@
+{
+  "kind": "recovery_training_score_sft_binding_preparation_v2",
+  "status": "implemented_not_deployed_not_executed_pending_independent_review",
+  "new_required_argument": "--selection-dir <complete-score-stage-directory> for both --audit-only and training",
+  "unchanged_settings": {
+    "optimizer_steps": 100,
+    "seed": 42,
+    "batch_size": 1,
+    "gradient_accumulation": 8,
+    "bc_per_step": 4,
+    "recovery_per_step": 4,
+    "bc_schedule_seed": 613300,
+    "anchor_schedule_seed": 613301,
+    "learning_rate": 0.0002,
+    "lora_rank": 16,
+    "lora_alpha": 32,
+    "lora_dropout": 0.05,
+    "weight_decay": 0.0,
+    "gradient_clip_norm": 1.0,
+    "max_context_tokens": 2048,
+    "max_action_tokens": 64,
+    "max_target_tokens": 2000000,
+    "max_wall_seconds": 7200,
+    "dtype": "bfloat16",
+    "loss_scope": "action_tokens_and_eos_only",
+    "accumulation_weighting": "target_tokens_in_entire_8_example_window",
+    "optimizer": "fresh_AdamW",
+    "optimizer_state_resumed": false,
+    "adapter_stacking": false,
+    "checkpoint": "final_step100_only"
+  },
+  "schedule_golden_sha256_bc349_recovery7": "725b533849055cdf0959d9086752ddef2ee7f3e379051365c53b88e9b509b52d",
+  "changes": [
+    "Bind complete selector directory file set and every file byte, including summary/records/events/score_ledger/config/cost_progress and all three label files. Keep token-audit/training output outside this immutable directory.",
+    "Verify complete180 sealed selection records and ordered eligible labels, selected action/anchor/pool/selection identity, complete scoring event agreement and recomputed score ledger accounting.",
+    "For every eligible anchor and each arm, compare adapted reference selected-action score prompt_ids_sha256/action_ids_sha256/action_tokens_including_eos/prompt_tokens/context_sha256 against the actual supervised_example encoding and causal context.",
+    "Training repeats selector validation and byte inventory, then requires the entire re-encoded joint audit to exactly equal the frozen audit before model loading."
+  ],
+  "tests": {
+    "passed": 15,
+    "failed": 0,
+    "added": [
+      "correct_score_sft_match",
+      "wrong_prompt_or_action_hash_rejected",
+      "wrong_targetcount_promptcount_context_rejected",
+      "wrong_selection_identity_or_action_rejected",
+      "complete_artifact_binding_and_corrupt_score_event_rejected"
+    ]
+  },
+  "sha256": {
+    "gnrl/train_recovery_v1.py": "7bab87b2e3db2f818441306c0a70dc4e0364d055695a75e89d6c83f0ed126dbe",
+    "tests/test_train_recovery_v1.py": "5cef7114fef8beb189ca8aa4c7797692bdc846cf1f46c19e2218d2eb08a16752"
+  },
+  "execution": {
+    "model_calls": 0,
+    "actual_tokenizer_calls": 0,
+    "environment_calls": 0,
+    "deployments": 0
+  }
+}

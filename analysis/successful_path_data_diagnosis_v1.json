@@ -1,0 +1,3032 @@
+{
+  "kind": "posthoc_successful_path_data_causal_prompt_diagnosis",
+  "scope": "Read-only local data and source audit; only this diagnostic JSON is written; no model, tokenizer, simulator, unseen evaluation, training, source edit, or remote access.",
+  "conclusion": "No detected cross-arm data-format or task-string confound. The observed negative screen remains a valid outcome of the frozen treatment comparison within the audited scope. Changed causal histories are intended trajectory changes, not evidence of stale/counterfactual observations.",
+  "currently_data_format_confounded": false,
+  "new_method_or_confirmation_authorized": false,
+  "checks": {
+    "tasks_per_arm": {
+      "canonical": 60,
+      "uniform": 60,
+      "reference": 60
+    },
+    "unique_tasks_per_arm": {
+      "canonical": 60,
+      "uniform": 60,
+      "reference": 60
+    },
+    "examples_per_arm": {
+      "canonical": 349,
+      "uniform": 349,
+      "reference": 349
+    },
+    "all60_ordered_identity_task_seed_initial_observation_initial_state_admissibles_identical": true,
+    "all180_retained_trajectories_pass_local_chain_admissibility_terminal_length_cost_validation": true,
+    "all1047_examples_equal_independently_rebuilt_own_prefix_history": true,
+    "shared_action_prefixes_have_identical_causal_observations_and_admissibles": true,
+    "canonical_source_line_byte_hash_mismatch_indices": [],
+    "canonical60_bytes_equal_recorded_original_cpu_export": true,
+    "dataset_hash_matches_selection_and_token_exposure_audit": {
+      "canonical": true,
+      "uniform": true,
+      "reference": true
+    },
+    "audited_code_hash_matches_scoring_adoption": {
+      "gnrl/successful_path_selection_v1.py": true,
+      "gnrl/successful_path_pools_v2.py": true,
+      "gnrl/policy.py": true,
+      "gnrl/alfworld_env.py": true
+    },
+    "failures": [],
+    "original_source_and_pool_provenance": {
+      "canonical60_lines_byte_identical_to_native120_and_pool_embedded_source": true,
+      "all60_full_pool_hashes_match_selection_receipt": true,
+      "all180_retained_traces_equal_exact_selected_pool_candidate": true,
+      "all60_original_problem_metadata_hashes_and_parsed_goals_verified": true,
+      "all180_retained_traces_satisfy_stored_original_goal_and_grounded_assignment": true,
+      "candidate_pool_count": 60,
+      "all_candidate_count": 162,
+      "retained_arm_trace_count": 180,
+      "native120_hash_matches_adopted_source": true,
+      "pool_file_hash_matches_adopted_source": true,
+      "errors": []
+    }
+  },
+  "training_consumption": {
+    "trajectory_gate_fields": [
+      "success",
+      "replay_verified"
+    ],
+    "model_input_fields": [
+      "task (or initial_observation fallback)",
+      "prefix transition.observation",
+      "prefix transition.action",
+      "current transition.observation",
+      "current transition.admissible_commands"
+    ],
+    "target_field": "current transition.action plus EOS",
+    "ignored_by_loader": [
+      "kind",
+      "gamefile",
+      "seed",
+      "split",
+      "manifest_hash",
+      "truncated",
+      "reset_replay_verified",
+      "replay_evidence",
+      "selection",
+      "expert_action",
+      "next_observation",
+      "reward",
+      "done",
+      "won",
+      "state_before",
+      "state_after"
+    ],
+    "mechanism": "gnrl.train_sft.load_examples resets history for every trajectory and appends only that row's earlier observation/action pairs. gnrl.policy.messages uses an explicit causal allowlist. Selection metadata, privileged states and future observations do not enter the prompt.",
+    "task_fallback_used": {
+      "canonical": 0,
+      "uniform": 0,
+      "reference": 0
+    },
+    "existing_token_audit_score_sft_token_mismatches": 0,
+    "existing_token_audit_teacher_fields_used": false
+  },
+  "original_goal_interpretation": {
+    "same_verbatim_task_strings_all60": true,
+    "task_is_full_initial_observation_in_every_row": true,
+    "contract": "Typed existential original benchmark/PDDL goal; alternative object/receptacle/device assignments and terminal states are allowed under the frozen contract. This is not an identical-terminal-state intervention.",
+    "source_validation": "parse_goal checks full supported typed existential goal against original metadata. execute_recipe records fresh actual transitions for every action; replay_own_trace separately resets and compares every causal field and state to the candidate's own discovery trace. validate_successful_pool checks original problem/metadata hashes, canonical source bytes and original-goal witness.",
+    "retained_semantics_audits": {
+      "uniform": {
+        "{\"benchmark_goal_satisfied_while_held\": false, \"interpretation\": \"Original PDDL goal semantics; retained containment while held is not evidence of a physical placement.\", \"retained_target_membership\": false}": 59,
+        "{\"benchmark_goal_satisfied_while_held\": true, \"interpretation\": \"Original PDDL goal semantics; retained containment while held is not evidence of a physical placement.\", \"retained_target_membership\": true}": 1
+      },
+      "reference": {
+        "{\"benchmark_goal_satisfied_while_held\": false, \"interpretation\": \"Original PDDL goal semantics; retained containment while held is not evidence of a physical placement.\", \"retained_target_membership\": false}": 59,
+        "{\"benchmark_goal_satisfied_while_held\": true, \"interpretation\": \"Original PDDL goal semantics; retained containment while held is not evidence of a physical placement.\", \"retained_target_membership\": true}": 1
+      }
+    }
+  },
+  "comparisons": {
+    "uniform_vs_canonical": {
+      "changed_trajectories": 32,
+      "changed_targets": 119,
+      "changed_causal_inputs": 134,
+      "changed_terminal_states": 26,
+      "same_trajectory_but_different_sft_examples": 0
+    },
+    "reference_vs_canonical": {
+      "changed_trajectories": 31,
+      "changed_targets": 110,
+      "changed_causal_inputs": 130,
+      "changed_terminal_states": 27,
+      "same_trajectory_but_different_sft_examples": 0
+    }
+  },
+  "evidence_sha256": {
+    "outputs\\successful_path_selection_v1\\canonical_baseline.jsonl": "0cc074e4f07ce999a889b84ba9a3fe2ae44fec5e5ac81c2c0623764859e7fe70",
+    "outputs\\successful_path_selection_v1\\uniform_valid.jsonl": "42c04fa0d293391bd24c3beb49992b074bf3b6048b11f8c2c100df6de7934cb5",
+    "outputs\\successful_path_selection_v1\\learner_selected.jsonl": "6246e7f70c8cd524d9657c61cdaeee7da7a3bcebe0d998731b5b8c6256047247",
+    "outputs\\successful_path_selection_v1\\pairing_receipt.json": "657b44ae9806ddcb10c92c718b37e36072db3a2af17d936cba8756e0d0c11191",
+    "outputs\\successful_path_selection_v1\\selection_summary.json": "8d71ce092f035bab21ebd55d68e526e6232f5d46a2e1da085b380ca0304bb915",
+    "outputs/successful_path_learning_queue_v1/token_exposure_audit.json": "eaffe6db9e635285afa7fab77eb2941b13c532fbc71246762f64521395dda078",
+    "analysis/successful_path_complete_review_v1/review.json": "1d56cae54a134f588410bb7b1522c461d3248dba3fb5391f86b858d4d44161ce",
+    "gnrl/successful_path_pools_v2.py": "0dc392f25c93b314de9fe454aa7e06434acf71a354afe9b9bc44de099b1e914a",
+    "gnrl/successful_path_selection_v1.py": "78b5f722294f230902603d7d1f31b265779c5348e0d8ad099950cb4197e8093f",
+    "gnrl/policy.py": "c36ecf8c81df6cceffcdce784a88a81809afd8b55df6fc5fcd8330bf1397b82e",
+    "gnrl/train_sft.py": "0aeee657295e4736de78d9c56cb4929e08652fcd1498d7ce1154f5c39f679345",
+    "gnrl/alfworld_env.py": "76f530bf70da3635f125c6320dba7369a7f9ac4c04c4a627110103ee3720a2fd",
+    "outputs/successful_paths_cpu_v2/candidate_pools.jsonl": "e46dd4896fc5076d21a5ae192bc71f78fa0b58b0fc8199df90baaa45754c7f66",
+    "data/planner_train120_raw.jsonl": "9bdc1a82f4ae5660d23350a723a9fb650b5a8d3615058971734c9dea36ceb8fc"
+  },
+  "per_task_evidence": [
+    {
+      "index": 0,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Laptop-None-DeskLamp-216/trial_T20190907_185556_000181/game.tw-pddl",
+      "task_sha256": "c9a7127b237d73aeccc4f112a11dbdf79c239acfc053f7f0b27c8dfbf76c65c8",
+      "initial_observation_sha256": "c9a7127b237d73aeccc4f112a11dbdf79c239acfc053f7f0b27c8dfbf76c65c8",
+      "initial_state_sha256": "827314cbf47222ed6215c79f07c9ae7c54e274c3052da50a8afa11652582fada",
+      "initial_admissibles_sha256": "7d0ccc580b626fe68a2b014af8d66468b6b89a9b7f74b0a45928a9e381d63bbc",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            4,
+            8
+          ],
+          "trajectory_sha256": "dff1336c8b341c073227971e30742dc46dbd99604a611c0ded00598f5ba405ff",
+          "sft_examples_sha256": "774abcf36241097f2c934404ec4b9439cc1472e625f20e6c046eb1c2ff55d0e5",
+          "causal_messages_sha256": "a9cce0f0ff9a02c2068884b63196f98056234f4f68dbe6e09a0a7fd1e40163a1",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            4,
+            8
+          ],
+          "trajectory_sha256": "dff1336c8b341c073227971e30742dc46dbd99604a611c0ded00598f5ba405ff",
+          "sft_examples_sha256": "774abcf36241097f2c934404ec4b9439cc1472e625f20e6c046eb1c2ff55d0e5",
+          "causal_messages_sha256": "a9cce0f0ff9a02c2068884b63196f98056234f4f68dbe6e09a0a7fd1e40163a1",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            4,
+            8
+          ],
+          "trajectory_sha256": "dff1336c8b341c073227971e30742dc46dbd99604a611c0ded00598f5ba405ff",
+          "sft_examples_sha256": "774abcf36241097f2c934404ec4b9439cc1472e625f20e6c046eb1c2ff55d0e5",
+          "causal_messages_sha256": "a9cce0f0ff9a02c2068884b63196f98056234f4f68dbe6e09a0a7fd1e40163a1",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "37d664c9e64def13e577f4c73f1bd0680ce1d05aea6a30af16ba63367888c1be",
+      "original_source_line_sha256": "f08cd84e68181aa0cff1b2e5219f79f90cba55e9bb5fe54fe269970911b6473f"
+    },
+    {
+      "index": 1,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-CreditCard-None-DeskLamp-314/trial_T20190906_201607_020913/game.tw-pddl",
+      "task_sha256": "be2359c1473fcc580791ac56c357877eefa515829dfa7b51a6de4fc27d8135fc",
+      "initial_observation_sha256": "be2359c1473fcc580791ac56c357877eefa515829dfa7b51a6de4fc27d8135fc",
+      "initial_state_sha256": "f611a22aa6ceb169ee59d78c4e6b7ff5036b0b753d89cfc7dcdee9d3f8fb6cfb",
+      "initial_admissibles_sha256": "2b9b5bf90d284a7c1722f533bad78e13c6057ec7895adebccdddc0186294af8b",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            3,
+            7
+          ],
+          "trajectory_sha256": "f9de9ce0cfd14f793f8d5cea3c9fd8e863e388abb638f34aa75287930fa3a0df",
+          "sft_examples_sha256": "748a4bbe7a5f1aec18261062788d1afa3d8d4489c9e49188661f572d0770aca7",
+          "causal_messages_sha256": "7edfe54f703f198453f190d5375181b25d1f1ae207f0edcce4744269464a0fcd",
+          "same_action_prefix_length": 3,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            3,
+            7
+          ],
+          "trajectory_sha256": "f9de9ce0cfd14f793f8d5cea3c9fd8e863e388abb638f34aa75287930fa3a0df",
+          "sft_examples_sha256": "748a4bbe7a5f1aec18261062788d1afa3d8d4489c9e49188661f572d0770aca7",
+          "causal_messages_sha256": "7edfe54f703f198453f190d5375181b25d1f1ae207f0edcce4744269464a0fcd",
+          "same_action_prefix_length": 3,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            3,
+            7
+          ],
+          "trajectory_sha256": "f9de9ce0cfd14f793f8d5cea3c9fd8e863e388abb638f34aa75287930fa3a0df",
+          "sft_examples_sha256": "748a4bbe7a5f1aec18261062788d1afa3d8d4489c9e49188661f572d0770aca7",
+          "causal_messages_sha256": "7edfe54f703f198453f190d5375181b25d1f1ae207f0edcce4744269464a0fcd",
+          "same_action_prefix_length": 3,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "de9038bdc494cb5c503ca475a20d6fb1aee19300867c3017f7d5439620ec5919",
+      "original_source_line_sha256": "0d168594562aea97bab9cead09ba32ad4829faa23ed5abccc37aed0fd30c079c"
+    },
+    {
+      "index": 2,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-CellPhone-None-DeskLamp-320/trial_T20190908_093252_166576/game.tw-pddl",
+      "task_sha256": "feb3898e09ce4bf26bfc9455445f8a169e933de79a93806ba4bc7dd3245dce1e",
+      "initial_observation_sha256": "feb3898e09ce4bf26bfc9455445f8a169e933de79a93806ba4bc7dd3245dce1e",
+      "initial_state_sha256": "f854d4de32c269ee66d857164e2f33a71f60902c153222cf239380c5b8442cc8",
+      "initial_admissibles_sha256": "58ad5623cc2954bcafb06976fb2676561adbb0309c74687765c11fb54facb2b4",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            4,
+            8
+          ],
+          "trajectory_sha256": "90c248407646c4d2d625e78aec6791951bae7273d9f3454aa432c303ec9a70c5",
+          "sft_examples_sha256": "0730d576753e80ad378d39c0c0ac2598582687cb796982655fd841e511035d74",
+          "causal_messages_sha256": "8e21e49c38041ea6a8fb894a5fa3d74c301a5f0bc016e496054c6474412abe1a",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            4,
+            8
+          ],
+          "trajectory_sha256": "a581da1650bedc2f1b2d2321198312c2e2f21803df57290bcf361514576ca8f1",
+          "sft_examples_sha256": "af8f5ed20bba992a6d053ebb4726ad4ed87c06a8d2a5514eae5bfcd16a1083d0",
+          "causal_messages_sha256": "a7fdb4dc8d89900dc8a91181515b9a41c36ed6edd817611805e4328c61011969",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            4,
+            8
+          ],
+          "trajectory_sha256": "90c248407646c4d2d625e78aec6791951bae7273d9f3454aa432c303ec9a70c5",
+          "sft_examples_sha256": "0730d576753e80ad378d39c0c0ac2598582687cb796982655fd841e511035d74",
+          "causal_messages_sha256": "8e21e49c38041ea6a8fb894a5fa3d74c301a5f0bc016e496054c6474412abe1a",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "0b890b39af545a2ca2e69e5317bc441e1aa4f690290381eab0b3b4c948bedacd",
+      "original_source_line_sha256": "5843f50aa414f3375dfd401453539dd204fd02d016a7df395e4cf339596d38c3"
+    },
+    {
+      "index": 3,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-CD-None-DeskLamp-320/trial_T20190907_224439_174735/game.tw-pddl",
+      "task_sha256": "61541333ed40b29c4c4f14bd616f5b99aab76811e0e0a6a07eb9f004be099b76",
+      "initial_observation_sha256": "61541333ed40b29c4c4f14bd616f5b99aab76811e0e0a6a07eb9f004be099b76",
+      "initial_state_sha256": "1a14881af700e56254cd90351549db7b9d1408934ba1dc6cbc2222f650be4cbf",
+      "initial_admissibles_sha256": "58ad5623cc2954bcafb06976fb2676561adbb0309c74687765c11fb54facb2b4",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            4,
+            8
+          ],
+          "trajectory_sha256": "4dc592ef0c00fc7dd425a92372e2f32434a1208c00214b406a869d29974fe536",
+          "sft_examples_sha256": "3854b0ca0d5971f7407e381ce13a28b81e6362fb9e83cc45ccb0c64e453ac8d2",
+          "causal_messages_sha256": "1378050590f92fe30acf94eb117eda0c8b1b7a23cb64899dea8daf900b7832eb",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            4,
+            8
+          ],
+          "trajectory_sha256": "4dc592ef0c00fc7dd425a92372e2f32434a1208c00214b406a869d29974fe536",
+          "sft_examples_sha256": "3854b0ca0d5971f7407e381ce13a28b81e6362fb9e83cc45ccb0c64e453ac8d2",
+          "causal_messages_sha256": "1378050590f92fe30acf94eb117eda0c8b1b7a23cb64899dea8daf900b7832eb",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            4,
+            8
+          ],
+          "trajectory_sha256": "4dc592ef0c00fc7dd425a92372e2f32434a1208c00214b406a869d29974fe536",
+          "sft_examples_sha256": "3854b0ca0d5971f7407e381ce13a28b81e6362fb9e83cc45ccb0c64e453ac8d2",
+          "causal_messages_sha256": "1378050590f92fe30acf94eb117eda0c8b1b7a23cb64899dea8daf900b7832eb",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "5ef0ec45794527fe2deb4b7f803c923545eb09f2b354bd89bfce6655bbcd3356",
+      "original_source_line_sha256": "bdd187d539b1c32f41bee74c9ef327753e0b50a6306f101542d50d4701b0f5d1"
+    },
+    {
+      "index": 4,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Pillow-None-DeskLamp-324/trial_T20190908_155642_533831/game.tw-pddl",
+      "task_sha256": "a96f6a0241049a311f04b1fdd13ca2dd5bf5659124fc6d66e1b879d80d233927",
+      "initial_observation_sha256": "a96f6a0241049a311f04b1fdd13ca2dd5bf5659124fc6d66e1b879d80d233927",
+      "initial_state_sha256": "3e387a22ce90b8b09e3d853e269a5fafd85ca590e5560089b3572b6ff0edd407",
+      "initial_admissibles_sha256": "7fcd2ad04b751aafe2c11d100a68b0933f7f880b72ea1c5512d640967d18a40e",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            4,
+            8
+          ],
+          "trajectory_sha256": "06ff34f34810838ae8c7bde8f14f680e156220c0d31ab78cfff5339f5efccbc4",
+          "sft_examples_sha256": "dd3fadcded6e0c3a10930a719a8e09559c21d5067abe9f5b8fb15f4b97e2f60e",
+          "causal_messages_sha256": "c31f6879382f6136282853f2cfadcbfb4e53ef2392cb69eca1ae22731f3c2065",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            4,
+            8
+          ],
+          "trajectory_sha256": "01ede43cc2382ac66af8c194233c8428d7e99690696f8335c7370df1d5e47979",
+          "sft_examples_sha256": "bbf8344eab5c04a36e69565e93a587c966848cccc5a44316c861591375f7146e",
+          "causal_messages_sha256": "d7ff93bbb06c4a5270ebf56ad7e494606459a802e4b269331eb1984814e3d08a",
+          "same_action_prefix_length": 1,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            4,
+            8
+          ],
+          "trajectory_sha256": "01ede43cc2382ac66af8c194233c8428d7e99690696f8335c7370df1d5e47979",
+          "sft_examples_sha256": "bbf8344eab5c04a36e69565e93a587c966848cccc5a44316c861591375f7146e",
+          "causal_messages_sha256": "d7ff93bbb06c4a5270ebf56ad7e494606459a802e4b269331eb1984814e3d08a",
+          "same_action_prefix_length": 1,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "faf430053b1e4c9a3b130899591c19adb12757e717285cad9b9acfe369506003",
+      "original_source_line_sha256": "f35f602fb5d67a2800b8e5604e5f095d7b9c10f13c41681669e5e76388f6ff0d"
+    },
+    {
+      "index": 5,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Pillow-None-DeskLamp-307/trial_T20190908_190558_647867/game.tw-pddl",
+      "task_sha256": "016fec76d5956d29bade5a001b97027530d2fd62e394da66a02b6a95d2a99fd4",
+      "initial_observation_sha256": "016fec76d5956d29bade5a001b97027530d2fd62e394da66a02b6a95d2a99fd4",
+      "initial_state_sha256": "70c4c738d7208ac390b3cee2c16a3da7f8e397be38586ebd5750d896bfcacdb0",
+      "initial_admissibles_sha256": "5aee321fa4f650a4903dd9c09a2b9216c93e1a8e9495479a9d7de0933d646202",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            4,
+            8
+          ],
+          "trajectory_sha256": "90d871aee89c5e65ebedfeb7a129e5d9a1b4beb9effc236d19a3f0aec7eca297",
+          "sft_examples_sha256": "588047f7f1999accd01edc555beb0fed83debb67d8b13767f0914046a884b2dd",
+          "causal_messages_sha256": "7f3d30ee4e514efe4151e6c17d0e2e9c4f2f3d63227569b67814e320d0dd524d",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            4,
+            8
+          ],
+          "trajectory_sha256": "90d871aee89c5e65ebedfeb7a129e5d9a1b4beb9effc236d19a3f0aec7eca297",
+          "sft_examples_sha256": "588047f7f1999accd01edc555beb0fed83debb67d8b13767f0914046a884b2dd",
+          "causal_messages_sha256": "7f3d30ee4e514efe4151e6c17d0e2e9c4f2f3d63227569b67814e320d0dd524d",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            4,
+            8
+          ],
+          "trajectory_sha256": "90d871aee89c5e65ebedfeb7a129e5d9a1b4beb9effc236d19a3f0aec7eca297",
+          "sft_examples_sha256": "588047f7f1999accd01edc555beb0fed83debb67d8b13767f0914046a884b2dd",
+          "causal_messages_sha256": "7f3d30ee4e514efe4151e6c17d0e2e9c4f2f3d63227569b67814e320d0dd524d",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "faf430053b1e4c9a3b130899591c19adb12757e717285cad9b9acfe369506003",
+      "original_source_line_sha256": "a48cd2f413f45df798e7a0bba6bf0667fb92586ad193c1ce87e65760803cff85"
+    },
+    {
+      "index": 6,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Statue-None-DeskLamp-319/trial_T20190907_035529_591053/game.tw-pddl",
+      "task_sha256": "c04b3ddf2ee9d6522ca22cb751fbd8e002dbf8b2715cdd183f6314fcbeb92766",
+      "initial_observation_sha256": "c04b3ddf2ee9d6522ca22cb751fbd8e002dbf8b2715cdd183f6314fcbeb92766",
+      "initial_state_sha256": "7383a8e58e0bf938ecff2d73e25a6b2ac396b3c3572c60ea288d71e45390d090",
+      "initial_admissibles_sha256": "2d00ebb36efb26b9039e31523f2289f973701d2052e0f4201c4a26a8bea0a32b",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            3,
+            7
+          ],
+          "trajectory_sha256": "d1a76397b016ef5b56ed88705aa6a23870f72896495c239b8d176a978773314b",
+          "sft_examples_sha256": "28379abffa4a626fb7af90d2029b555daa2697330846148bdd62a63fffa3a24b",
+          "causal_messages_sha256": "b223bc31bddb20ce8648001fef402d435a0e369793041b4dd501878151ae36b6",
+          "same_action_prefix_length": 3,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            3,
+            7
+          ],
+          "trajectory_sha256": "d1a76397b016ef5b56ed88705aa6a23870f72896495c239b8d176a978773314b",
+          "sft_examples_sha256": "28379abffa4a626fb7af90d2029b555daa2697330846148bdd62a63fffa3a24b",
+          "causal_messages_sha256": "b223bc31bddb20ce8648001fef402d435a0e369793041b4dd501878151ae36b6",
+          "same_action_prefix_length": 3,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            3,
+            7
+          ],
+          "trajectory_sha256": "d1a76397b016ef5b56ed88705aa6a23870f72896495c239b8d176a978773314b",
+          "sft_examples_sha256": "28379abffa4a626fb7af90d2029b555daa2697330846148bdd62a63fffa3a24b",
+          "causal_messages_sha256": "b223bc31bddb20ce8648001fef402d435a0e369793041b4dd501878151ae36b6",
+          "same_action_prefix_length": 3,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "39ad9780ec2e3df08b4b06e560fdc34f9a90d2c472d05af4f2c5d8aed549e719",
+      "original_source_line_sha256": "da5018a7f65a91b5d5d3b48aae9f2e3217a5d38a1dd915848f447ef14b075fb9"
+    },
+    {
+      "index": 7,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Pillow-None-DeskLamp-218/trial_T20190909_043226_266806/game.tw-pddl",
+      "task_sha256": "a5c40e8b8a3ccc05a104176022555473ec96b16501a912da5462fc3d8d3bc47f",
+      "initial_observation_sha256": "a5c40e8b8a3ccc05a104176022555473ec96b16501a912da5462fc3d8d3bc47f",
+      "initial_state_sha256": "3a2b15fa9839be11314ffe53331aa09a7b51b40713807ebb8df2bc38176a53d3",
+      "initial_admissibles_sha256": "a3e6d8999566940fe45adf55d5522051a242fbe4b4c9fabc0d6cf30432bb974a",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            4,
+            8
+          ],
+          "trajectory_sha256": "dc06d91cbcafac6d9a4b016fce28ebef85e8d66390ed787169d8ec31cf93c102",
+          "sft_examples_sha256": "291b4c0de70b30c69f967319071ab9605fb41858ac50a75aea4e0632af396876",
+          "causal_messages_sha256": "ef06738638970cd1b7977b9d603ee325011bcb113fce8d6f982b24b26bdbc388",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            4,
+            8
+          ],
+          "trajectory_sha256": "dc06d91cbcafac6d9a4b016fce28ebef85e8d66390ed787169d8ec31cf93c102",
+          "sft_examples_sha256": "291b4c0de70b30c69f967319071ab9605fb41858ac50a75aea4e0632af396876",
+          "causal_messages_sha256": "ef06738638970cd1b7977b9d603ee325011bcb113fce8d6f982b24b26bdbc388",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            4,
+            8
+          ],
+          "trajectory_sha256": "dc06d91cbcafac6d9a4b016fce28ebef85e8d66390ed787169d8ec31cf93c102",
+          "sft_examples_sha256": "291b4c0de70b30c69f967319071ab9605fb41858ac50a75aea4e0632af396876",
+          "causal_messages_sha256": "ef06738638970cd1b7977b9d603ee325011bcb113fce8d6f982b24b26bdbc388",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "faf430053b1e4c9a3b130899591c19adb12757e717285cad9b9acfe369506003",
+      "original_source_line_sha256": "085dba4f5271753bea921e1afd55f1b688d148396a4549e1d91ab3173afc8c29"
+    },
+    {
+      "index": 8,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Laptop-None-DeskLamp-328/trial_T20190908_201601_178214/game.tw-pddl",
+      "task_sha256": "b39aa3310da1d41af4ea2eee0cdf7f7cae4477b201765f16d0bb7bb45aecad48",
+      "initial_observation_sha256": "b39aa3310da1d41af4ea2eee0cdf7f7cae4477b201765f16d0bb7bb45aecad48",
+      "initial_state_sha256": "fa345a2a7eb0cb49b359789dc288176618864a14a6a89f12af12b5462128792b",
+      "initial_admissibles_sha256": "7f3e765d83014d0f142be6c5a9e3b2afb8b079affb0ee0ac9fd64c44a80dd3a7",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            3,
+            7
+          ],
+          "trajectory_sha256": "10eab37a144028057289595695efa0ca07043011164a07cd6f50d20addc8c3b1",
+          "sft_examples_sha256": "8b0f44358d9601139c1a80ce378274dc818dc0458941228ba689a5020d9fc7d4",
+          "causal_messages_sha256": "409a06a3bd4f88aa47210a5009c1cf15e5132e458968c496a666530a04a241e2",
+          "same_action_prefix_length": 3,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            3,
+            7
+          ],
+          "trajectory_sha256": "10eab37a144028057289595695efa0ca07043011164a07cd6f50d20addc8c3b1",
+          "sft_examples_sha256": "8b0f44358d9601139c1a80ce378274dc818dc0458941228ba689a5020d9fc7d4",
+          "causal_messages_sha256": "409a06a3bd4f88aa47210a5009c1cf15e5132e458968c496a666530a04a241e2",
+          "same_action_prefix_length": 3,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            3,
+            7
+          ],
+          "trajectory_sha256": "10eab37a144028057289595695efa0ca07043011164a07cd6f50d20addc8c3b1",
+          "sft_examples_sha256": "8b0f44358d9601139c1a80ce378274dc818dc0458941228ba689a5020d9fc7d4",
+          "causal_messages_sha256": "409a06a3bd4f88aa47210a5009c1cf15e5132e458968c496a666530a04a241e2",
+          "same_action_prefix_length": 3,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "37d664c9e64def13e577f4c73f1bd0680ce1d05aea6a30af16ba63367888c1be",
+      "original_source_line_sha256": "2eb577b94f4911bde881695412c2f7aeb8763a5f9d70af768e6dbce060f6a4a6"
+    },
+    {
+      "index": 9,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-CD-None-DeskLamp-316/trial_T20190909_114536_775689/game.tw-pddl",
+      "task_sha256": "b9d04dcdbc3402649f225e86a271deec91a319107b42e1162368c2be791bf58b",
+      "initial_observation_sha256": "b9d04dcdbc3402649f225e86a271deec91a319107b42e1162368c2be791bf58b",
+      "initial_state_sha256": "9fe8f339e84bb9cd94b335eafd83ec60577eb6e3454e01a609b4c8926c4c2864",
+      "initial_admissibles_sha256": "7f3e765d83014d0f142be6c5a9e3b2afb8b079affb0ee0ac9fd64c44a80dd3a7",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            3,
+            7
+          ],
+          "trajectory_sha256": "5639145f2f186052cb17441211c915c02a6ea2a143b3c4434c20ebae49dd0c51",
+          "sft_examples_sha256": "2a24156ffde79429c08a1e3d898e22651a210fd2d40e8079b50b46e094bbccb1",
+          "causal_messages_sha256": "3015a50b3d03ee22c2b2a4357a200d7ddae4a2c6edf494a4c323a94d24b0b974",
+          "same_action_prefix_length": 3,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            3,
+            7
+          ],
+          "trajectory_sha256": "b612ad8c541af701a438f74af78fa59961ab0a7ebf31d399b3c1be5e4df5b52f",
+          "sft_examples_sha256": "cfe88417dfe55967a4db6b972cca777b2f4a8c87f02ab8fb7dc4b353fe023020",
+          "causal_messages_sha256": "8ca90824b0ae8b3e678b400f9509ea3cb223c8bde2271d9fc9afcf956fa34992",
+          "same_action_prefix_length": 1,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            3,
+            7
+          ],
+          "trajectory_sha256": "b612ad8c541af701a438f74af78fa59961ab0a7ebf31d399b3c1be5e4df5b52f",
+          "sft_examples_sha256": "cfe88417dfe55967a4db6b972cca777b2f4a8c87f02ab8fb7dc4b353fe023020",
+          "causal_messages_sha256": "8ca90824b0ae8b3e678b400f9509ea3cb223c8bde2271d9fc9afcf956fa34992",
+          "same_action_prefix_length": 1,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "5ef0ec45794527fe2deb4b7f803c923545eb09f2b354bd89bfce6655bbcd3356",
+      "original_source_line_sha256": "851a47b23f4e860c4376695c2efdf5ce1dc75774587161ed8b46ab47480212d7"
+    },
+    {
+      "index": 10,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-Cloth-None-Drawer-409/trial_T20190908_032838_597592/game.tw-pddl",
+      "task_sha256": "f978433d081af528acb249d544bd813244c3fe0ef209543f446a305855ba3b58",
+      "initial_observation_sha256": "f978433d081af528acb249d544bd813244c3fe0ef209543f446a305855ba3b58",
+      "initial_state_sha256": "d7c186619edf49a95826f13f18d8ace06ffc109106edb8273540d0f08ae5732b",
+      "initial_admissibles_sha256": "10ff5a1f0d06011b0a19cb7c157a5b878b9c818d6f65057415746074a1647823",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            5,
+            5
+          ],
+          "trajectory_sha256": "8e20f6eefa511876e9dfedc71d42572b5676a227af3c7ee749923f47d8a03063",
+          "sft_examples_sha256": "7f1c9fafbc46ba99a072cbbc64571154de5dc6e50f53d4bc6a46610685eda983",
+          "causal_messages_sha256": "5507c723c9b1900dd470c7eac321f3b1f6e94b4602e1ee32ff1d2d312d0bddf7",
+          "same_action_prefix_length": 5,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            5,
+            5
+          ],
+          "trajectory_sha256": "745f4e2fdd66b3e7f66e571e957a6e315e76c7a4efc591882b890ac0b901c487",
+          "sft_examples_sha256": "2593aa1d0004dfc9bcd2d53339393acf8929d698e125624d7e80d0a505d8613d",
+          "causal_messages_sha256": "677b55188b08a3091b4b210a686e50fb0507a8c66a6282b12c69a9378ed7ca24",
+          "same_action_prefix_length": 2,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            5,
+            5
+          ],
+          "trajectory_sha256": "745f4e2fdd66b3e7f66e571e957a6e315e76c7a4efc591882b890ac0b901c487",
+          "sft_examples_sha256": "2593aa1d0004dfc9bcd2d53339393acf8929d698e125624d7e80d0a505d8613d",
+          "causal_messages_sha256": "677b55188b08a3091b4b210a686e50fb0507a8c66a6282b12c69a9378ed7ca24",
+          "same_action_prefix_length": 2,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "6835cc332df3bb8c2faf6d1ad13672d5028e399b37508b3a46dd3bcdee1019e4",
+      "original_source_line_sha256": "8453cf30c7d07b71817cacb3e093345697c72e88a1435f88a9a7e40adbc6a4ed"
+    },
+    {
+      "index": 11,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-Candle-None-CounterTop-411/trial_T20190906_200827_470056/game.tw-pddl",
+      "task_sha256": "337d2ecb4c97baeb0ccaea3e9c32ff4041b959659dd4f852753bdc5acb85a2c9",
+      "initial_observation_sha256": "337d2ecb4c97baeb0ccaea3e9c32ff4041b959659dd4f852753bdc5acb85a2c9",
+      "initial_state_sha256": "a730261a29241085fb1883c48c2560e60059b9ef992eec0b2714a90344368f98",
+      "initial_admissibles_sha256": "8569428d8d3431e3220990f187e70260e9d9f4a02020cc04268defeecacc3094",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            4,
+            4
+          ],
+          "trajectory_sha256": "3ec4afe2bd86797ff339c964bccbd6091824c6d419d5cde41acbcc7dc7dbac5d",
+          "sft_examples_sha256": "b28e9697e509f8af2500f4cea9118ec40aaeb7cc77daeb06d3ba183e2e59e7d5",
+          "causal_messages_sha256": "3af4b229b17a28c6166e02eb7191d60dfbcdbb4f0ee97f885e6e90a23f606d5d",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            4,
+            4
+          ],
+          "trajectory_sha256": "2262209f0fa10a485d2a434766d3d7a59e147a9f77b7d3a9da18b7a577c22a92",
+          "sft_examples_sha256": "34b17e6e123a6da51518fb271681d46681d3488a6217c4e61a300bcd02bb544f",
+          "causal_messages_sha256": "e6a3a08590057ab06fb9a355ccdf0947d8c4abf316f1e4d9c51aad4bfc8fdb31",
+          "same_action_prefix_length": 2,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            4,
+            4
+          ],
+          "trajectory_sha256": "2262209f0fa10a485d2a434766d3d7a59e147a9f77b7d3a9da18b7a577c22a92",
+          "sft_examples_sha256": "34b17e6e123a6da51518fb271681d46681d3488a6217c4e61a300bcd02bb544f",
+          "causal_messages_sha256": "e6a3a08590057ab06fb9a355ccdf0947d8c4abf316f1e4d9c51aad4bfc8fdb31",
+          "same_action_prefix_length": 2,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "7331c2aab008865f7ba75e2dafa37bf1ad46a3a07d2d9920cfe81b83ea72c00d",
+      "original_source_line_sha256": "1f42bebc2345a8a056a7b3452f0504b400827911f2dbb6cfa15aeae3f74d8815"
+    },
+    {
+      "index": 12,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-Pen-None-Shelf-310/trial_T20190909_113535_223329/game.tw-pddl",
+      "task_sha256": "7c726d636bc9157d9873e7c17a68b934c6cd151463dbb908f066e0288ad2c1a8",
+      "initial_observation_sha256": "7c726d636bc9157d9873e7c17a68b934c6cd151463dbb908f066e0288ad2c1a8",
+      "initial_state_sha256": "2135ef5c97bf599ee18b9ba923c39706a16791df8a14fa872d871d546daadde6",
+      "initial_admissibles_sha256": "1be4525216cd2ab65d48ae0f587d980cc3315cce5997d70987818f8984724a69",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            4,
+            4
+          ],
+          "trajectory_sha256": "e8544f7c153809928c44ccee8a062edde785da38d396304985e016614cab42ec",
+          "sft_examples_sha256": "30a397d1786d7da992cb2035df58347064c6c528da5c1802ee0d74f985c37967",
+          "causal_messages_sha256": "218b561e40147f0738a3e7782105351f4151c2ebe6a1729a09b4fee2426e008f",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            4,
+            4
+          ],
+          "trajectory_sha256": "e8544f7c153809928c44ccee8a062edde785da38d396304985e016614cab42ec",
+          "sft_examples_sha256": "30a397d1786d7da992cb2035df58347064c6c528da5c1802ee0d74f985c37967",
+          "causal_messages_sha256": "218b561e40147f0738a3e7782105351f4151c2ebe6a1729a09b4fee2426e008f",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            4,
+            4
+          ],
+          "trajectory_sha256": "e8544f7c153809928c44ccee8a062edde785da38d396304985e016614cab42ec",
+          "sft_examples_sha256": "30a397d1786d7da992cb2035df58347064c6c528da5c1802ee0d74f985c37967",
+          "causal_messages_sha256": "218b561e40147f0738a3e7782105351f4151c2ebe6a1729a09b4fee2426e008f",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "7adf5a5da7382e240a14639680e9bb03aefddb7b1775c984b4e18592f9d1e1af",
+      "original_source_line_sha256": "58399e89d710936878e0253a42feb3e98d8c54d03591360a7169c080377c42fa"
+    },
+    {
+      "index": 13,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-RemoteControl-None-Sofa-207/trial_T20190909_153746_466577/game.tw-pddl",
+      "task_sha256": "eda562df81a77c089f19674eb01a2483e38a3326a2b0d495a46736371553945c",
+      "initial_observation_sha256": "eda562df81a77c089f19674eb01a2483e38a3326a2b0d495a46736371553945c",
+      "initial_state_sha256": "24c169a2058edb9a931aaebfe14f365d350dfd63e54fa1bed7c0086eb0aaad0e",
+      "initial_admissibles_sha256": "92c9e2b98b8c64ed91e31536142c5027707e0d2fcfa91112c60f2a1fd41c7613",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            4,
+            4
+          ],
+          "trajectory_sha256": "ce15a0d81b70a19bccc6f8f83aa9f6458f8e6ec8e3e87bab7b32906f5701cc76",
+          "sft_examples_sha256": "05ddfea63c0a4c9d60d8eb9cff7becfdae52fdade92f49d8e8cdb9bcdc37cdf3",
+          "causal_messages_sha256": "2e54ac36f12f203b56c3f6ff4923d89d8b7719fb45d876ce1ebfd2f780b0d7a6",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            4,
+            4
+          ],
+          "trajectory_sha256": "a20279cc791b057c985c7962db2b8e597aa990a2bde1cd2a996ebc3e4a019bee",
+          "sft_examples_sha256": "1cb67215e46e73ff3add92e9c8db0f681c6727a42a6d9be3679bdcbd55206317",
+          "causal_messages_sha256": "07050140f089cd94fff4000f9c30c29f4c3b806e63636bba999dfe374e0171af",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            4,
+            4
+          ],
+          "trajectory_sha256": "a20279cc791b057c985c7962db2b8e597aa990a2bde1cd2a996ebc3e4a019bee",
+          "sft_examples_sha256": "1cb67215e46e73ff3add92e9c8db0f681c6727a42a6d9be3679bdcbd55206317",
+          "causal_messages_sha256": "07050140f089cd94fff4000f9c30c29f4c3b806e63636bba999dfe374e0171af",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "013a99e119e0a2f279661a9a9915c5cace128e6b2a8622c729e19b5ede3164ee",
+      "original_source_line_sha256": "f8e1ab6000a7ae9d07e687240932fa4bf0a5c0747405055249d196c858d28092"
+    },
+    {
+      "index": 14,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-Bowl-None-Fridge-6/trial_T20190906_231042_118272/game.tw-pddl",
+      "task_sha256": "6da0f573fc7e978718252a28f06b39a3126df184de949c46f22a6427e09cb2cd",
+      "initial_observation_sha256": "6da0f573fc7e978718252a28f06b39a3126df184de949c46f22a6427e09cb2cd",
+      "initial_state_sha256": "e0ff98490fc2aca871bc8072df1f659a006dea34c9871d7cb240729ac97b7e0a",
+      "initial_admissibles_sha256": "13e810e6fb5a6efe70ce64d506a8ca9fe3ee161c46483f4f5d5a9bb4811d9ade",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            6,
+            6
+          ],
+          "trajectory_sha256": "c2f50d68d6c1c00d1d77fa831a000847152beae513235a203329aea31ce59f1d",
+          "sft_examples_sha256": "937edbdf7f0b655f9c1bf1829394bfb1a94908791e6349fa08b3624e17afb04e",
+          "causal_messages_sha256": "d11d0ac62e9d46f9fb41d22b3727ac10586c9e58435cdf6e840843f7f0cff798",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            6,
+            6
+          ],
+          "trajectory_sha256": "c2f50d68d6c1c00d1d77fa831a000847152beae513235a203329aea31ce59f1d",
+          "sft_examples_sha256": "937edbdf7f0b655f9c1bf1829394bfb1a94908791e6349fa08b3624e17afb04e",
+          "causal_messages_sha256": "d11d0ac62e9d46f9fb41d22b3727ac10586c9e58435cdf6e840843f7f0cff798",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            6,
+            6
+          ],
+          "trajectory_sha256": "c2f50d68d6c1c00d1d77fa831a000847152beae513235a203329aea31ce59f1d",
+          "sft_examples_sha256": "937edbdf7f0b655f9c1bf1829394bfb1a94908791e6349fa08b3624e17afb04e",
+          "causal_messages_sha256": "d11d0ac62e9d46f9fb41d22b3727ac10586c9e58435cdf6e840843f7f0cff798",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "2e742c26f28d02acb5cf659fd13724696cdc85555219f9fd13949b01cd1c0fd9",
+      "original_source_line_sha256": "e2a1ce3a07c0b58844448785fa2e0af21a0476ad0c84346fa8dd596d5c6c257c"
+    },
+    {
+      "index": 15,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-SprayBottle-None-GarbageCan-426/trial_T20190908_052054_959981/game.tw-pddl",
+      "task_sha256": "0124cb54663e53f186d1fd40dca87ceb3e6460b734acdd60a5d910bd8e713520",
+      "initial_observation_sha256": "0124cb54663e53f186d1fd40dca87ceb3e6460b734acdd60a5d910bd8e713520",
+      "initial_state_sha256": "9a97f7121089f1dbbcf4b2a7a0812ddf0c588181fd489342f6cc4a63dee135da",
+      "initial_admissibles_sha256": "8781954c95ad4e3f74f8f690b71768f26a3775f9a6c5b4283b8304e6aab4cbc4",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            4,
+            4
+          ],
+          "trajectory_sha256": "93a6f4c6cc962d033ad1c3f2bee5c820e560179c52f7922273bad2f569b06160",
+          "sft_examples_sha256": "41dba754c05a04dbe93d1ca731b9b91990344892dbdc60063b9c27c105e4ac2e",
+          "causal_messages_sha256": "ebbbf05953e8991a8a7be6d2ee0fa68477ad8ec4fd2a8eb87dd80a6e2e0382c2",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            4,
+            4
+          ],
+          "trajectory_sha256": "cfc7a441476ba2ff2ccb284f7fa8bf832c54be74b67023cb47b67e2ef29c353a",
+          "sft_examples_sha256": "966be802b96579a30251b9c3b4f425c932d4577b470b17c46b50298202514c1e",
+          "causal_messages_sha256": "fd936bbeea56241437214328b499d964c64aa22943b7bec97ea132c079be3e7a",
+          "same_action_prefix_length": 1,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            4,
+            4
+          ],
+          "trajectory_sha256": "0ea6d434e5d3b1c9c28d0a5a0e69062d5d08782fe4d0e78250908307bdfb43bc",
+          "sft_examples_sha256": "4998c2e5260776546a7237f531ceb6f96d3496a06a4cefb2c3b78977b8d50014",
+          "causal_messages_sha256": "d87065c5a8287398aeb0de5327ee5b0dd0f0e3a66b989fed199b56d79ed75eea",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "af63d40a8497392dc82e527c26882f9983ed8dccf9f9f8baaaf693bf00345866",
+      "original_source_line_sha256": "0086d9063b5f413bb70d96d26d46e0aaa97e626bd06a5b538ef2bc96ad17d76d"
+    },
+    {
+      "index": 16,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-Pen-None-Desk-310/trial_T20190908_030156_053101/game.tw-pddl",
+      "task_sha256": "dbb73f54332315ae1423a828e898e00ff2f85a628ed74d36868366ff911cbf58",
+      "initial_observation_sha256": "dbb73f54332315ae1423a828e898e00ff2f85a628ed74d36868366ff911cbf58",
+      "initial_state_sha256": "d433fec24c2535b9333262ef6d1817d5770f6f8ab883360a078eea4aa05d93cb",
+      "initial_admissibles_sha256": "1be4525216cd2ab65d48ae0f587d980cc3315cce5997d70987818f8984724a69",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            4,
+            4
+          ],
+          "trajectory_sha256": "4812d3e9e841b62748cf2051363ef39bf4eb28cb98b69cc1735ffaa0b1cd197f",
+          "sft_examples_sha256": "bd63ee9caaa8de623929fe242ee58aad0bab9e5a767d268768d22e14f729bebc",
+          "causal_messages_sha256": "9c4de7012f824bb3cd57e561eec93f26dce63fd6843ec857486e2e530744f12a",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            4,
+            4
+          ],
+          "trajectory_sha256": "4812d3e9e841b62748cf2051363ef39bf4eb28cb98b69cc1735ffaa0b1cd197f",
+          "sft_examples_sha256": "bd63ee9caaa8de623929fe242ee58aad0bab9e5a767d268768d22e14f729bebc",
+          "causal_messages_sha256": "9c4de7012f824bb3cd57e561eec93f26dce63fd6843ec857486e2e530744f12a",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            4,
+            4
+          ],
+          "trajectory_sha256": "4812d3e9e841b62748cf2051363ef39bf4eb28cb98b69cc1735ffaa0b1cd197f",
+          "sft_examples_sha256": "bd63ee9caaa8de623929fe242ee58aad0bab9e5a767d268768d22e14f729bebc",
+          "causal_messages_sha256": "9c4de7012f824bb3cd57e561eec93f26dce63fd6843ec857486e2e530744f12a",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "05c87121b900bf8bc790e1ccbc09a289449eeb2110cb35ccfcf8acd7d88eabb4",
+      "original_source_line_sha256": "c274616696e946d403cdb454c56a0282cbc8bbd5bf3a5b6978aa5bd038797e50"
+    },
+    {
+      "index": 17,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-Watch-None-CoffeeTable-213/trial_T20190909_010823_096862/game.tw-pddl",
+      "task_sha256": "de737fb8724cde47387a86b3ef4820246f95be5e9dfab7b549c98629b1c8c76f",
+      "initial_observation_sha256": "de737fb8724cde47387a86b3ef4820246f95be5e9dfab7b549c98629b1c8c76f",
+      "initial_state_sha256": "dfd73b78da5b5965891448792f8ff9ba65d542d57577b72d8e8eefa91558baae",
+      "initial_admissibles_sha256": "883c784579014b5245db28c31030b0c0bce715d481f2780e0c3ec8597f9250f1",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            4,
+            4
+          ],
+          "trajectory_sha256": "ace729f218fb8a3feb35ef3f6e3761d7b1386e510bcb6c4715c0c4b93c3c57c8",
+          "sft_examples_sha256": "9576596b2c9fa5d729bcd65e043b8d801edb28bbcf36d121230d28adc7f7d5fb",
+          "causal_messages_sha256": "e64103ef9e3cbdccfad8a1309ecc57cdc995d212b6b520a5275062e00cd60709",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            4,
+            4
+          ],
+          "trajectory_sha256": "ace729f218fb8a3feb35ef3f6e3761d7b1386e510bcb6c4715c0c4b93c3c57c8",
+          "sft_examples_sha256": "9576596b2c9fa5d729bcd65e043b8d801edb28bbcf36d121230d28adc7f7d5fb",
+          "causal_messages_sha256": "e64103ef9e3cbdccfad8a1309ecc57cdc995d212b6b520a5275062e00cd60709",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            4,
+            4
+          ],
+          "trajectory_sha256": "ace729f218fb8a3feb35ef3f6e3761d7b1386e510bcb6c4715c0c4b93c3c57c8",
+          "sft_examples_sha256": "9576596b2c9fa5d729bcd65e043b8d801edb28bbcf36d121230d28adc7f7d5fb",
+          "causal_messages_sha256": "e64103ef9e3cbdccfad8a1309ecc57cdc995d212b6b520a5275062e00cd60709",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "74fed0f7e120974c583ca5f0f820dc200b6d390cd6dcc274685521b57919885c",
+      "original_source_line_sha256": "9f1cf00135106359d6243ec7d31d743d65d50e40165790d8b031e7d4e6dbb696"
+    },
+    {
+      "index": 18,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-SoapBottle-None-CounterTop-428/trial_T20190909_114242_588264/game.tw-pddl",
+      "task_sha256": "ff99a37f9e009a42f413d65800f45569dd018e67d8510f7d30fa98417dc387fd",
+      "initial_observation_sha256": "ff99a37f9e009a42f413d65800f45569dd018e67d8510f7d30fa98417dc387fd",
+      "initial_state_sha256": "e90c2d4268ffb18822c187f028dedf8152afcf9c1ff8b0e79bf6e35771451cae",
+      "initial_admissibles_sha256": "7ebc1234ceb292b43039a19b34ec534fb68d56d4b54116511ddfcae72049f9ca",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            4,
+            4
+          ],
+          "trajectory_sha256": "77861c4eafb2bf24caf4965038b7a499410240323329b6ea584647de3be56f05",
+          "sft_examples_sha256": "575f397c9b33cd4b688ce21996db61e19684940fd23f138823f6aedd0eb00e00",
+          "causal_messages_sha256": "c8089f7746681cce83aa164653aae51d6fd5c0688438d28e513bea4f9faa6c0e",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            4,
+            4
+          ],
+          "trajectory_sha256": "77861c4eafb2bf24caf4965038b7a499410240323329b6ea584647de3be56f05",
+          "sft_examples_sha256": "575f397c9b33cd4b688ce21996db61e19684940fd23f138823f6aedd0eb00e00",
+          "causal_messages_sha256": "c8089f7746681cce83aa164653aae51d6fd5c0688438d28e513bea4f9faa6c0e",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            4,
+            4
+          ],
+          "trajectory_sha256": "ba3a3aac7d33d74a940d16719a08ae069f775f35644c4d26bc6599e1269941c6",
+          "sft_examples_sha256": "a2c3f3ea80827dc692251e4844b8ad3b22c00306193bc8e5dc1c96f97b909365",
+          "causal_messages_sha256": "6e5daafdd64a83281e3dae59fb627b74841e61594609ac093c442fcf74ea8349",
+          "same_action_prefix_length": 1,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "41121f31e5f8e862a3ec3c75cace16906cc45c79c738e4256f31165ab4dc5674",
+      "original_source_line_sha256": "68947d3eb180d97c277bc6af23db8c857c334fa7da8ee5d40afc0d9c08637721"
+    },
+    {
+      "index": 19,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-RemoteControl-None-ArmChair-230/trial_T20190909_020906_064567/game.tw-pddl",
+      "task_sha256": "d28917314c4465bd3caedc0fbe06cc0be070715601db99c678083590a8fa0dc8",
+      "initial_observation_sha256": "d28917314c4465bd3caedc0fbe06cc0be070715601db99c678083590a8fa0dc8",
+      "initial_state_sha256": "cb3cd4a6dd3061be4ff4c2fb9191a30043d3ec7ed5ade0217dd128ff48e5d812",
+      "initial_admissibles_sha256": "546da550b79bea97cde2ce10b3328f96b5baf4ff4119de860e3e9cdff77d090e",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            4,
+            4
+          ],
+          "trajectory_sha256": "fd7b6511d640627c623207d61c099af5ae1e86fe81beabd4528254f9b3c061c1",
+          "sft_examples_sha256": "a098c71c7e50e0d977f92fb1ffc4daa800b9e14f812ef812b35d2bdd8f89a442",
+          "causal_messages_sha256": "aec5ba07174b56935e94bd6646e52033fce5c4df878fc5684fdb5291fb126323",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            4,
+            4
+          ],
+          "trajectory_sha256": "5ea20ea823c38e8d39dce154b9873a69496c77def2d42e6fff3b66a5e7c33b1d",
+          "sft_examples_sha256": "3172fe533262cc296e517ac754fa58964ae701bc25a9854e457465a634496d07",
+          "causal_messages_sha256": "a9158de8fd1c28b497b249e742388f78e57b138553c5993855817a1cc0be383e",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            4,
+            4
+          ],
+          "trajectory_sha256": "76e22a2cf7ff637b6c9acd25b1b9bee70fc52cc1f55494ec8afa3525ada7929b",
+          "sft_examples_sha256": "c3acb3f416eeeb1d193d412f1fef6f6db6ca6218299f3563a67b092bffbc7610",
+          "causal_messages_sha256": "4442d813cec4f567d5297066cadacdbbd9297c02d0ff9c7dd27cb7f404808dc4",
+          "same_action_prefix_length": 2,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "02cc424980977a063e241cc07bd3e56895368c80164f326789a7a3688a8d14a0",
+      "original_source_line_sha256": "06bb1cc0409684083b58727f435b5526a3c7de6256e65fa2574ca3b7f52ef5dd"
+    },
+    {
+      "index": 20,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Kettle-None-StoveBurner-1/trial_T20190908_172105_948396/game.tw-pddl",
+      "task_sha256": "0433ccd748cec8f1316a019f5668e466d5e3f67d0a3ee45a1e5a008c3162baf2",
+      "initial_observation_sha256": "0433ccd748cec8f1316a019f5668e466d5e3f67d0a3ee45a1e5a008c3162baf2",
+      "initial_state_sha256": "b7efe61a16b969a85ff25954377ab1a052a03ae821cb927209d7b24e08433e4a",
+      "initial_admissibles_sha256": "cbe67b17c8d8012366ba45365476fb5ad65378d6648249a1a5829b524575a99f",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "1152b93bad725a13ba3783462a6777dd5a72bc37b52f230cf7b20990eb638701",
+          "sft_examples_sha256": "abd65d9eefbf7a102503da5dc23a0f0216fca90bdfb5f5ef3bbea1ed46cef8cd",
+          "causal_messages_sha256": "a7c1f97d0cc637a83118cecf6c8746f0139737c28e460c7060942e9a38c333e3",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "e78cde415413fd621c1bea3d24e31c360e3dcce3528bab76fbf67c44106bee41",
+          "sft_examples_sha256": "23b26596eb5aa63670b0c767244c267d51ad2f4079d114b1198c459b07c57af4",
+          "causal_messages_sha256": "383c3a99a83929a271ac4c1de1adf046b66734ded617fbabf24ea13f843bd0fc",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "e78cde415413fd621c1bea3d24e31c360e3dcce3528bab76fbf67c44106bee41",
+          "sft_examples_sha256": "23b26596eb5aa63670b0c767244c267d51ad2f4079d114b1198c459b07c57af4",
+          "causal_messages_sha256": "383c3a99a83929a271ac4c1de1adf046b66734ded617fbabf24ea13f843bd0fc",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "7cc9c57ddc2427ed72f0f4cdbdb576030900ac146129740c3097f44ac7f1593e",
+      "original_source_line_sha256": "5158836822bc27be6d99ce3c22c42a18807a4351c8f7ff2d216ed63672686d67"
+    },
+    {
+      "index": 21,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Ladle-None-DiningTable-4/trial_T20190909_165603_183022/game.tw-pddl",
+      "task_sha256": "2b61e4ba91692e20f3bc45b94df03b4bba01c4fad69275f5a99ee6c9f6c4b51b",
+      "initial_observation_sha256": "2b61e4ba91692e20f3bc45b94df03b4bba01c4fad69275f5a99ee6c9f6c4b51b",
+      "initial_state_sha256": "2825508c8e4eb9259c0a7f30e5120a503a0183f1df84b559d776b3f4d5d3c722",
+      "initial_admissibles_sha256": "fa349602e52b75f2f0dc0ecaa46d2648d598262feb4200cf7e794d6d230914e2",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "6f37e57c22ee475fdf0cc8f050ac65a36db5beb07f29c7f0daf0cea56f599125",
+          "sft_examples_sha256": "1fb2b740f7598d4d4e1fb6ad35398f056293b833ee649b93697a9b71682671ad",
+          "causal_messages_sha256": "c2913c9fd0fdde2a9924f04fe057d8fac93bcab9e3959ddabb47be48cd4ed5d7",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "6f37e57c22ee475fdf0cc8f050ac65a36db5beb07f29c7f0daf0cea56f599125",
+          "sft_examples_sha256": "1fb2b740f7598d4d4e1fb6ad35398f056293b833ee649b93697a9b71682671ad",
+          "causal_messages_sha256": "c2913c9fd0fdde2a9924f04fe057d8fac93bcab9e3959ddabb47be48cd4ed5d7",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "6f37e57c22ee475fdf0cc8f050ac65a36db5beb07f29c7f0daf0cea56f599125",
+          "sft_examples_sha256": "1fb2b740f7598d4d4e1fb6ad35398f056293b833ee649b93697a9b71682671ad",
+          "causal_messages_sha256": "c2913c9fd0fdde2a9924f04fe057d8fac93bcab9e3959ddabb47be48cd4ed5d7",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "5c1825db241e99bc8ae7edd63524d54f3d32c81a5cd91a3e612e1a8c651b245b",
+      "original_source_line_sha256": "ac52a139efc9049e6659a4f6e7be88129219c4e7e767ea6dc14755a4ec2cbfd3"
+    },
+    {
+      "index": 22,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Kettle-None-DiningTable-17/trial_T20190909_023440_415981/game.tw-pddl",
+      "task_sha256": "9e014099a95473c54788cf03eed1aa690701986350124ad52db6811730246c5d",
+      "initial_observation_sha256": "9e014099a95473c54788cf03eed1aa690701986350124ad52db6811730246c5d",
+      "initial_state_sha256": "39c284d8fb59607d5d1c53d96216955f4bafdeb3c84308888252909d2b32e7aa",
+      "initial_admissibles_sha256": "6ce9d0dfe3a8bff640f4ef1a5e3b2afc91dc65951c7e1113d6d4efd970ba8d7a",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "a3bdf0ffef5b9a81c13f670ebdd5b89a849600ac3ba79825c9c90d8e85d603db",
+          "sft_examples_sha256": "ebf8b7b53a255b16371f2cce873d283ddb053a11c4de74579289c1b6b0f78c64",
+          "causal_messages_sha256": "4b94ca66a4439f659a95944c08491c570fbf6a504c3c345e5c59329c87bcf581",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "ab4f266e534ed52337fbe11af223e549bfcd12066e78b1635b305782442b934c",
+          "sft_examples_sha256": "d2ec0f090875a56bdca3aa46dd693b5bc63d472b221e04525885c71f3004239b",
+          "causal_messages_sha256": "b13bcdf5b71b812ec95580ff0333555572ea6bf04de60e4c8e9058490a353bb1",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "ab4f266e534ed52337fbe11af223e549bfcd12066e78b1635b305782442b934c",
+          "sft_examples_sha256": "d2ec0f090875a56bdca3aa46dd693b5bc63d472b221e04525885c71f3004239b",
+          "causal_messages_sha256": "b13bcdf5b71b812ec95580ff0333555572ea6bf04de60e4c8e9058490a353bb1",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "2de6e518eb8ad0926ec66dd45a6f96456d95fdace70a25dc352427cd5d994a10",
+      "original_source_line_sha256": "944e7a6ee4e848fd4e8af2b7f415adc1c31e7aa2e71e09c86bb3d8771eedf99a"
+    },
+    {
+      "index": 23,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-DishSponge-None-Drawer-430/trial_T20190908_122230_051247/game.tw-pddl",
+      "task_sha256": "f5e605b6a22418d745b04a7b81ef662889e0e5d2c9892e39f95b0f2698324e7f",
+      "initial_observation_sha256": "f5e605b6a22418d745b04a7b81ef662889e0e5d2c9892e39f95b0f2698324e7f",
+      "initial_state_sha256": "44f62f251f9b330905ca5a94eb2a6f6be909fb86506f8905dc160264aa9824d8",
+      "initial_admissibles_sha256": "d1519c2617542020cc0aaa9fb61bfc23ba53772cc8f847f5d2e8bf5e33281aff",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            7,
+            11
+          ],
+          "trajectory_sha256": "bc4cde2ffe4665a270e2c0735f3ce7e1d6e37b8bace8481a9f301b3476d6a700",
+          "sft_examples_sha256": "b40817ed72f2bf89de6aab48ad5eaa8b6157c039ed39836db5458c5f4c3ef376",
+          "causal_messages_sha256": "1c6102a03b1aca29d960f50bf872ca1b62f2799a0b93cdff74dc7ae45a4bdd95",
+          "same_action_prefix_length": 7,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            7,
+            11
+          ],
+          "trajectory_sha256": "0e7ea21f099e04201a6215d802f4134798d4c5c35a305e3f1aec78c385672726",
+          "sft_examples_sha256": "f8b31f36f4f16ed61b4fafecea2af5ca352abc8504e44a0dee29fbe82a108631",
+          "causal_messages_sha256": "2be96aa57dfa50fabe2d503eec2fa4e1cbaadd2fe1308b874c5d98d913e38117",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            7,
+            11
+          ],
+          "trajectory_sha256": "6740d83d009102180661ee659de5548b2442fb166cb01f6c267e7aa80dbbb122",
+          "sft_examples_sha256": "151cd1db390235b8b1900b54ea4d382b7c7e9acc1819bd7debd22389ca39c0f3",
+          "causal_messages_sha256": "4f0900522e0dc3e93c6cb141c2ec054510b1e41df4cd8c47d23ea193a4c4f5df",
+          "same_action_prefix_length": 1,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "6cfbf409347de5f7b8b57b666cbf82e76e8202d5575d7221d5790e5225e34ed9",
+      "original_source_line_sha256": "bf09472c551c53ffce4164b4684615ad168c6fa7d1b4df4e0256083216582b45"
+    },
+    {
+      "index": 24,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Lettuce-None-CounterTop-18/trial_T20190909_071129_660883/game.tw-pddl",
+      "task_sha256": "e5e59f8752830479fe28a9373e228ffe84645625b18a7136381a151d5fb3cdab",
+      "initial_observation_sha256": "e5e59f8752830479fe28a9373e228ffe84645625b18a7136381a151d5fb3cdab",
+      "initial_state_sha256": "3c9263dcc3d77f7f3e772645989be45ba2eaf7689d12330881a64dbd23d546a2",
+      "initial_admissibles_sha256": "af1a01a635cda2d0f715521e1498dbbf5fd802795faf98b19b5f233309c24245",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "8854e131f443d2a1d66ed54d7da931c0ad15b680d0c9499ff1d70ca21e83f18a",
+          "sft_examples_sha256": "b2184df877e35899df81bdc5e1ba6fffea3a86909c5a723e78b52138267bd410",
+          "causal_messages_sha256": "5f40db8933c310b77bbebaa20cc6ccdb0541afb2d3af261bf9a0adaf82b715fc",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "3bb8189f0fd67bd1ace49d499cd6583bed307c58c494372081bca6d4cbe2b6b0",
+          "sft_examples_sha256": "68434b2b98225652b46ba2f2c846f80ac9828ab546c63396da8be53901490816",
+          "causal_messages_sha256": "06f50b5a60bf6e2c04f2f2598d221f13b92a9c24007fb23ce7c8ce87f3f19db2",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "8854e131f443d2a1d66ed54d7da931c0ad15b680d0c9499ff1d70ca21e83f18a",
+          "sft_examples_sha256": "b2184df877e35899df81bdc5e1ba6fffea3a86909c5a723e78b52138267bd410",
+          "causal_messages_sha256": "5f40db8933c310b77bbebaa20cc6ccdb0541afb2d3af261bf9a0adaf82b715fc",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "f11d8fbee90bb3e3a12ed9415cb5ff30be8de831b429d5ffb1820743ff16cb11",
+      "original_source_line_sha256": "21b79f50bdb5c3f0e2bef8d18999cdf5cac0f143e7552a042b168acb1dfa7ee9"
+    },
+    {
+      "index": 25,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Mug-None-CoffeeMachine-1/trial_T20190909_134634_406636/game.tw-pddl",
+      "task_sha256": "1c23928465dd1677d048a02000be8bbc84406f193dbd44c3bfbf956523b79877",
+      "initial_observation_sha256": "1c23928465dd1677d048a02000be8bbc84406f193dbd44c3bfbf956523b79877",
+      "initial_state_sha256": "50742e5dba7534dbbf8e80a7a2ae8117c7f451a37af9f65af0f19912d4736499",
+      "initial_admissibles_sha256": "cbe67b17c8d8012366ba45365476fb5ad65378d6648249a1a5829b524575a99f",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            4,
+            8
+          ],
+          "trajectory_sha256": "31d0d859e64e7756762558e1d57522ffde485743340d3525857534de560c8147",
+          "sft_examples_sha256": "894cdd20d22619b93e6a0bd8a51204077b3b50ef8b05411191c27327c65ca3de",
+          "causal_messages_sha256": "629128cde88b05a1618db6a8f87cc204ba01e9204252f6950dfbdcc98f579689",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            4,
+            8
+          ],
+          "trajectory_sha256": "31d0d859e64e7756762558e1d57522ffde485743340d3525857534de560c8147",
+          "sft_examples_sha256": "894cdd20d22619b93e6a0bd8a51204077b3b50ef8b05411191c27327c65ca3de",
+          "causal_messages_sha256": "629128cde88b05a1618db6a8f87cc204ba01e9204252f6950dfbdcc98f579689",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            4,
+            8
+          ],
+          "trajectory_sha256": "31d0d859e64e7756762558e1d57522ffde485743340d3525857534de560c8147",
+          "sft_examples_sha256": "894cdd20d22619b93e6a0bd8a51204077b3b50ef8b05411191c27327c65ca3de",
+          "causal_messages_sha256": "629128cde88b05a1618db6a8f87cc204ba01e9204252f6950dfbdcc98f579689",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "fb67c35291dc2c668023fcc0ef0fa935ef45dc8e41d09b560fd7b02408cf9d06",
+      "original_source_line_sha256": "34e6c7a6eb8bc5370bc450d996532fced22e4a1754f779ec47d4d211aae783e0"
+    },
+    {
+      "index": 26,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Tomato-None-GarbageCan-15/trial_T20190908_190007_238896/game.tw-pddl",
+      "task_sha256": "d3f545ed97e3568398089ca4eab8124a635bbf2f1952373bf825a84cd1bacd4e",
+      "initial_observation_sha256": "d3f545ed97e3568398089ca4eab8124a635bbf2f1952373bf825a84cd1bacd4e",
+      "initial_state_sha256": "e0f79a5ddadd200a038a3e2ad9c2905333ffddce5e7b29e4028db29234e54d6e",
+      "initial_admissibles_sha256": "031c528042c7a711a1abf6621a969f1e0f3fc46868cbf1816e0941621f054b97",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            7,
+            11
+          ],
+          "trajectory_sha256": "0aa0c68cd3845cb309dd20319b373997067ac6571c5f053aa8289411cf303613",
+          "sft_examples_sha256": "355ec9b023f3f166bb993cecd9ae84729496bf9241bdd0a04cb6557f05a13828",
+          "causal_messages_sha256": "88bf7201bc62373e31e80d02ef45da3926a08c7d993a36d25a35b6263047588e",
+          "same_action_prefix_length": 7,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            7,
+            11
+          ],
+          "trajectory_sha256": "0aa0c68cd3845cb309dd20319b373997067ac6571c5f053aa8289411cf303613",
+          "sft_examples_sha256": "355ec9b023f3f166bb993cecd9ae84729496bf9241bdd0a04cb6557f05a13828",
+          "causal_messages_sha256": "88bf7201bc62373e31e80d02ef45da3926a08c7d993a36d25a35b6263047588e",
+          "same_action_prefix_length": 7,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            7,
+            11
+          ],
+          "trajectory_sha256": "0aa0c68cd3845cb309dd20319b373997067ac6571c5f053aa8289411cf303613",
+          "sft_examples_sha256": "355ec9b023f3f166bb993cecd9ae84729496bf9241bdd0a04cb6557f05a13828",
+          "causal_messages_sha256": "88bf7201bc62373e31e80d02ef45da3926a08c7d993a36d25a35b6263047588e",
+          "same_action_prefix_length": 7,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "bd088d2fb329c787754282ea4c6db237df312f314f2af8fe255d9273fe966007",
+      "original_source_line_sha256": "956e966ec478bbb0fe30831ac13ab76a90a46aec7d9320f1c666ecedbdb565eb"
+    },
+    {
+      "index": 27,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Cloth-None-Drawer-415/trial_T20190906_190118_700255/game.tw-pddl",
+      "task_sha256": "ff91bcd4b6b44647d9b64e70fd7c200db2b6b0162478cf514864bef1c3143d35",
+      "initial_observation_sha256": "ff91bcd4b6b44647d9b64e70fd7c200db2b6b0162478cf514864bef1c3143d35",
+      "initial_state_sha256": "b8efc133279189484dc1a7e30ff12bdcad9331900e59cb7c0dbf0a911b350fb1",
+      "initial_admissibles_sha256": "188c6a963cbe4c947c368637cd333b4b34250b969cfe21def3f8ba5b83a2de9b",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            7,
+            11
+          ],
+          "trajectory_sha256": "f97a50a9efaefe4b83d2dee08786e0ccc6f1d39999ab642394681d7a0c0fd3a1",
+          "sft_examples_sha256": "ad15c2fa359b7cf24f4029a4fd3757456674b0e1bf1223e95adbdd8307a53438",
+          "causal_messages_sha256": "e57e4f6875146d69d241760e8388b3e1eeb9cf3acc62f3fa472d2e95e740a63d",
+          "same_action_prefix_length": 7,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            7,
+            11
+          ],
+          "trajectory_sha256": "698fb2c801db3c910608ea7b3c48b80b4ff750017b873ce846ba246dda8c149d",
+          "sft_examples_sha256": "27b7f1087249dddc4fa833af4b00ce7719ab3c72811889a32c45610b5d166caa",
+          "causal_messages_sha256": "9de8bd7c267dc70f8c6ac0517303d35b4e74bb46d83da6e48d43fb422c2d753d",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            7,
+            11
+          ],
+          "trajectory_sha256": "3aaf118a2e39eed9d042dfd1b78bad653f9191c403fa582cbf7c29252a065509",
+          "sft_examples_sha256": "584717d68d123f2faefc286e8c9a037ffabc763035538c9aefe8bc2478a9537b",
+          "causal_messages_sha256": "0efb01470c90a14f9ca6c97a2748d1340e15b8ccec00a7b319f22773845fe773",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "e88699e53486da46c3b27328986be2949459402fecf9be5a308795fe95bf8407",
+      "original_source_line_sha256": "aeac620062a49a60fc36ab6f84093470f32aa886174b6f4bb043862fbcd61ea7"
+    },
+    {
+      "index": 28,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Tomato-None-Fridge-18/trial_T20190909_045941_566760/game.tw-pddl",
+      "task_sha256": "6c8edb2e5e490061166e2d2494b57f0812dd4bae022481d306cfd91e878b5de7",
+      "initial_observation_sha256": "6c8edb2e5e490061166e2d2494b57f0812dd4bae022481d306cfd91e878b5de7",
+      "initial_state_sha256": "4def2c97fb24b86b9a43bf062577cac740855187c5d641a6868010d063c05327",
+      "initial_admissibles_sha256": "af1a01a635cda2d0f715521e1498dbbf5fd802795faf98b19b5f233309c24245",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            7,
+            11
+          ],
+          "trajectory_sha256": "90690cead676cad8eecfa7cdd8c4783317d34cc545054000948f25f80468e076",
+          "sft_examples_sha256": "cfd98ba60b345f6d2dbe1f68a0b78f96b457bead46cf66ecbda0c7354f8d2f41",
+          "causal_messages_sha256": "4d4b51744679239d80a13af95cfe2483e283a094ce758b3b53ae24c71d7d994d",
+          "same_action_prefix_length": 7,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            7,
+            11
+          ],
+          "trajectory_sha256": "666b51af5da8477ecf090db640a4a515301ca895a5f2e22195f8707c77ad2133",
+          "sft_examples_sha256": "b161aa3d2c309742ca7a77b1449e874a82df3b9f08a356b2392f5203245e7b95",
+          "causal_messages_sha256": "699857a1752753f562b5487d4df21a8513d4fe82ad8c21669b898ac3bfa52bca",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            7,
+            11
+          ],
+          "trajectory_sha256": "666b51af5da8477ecf090db640a4a515301ca895a5f2e22195f8707c77ad2133",
+          "sft_examples_sha256": "b161aa3d2c309742ca7a77b1449e874a82df3b9f08a356b2392f5203245e7b95",
+          "causal_messages_sha256": "699857a1752753f562b5487d4df21a8513d4fe82ad8c21669b898ac3bfa52bca",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "d287982a6f02be6f3bfb654744845bb284eeeaf709bbb796bbc6695309527340",
+      "original_source_line_sha256": "5b54c5c4b10dc97d881262e7b4fe56d556cf015c4e14f79132387fb4b905c326"
+    },
+    {
+      "index": 29,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-DishSponge-None-Cart-430/trial_T20190906_233436_645915/game.tw-pddl",
+      "task_sha256": "e62c7fb29591c87c219e59f706e94780781083fe0a4197c598487177f5d7994d",
+      "initial_observation_sha256": "e62c7fb29591c87c219e59f706e94780781083fe0a4197c598487177f5d7994d",
+      "initial_state_sha256": "435a8435fd134216d9453b6c1a2275fc99caac168894e7794e983507e49a606a",
+      "initial_admissibles_sha256": "d1519c2617542020cc0aaa9fb61bfc23ba53772cc8f847f5d2e8bf5e33281aff",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "5ca9eae97784b283bacbd6e6272ad3503478a4d07ce746700c0b99d52522ea74",
+          "sft_examples_sha256": "dac847e6218dde67c0380649c7b8308178ab2296446ea33408df70fc80df0561",
+          "causal_messages_sha256": "0de23bb262fb9235083194a38624d99f45f5ff719422f403fb615659158cb0da",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "6ea74e459544d9444c2917395aebf6ab22fe96c38acd6c2872688a3ac108c88e",
+          "sft_examples_sha256": "e3a438cb0de53ab95a3bc9884923dd620e810a0655254b38ffe8e24b0a0cf9d1",
+          "causal_messages_sha256": "f2111dcd3faff4b508ef1b69e9af9cee5c71383ad07b9ecd8305d4cd6f542caf",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "f14df9d95bcae9a5c5d24f264e0712a7d5ef28142bc46748a52d35e6038164c9",
+          "sft_examples_sha256": "d1e5afbcdbb0551ba46ab068e112f73c096a8712d256226fabd30174c8463946",
+          "causal_messages_sha256": "ca2cf02058970f78950e0c4681a91ea253766ea4c5e51fe041da3a8a568307da",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "9110415526bb7858bad3c6695954a1ea7ceb6401663abd9edd7f389830019e83",
+      "original_source_line_sha256": "b4854788dc6528aecf271c456a8f6f62621ae489feff167eb3b63274e7df17bf"
+    },
+    {
+      "index": 30,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Apple-None-Microwave-22/trial_T20190908_000314_718780/game.tw-pddl",
+      "task_sha256": "4943ee871213d566ea6874e07b58126f05d68c988764e446667231fb0256c3c0",
+      "initial_observation_sha256": "4943ee871213d566ea6874e07b58126f05d68c988764e446667231fb0256c3c0",
+      "initial_state_sha256": "fdbd4a6c5f56f8434af6a493219b4da7e508e2c9074fce5982c56b532b9b5ef1",
+      "initial_admissibles_sha256": "56f12d3fedc0a6ab4622ce63c28d0c3a9996f02d59c5e09c83a1dc709720ad72",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            7,
+            11
+          ],
+          "trajectory_sha256": "c8e1ddfdb0ff425720591073f84c1ce4b88d4b8863bb2fa914969e9eca0d8622",
+          "sft_examples_sha256": "bdd14dc7db6671b12adb7b2b25cdbdf1674793b76daec37aa38a0a8d63374e92",
+          "causal_messages_sha256": "3ff536ffbbcdd45466d5aa61f76be1c02574903b2466e91cfb68431fc04f8067",
+          "same_action_prefix_length": 7,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            7,
+            11
+          ],
+          "trajectory_sha256": "c8e1ddfdb0ff425720591073f84c1ce4b88d4b8863bb2fa914969e9eca0d8622",
+          "sft_examples_sha256": "bdd14dc7db6671b12adb7b2b25cdbdf1674793b76daec37aa38a0a8d63374e92",
+          "causal_messages_sha256": "3ff536ffbbcdd45466d5aa61f76be1c02574903b2466e91cfb68431fc04f8067",
+          "same_action_prefix_length": 7,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            7,
+            11
+          ],
+          "trajectory_sha256": "c8e1ddfdb0ff425720591073f84c1ce4b88d4b8863bb2fa914969e9eca0d8622",
+          "sft_examples_sha256": "bdd14dc7db6671b12adb7b2b25cdbdf1674793b76daec37aa38a0a8d63374e92",
+          "causal_messages_sha256": "3ff536ffbbcdd45466d5aa61f76be1c02574903b2466e91cfb68431fc04f8067",
+          "same_action_prefix_length": 7,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "76eb88a40ffd741a540fde0de58f0ba34d9e3631688c3eaff3ef8ea191f2a7bf",
+      "original_source_line_sha256": "36e1851296790213307eebf216155276fb13cf03b24a623b5abe5884e8e0b12d"
+    },
+    {
+      "index": 31,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Mug-None-CoffeeMachine-24/trial_T20190907_185942_820847/game.tw-pddl",
+      "task_sha256": "c9149a598988ba5a895575fc7b2f9b4b0e3ff11a551b6ed6c0756cf81259d041",
+      "initial_observation_sha256": "c9149a598988ba5a895575fc7b2f9b4b0e3ff11a551b6ed6c0756cf81259d041",
+      "initial_state_sha256": "5ca6c3d3c0d6237074dd091239251ab8a8e39cbc8b3e21fa0fc83ecc9e7d16d1",
+      "initial_admissibles_sha256": "204928d7523c0622ed1b667e132c9c021a30d74f9e5c01a9d3f86e6b510448d7",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "7d0ded9f231038ce2e774173550c37fabe8887bc060ad9865884109346be8c7b",
+          "sft_examples_sha256": "bf894e148989e29569fdb4f7b730be8cc4b0a698be37e9f9c1cf5c35a9851713",
+          "causal_messages_sha256": "13c825f0559d902adccb02c66604ee485dcc36657d247c7e9c5111fc2d5b212d",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "7d0ded9f231038ce2e774173550c37fabe8887bc060ad9865884109346be8c7b",
+          "sft_examples_sha256": "bf894e148989e29569fdb4f7b730be8cc4b0a698be37e9f9c1cf5c35a9851713",
+          "causal_messages_sha256": "13c825f0559d902adccb02c66604ee485dcc36657d247c7e9c5111fc2d5b212d",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "7d0ded9f231038ce2e774173550c37fabe8887bc060ad9865884109346be8c7b",
+          "sft_examples_sha256": "bf894e148989e29569fdb4f7b730be8cc4b0a698be37e9f9c1cf5c35a9851713",
+          "causal_messages_sha256": "13c825f0559d902adccb02c66604ee485dcc36657d247c7e9c5111fc2d5b212d",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "78a97271ba3f719b41db21a6d83aac46753e2fd76842bfcf5b52c690f5681453",
+      "original_source_line_sha256": "cd1edb362974a1b5a64185f7209df2ea2d26b05154d5df01ea4a0fa95c1af050"
+    },
+    {
+      "index": 32,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Pot-None-StoveBurner-1/trial_T20190907_165908_445437/game.tw-pddl",
+      "task_sha256": "827f3a4722cba339a0aa9e6769799eb9fce3d4d3d789ed4cdc85165f4dc7cb56",
+      "initial_observation_sha256": "827f3a4722cba339a0aa9e6769799eb9fce3d4d3d789ed4cdc85165f4dc7cb56",
+      "initial_state_sha256": "bda8281075169cdbc9ca36f02bc8cecc49f60dc6af25968d312795bdf890a01e",
+      "initial_admissibles_sha256": "cbe67b17c8d8012366ba45365476fb5ad65378d6648249a1a5829b524575a99f",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "be444d670d3b23801b76e7c3d223891e0b34b7ac6cbb99c74d99dfad271819e2",
+          "sft_examples_sha256": "1447494ebdf7d417d037f8642fc7bccc9995fa58a05b25d02c94ea53bca1c1e1",
+          "causal_messages_sha256": "ffb05efe89dc8090f160ccedc0c8491b369325dc3e667589f60b5765f160de00",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "d260dfd9c41c13969ec43dea868038a74149697fda1c66f822dba07361e9fd14",
+          "sft_examples_sha256": "4949b5299952f2e46b25cf93208fd5949f2a495f3c8f8dbdcae6e43eca23a578",
+          "causal_messages_sha256": "07eff96508a4f921341847756caebf53d1d82bf90113dfe71e92c21e791210aa",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "e10c9eea0abf7911788d9d29a81ce36305fb51e489b9274c4a39f3ab0f7009ff",
+          "sft_examples_sha256": "28913af46521ba1b176c74de379c78359ce164046e1e3b200c0bf43417ab205e",
+          "causal_messages_sha256": "2cbe8a1d23c0b12a99cc89029bc44b1c613b6aafb777519b50afe74addffdf29",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "f34c6138177e70ecd6083766f43a97d1d24bb4854fc99b188a4c7b297f425ef6",
+      "original_source_line_sha256": "90ea99174bab24906e93bcaba9376c1ddcece314f0fc38ffdd334cde1caa99ac"
+    },
+    {
+      "index": 33,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Apple-None-SideTable-21/trial_T20190907_180711_700359/game.tw-pddl",
+      "task_sha256": "da44260c4fa9c44a734ae5bdee3e9761918842cc7601ec79249688b3a79dddf9",
+      "initial_observation_sha256": "da44260c4fa9c44a734ae5bdee3e9761918842cc7601ec79249688b3a79dddf9",
+      "initial_state_sha256": "7eb5afc4c8b28942ec0b9eedb76021234d0ee69baf0f4be722096eacda037584",
+      "initial_admissibles_sha256": "972a6db78936ff1b782768336dbdff615c3c172bf804ef47e0f150a4b84c35d5",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "1da3f60c0a03ec93042ceeba482244db9a01186632dea7ad497b9ddd1ced7d12",
+          "sft_examples_sha256": "6fa63aa44fe5023fd99b91c747e49291be8c9f6110dcac3b5ecec89bff1b2ec2",
+          "causal_messages_sha256": "bf5d4d6e68754720dec4dec0fc23b335b3191efbde8c9fd73dc80903248e6a28",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "1da3f60c0a03ec93042ceeba482244db9a01186632dea7ad497b9ddd1ced7d12",
+          "sft_examples_sha256": "6fa63aa44fe5023fd99b91c747e49291be8c9f6110dcac3b5ecec89bff1b2ec2",
+          "causal_messages_sha256": "bf5d4d6e68754720dec4dec0fc23b335b3191efbde8c9fd73dc80903248e6a28",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "1da3f60c0a03ec93042ceeba482244db9a01186632dea7ad497b9ddd1ced7d12",
+          "sft_examples_sha256": "6fa63aa44fe5023fd99b91c747e49291be8c9f6110dcac3b5ecec89bff1b2ec2",
+          "causal_messages_sha256": "bf5d4d6e68754720dec4dec0fc23b335b3191efbde8c9fd73dc80903248e6a28",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "631e1f8811253312f7a6d296d4c7085bcaabbaaac3fd0271cc65ddff4bc438df",
+      "original_source_line_sha256": "e54e3e1e22fea21e4d1d538cbead534e4f36cb557f5da7c8e50c59fa08bbef3f"
+    },
+    {
+      "index": 34,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Plate-None-DiningTable-17/trial_T20190909_122939_032098/game.tw-pddl",
+      "task_sha256": "3674735807cc706de4f97955f349e39952b2f264d668c47390cbadd6ff232af1",
+      "initial_observation_sha256": "3674735807cc706de4f97955f349e39952b2f264d668c47390cbadd6ff232af1",
+      "initial_state_sha256": "b97452ddea6cfaa49151c6520bb2e5daed6f3854d63e16da864038321b59d3ba",
+      "initial_admissibles_sha256": "6ce9d0dfe3a8bff640f4ef1a5e3b2afc91dc65951c7e1113d6d4efd970ba8d7a",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            7,
+            11
+          ],
+          "trajectory_sha256": "a71e6221d0fa8694337639be298c2dd9bb8d6aa54fc91d0034cc314189f01dbe",
+          "sft_examples_sha256": "ac97dada42f37886356c6a189ba4170bdf832c2b730476b984175b529293bc0f",
+          "causal_messages_sha256": "1cdf918dc692e42197fc42ac3cd34edb67546167213d345a5abea6ab0000e10a",
+          "same_action_prefix_length": 7,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            7,
+            11
+          ],
+          "trajectory_sha256": "a71e6221d0fa8694337639be298c2dd9bb8d6aa54fc91d0034cc314189f01dbe",
+          "sft_examples_sha256": "ac97dada42f37886356c6a189ba4170bdf832c2b730476b984175b529293bc0f",
+          "causal_messages_sha256": "1cdf918dc692e42197fc42ac3cd34edb67546167213d345a5abea6ab0000e10a",
+          "same_action_prefix_length": 7,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            7,
+            11
+          ],
+          "trajectory_sha256": "cd86d8daa08d50ee37d92d1a39aac9a7d8bbf0f42d990cdeae77de71c38a37fd",
+          "sft_examples_sha256": "02d0eaa5d9f17ecdbd862bf1426f54508f22d6718e65ee3f585cef5757d91242",
+          "causal_messages_sha256": "e1b8c7af980bd4dc46e537c5a705249cc8714aac7136993291c47a4ed03c2603",
+          "same_action_prefix_length": 5,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "f7bbc02e7ca6a80f9d7095252e60ae7425ddc2d10ea8967a8c8fda241fcc15a9",
+      "original_source_line_sha256": "8ff72ab6e0b6d34eacdcf71b39eb404468801af06de2711cf77a3d0eed41609c"
+    },
+    {
+      "index": 35,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Apple-None-DiningTable-16/trial_T20190909_075758_248823/game.tw-pddl",
+      "task_sha256": "f81b76e42b92b4ba313e06726654b64ace8e7f56cb27848b9139274dcf8f6711",
+      "initial_observation_sha256": "f81b76e42b92b4ba313e06726654b64ace8e7f56cb27848b9139274dcf8f6711",
+      "initial_state_sha256": "1d04ccbdb323248b46bc3783ba8c057d288311183ac25cf3e9ae8271d53e3517",
+      "initial_admissibles_sha256": "dcf29e74057f71e050746772f7ab572a1a6b0a7f615e11b8d290bcefcccfa738",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "a2738f24977cb22eb063d9f5447c777524e3cb9875a974998c3e971c4aeaf605",
+          "sft_examples_sha256": "5bdc9f78106b4e3826d1a22c2b25b1e1a4fe6bdc87a2b6ac74fba70a6675fc30",
+          "causal_messages_sha256": "3193d52097d17102db85da0a71435e0f07eab04baf89fb283761e6d30520e22d",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "f60eebf32cd570604cc0c8a211ffba8e2a8a61c0006600d6be8cc7a27769e8f0",
+          "sft_examples_sha256": "cbfdacefa9954c24812564689c1910d5b917f36b8ba07d36f9849acfde4ee2ac",
+          "causal_messages_sha256": "c6f4307fb9933358405212d019fcac036e70c097e686c6a24eb5d6360f91be5c",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "a2738f24977cb22eb063d9f5447c777524e3cb9875a974998c3e971c4aeaf605",
+          "sft_examples_sha256": "5bdc9f78106b4e3826d1a22c2b25b1e1a4fe6bdc87a2b6ac74fba70a6675fc30",
+          "causal_messages_sha256": "3193d52097d17102db85da0a71435e0f07eab04baf89fb283761e6d30520e22d",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "2c59b3e682647cdee297aecc7b21c6c898cdaf9c5193f9dff69524779d89d6c5",
+      "original_source_line_sha256": "733dfa570b291faea4fe9db84834d5a357fce779d5e01eb63b9064747b4640ce"
+    },
+    {
+      "index": 36,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Apple-None-GarbageCan-19/trial_T20190908_121503_882955/game.tw-pddl",
+      "task_sha256": "8cfc165270a75fdd4d93a2331c7f2c89af7c6dd3780001ad93d159183c426906",
+      "initial_observation_sha256": "8cfc165270a75fdd4d93a2331c7f2c89af7c6dd3780001ad93d159183c426906",
+      "initial_state_sha256": "57ddfa5dc711e3bafc9772dc0b3fa3f9b61a78605c47a41165a055482cc08c05",
+      "initial_admissibles_sha256": "79bfcf18b0617688d2df51c299dd258cfe95fc51dc5f071770b0c4c4d7a16b32",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "1379a544f5d65837cf760110834ca5af6621e043d945786f936b8c701cdd727d",
+          "sft_examples_sha256": "d0a8b3427d42a781edd41471607dcd7f587f026f93d7e2529a06b8fca9be9b2c",
+          "causal_messages_sha256": "598eccc87cd9f9f672fc47a9f094336612019b48db051d0a4a9da619a0727c2b",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "bc25076ba22c6f5daad890ad4bc83c2ccdaf28b47bb20b67ea3b5ec1141ae94b",
+          "sft_examples_sha256": "ab68e4f07e95615d241e62211ffa6f4e83c77f203c0adbe9b2251dc67f50f7a2",
+          "causal_messages_sha256": "fbe3bdfa1dd6c820cab0c630b100eae7b1dff08a0ea321d6adf2ee6a05e8a08d",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "bc25076ba22c6f5daad890ad4bc83c2ccdaf28b47bb20b67ea3b5ec1141ae94b",
+          "sft_examples_sha256": "ab68e4f07e95615d241e62211ffa6f4e83c77f203c0adbe9b2251dc67f50f7a2",
+          "causal_messages_sha256": "fbe3bdfa1dd6c820cab0c630b100eae7b1dff08a0ea321d6adf2ee6a05e8a08d",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "3fd28bce0a9ef0d1c5ed973a7204a6adce7452e62525a96520936cb5e5b04f71",
+      "original_source_line_sha256": "2bc9c1d8193cdbda4561ef1e9583170457a74075c7fd22a8bb590db41b6dc51f"
+    },
+    {
+      "index": 37,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Mug-None-CoffeeMachine-2/trial_T20190907_044106_781028/game.tw-pddl",
+      "task_sha256": "5a66d93de8c71d16d3af542d66612c0c7087fdbf55f7f6b18325a49158988599",
+      "initial_observation_sha256": "5a66d93de8c71d16d3af542d66612c0c7087fdbf55f7f6b18325a49158988599",
+      "initial_state_sha256": "5afba76e046ab04a24fff7bcf665f79d6fa269080b85a8b1ef26b2667366dd97",
+      "initial_admissibles_sha256": "b34c697672efd6654c448cf2b4fa92b6a0ed65de5a1c2f0fb41459fe6fa4577c",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "fba6b6cc9ab31a174a29c183e1775947f1b246e6d002d218586ba23613d6d659",
+          "sft_examples_sha256": "1377ced49ad9f9388a44efd1ef770dfbcd1c6e46f842bd44c7ec70ff35d24b94",
+          "causal_messages_sha256": "0cd72778621dfa7e8749c15f3fd42dd96ebb3f23db80dc59f6fb461bccffd6f1",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "fba6b6cc9ab31a174a29c183e1775947f1b246e6d002d218586ba23613d6d659",
+          "sft_examples_sha256": "1377ced49ad9f9388a44efd1ef770dfbcd1c6e46f842bd44c7ec70ff35d24b94",
+          "causal_messages_sha256": "0cd72778621dfa7e8749c15f3fd42dd96ebb3f23db80dc59f6fb461bccffd6f1",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "fba6b6cc9ab31a174a29c183e1775947f1b246e6d002d218586ba23613d6d659",
+          "sft_examples_sha256": "1377ced49ad9f9388a44efd1ef770dfbcd1c6e46f842bd44c7ec70ff35d24b94",
+          "causal_messages_sha256": "0cd72778621dfa7e8749c15f3fd42dd96ebb3f23db80dc59f6fb461bccffd6f1",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "78a97271ba3f719b41db21a6d83aac46753e2fd76842bfcf5b52c690f5681453",
+      "original_source_line_sha256": "18c5cceda267e4be9e5d237e6a606d60fbdb1ff62479966b8e7562164149c3df"
+    },
+    {
+      "index": 38,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Tomato-None-Microwave-17/trial_T20190912_065518_499928/game.tw-pddl",
+      "task_sha256": "35f96f35656c4f41245369bc783547376f2b13f74f03d5dd6cba8d7029b8d470",
+      "initial_observation_sha256": "35f96f35656c4f41245369bc783547376f2b13f74f03d5dd6cba8d7029b8d470",
+      "initial_state_sha256": "22845a73701c174b281917f5e9968ef57f14f1f140a49ccb34e0ec6faa955403",
+      "initial_admissibles_sha256": "6ce9d0dfe3a8bff640f4ef1a5e3b2afc91dc65951c7e1113d6d4efd970ba8d7a",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            7,
+            11
+          ],
+          "trajectory_sha256": "f53a09ccf042f9ef8902c985f7fe538315071345d0f356bf7645358002899a57",
+          "sft_examples_sha256": "d71c4cdf53ddef1fca013cf6ebe5df8cccacb3b34e310d4fb356ff957167b1a4",
+          "causal_messages_sha256": "6adc746653b85e6292db0f6290bde1d3637a911211aa5cf3fa03aba1c23514e4",
+          "same_action_prefix_length": 7,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            7,
+            11
+          ],
+          "trajectory_sha256": "f53a09ccf042f9ef8902c985f7fe538315071345d0f356bf7645358002899a57",
+          "sft_examples_sha256": "d71c4cdf53ddef1fca013cf6ebe5df8cccacb3b34e310d4fb356ff957167b1a4",
+          "causal_messages_sha256": "6adc746653b85e6292db0f6290bde1d3637a911211aa5cf3fa03aba1c23514e4",
+          "same_action_prefix_length": 7,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            7,
+            11
+          ],
+          "trajectory_sha256": "f53a09ccf042f9ef8902c985f7fe538315071345d0f356bf7645358002899a57",
+          "sft_examples_sha256": "d71c4cdf53ddef1fca013cf6ebe5df8cccacb3b34e310d4fb356ff957167b1a4",
+          "causal_messages_sha256": "6adc746653b85e6292db0f6290bde1d3637a911211aa5cf3fa03aba1c23514e4",
+          "same_action_prefix_length": 7,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "55a9b14fff0f99f31f9e1374f99e7b23eb1792194e9816aa683cf464e0ce5a74",
+      "original_source_line_sha256": "a9cbb6c861eb941e3a37dde5fb4f2a1b3a3d10c4e24de98dbba8134ca013e97a"
+    },
+    {
+      "index": 39,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Egg-None-Microwave-20/trial_T20190908_051908_943025/game.tw-pddl",
+      "task_sha256": "8b27290a82c60d4d5f33be18bb67c44d0b87acfeed19cb28e8bee9759b2ff249",
+      "initial_observation_sha256": "8b27290a82c60d4d5f33be18bb67c44d0b87acfeed19cb28e8bee9759b2ff249",
+      "initial_state_sha256": "22deccc810959b4e01e90d3eeb0bcfa1b8792239653d90848dbc5083b8b9e328",
+      "initial_admissibles_sha256": "0cd3be3c8d377376f3199c138dfa4ca9e9b1083809f65d82e9213cf7632fa745",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            7,
+            11
+          ],
+          "trajectory_sha256": "79b88cf9845dd97147ae6947079860f80b9ec71d249ce457bebc7ba89f10efaf",
+          "sft_examples_sha256": "90d8fc7bafb986cda04af4affda8c3e42d18d72cc4f6cb49981c757484fa3116",
+          "causal_messages_sha256": "fd31811659d25bb615a6be4c7ff30fa556b4f89a6d10ecc40794a7c2f2aa4897",
+          "same_action_prefix_length": 7,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            7,
+            11
+          ],
+          "trajectory_sha256": "79b88cf9845dd97147ae6947079860f80b9ec71d249ce457bebc7ba89f10efaf",
+          "sft_examples_sha256": "90d8fc7bafb986cda04af4affda8c3e42d18d72cc4f6cb49981c757484fa3116",
+          "causal_messages_sha256": "fd31811659d25bb615a6be4c7ff30fa556b4f89a6d10ecc40794a7c2f2aa4897",
+          "same_action_prefix_length": 7,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            7,
+            11
+          ],
+          "trajectory_sha256": "79b88cf9845dd97147ae6947079860f80b9ec71d249ce457bebc7ba89f10efaf",
+          "sft_examples_sha256": "90d8fc7bafb986cda04af4affda8c3e42d18d72cc4f6cb49981c757484fa3116",
+          "causal_messages_sha256": "fd31811659d25bb615a6be4c7ff30fa556b4f89a6d10ecc40794a7c2f2aa4897",
+          "same_action_prefix_length": 7,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "122bd3b103a8cacbeeb99a709a91f7119197b057c08f40a5a1c5a91ce8fadb7c",
+      "original_source_line_sha256": "95c12cf56f61e27cf0e519416df974b55f9c73e7318aaf8178fa1edb46d5e298"
+    },
+    {
+      "index": 40,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Potato-None-GarbageCan-6/trial_T20190909_132625_893504/game.tw-pddl",
+      "task_sha256": "aaed1b3a73d09224b0cdca212a14ffe476d3d6579c3264d73a6386beafd0cae3",
+      "initial_observation_sha256": "aaed1b3a73d09224b0cdca212a14ffe476d3d6579c3264d73a6386beafd0cae3",
+      "initial_state_sha256": "2abd5b0fbf4be7ec8785cd78dd972f8109cfa85e1d5d7c776531060975fde487",
+      "initial_admissibles_sha256": "13e810e6fb5a6efe70ce64d506a8ca9fe3ee161c46483f4f5d5a9bb4811d9ade",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "103c6804bb16bcacdd5f52f043b17cd5da5753e49ce3b5978be7368e2d95db7b",
+          "sft_examples_sha256": "2eedae353ecd651e1d2d00654a6913972fa98b7786da7ecb6b796d2757d59217",
+          "causal_messages_sha256": "e25e806a04d1e01ee32eb68426a9caf7ad3737199f6def8bbbe4100d2b1fde8c",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "103c6804bb16bcacdd5f52f043b17cd5da5753e49ce3b5978be7368e2d95db7b",
+          "sft_examples_sha256": "2eedae353ecd651e1d2d00654a6913972fa98b7786da7ecb6b796d2757d59217",
+          "causal_messages_sha256": "e25e806a04d1e01ee32eb68426a9caf7ad3737199f6def8bbbe4100d2b1fde8c",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "103c6804bb16bcacdd5f52f043b17cd5da5753e49ce3b5978be7368e2d95db7b",
+          "sft_examples_sha256": "2eedae353ecd651e1d2d00654a6913972fa98b7786da7ecb6b796d2757d59217",
+          "causal_messages_sha256": "e25e806a04d1e01ee32eb68426a9caf7ad3737199f6def8bbbe4100d2b1fde8c",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "bf19b992bca2c75e34d4ae41909b096cced4b59165171102311ba33be90f067b",
+      "original_source_line_sha256": "196acb24bf02e179698b45cab04da42f7566b217e6fd4a367e6742bd0593d10d"
+    },
+    {
+      "index": 41,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Potato-None-Fridge-2/trial_T20190909_030720_576619/game.tw-pddl",
+      "task_sha256": "1d9a63bc00c91d21328f25cda56875d92f6023587e47ee47e69902eedf9cf256",
+      "initial_observation_sha256": "1d9a63bc00c91d21328f25cda56875d92f6023587e47ee47e69902eedf9cf256",
+      "initial_state_sha256": "8a56c7b670901a3afddebdd658f8e57a75b9cf0fcb26ca4604fab65e8f118a66",
+      "initial_admissibles_sha256": "b34c697672efd6654c448cf2b4fa92b6a0ed65de5a1c2f0fb41459fe6fa4577c",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            7,
+            11
+          ],
+          "trajectory_sha256": "3e9f190947661abf37ad104b1f268b60931d8a40bdf5b305a9b65b33a3ef65d9",
+          "sft_examples_sha256": "4589cc3f73ab814fd0b45e6e7b0bde9327660432949b16135c15d2cbe033374e",
+          "causal_messages_sha256": "a550e5fcb7974b625930f9eb93b5ba4e421864abe9be8959b2e82d832ea88401",
+          "same_action_prefix_length": 7,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            7,
+            11
+          ],
+          "trajectory_sha256": "3e9f190947661abf37ad104b1f268b60931d8a40bdf5b305a9b65b33a3ef65d9",
+          "sft_examples_sha256": "4589cc3f73ab814fd0b45e6e7b0bde9327660432949b16135c15d2cbe033374e",
+          "causal_messages_sha256": "a550e5fcb7974b625930f9eb93b5ba4e421864abe9be8959b2e82d832ea88401",
+          "same_action_prefix_length": 7,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            7,
+            11
+          ],
+          "trajectory_sha256": "0e7d825082a9b0ecb8872cb38df34a06b877a1c353bf26e652575b397f2e7708",
+          "sft_examples_sha256": "6952734e35195bbcb4b9e3daabcb4ef392886574cdb50db05694460748cb9bde",
+          "causal_messages_sha256": "903aff05d06cdd1bd9c33ee9d25dd7f903ff243c54ebe88bf2423334e4f98081",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "a1bb99f16cc241ce82a4903f4ef05df5e3993f83a402951e6f7f5a5551431629",
+      "original_source_line_sha256": "36e1302c1ebfd29c44bd561f966660e552c7f97e38325a4957b3e58254b1c110"
+    },
+    {
+      "index": 42,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Potato-None-SideTable-28/trial_T20190907_075841_463460/game.tw-pddl",
+      "task_sha256": "aefb0cb87ec393e1b15659eae2d8f8afd4f2d8714891930a89420e8460effa2d",
+      "initial_observation_sha256": "aefb0cb87ec393e1b15659eae2d8f8afd4f2d8714891930a89420e8460effa2d",
+      "initial_state_sha256": "7b287f1ae89705e4630d16211c684743d63f0eb87d3a670f4ab6621471885840",
+      "initial_admissibles_sha256": "a56e59f973368046a3723038a17b63ad015646bb09b03c7d86b4f21301047e44",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "147e48ec319aaeca3f30ef1aeeb75c7483f985bfda1f7e5c9cf3cbb414fd5678",
+          "sft_examples_sha256": "4bbe1038afc60d343c8f822d0d6d92b115f74da3f8d5dcff61b263f812f2885f",
+          "causal_messages_sha256": "c85c96c9dc71413cb2a17b74f2b828c47dae5d1e8a7c9b4acf6d11b92d1c4a29",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "147e48ec319aaeca3f30ef1aeeb75c7483f985bfda1f7e5c9cf3cbb414fd5678",
+          "sft_examples_sha256": "4bbe1038afc60d343c8f822d0d6d92b115f74da3f8d5dcff61b263f812f2885f",
+          "causal_messages_sha256": "c85c96c9dc71413cb2a17b74f2b828c47dae5d1e8a7c9b4acf6d11b92d1c4a29",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "147e48ec319aaeca3f30ef1aeeb75c7483f985bfda1f7e5c9cf3cbb414fd5678",
+          "sft_examples_sha256": "4bbe1038afc60d343c8f822d0d6d92b115f74da3f8d5dcff61b263f812f2885f",
+          "causal_messages_sha256": "c85c96c9dc71413cb2a17b74f2b828c47dae5d1e8a7c9b4acf6d11b92d1c4a29",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "37153ce420779c3f8b1e12f972e7f0c6459d6523543b2a538200910ca11182ab",
+      "original_source_line_sha256": "7f286a51abd8326392cf84e6860bcf104bec5fd57084b0e3b4354cac3f1335c4"
+    },
+    {
+      "index": 43,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Cup-None-CounterTop-22/trial_T20190909_023638_397924/game.tw-pddl",
+      "task_sha256": "dd871a7fdf9d17a8f896dff6e53237dd19a20e1797826f30aa84ea7dc09920d1",
+      "initial_observation_sha256": "dd871a7fdf9d17a8f896dff6e53237dd19a20e1797826f30aa84ea7dc09920d1",
+      "initial_state_sha256": "bca3583147b2068a26901dc718e153ecc4a70a5c2f1e097ef4c324b02576cc0e",
+      "initial_admissibles_sha256": "56f12d3fedc0a6ab4622ce63c28d0c3a9996f02d59c5e09c83a1dc709720ad72",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "cddb5dee08b850155676e374181c082228c4daf816fb72ee3f96f2ccb58ce501",
+          "sft_examples_sha256": "1d6ab83f42def08a872dc3006bb9723b252cc4159d797b01217b82e2d67e3171",
+          "causal_messages_sha256": "c835e5405529c938889e236cc6f36e105c557861549414d98d63f8a0054485b0",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "a90122e42920309ffff93aa82349168310c6bbbd1093280a9432bc8e27f01248",
+          "sft_examples_sha256": "556bfc2941812fd8873c93c1a36c66c55da13dc373359cf3f03086996b3f1d24",
+          "causal_messages_sha256": "8ff71e72d9a95e29d80ea9395e1e6e858c2f38e3f3b84c671c6c91dbe359f1dc",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "cddb5dee08b850155676e374181c082228c4daf816fb72ee3f96f2ccb58ce501",
+          "sft_examples_sha256": "1d6ab83f42def08a872dc3006bb9723b252cc4159d797b01217b82e2d67e3171",
+          "causal_messages_sha256": "c835e5405529c938889e236cc6f36e105c557861549414d98d63f8a0054485b0",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "3ab127550fa0d6d00e17b97da38afa384d5ee56879fbec8da062d098372e86da",
+      "original_source_line_sha256": "dabc6c2ef5a5ee29546633d5d70f3213e603881bfe1511240be2df8feecfd80b"
+    },
+    {
+      "index": 44,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Mug-None-SideTable-28/trial_T20190908_212726_073302/game.tw-pddl",
+      "task_sha256": "2e1f9e20ff8e63c86d6ac73e6ea82e4fa2bf9bc2a3726ef0de74daf9bbb10ab8",
+      "initial_observation_sha256": "2e1f9e20ff8e63c86d6ac73e6ea82e4fa2bf9bc2a3726ef0de74daf9bbb10ab8",
+      "initial_state_sha256": "e6819661221f8289900cf7c84ade43e624b38749156e3fc7d97c8d1bdc74417a",
+      "initial_admissibles_sha256": "a56e59f973368046a3723038a17b63ad015646bb09b03c7d86b4f21301047e44",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "139e1ee3a081d77d579820994cc915354032652f90a1aa2da601a7310bcbc491",
+          "sft_examples_sha256": "e3266eeb7b83f9bff4af7e53c96a4c4a0e53692948a39df43acca91d118fd88c",
+          "causal_messages_sha256": "b3499aef7dc02dbe746f6b32dbbe40fbf8a77585af3a32b042f665acfa356607",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "139e1ee3a081d77d579820994cc915354032652f90a1aa2da601a7310bcbc491",
+          "sft_examples_sha256": "e3266eeb7b83f9bff4af7e53c96a4c4a0e53692948a39df43acca91d118fd88c",
+          "causal_messages_sha256": "b3499aef7dc02dbe746f6b32dbbe40fbf8a77585af3a32b042f665acfa356607",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "2f2ef9ea93d0a69750acfb01275234396ea63e2475625d88a27c365dfe5001f3",
+          "sft_examples_sha256": "b0c38463fb0962dbbbe09d0aa9f9af739fea137aca72cb75c23ec852627386b3",
+          "causal_messages_sha256": "8fd74fcbfdd16730c5e36aa4cf38388e2b99eaa7d998f0af07bce5e0e3a62898",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "a5b87cc9c521bd805e36587c6fde7c8f99e67fda5e14317ec5ec7a7481aaa0cd",
+      "original_source_line_sha256": "4e0e2ce26e16c5de566d8e9549c7744d873eed66af007150fbe58022e1ec20ea"
+    },
+    {
+      "index": 45,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Mug-None-CoffeeMachine-3/trial_T20190906_233939_167170/game.tw-pddl",
+      "task_sha256": "c4e2891f75992f7fc477e0c43e9e93033e2ec5704cad063ef902e70200e52e4b",
+      "initial_observation_sha256": "c4e2891f75992f7fc477e0c43e9e93033e2ec5704cad063ef902e70200e52e4b",
+      "initial_state_sha256": "45d79c7d328bbdd93951e5c2687198e6305e91986248a24de31551dbedf5437f",
+      "initial_admissibles_sha256": "d7cdc76fd2e2ed01055c1c2f08ed30bc2454f50fc9f36c82c3195652c2865a8d",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "6c5be12cb91bc430ef5cb0bf1d7e225a60082935870c44a0a937c09197a965aa",
+          "sft_examples_sha256": "d869ae5432c2eb647e5f84ef56d694cbc6b9536fdc2f57f9b4ad790e5872e2ea",
+          "causal_messages_sha256": "e015bbfbfb4e19cc174cc414e9a0a6982d236eb456111e7d71cab57d8a4d164f",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "b7cc0b186925d922aed4577bea1e87a435c6e2c87ffd24a22e2ebc7c55576613",
+          "sft_examples_sha256": "7ad81fcabbe9e00ed18f00f4036565cf6aea967fd91ec05ed0cec2969a748544",
+          "causal_messages_sha256": "fee7233990a0b417bfc99e137555734c3d42fdda323ff3dc3bebcac542b7d46f",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "b7cc0b186925d922aed4577bea1e87a435c6e2c87ffd24a22e2ebc7c55576613",
+          "sft_examples_sha256": "7ad81fcabbe9e00ed18f00f4036565cf6aea967fd91ec05ed0cec2969a748544",
+          "causal_messages_sha256": "fee7233990a0b417bfc99e137555734c3d42fdda323ff3dc3bebcac542b7d46f",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "16e217c923011502d3ec2efa1fcfd42b7f5b6bc1ac025e5749e156ed562c6114",
+      "original_source_line_sha256": "34ba66e8b9b13ddb89e41259c49e0cd0e0349c3b30ab9775dae6fc23317ac2ac"
+    },
+    {
+      "index": 46,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Cup-None-Cabinet-22/trial_T20190907_173342_454704/game.tw-pddl",
+      "task_sha256": "f376593f3896d4eec8463af85c5a86a37009a92c87073e87f991a7c36f87cdeb",
+      "initial_observation_sha256": "f376593f3896d4eec8463af85c5a86a37009a92c87073e87f991a7c36f87cdeb",
+      "initial_state_sha256": "c3e84e466a8398ff9de97b0927c417f6323bec072b60de5a1b87df6bf975ebe5",
+      "initial_admissibles_sha256": "56f12d3fedc0a6ab4622ce63c28d0c3a9996f02d59c5e09c83a1dc709720ad72",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            7,
+            11
+          ],
+          "trajectory_sha256": "82a671ac7dcc918ed07dcda4fe1d5f40d7b92d5bc083c3d4c2285355b4b358bd",
+          "sft_examples_sha256": "7e7eebf1da0ad4a49ab66bcf617db6a4c4b97f620e5939dae317b54f0b5ee5fd",
+          "causal_messages_sha256": "f16a6a171e16cc968a6c0cabd1f46a006c54e78fde24ddf3129f1418c2b8993b",
+          "same_action_prefix_length": 7,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            7,
+            11
+          ],
+          "trajectory_sha256": "abc25e0843b3c68158c4b64207b00fe6fc7bbe9d2d28dd53e2331e172070c68a",
+          "sft_examples_sha256": "76f9d0b779168e645730f1b3f185afa65a516ba04fbd39f126ed65f6555c783b",
+          "causal_messages_sha256": "e90a5bbdc0945cd7b0866ad76f8b0323fc0692a0f16530018467fd86de9d0390",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            7,
+            11
+          ],
+          "trajectory_sha256": "33f50ca1dc80ce6f0104862e04a97b89a898262394d637432f609b18137723a4",
+          "sft_examples_sha256": "e54a3a32d86729701e174514eeb3b48bc80629c454bdb8d11d7ae56a4a1308c4",
+          "causal_messages_sha256": "83b20c2a334c5979eb50d621b59822bd90ad4faf74fb56a6fd897653d6e436ed",
+          "same_action_prefix_length": 4,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "51a476b5a7e5dbc4009c453a10255623d852000ef4a422a3ff848bcf8a830e5f",
+      "original_source_line_sha256": "6afae4796ad35aaacda92a6a39478354b98ab9fc1c47ea01849ecbd43d306bbe"
+    },
+    {
+      "index": 47,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Apple-None-GarbageCan-8/trial_T20190907_043118_286709/game.tw-pddl",
+      "task_sha256": "1718733be9a5792184b8a8e668edbdcde406afb4405c64cafbc0242947ce574f",
+      "initial_observation_sha256": "1718733be9a5792184b8a8e668edbdcde406afb4405c64cafbc0242947ce574f",
+      "initial_state_sha256": "bb756a2d464971ab49bcda1f8be4ce8a172c80fe6dfbb59a275e2038e0d723a5",
+      "initial_admissibles_sha256": "09793f8939902fc113ffd4188672570f060198d5e55a285e45ea4d7b51fe5996",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "c8c2c094602e8c28daf39fafcf7c37b66e6311d83a55e80fff7f715224b2ea36",
+          "sft_examples_sha256": "cdb57c04dae4d43571ed7f4b577e70f9917823f437e98c112581cffc7c7118b3",
+          "causal_messages_sha256": "d4adc3512f27b6516fc871ef628e0ede5e00cda2590441c0e6e92e3c10abb8d7",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "4aa9ad23c054ed3b2d2825603c6edb8cd8dd89753a34f711fae3d79cb40be1d0",
+          "sft_examples_sha256": "9e477d9a4f4240fa40ec021716eb9e5a034c28b19ecc90b34838153f996a6297",
+          "causal_messages_sha256": "49c30fd81fe4bad91fc1627ce770d4e83e9ef17ae968f4f1318965d53c9ef011",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "4aa9ad23c054ed3b2d2825603c6edb8cd8dd89753a34f711fae3d79cb40be1d0",
+          "sft_examples_sha256": "9e477d9a4f4240fa40ec021716eb9e5a034c28b19ecc90b34838153f996a6297",
+          "causal_messages_sha256": "49c30fd81fe4bad91fc1627ce770d4e83e9ef17ae968f4f1318965d53c9ef011",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "925ea2dad594f3b9846b6528a39348f77ddc76b4cf5cd985fc1730038e20429e",
+      "original_source_line_sha256": "7635f93810ca7769a08f920e1e7e0287b2cfb58c8826236e81c6ef95f7fc3877"
+    },
+    {
+      "index": 48,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Mug-None-Cabinet-25/trial_T20190909_095542_548585/game.tw-pddl",
+      "task_sha256": "4d22d4f6c0cb9768cf28622b146da759330acf810449b431957237b00767c822",
+      "initial_observation_sha256": "4d22d4f6c0cb9768cf28622b146da759330acf810449b431957237b00767c822",
+      "initial_state_sha256": "9d8598134dbe8bf9a89d3302449edfa7b2418dad6e414aaa8576ee3fafde36a3",
+      "initial_admissibles_sha256": "a865533b3a5ef749668edfbce86d282ab19aa587fa0ab55a2389581563243e06",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "354fe1ba30bbe59d73b6f6f2d0279434e2df1dad82e4562f6bdedb10bf6610ce",
+          "sft_examples_sha256": "9cf80ba336fab0520596723f63a99050bdc95f93a461cbbb5a3b4a1a12734a8b",
+          "causal_messages_sha256": "ec9deff2a97e8e94bd926dfbc1b5bdb09f8c0fbee24e69e59923f89d7f607b4b",
+          "same_action_prefix_length": 6,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "3153d8771e2b633ce78febc6d00889b8b40ade453117da81f76f473dc370e9d7",
+          "sft_examples_sha256": "57aee8b6a181409af2292dbeeca0d305278c9ad7790cd8d1904b855c1bb65016",
+          "causal_messages_sha256": "30dd809e639df1288f3c01f0b4b7bbd89fadc31469b7f75579f35a08a8988d0a",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            6,
+            10
+          ],
+          "trajectory_sha256": "3e8947dbeefc691e16424e0fb0607d3e4436fa92ce9af06dacefb2fdd4ca3c63",
+          "sft_examples_sha256": "7dae022fbf20fe1e99e93f39ccf55c63ff56a826a1d5bc88898978fa5ab0dedf",
+          "causal_messages_sha256": "4c7d734185fca118f35c8ff590fad09e590f5c793b0a70fa8fca1221e0fbd083",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "0ea2892a17309b7168fc1899574b94c18078f88acdf71fef51258c33dada6d46",
+      "original_source_line_sha256": "2d9a5f6e7154c7d303faf3ca9cf07cdaf04efd9d665461c4ab990638b5640ff3"
+    },
+    {
+      "index": 49,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Plate-None-Fridge-1/trial_T20190908_010704_977592/game.tw-pddl",
+      "task_sha256": "d616293fa97e4dba7428e5c8e280da16e5c876a8fade10b25978009602d7657b",
+      "initial_observation_sha256": "d616293fa97e4dba7428e5c8e280da16e5c876a8fade10b25978009602d7657b",
+      "initial_state_sha256": "3e02572ee3368f4b235c0ec48f84ca36db9e3edd2d5114dadcf76b09982c0805",
+      "initial_admissibles_sha256": "cbe67b17c8d8012366ba45365476fb5ad65378d6648249a1a5829b524575a99f",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            7,
+            11
+          ],
+          "trajectory_sha256": "0b7fc1b7d1b66c25645403ffdd828093d28ff8f12e83490f78270b6a469c10ac",
+          "sft_examples_sha256": "759e7ad49e43d0e4586b5eba44da3dd716b66c836603e5f40e5fe1c9235f3f89",
+          "causal_messages_sha256": "ca7a72aedb37f2c49333471ccc33cdb98cae0dfec31e1a7b3565f58412af6a32",
+          "same_action_prefix_length": 7,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            7,
+            11
+          ],
+          "trajectory_sha256": "0229e234f4a7d3b9ffe4a29f17c682dc1d228b8173dca9c0bbe1edc5fea6a567",
+          "sft_examples_sha256": "54ed6cd6e17f13c813e76e0bed38b7d373b51e04e14d737607dbe4e7f19d4913",
+          "causal_messages_sha256": "33ccb08ce93b3b6ea13cf14a22bac9205fd7faa32fefd13667588f3f7404692b",
+          "same_action_prefix_length": 1,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            7,
+            11
+          ],
+          "trajectory_sha256": "0f4a356061e8e1c7e30c0d12ba8aecc5e74482480e26b163d6717ceb680c925b",
+          "sft_examples_sha256": "7ffcefb9c46a154520f2776202a8b93d71f8f6d601ae3235aba4455db998f81e",
+          "causal_messages_sha256": "1d4212e5d29fa81c6493d82a7c3d22268c04c9a7c8e040208b303270d3a5749f",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "bdfb4d01f49363348c04ccd9f790c545f4dddb53ef42d3b5823302b668b0eea1",
+      "original_source_line_sha256": "4c55046ca0819c9d64d80089525be7c2b98cdac77018b8b5629b39439512ebd5"
+    },
+    {
+      "index": 50,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-TissueBox-None-GarbageCan-230/trial_T20190908_050916_526395/game.tw-pddl",
+      "task_sha256": "42830bc789c08d5ced4b7b03929e51dd0d8c2410d50f3ef77482086f36e723ff",
+      "initial_observation_sha256": "42830bc789c08d5ced4b7b03929e51dd0d8c2410d50f3ef77482086f36e723ff",
+      "initial_state_sha256": "9ad4ae9ddbe6332afc81be02291b314fe6bdbf86eb72544a1dd75b60b5624046",
+      "initial_admissibles_sha256": "546da550b79bea97cde2ce10b3328f96b5baf4ff4119de860e3e9cdff77d090e",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            8,
+            8
+          ],
+          "trajectory_sha256": "b7c10a0dee3c2cc0645748e2f36b09ec51e8a8ae01111312ab9f3f7396fe77e9",
+          "sft_examples_sha256": "260785a410ecb16e0e5b32237ad2fbf34433f7fa263678abd32f90137c1b41dd",
+          "causal_messages_sha256": "9a3838def49ac42f48b666a164666fabdea69ee8a0622fa5e49912921bf9497b",
+          "same_action_prefix_length": 8,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            8,
+            8
+          ],
+          "trajectory_sha256": "3de617889195a89f2448404aec4aff82005903b9cd6facdeeac23399ef0e9f14",
+          "sft_examples_sha256": "cd379e47409eb1ab1cde988da9bd6c4e124f000d320e760340d2c62339987eb0",
+          "causal_messages_sha256": "1f44960f6b9fb6ea8a77950d47053abcf7f4a9b5133b2c54958b8eb245162026",
+          "same_action_prefix_length": 1,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            8,
+            8
+          ],
+          "trajectory_sha256": "3de617889195a89f2448404aec4aff82005903b9cd6facdeeac23399ef0e9f14",
+          "sft_examples_sha256": "cd379e47409eb1ab1cde988da9bd6c4e124f000d320e760340d2c62339987eb0",
+          "causal_messages_sha256": "1f44960f6b9fb6ea8a77950d47053abcf7f4a9b5133b2c54958b8eb245162026",
+          "same_action_prefix_length": 1,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "2125bc7af86b7048726a0bc9d199de5ff57bedadade67912936a1f70f34c828f",
+      "original_source_line_sha256": "6467f4b20564ce47e14e63c33899e328b1ad0110a41d171c65429d739f44e5f8"
+    },
+    {
+      "index": 51,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-ToiletPaper-None-Shelf-415/trial_T20190908_172037_784467/game.tw-pddl",
+      "task_sha256": "80e16b48a9e5523f1a339adaed02d924febe5dac6ecbb736d6a7795cde4d1781",
+      "initial_observation_sha256": "80e16b48a9e5523f1a339adaed02d924febe5dac6ecbb736d6a7795cde4d1781",
+      "initial_state_sha256": "586747e789d66ee4a9b19faaba019724b0852b615a98eda6ae0ad6d80547f7d4",
+      "initial_admissibles_sha256": "188c6a963cbe4c947c368637cd333b4b34250b969cfe21def3f8ba5b83a2de9b",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            8,
+            8
+          ],
+          "trajectory_sha256": "84c9585ab436a855d99297d7054a4b3329d9dc918e78c0c4084c68b5e1469c4b",
+          "sft_examples_sha256": "9a9bda3e8acb6069bb9b40ad0a9e654727bc61939fb43e2ace0f64ee6c4f3beb",
+          "causal_messages_sha256": "14f28983ece539095ebd2929aed83f717e794e70d4f900c5a4795c3220f50049",
+          "same_action_prefix_length": 8,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            8,
+            8
+          ],
+          "trajectory_sha256": "03890783e7ad828f673cd2b105c28cb823f4e317ad4e8b7c25a60f6d75c82199",
+          "sft_examples_sha256": "20616b978442600b89d8e34879f19e3daeaf4645724abf7baea9cf949ba41f22",
+          "causal_messages_sha256": "5be98307b6aa1b6505eae812bbd415f203178e9322e76ddd8e241205af239adc",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            8,
+            8
+          ],
+          "trajectory_sha256": "03890783e7ad828f673cd2b105c28cb823f4e317ad4e8b7c25a60f6d75c82199",
+          "sft_examples_sha256": "20616b978442600b89d8e34879f19e3daeaf4645724abf7baea9cf949ba41f22",
+          "causal_messages_sha256": "5be98307b6aa1b6505eae812bbd415f203178e9322e76ddd8e241205af239adc",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "a78686ad97f86e239e681b0c19a477123dd4757b1047aa368dff57a8063979fe",
+      "original_source_line_sha256": "785e4170bb8b5e5549c0db197dc7964e48e22fdd4841795c8ae176e2ec8ab115"
+    },
+    {
+      "index": 52,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-KeyChain-None-Sofa-224/trial_T20190908_015657_698925/game.tw-pddl",
+      "task_sha256": "1d05af0bc9537c9b8f5cf3bf5ba97cf896e8ab0186c882e3f29c1d9dfbcead22",
+      "initial_observation_sha256": "1d05af0bc9537c9b8f5cf3bf5ba97cf896e8ab0186c882e3f29c1d9dfbcead22",
+      "initial_state_sha256": "90bd60ec71a54a8960a7d34ee54b4e39e6795ae97938dd212efba4258a75debc",
+      "initial_admissibles_sha256": "fec37b422f601603d7e41a646fc8bb19129a7b4d91f17f50aba961679467a6c6",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            8,
+            8
+          ],
+          "trajectory_sha256": "bfadd7d5285a9dbe500dca66a31eec6a1292168d00252fceff2b17757cc91681",
+          "sft_examples_sha256": "773c4c0b5c48f1c3d0eaebc5aea54d97e7f1e2f1305b1ca941723a17ca868a81",
+          "causal_messages_sha256": "7d7f9137acd59256b1b555dbf1284a86ad1a41ae3b35f5dce4e1397de50d8c5a",
+          "same_action_prefix_length": 8,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            8,
+            8
+          ],
+          "trajectory_sha256": "a7917f64a9051fcca5162002f3c64cc27de464dc52c49df4db674263f58f2c68",
+          "sft_examples_sha256": "5dcec2e8560edd980933f5e2cf8f7a6122c5eda542f71ef956bdc1e532d323f6",
+          "causal_messages_sha256": "145d76d39d333e38977cdd6de81afde8ca38d2e108be149dcb05859f6d659809",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            8,
+            8
+          ],
+          "trajectory_sha256": "a7917f64a9051fcca5162002f3c64cc27de464dc52c49df4db674263f58f2c68",
+          "sft_examples_sha256": "5dcec2e8560edd980933f5e2cf8f7a6122c5eda542f71ef956bdc1e532d323f6",
+          "causal_messages_sha256": "145d76d39d333e38977cdd6de81afde8ca38d2e108be149dcb05859f6d659809",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "f19d5ec98c58fab078c3ec3160d9f8bb374363057f0189133f5f3eabfcbe39c4",
+      "original_source_line_sha256": "8851cecfbaa940680f29f39e7942a6c70acd56e1c2b4416fced72137ed06156d"
+    },
+    {
+      "index": 53,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-Pencil-None-Desk-313/trial_T20190906_200931_060619/game.tw-pddl",
+      "task_sha256": "55a98ecae6851ee1f2a0d89fa39c415f35e90168b9bcd6aefceea4a0594ca567",
+      "initial_observation_sha256": "55a98ecae6851ee1f2a0d89fa39c415f35e90168b9bcd6aefceea4a0594ca567",
+      "initial_state_sha256": "20e14db50d1b4b18640f1cc2623649a5317c78ba8a3f90d20e9e4a15a1dd8e15",
+      "initial_admissibles_sha256": "008c1093179fe2015e4349d38bf21acd79f4891b4e8ddc11e2e60e8f809737b3",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            8,
+            8
+          ],
+          "trajectory_sha256": "5245f231c233d4c4ddc8e99a0ab5df2b2934bebc60384a5e4429a3420cc76f2a",
+          "sft_examples_sha256": "645e7be9ae0aa314d6990cbf667a535e9a1d4d16740ca69f5648cb6134b810e5",
+          "causal_messages_sha256": "b387bc1e3f4c9dfca3c7b9e1f9367e1cb9533cf5504fd484bd216186b8268d92",
+          "same_action_prefix_length": 8,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            8,
+            8
+          ],
+          "trajectory_sha256": "5245f231c233d4c4ddc8e99a0ab5df2b2934bebc60384a5e4429a3420cc76f2a",
+          "sft_examples_sha256": "645e7be9ae0aa314d6990cbf667a535e9a1d4d16740ca69f5648cb6134b810e5",
+          "causal_messages_sha256": "b387bc1e3f4c9dfca3c7b9e1f9367e1cb9533cf5504fd484bd216186b8268d92",
+          "same_action_prefix_length": 8,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            8,
+            8
+          ],
+          "trajectory_sha256": "5245f231c233d4c4ddc8e99a0ab5df2b2934bebc60384a5e4429a3420cc76f2a",
+          "sft_examples_sha256": "645e7be9ae0aa314d6990cbf667a535e9a1d4d16740ca69f5648cb6134b810e5",
+          "causal_messages_sha256": "b387bc1e3f4c9dfca3c7b9e1f9367e1cb9533cf5504fd484bd216186b8268d92",
+          "same_action_prefix_length": 8,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "66609bb1cc38e89c2f6b42210ca5b569af09207581814ab8bd889f897c1d7305",
+      "original_source_line_sha256": "c899f2382f56d346a646355fa17515ec35f955e325f2913207e68e5afa24ff55"
+    },
+    {
+      "index": 54,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-Laptop-None-Ottoman-203/trial_T20190907_034356_767031/game.tw-pddl",
+      "task_sha256": "ff5e6a6fbc8b0d5de9d03b9dac79819a6fd39c8fa7587660e0a30f39978792bf",
+      "initial_observation_sha256": "ff5e6a6fbc8b0d5de9d03b9dac79819a6fd39c8fa7587660e0a30f39978792bf",
+      "initial_state_sha256": "fd4532ab094b5baa2a4543c58d86bd7dad6d2d8c427d2992c6ad60f21e2a6ad4",
+      "initial_admissibles_sha256": "4811b0126e4f4bb10330979f0f3d94e34aa5c68863b71507cfbc8deefd93ec4a",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            8,
+            8
+          ],
+          "trajectory_sha256": "f662ca88ec4153cb0e091a25de0a126c8a0c5b0458195a2cfe393b70c6cfeb6b",
+          "sft_examples_sha256": "611bc37eb2e075f6bb41f7a946edfdd64047d4526fb986c05564158f36f42609",
+          "causal_messages_sha256": "1f2f1448f1d9755aef3e6de0414e0e480665d187f34e72d60ca11804bf3d8f24",
+          "same_action_prefix_length": 8,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            8,
+            8
+          ],
+          "trajectory_sha256": "651762f75978a18c2eaa4155190100d4d9c397b336153f092bc88904ab820400",
+          "sft_examples_sha256": "ab606e078f85000ae003f4a7fd33e7de2eb8ba2f2a0505f39671ef505cbd8e55",
+          "causal_messages_sha256": "6f00554185239f1b5baea5a3cf671f232d6b8bd621baca77b800d8920bce5806",
+          "same_action_prefix_length": 1,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            8,
+            8
+          ],
+          "trajectory_sha256": "651762f75978a18c2eaa4155190100d4d9c397b336153f092bc88904ab820400",
+          "sft_examples_sha256": "ab606e078f85000ae003f4a7fd33e7de2eb8ba2f2a0505f39671ef505cbd8e55",
+          "causal_messages_sha256": "6f00554185239f1b5baea5a3cf671f232d6b8bd621baca77b800d8920bce5806",
+          "same_action_prefix_length": 1,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "735039634b0de1d35bebc2888eb9f491cdf9da554b6907ec1a3e6a37110b5df6",
+      "original_source_line_sha256": "3d6e07a1a547e365e85e79e739cc930466dcf81a6d1922202f722abac6aaa218"
+    },
+    {
+      "index": 55,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-Candle-None-Shelf-429/trial_T20190909_075128_271977/game.tw-pddl",
+      "task_sha256": "437e88e75a898419da6baac6e3f8842af06dbe3f43b03d80d61c07948c526eaa",
+      "initial_observation_sha256": "437e88e75a898419da6baac6e3f8842af06dbe3f43b03d80d61c07948c526eaa",
+      "initial_state_sha256": "fc9d56ae74279b361251b06a388fa6529b28e658fa7a72e2da239e09fa859c16",
+      "initial_admissibles_sha256": "ced2f4464b6cffb19b0cc5bfe748a62a737e404f91eef4dee8f4bdf9e899e043",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            8,
+            8
+          ],
+          "trajectory_sha256": "3c4bf9c89c0bd48ccbdc7d989cdc23e332f67554734787e797220a187f4d0b7f",
+          "sft_examples_sha256": "ecb084c56c404e81227341031ac654dae2ffd545d6aab5344d9e274427723693",
+          "causal_messages_sha256": "409b4ca68461ae093dbc5ccf3bbccf63b9ff23a402a0b657a71c2a3d12f8066c",
+          "same_action_prefix_length": 8,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            8,
+            8
+          ],
+          "trajectory_sha256": "e3ee8c2623c540849a1ce723c109386e88acbed69aca9833a841898a7b023e72",
+          "sft_examples_sha256": "767e4651253e670ca574185c0626bb43299fc46a7dbd34ae32a54ab0401c1fd4",
+          "causal_messages_sha256": "a1ce7248964966ed3e31c5f6f3e748e7742bcafff8e50399de4a99ef0f1b3073",
+          "same_action_prefix_length": 2,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            8,
+            8
+          ],
+          "trajectory_sha256": "e3ee8c2623c540849a1ce723c109386e88acbed69aca9833a841898a7b023e72",
+          "sft_examples_sha256": "767e4651253e670ca574185c0626bb43299fc46a7dbd34ae32a54ab0401c1fd4",
+          "causal_messages_sha256": "a1ce7248964966ed3e31c5f6f3e748e7742bcafff8e50399de4a99ef0f1b3073",
+          "same_action_prefix_length": 2,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "6ced0ffb6f9052071bf51120378cb30d3334cc5e4986c9350b9e0f8a62265659",
+      "original_source_line_sha256": "59b8e131000bac90b9b8816806f1460e7a9483878c0c1d0bccbdaea1a2c993eb"
+    },
+    {
+      "index": 56,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-CreditCard-None-DiningTable-311/trial_T20190908_072922_474814/game.tw-pddl",
+      "task_sha256": "ee90fc63b80e4087454253f5cfc271287053eefa6a86a237128cc7b5d0c4648e",
+      "initial_observation_sha256": "ee90fc63b80e4087454253f5cfc271287053eefa6a86a237128cc7b5d0c4648e",
+      "initial_state_sha256": "1560d5af172801c086ce1fc1bda958af579c75a1c6ce4761d9b2efe362e3fb47",
+      "initial_admissibles_sha256": "cfd7aef7addf8cb690839ec0b2f2a6181c23c2374ea0a2005842cd7b782501ce",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            8,
+            8
+          ],
+          "trajectory_sha256": "ea406cda5af0229575ada2a8e1d237165f3c9d6f7362f221ff860f03ced0f146",
+          "sft_examples_sha256": "b67edfa32569a4b80cdfc96c385ffdfae757f2dc48c95d74414ebe7c84e35899",
+          "causal_messages_sha256": "9bbe9c57b35297a601e88c1f822552b61049e24ea638a346682e0bd699cdefd9",
+          "same_action_prefix_length": 8,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            8,
+            8
+          ],
+          "trajectory_sha256": "93a05bd5059be71ee0b5671042c3c02290a57d8bc97c57dbaacf20bc2fd4ac8e",
+          "sft_examples_sha256": "aa35ed4500c33bdd6fe4b64d60df0962a582e09581922fe19dfc29434387706d",
+          "causal_messages_sha256": "5dceab45e55f3f102dfa4edb4b92d42f7ca736365df0af3352bf4d5e1156dffc",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            8,
+            8
+          ],
+          "trajectory_sha256": "eacbce219b7dd1107c1928873e47237d17bd98f7f97370770cf58504006ccd8a",
+          "sft_examples_sha256": "932994ced123b99a75982d31dd10216a4674d3215f2c7e1ab18dd040869acd50",
+          "causal_messages_sha256": "5b3abd21449590ac811076ecb11697cde5064ccf7e0740f6fbf0d42232ec81a7",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "856b783a396519aa827713d74f27831835de68687358b9002370c0f344c325fb",
+      "original_source_line_sha256": "c3c0b167911f9e1c1138f5410368bc6b38def476176425965adddda694611a67"
+    },
+    {
+      "index": 57,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-Candle-None-CounterTop-406/trial_T20190908_045902_729862/game.tw-pddl",
+      "task_sha256": "14936290ac28bd0a4a70a6cc94940daface2caa9ce8db1fade021a67b56e9ad9",
+      "initial_observation_sha256": "14936290ac28bd0a4a70a6cc94940daface2caa9ce8db1fade021a67b56e9ad9",
+      "initial_state_sha256": "069224073354544f31aa733406a33b1c56793d4b90fb68f4f255d6fff4b1191f",
+      "initial_admissibles_sha256": "fe274bcff643269fc166d8f5efecf3e09389d498a8a166344dda8047da4efd20",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            8,
+            8
+          ],
+          "trajectory_sha256": "3ab05450230d39f41989c3d1cb2442cd18eca7b6561a7c3434f08eb9f3e5022c",
+          "sft_examples_sha256": "242fd2f9c0b563be1ecd3e4dd53d85c59cc0e4309afdfae214fa1befd42fca45",
+          "causal_messages_sha256": "35029ec77de4d98e54d77512c49c3eee49fd98db8f2dc3d85abf829d42fbdda1",
+          "same_action_prefix_length": 8,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            8,
+            8
+          ],
+          "trajectory_sha256": "3ab05450230d39f41989c3d1cb2442cd18eca7b6561a7c3434f08eb9f3e5022c",
+          "sft_examples_sha256": "242fd2f9c0b563be1ecd3e4dd53d85c59cc0e4309afdfae214fa1befd42fca45",
+          "causal_messages_sha256": "35029ec77de4d98e54d77512c49c3eee49fd98db8f2dc3d85abf829d42fbdda1",
+          "same_action_prefix_length": 8,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            8,
+            8
+          ],
+          "trajectory_sha256": "3ab05450230d39f41989c3d1cb2442cd18eca7b6561a7c3434f08eb9f3e5022c",
+          "sft_examples_sha256": "242fd2f9c0b563be1ecd3e4dd53d85c59cc0e4309afdfae214fa1befd42fca45",
+          "causal_messages_sha256": "35029ec77de4d98e54d77512c49c3eee49fd98db8f2dc3d85abf829d42fbdda1",
+          "same_action_prefix_length": 8,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "cacbe653a4684517dc28cd1faf4697e38c7a158bd621046603cf410cea6481bb",
+      "original_source_line_sha256": "7b27a195b768d51f2d0f1a562af8c4605e7d83d6f0a27772e9e1f8eed2266311"
+    },
+    {
+      "index": 58,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-Statue-None-DiningTable-228/trial_T20190906_222607_743673/game.tw-pddl",
+      "task_sha256": "60834ac012896dde3cdaf4c8075f02e661aa436ca0148f7bd244bcbc5705f131",
+      "initial_observation_sha256": "60834ac012896dde3cdaf4c8075f02e661aa436ca0148f7bd244bcbc5705f131",
+      "initial_state_sha256": "eada017ec8b2428f0320a9e89531c31e17c7f06bedec1bba97bc9d3d92986781",
+      "initial_admissibles_sha256": "f9441a12ec2470d41da85f417fe716c7b0bf1f7a4ee54bc2ce6a58889ffebbbf",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            8,
+            8
+          ],
+          "trajectory_sha256": "3bd2496ba48095ae9dfab516909821715d127d9ddef158f7f25a3b3e346ec0dd",
+          "sft_examples_sha256": "aa9367542f206c92f2200ad08c5c7356b2a1c2e930ce98f79c2843b493801f0a",
+          "causal_messages_sha256": "8e08f19cd29796717886d6e17361c6e7a483aba1b9939d8d961964c30e9271ea",
+          "same_action_prefix_length": 8,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            8,
+            8
+          ],
+          "trajectory_sha256": "3ed722f28a79d453151ddda081ab30bc6e0776db3dc27ea6cd0ddcee352f0802",
+          "sft_examples_sha256": "95b31807cb6feb3f7192a99a87621b119763b046c069abbe28aab4bc007d5bf0",
+          "causal_messages_sha256": "b4e65b15469c0bc31debf586436745c100e280dfa3ae1f388aac5a3c37a7cd8c",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            8,
+            8
+          ],
+          "trajectory_sha256": "3bd2496ba48095ae9dfab516909821715d127d9ddef158f7f25a3b3e346ec0dd",
+          "sft_examples_sha256": "aa9367542f206c92f2200ad08c5c7356b2a1c2e930ce98f79c2843b493801f0a",
+          "causal_messages_sha256": "8e08f19cd29796717886d6e17361c6e7a483aba1b9939d8d961964c30e9271ea",
+          "same_action_prefix_length": 8,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "8391c4cc7c15e942b6bfcb8e87af997e731dbd859854261846bb6187f4906d24",
+      "original_source_line_sha256": "72a85fe7840f5e29bf1bdaad04e7930d44c37c6718bcfb4a07805cc23a863b48"
+    },
+    {
+      "index": 59,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-ToiletPaper-None-Toilet-408/trial_T20190909_080347_367417/game.tw-pddl",
+      "task_sha256": "f449f191cf26dc443dcbc00587eff44f2c782fde883867f79f36a1d84302d294",
+      "initial_observation_sha256": "f449f191cf26dc443dcbc00587eff44f2c782fde883867f79f36a1d84302d294",
+      "initial_state_sha256": "896fa24f1347a335ef529949e8a22fff01556b5eaffd1d55956086fcffa090d7",
+      "initial_admissibles_sha256": "441dc337d2856d4b89ccbaf22cda43fe94da6e533d56877c0c2a8cba7d2e9088",
+      "arms": {
+        "canonical": {
+          "length_cost": [
+            9,
+            9
+          ],
+          "trajectory_sha256": "4487ba7c821e3dd50afa14a42dca44fd42a71a6d199b69cf9e5b8945d4b6a9b3",
+          "sft_examples_sha256": "e8c0f7d7492b3e43018db102377645adfc4ca7f362db52e3cd53257166308989",
+          "causal_messages_sha256": "88af5b0998459a77118e488129e66be59ac0a06672a6f80909e945539c3723a4",
+          "same_action_prefix_length": 9,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "uniform": {
+          "length_cost": [
+            9,
+            9
+          ],
+          "trajectory_sha256": "c48117a48587d982634bffe655008e138c3d866aa72a283cdb7f8ff38f6d62c7",
+          "sft_examples_sha256": "fa965661ee6a9c5339842f7ff6eb612b12acfe827cb912ecfc6ed2c6ccda9bb6",
+          "causal_messages_sha256": "aeb56cc2ed3173ffec399158d6492c2a05192fa2e8328be146565605d3a09d1c",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": false,
+          "failures": []
+        },
+        "reference": {
+          "length_cost": [
+            9,
+            9
+          ],
+          "trajectory_sha256": "6bf1119e55bb07b58ecc08687ece7cb7b19204015b31de247dd579a694974586",
+          "sft_examples_sha256": "cf07874e5141f423be3c1f57e370ea43d2c230dd8b5e10e6943d29ea151db1c9",
+          "causal_messages_sha256": "cced6d6a0e0d6c54afd31c4468718fa81047718f8bd6837632f9cad4e6204f52",
+          "same_action_prefix_length": 0,
+          "terminal_state_differs_from_canonical": true,
+          "failures": []
+        }
+      },
+      "original_goal_sha256": "a08f71a0acaa2e4b723116294ae485dc1b47ccc6164fd6a0ff46e39408163bb1",
+      "original_source_line_sha256": "c7402f56bac70205892fad4a7891478889fbfbcacb4ad5140e1112f71bad065b"
+    }
+  ],
+  "limitations": [
+    "Original native120 lines, all60 pool hashes, embedded original PDDL/metadata and every retained candidate source are independently checked from locally copied artifacts. Original server game files are not reopened; goal/source provenance remains hash-bound to those acquisition artifacts.",
+    "No simulator replay was rerun. Actual execution provenance is the existing digest-bound replay evidence and reviewed replay implementation; local chain checks cannot independently prove physical execution.",
+    "No tokenizer/model was loaded. Token-level scorer/SFT consistency and truncation evidence are inherited from the existing hash-matched token audit, not newly recomputed.",
+    "train_sft.py is locally inspected and hashed; its run-time deployment hash is not part of selection adoption receipt and is not independently checked in this diagnosis.",
+    "Absence of a data-format confound does not establish the mechanism of performance decline, statistical generality, or any downstream improvement. No failed outcomes, comparison settings, or gates are changed."
+  ]
+}

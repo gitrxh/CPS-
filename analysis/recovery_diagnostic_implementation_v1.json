@@ -1,0 +1,89 @@
+{
+  "kind": "recovery_diagnostic_implementation_preparation",
+  "version": 1,
+  "created_utc": "2026-10-12T19:27:15.161747+00:00",
+  "status": "local_only_pending_independent_review_and_parent_adoption",
+  "execution_authorized": false,
+  "source_sha256": {
+    "gnrl/recovery_diagnostic_v1.py": "76b2ecc1c3593870cb05a3f22a24b8f888a1714ca57a09118bbcf7144295e26e",
+    "scripts/score_recovery_diagnostic_v1.py": "01cbd3427e788a844f0f66afe890d61e721314ab3edbff3d4b359ab3da2bad2a",
+    "tests/test_recovery_diagnostic_v1.py": "a34e20e6b9b2114c5b8f625a89a871a17b5c59b91ef345bc04eba67626c68164"
+  },
+  "candidate": "configs/recovery_projection_candidate_v2.json",
+  "candidate_sha256": "09f62bbb2001e36bda12d56d261788764710b4ec91eca17af91e0470e9068b47",
+  "pure_fixtures": {
+    "passed": 12,
+    "command": "C:\\Users\\zrx\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe -B tests/test_recovery_diagnostic_v1.py",
+    "covers": [
+      "stable SHA64 CDF and summed action+EOS scores",
+      "missing/nonfinite scores and tokenizer disagreement",
+      "causal label allowlist and same three-arm histories",
+      "complete replayed prefix plus actual forced-action history",
+      "teacher success distinct from actual learner Q",
+      "all36 denominator and structural unavailable Q=null/difference=0",
+      "missing/duplicate Q fails entire gate",
+      "unknown missingness and tampered Q rejected",
+      "replay failure closes owned environment",
+      "stale prompt history/budget stop rejected",
+      "score budget checked before forward call",
+      "score exception retains started reservation and unknown completion"
+    ]
+  },
+  "artifacts": {
+    "score": [
+      "config.json",
+      "events.jsonl",
+      "records.jsonl",
+      "score_ledger.json",
+      "cost_progress.json",
+      "expert_recovery.jsonl",
+      "uniform_viable_recovery.jsonl",
+      "reference_conditional_recovery.jsonl",
+      "summary.json"
+    ],
+    "diagnostic": [
+      "config.json",
+      "events.jsonl",
+      "records.jsonl",
+      "cost_progress.json",
+      "diagnostic.json on complete barrier",
+      "diagnostic_incomplete.json on technical failure",
+      "summary.json"
+    ]
+  },
+  "schema_contract": {
+    "adoption": "Exact field contract documented at top of scripts/score_recovery_diagnostic_v1.py. kind=recovery_diagnostic_stage_adoption, stage=score|diagnostic, independent exact source review and root adoption mandatory. Candidate alone rejected.",
+    "shared_pool": "Uses recovery_projection_v1 validate_pool, actual anchor context, fullprefix restore, state/transition schema and BudgetLedger with main candidate-derived global limits.",
+    "score_records": "180 slots in same acquisition order. Eligible records contain complete reference_scores/base_scores maps, action+EOS and prompt token counts/hashes/context_sha256, q/q_base, one SHA64 uniform and conditional draw, all3 labels and artifact_sha256. Ineligible structural slots retain no scores/labels.",
+    "labels": "Three <arm>.jsonl files, one row per common eligible anchor in acquisition order. Exact same anchor_id/gamefile/seed/after_actions/pool_sha256/selection_sha256 and causal task/history/observation/admissibles; arm/action differ. No Q filtering.",
+    "diagnostic": "36 preregistered slots; every retained action at eligible slots gets its own reset and fullprefix replay, actual forced action with certified successor match, then frozen canonicalBC greedy continuation to original100step limit. Branch records retain full actual trace/prefix/token accounting. No model training or heldout work.",
+    "gate": "Only after all expected actualQ records complete and immutable inputs reverified; derives fixed36 value differences and frozen coverage/variation/label gates. Any technical missing/extra/tampered branch makes gate null. Structural unavailable Q remains null with zero difference.",
+    "score_SFT_link": "Trainer audit-only receives selection directory and verifies chosen label token IDs/count/context against selection reference_scores for each arm. Never infer token equality from string labels alone.",
+    "review_fields_required": [
+      "recovery_diagnostic_review_passed",
+      "module_sha256",
+      "runner_sha256"
+    ],
+    "worker_invocation": "Project Python under scripts/launch_gpu.py --gpus 2; worker --adoption-json STAGE_REQUEST. System-Python parent controller owns timeout/pidfd cleanup and cumulative deadline. This preparation does not supply or execute a controller."
+  },
+  "budget_contract": {
+    "main_steps": 224000,
+    "main_resets": 3600,
+    "main_generated_tokens": 4000000,
+    "score_target_tokens": 500000,
+    "score_forward_tokens": 7000000,
+    "score_wall_seconds": 7200,
+    "diagnostic_steps_including_prefix": 28800,
+    "diagnostic_resets": 288,
+    "diagnostic_wall_seconds": 21600,
+    "main_global_wall_seconds": 171840,
+    "prior_smoke": "separate frozen ledger, not reset into main counters"
+  },
+  "actions_this_preparation": {
+    "real_environment_calls": 0,
+    "real_model_or_tokenizer_loads": 0,
+    "remote_calls": 0,
+    "deployments": 0,
+    "shared_acquisition_source_edits": 0
+  }
+}

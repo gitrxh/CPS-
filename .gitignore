@@ -1,0 +1,46 @@
+# Local execution state and credentials
+/configs/server.json
+/AGENTS.md
+/RUN_STATE.json
+.secrets/
+.ssh/
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+*credentials*.json
+
+# Runtime, weights, traces and logs stay outside Git
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+/checkpoints/
+/outputs/*
+!/outputs/recovery_resume_inventory_v1.json
+/locks/
+*.log
+*.jsonl
+*.safetensors
+*.pt
+*.pth
+*.ckpt
+
+# Publish frozen task metadata only, not trajectories or datasets
+/data/*
+!/data/manifests/
+/data/manifests/*
+!/data/manifests/*.json
+
+# Editor and operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

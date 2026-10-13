@@ -1,0 +1,53 @@
+{
+  "kind": "independent_recovery_scientific_scope_alignment",
+  "version": 1,
+  "reviewer": "confirmation_execution_review independent Astra assignment",
+  "scope_alignment_review_complete": true,
+  "method_effectiveness_established": false,
+  "execution_authorized": false,
+  "scientific_thresholds_changed": false,
+  "evidence_sha256": {
+    "D:/download/deep-research-report.md": "fffcc3430d2b148c19ee0eaabc47037698d176b6852ed3539fb4a6072c947d15",
+    "configs/recovery_projection_candidate_v2.json": "09f62bbb2001e36bda12d56d261788764710b4ec91eca17af91e0470e9068b47",
+    "analysis/next_experiment_candidate_v1.json": "7a9192723e495c04d01419c6e758304a5dff8efa349c152eb7b68ca620737b1c",
+    "analysis/successful_path_complete_review_v1/review.json": "1d56cae54a134f588410bb7b1522c461d3248dba3fb5391f86b858d4d44161ce",
+    "analysis/successful_path_train_support_audit_v1.json": "f9139865c749aa46df67c70005670418e40e239e509a27467359048c0c90f3a2",
+    "analysis/successful_path_data_diagnosis_v1.json": "c6a5d9caec8c3bbb8d4e9b8517b3b2578ae652a2c4da2733587648e38a4281de"
+  },
+  "judgment": "与报告的学习者适配、环境一致性和学习者诱导状态问题相符，但只是一个范围收窄、可证伪的局部机制实验。当前没有方法有效性证据，不能用工程完成度抵消已出现的负结果。",
+  "report_mapping": {
+    "source_role": "报告仅为研究资料；本审查不重新认证其中的外部文献、数值或新颖性主张，其建议阈值不是本实验的操作指令。",
+    "tested_claim": "在固定学习者真实访问的因果历史和同一有限专家可恢复动作集合上，按该学习者的动作概率条件抽样，是否比均匀选择和普通专家恢复更有利于学习者实际续行及后续SFT任务成功。核心增量必须来自标签选择，而非增加恢复监督。",
+    "retained": "报告358–675行的真实执行/重新生成后续观察原则，以及690–812行要求的DAgger类对照、901–956行的支持集与参考策略失配问题。特权信息用于候选认证，不进入学生输入。",
+    "narrowed": "当前是单轮、有限池、学习者状态上的局部可恢复动作选择；既不是保持同一后继状态的原始BRP，也不是完整路径空间ECPS/MH。普通专家恢复是一轮DAgger式监督对照，不能宣称已经覆盖完整迭代DAgger。",
+    "mathematical_boundary": "当前q(a|h)正比于pi_ref(a|h)乘以a属于固定教师可恢复池的指示函数。这可解释为该有限支持上的局部条件分布，但不等于成功路径条件分布的一阶动作边缘；后者还需乘上同一目标策略从该动作后成功的概率。专家后缀成功不能代替这一概率。",
+    "diagnostic_boundary": "固定Q是强制首动作后由冻结学习者贪心续行的真实成败，不是对随机pi_ref全部未来轨迹的成功概率估计。固定36门槛检验局部概率与贪心续行效用的关系；通过期望加权Q门槛不保证一次固定标签抽样加有限SFT后提升。"
+  },
+  "historical_evidence": {
+    "negative_screens": "候选记录的same120筛查为C13/U16/R15；已完整公开的same60成功路径筛查为C15/U9/R7，分母均为旧dev24。后者R相对C为0增益/8损失，相对U为3增益/5损失。两次均不支持既定selector成功判据，不能启动旧confirmation。",
+    "alternative_explanations": "旧same60数据审计未发现跨臂任务文本、初始输入或因果前缀混杂；40个非单例池在T=1时最大质量均值约0.8992、中位约0.9884，预计只约4.03/60标签区别于贪心。因此没有依据把温度/种子微调当作实质研究进展。审计未发现混杂并不证明所有失败机制已确定。",
+    "what_remains_open": "旧实验主要在专家来源路径上用原始模型打分，未直接检验适应后的同一学习者在自己访问的状态上的恢复动作效用。因此当前问题不是旧负结果的同义重跑，但也不能把更换状态和参考模型后的结果单独归因于其中任一改变。"
+  },
+  "outcome_interpretation": {
+    "certificates_or_coverage_only": "只说明有限池中存在真实可执行且专家可恢复的动作，以及干预是否有定义；不是学习者收益。代码审查、哈希完整、认证覆盖率、NLL下降和普通BC收益均不是投影方法有效。",
+    "complete_Q_gate_pass": "支持固定训练状态、有限候选集和当前冻结学习者下的局部效用机制，允许按原候选考虑下一阶段；它不是held-out效果、统计显著性、完整成功路径采样正确性或研究目标完成。",
+    "complete_Q_gate_fail": "按原候选停止本版本，不能降低阈值、重抽标签、换温度/种子/时点/子集或进入新held-out来挽救。若缺少可用/多样支持，结论是该设定缺少可检验的选择空间；若实际Q有变化但q无增量，则直接削弱局部似然适配机制。两者都不证明所有环境一致投影均无效。",
+    "technical_incomplete": "gate=null，不能当科学失败或成功，也不能把缺失分支填0。完整结构性不可用槽保留Q=null、固定分母差值0的预登记语义，不冒充实际观测到的失败episode。",
+    "new_seen48_practical_pass": "只有完整192结果满足既定R相对专家和均匀各至少多3/48、且严格超过冻结BC，才支持此单种子、新seen任务划分上的探索性选择增量。仍不能声称独立确认、多种子稳健、未见房间泛化或全局最优。",
+    "recovery_gain_without_selection_gain": "若恢复方法只共同优于冻结BC或R未通过任一恢复对照，则不支持投影增量；改善最多与额外恢复监督和更新一致。冻结BC没有匹配额外100更新，因此该对照本身甚至不能单独隔离恢复数据与额外训练的因果贡献。",
+    "not_tested": "未检验MH平稳性/混合或全路径KL保证、随机采样优于贪心、跨模型特异性、迭代参考更新因果效应、能力保持、等总计算/环境成本效率、强RL或完整DAgger优越性、随机不可重放环境、新颖性及unseen134。"
+  },
+  "single_next_question_if_complete_Q_gate_fails": {
+    "question": "障碍究竟是教师可恢复池内缺少学习者实际可续行成功的选择，还是在已有这种选择时，动作似然仍不能区分续行效用？",
+    "why_this_question": "它直接区分报告的base-support瓶颈与局部似然代理失效，而不是继续追更高likelihood或把DAgger收益改名为投影成功。",
+    "bounded_next_step": "本版本先STOP。只在固定诊断全量完成并正式解盲后，使用原36槽及全部既定分支，描述结构性不可用、可用但全Q=0、全Q=1、Q有变化四类；对最后一类同时报告q/均匀/专家效用及完整固定分母结果，不以事后子集改判gate。无需新模型、环境或held-out调用。",
+    "interpretation_limit": "全Q=0只表示当前有限池和冻结续行策略缺少可执行成功支持，不是模型普遍无能力；全Q=1表示该处选择效用不可区分；Q有变化而q无增量则说明偏好的动作未带来更好的续行。若未来要更换参考能力或采用长程效用目标，必须另立科学问题、独立预登记和预算，明确它不是本版本被救活，也不能使用当前失败任务挑新验证样本。"
+  },
+  "boundary_observed": {
+    "current_acquisition_or_oracle_or_replay_records_read": 0,
+    "new_heldout_results_read": 0,
+    "code_or_candidate_edits": 0,
+    "deployments_or_jobs": 0,
+    "important_decisions_require_Astra": true
+  }
+}

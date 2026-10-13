@@ -1,0 +1,79 @@
+{
+  "kind": "recovery_diagnostic_queue_adoption_schema_description",
+  "version": 1,
+  "created_utc": "2026-10-12T19:40:19.128910+00:00",
+  "status": "local_controller_candidate_not_execution_adoption",
+  "execution_authorized": false,
+  "source_sha256": {
+    "scripts/run_recovery_diagnostic_queue_v1.py": "072fbb138bfebfc05860553b957ca6299d079af133162a76d99d06ce8cbed538",
+    "tests/test_recovery_diagnostic_queue_v1.py": "0ff2e2c3932ef5211e65297c3d7f9f6f32aa715c28be7f69a20b8f6f69bbebf9"
+  },
+  "pure_fault_tests": {
+    "passed": 11,
+    "command": "C:\\Users\\zrx\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe -B tests/test_recovery_diagnostic_queue_v1.py",
+    "real_processes_started": 0,
+    "model_environment_calls": 0,
+    "remote_calls": 0
+  },
+  "parent_adoption": {
+    "kind": "recovery_diagnostic_parent_adoption",
+    "version": 1,
+    "adopted": true,
+    "adopted_by": "root_after_independent_GPT_6_Astra_review",
+    "physical_gpu": 2,
+    "authorized_stages": [
+      "score",
+      "diagnostic"
+    ],
+    "candidate": "configs/recovery_projection_candidate_v2.json",
+    "source_inventory": "Sorted exhaustive deployed gnrl/scripts/tests .py paths. May add phase sources only after acquisition has fully exited. All prior source bytes remain bound unchanged.",
+    "file_sha256": "Normalized project-relative path -> SHA256. Must contain every acquisition locked_sha256 entry unchanged, all current source files, all new parent inputs/reviews and full canonical adapter files.",
+    "original_file_sha256": "Exact inherited336 external game/metadata hashes from acquisition parent; cannot replace.",
+    "runtime_file_sha256": "Exact inherited9 external runtime file hashes; includes resolved controller and project-worker executable.",
+    "input_inventory": "Same complete original input/model/adapter inventory as acquisition parent.",
+    "implementation_review": "Exact component review JSON: recovery_diagnostic_review_passed true, module_sha256 and runner_sha256 match deployed worker.",
+    "controller_review": "Independent JSON with recovery_diagnostic_controller_review_passed true, controller_sha256 and test_sha256 matching these exact files.",
+    "acquisition_parent_adoption": "Path of actual completed acquisition parent adoption.",
+    "acquisition_status": "Actual acquisition queue/status.json; must complete at needs_astra_acquisition_review with collect/oracle/replay successful cleanup records.",
+    "acquisition_locks": "Actual acquisition queue/locked_sha256.json.",
+    "acquisition_result_review": "Independent full acquisition result audit JSON, with recovery_acquisition_result_review_passed true plus acquisition_status_sha256/acquisition_locks_sha256/replay_cost_sha256.",
+    "acquisition_controller_identity": {
+      "pid": "Positive actual recorded PID, not fabricated.",
+      "start_ticks": "Positive actual recorded Linux /proc start ticks."
+    },
+    "output_paths": {
+      "queue": "Fresh outputs/recovery_projection_... directory",
+      "score": "Fresh outputs/recovery_projection_... directory",
+      "diagnostic": "Fresh outputs/recovery_projection_... directory"
+    }
+  },
+  "derived_stage_requests": {
+    "worker_kind": "recovery_diagnostic_stage_adoption",
+    "worker": "scripts/score_recovery_diagnostic_v1.py",
+    "authority": "Parent explicitly authorizes only deterministic score then diagnostic requests. Requests inherit source/input/runtime locks and same acquisition global_deadline_unix.",
+    "score_inputs": "Complete180 oracle pools plus180 independent first-action replay records; prior costs/summary are final acquisition replay.",
+    "diagnostic_inputs": "Same oracle/replay artifacts plus all180 score selections and all3 hash-locked arm label files; prior costs/summary are score output.",
+    "gpu_receipt": "Fresh queue/<stage>_gpu.json written by launch_gpu --gpus2; worker verifies physical2 UUID against CUDA_VISIBLE_DEVICES. Controller locks it after process exit.",
+    "review_requirement": "Acquisition result review alone never authorizes score; component review alone never authorizes controller; explicit new parent adoption is mandatory."
+  },
+  "hard_boundaries": {
+    "previous_processes": "Before making outputs, require prior controller absent/zombie with matching identity if present, all three successful owned-cleanup session records, and zero live old session members. PID reuse is a fail-closed condition. Never signal old/foreign processes.",
+    "deadline": "Use acquisition status main_study_started_unix and global_deadline_unix exactly. Validate171840second duration; derive remaining monotonic deadline and SIGALRM from original absolute cutoff before expensive validation. Never allocate a new171840seconds.",
+    "costs": "Verify collect->oracle->replay cumulative progression from0. Thereafter totals=previous totals+stage_counts for every counter. Score recomputes both reference+base target/padded-forward tokens, with no environment/generation count and exactly one increment to cumulative forward work. Diagnostic compares resets, all prefix+forced+learner steps, generated tokens and calls to complete branch traces.",
+    "full_locks": "Each stage before and after verifies all current source bytes/inventory, full model inventory, full adapter directory, original336 and runtime9. Prior artifacts remain bound.",
+    "processes": "System Python with pidfd helpers. GPU2 only, serial launch_gpu sessions. Block four termination/alarm signals across spawn and identity capture, then restore mask inside cleanup-protected try. Every own-stage exit cleans session using start_ticks/pidfd; reserve30seconds. No retries.",
+    "completion": "Score labels must all be locked before actualQ. Controller independently recomputes fixed36 gate only after complete diagnostic output, immutable checks and exact expectedQ validation. False scientific gate is preserved. Technical incompleteness keeps gate null and records whether unblinding began. Final state needs_astra_diagnostic_review; no training, held-out or unseen invocation exists."
+  },
+  "future_review_receipt_fields": {
+    "recovery_diagnostic_controller_review_passed": true,
+    "controller_sha256": "072fbb138bfebfc05860553b957ca6299d079af133162a76d99d06ce8cbed538",
+    "test_sha256": "0ff2e2c3932ef5211e65297c3d7f9f6f32aa715c28be7f69a20b8f6f69bbebf9",
+    "execution_authorized": false
+  },
+  "launch_description": "After acquisition completes/exits, review passes and parent adoption exists, parent may invoke /usr/bin/python3 scripts/run_recovery_diagnostic_queue_v1.py --adoption-json <new-parent-adoption>. This file does not authorize that invocation.",
+  "independent_review": "analysis/recovery_diagnostic_controller_astra_review_v1.json",
+  "reviewed_fixes": [
+    "Preserve worker unblinding even after owned cleanup failure; unreadable receipt is unknown rather than false.",
+    "Independently enforce exact500000 target and7000000 scoring-forward caps."
+  ]
+}

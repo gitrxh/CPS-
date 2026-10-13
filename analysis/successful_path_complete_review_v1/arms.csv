@@ -1,0 +1,4 @@
+﻿arm,successes,failures,denominator,success_rate,environment_steps,invalid_actions,invalid_action_rate,generated_tokens,reported_forward_tokens,mean_steps_all24,median_steps_all24,unsuccessful_100_step_episodes,evaluation_elapsed_seconds,training_target_tokens,training_input_tokens,training_elapsed_seconds
+canonical,15,9,24,0.625,1032,710,0.687984496124031,7100,1514836,43,12.5,9,534.7645247170003,6510,574931,241.09796912199818
+uniform,9,15,24,0.375,1570,746,0.4751592356687898,11527,2550054,65.41666666666667,100.0,15,864.7596066559781,6512,574523,241.1769753319677
+reference,7,17,24,0.2916666666666667,1772,1248,0.7042889390519187,12180,2694792,73.83333333333333,100.0,17,918.6159890539711,6515,574012,241.3152299510548

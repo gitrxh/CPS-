@@ -1,0 +1,45 @@
+{
+  "kind": "parent_recovery_preflight_adoption",
+  "version": 1,
+  "adopted_utc": "2026-10-12T19:11:54.016503+00:00",
+  "scope": [
+    "metadata-only seen48 freeze",
+    "fixed6task18case CPU planner recovery smoke"
+  ],
+  "gpu_jobs_authorized": 0,
+  "learning_or_diagnostic_GPU_jobs_authorized": false,
+  "file_sha256": {
+    "scripts/smoke_recovery_planner_v1.py": "bd6c4d6da76981e9addd93467ad50deacd147b7a4918f83663e827f1b75b42b1",
+    "scripts/freeze_recovery_seen48_v1.py": "e1808a452e36e34bd29a2d85c473ee4dadab461fe6948296d88aab24301b5120",
+    "scripts/submit_job.py": "b2aeba7e2b8e6ef3ed785dc1e30f94e80423d81eb09995baf8de148caf1b6730",
+    "gnrl/__init__.py": "16a37a313f30c43814d6056a2f4fda092eb3ec948ee29e4c1d363fc2e59a8045",
+    "gnrl/alfworld_env.py": "76f530bf70da3635f125c6320dba7369a7f9ac4c04c4a627110103ee3720a2fd",
+    "gnrl/two_object_blocks.py": "4b1d8fae79b9d84f3c88ee493791d711a3af0812d3142c2f37e286e188e9ef9e",
+    "gnrl/macro_project.py": "eea5703241d1adb5d25d311986fca9619af105f492246e968434f0e7081b61c2",
+    "data/manifests/train120.json": "724c18f5711bfb3d9ef002005dda34c40471617eb44f921c78f8fa7f42759af0",
+    "data/manifests/dev24.json": "7cee405bdadb61c0193cbe10c72f96b145b7796d88c52cd20974a4603efa03a6",
+    "analysis/next_experiment_candidate_v1.json": "7a9192723e495c04d01419c6e758304a5dff8efa349c152eb7b68ca620737b1c",
+    "analysis/recovery_planner_interface_review_v1.json": "1272e7cc54d265bc820c763ee00cc8dd35a0f9848a05f7e01affde2a320accae"
+  },
+  "smoke_output": "outputs/recovery_planner_smoke_v1",
+  "smoke_job": "recovery_planner_smoke_job_v1",
+  "metadata_output": "outputs/recovery_seen48_freeze_v1",
+  "budgets": {
+    "started_env_steps": 6000,
+    "started_env_resets": 200,
+    "wall_seconds": 900,
+    "outer_process_deadline_seconds": 920,
+    "kill_grace_seconds": 15
+  },
+  "separate_budget": "This is a separately reported prerequisite. No full-study budget or GPU adoption is granted. A future candidate revision must reconcile prior smoke cost before research acquisition.",
+  "entry_gate": [
+    "All6 canonical baselines successful and actual replay with expert_type=None agrees",
+    "Exactly18 case records;6 invalid cases successful",
+    "At least1 legal_deviation and1 wrong_object case applicable;all applicable cases successful",
+    "Zero technical errors or budget interruption;NA explicit,never counted as success"
+  ],
+  "case_rule": "Exact fixed rule from hash-bound smoke --plan;no outcome-conditioned task or candidate replacement",
+  "metadata_rule": "Hash-bound new metadata freezer,quota8 each family. No new task observation or model inference. Existing8 episodes.jsonl paths plus dev24 cover all known completed project evaluation attempts; no evaluation writer active. Prior unfinished attempts were technical setup failures, no additional evaluated identities known.",
+  "failure_rule": "Stop and preserve all artifacts;no automatic retry or fallback",
+  "original_sources_may_change": false
+}

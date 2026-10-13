@@ -1,0 +1,20 @@
+{
+  "kind": "preexisting_local_deployed_source_divergence",
+  "checked_utc": "2026-10-12T19:29:07.857608+00:00",
+  "differences": [
+    {
+      "path": "gnrl/evaluate.py",
+      "local_sha256": "759a8892b6e53c617b554e4d13c3fb73da67601184f674eb62d799d69c87d8c9",
+      "deployed_sha256": "0320724fd68f65eeddf69b0e04d7d057c2f12ae5a47cb6d5010222ffea077e64",
+      "matches_previous_adopted_deployment": true
+    },
+    {
+      "path": "tests/test_replay_contract.py",
+      "local_sha256": "da24f25588a33ad6178d7fb6edbc2373b35232bbb89ef2feae4057c8d57719a9",
+      "deployed_sha256": "1e761363a1e47a5ccfa08d23ab2752b40f7cf351b320f2e32759734152056567",
+      "matches_previous_adopted_deployment": true
+    }
+  ],
+  "inspection": "Local evaluate.py counts interactions on technical-error rows while deployed version records null; local test_replay_contract.py has additional information-only tests. Neither file was changed or redeployed in this recovery work. All original deployed .py hashes match prior completed learning adoption. Current acquisition does not execute evaluate.py or old test file.",
+  "action": "Preserve both existing local and deployed versions. Adopt actual deployed hashes. Future evaluation must use explicitly reviewed deployed evaluator/version,never silently deploy local file."
+}

@@ -1,0 +1,18 @@
+# Observed experiment environment, not a complete reproducible lockfile.
+# Python 3.12.9 worker; Linux system Python with pidfd APIs for controllers.
+# Observed PyTorch CUDA build: 2.8.0+cu128; provision a compatible wheel first.
+# Native simulator/runtime files were separately hash-bound during execution.
+torch==2.8.0
+transformers==4.57.3
+tokenizers==0.22.2
+peft==0.21.0
+accelerate==1.15.0
+safetensors==0.8.0
+sentencepiece==0.2.2
+numpy==2.2.6
+alfworld==0.4.2
+textworld==1.7.0
+fast_downward_textworld==20.6.4
+gym==0.26.2
+jericho==3.3.1
+TatSu==5.8.3

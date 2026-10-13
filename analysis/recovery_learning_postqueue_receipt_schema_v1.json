@@ -1,0 +1,44 @@
+{
+  "kind": "recovery_learning_postqueue_receipt_schema_description",
+  "version": 1,
+  "execution_authorized": false,
+  "purpose": "Independent remote read-only integrity evidence consumed by analysis/review_recovery_learning_complete_v1.py after all eight owned stages and their controller exit. This schema does not launch jobs or authorize further research.",
+  "required_receipt": {
+    "kind": "recovery_learning_postqueue_integrity",
+    "complete": true,
+    "errors": [],
+    "adoption_sha256": "Actual bytes of explicit learning parent adoption",
+    "queue_status_sha256": "Actual final queue status.json bytes",
+    "locked_sha256_file_sha256": "Actual final queue locked_sha256.json bytes",
+    "verified_file_sha256": "Exact final lock map, every file freshly measured and equal to its lock",
+    "verified_original_file_sha256": "Exact adopted336 original game/metadata map, freshly measured",
+    "verified_runtime_file_sha256": "Exact adopted9 runtime executable/package map, freshly measured",
+    "source_inventory": "Exact current recursive gnrl/scripts/tests .py inventory matching adoption; no added executable source",
+    "base_inventory_sha256": "Bound full model inventory file hash; actually enumerate all28 files and compare each bytes/hash, including cache metadata",
+    "base_files_verified": 28,
+    "initial_adapter_sha256": "Exact full unchanged canonical initial adapter file inventory and measured hashes",
+    "all_models_locked_sha256": "Actual queue/all_models_locked.json bytes equal final lock",
+    "all_models_adapter_sha256": {
+      "frozen_canonical_BC": "Map of actual entire canonical adapter directory workspace-relative filenames to freshly measured SHA256",
+      "uniform_viable_recovery": "Map of actual entire trained uniform final adapter directory filenames to freshly measured SHA256",
+      "expert_recovery": "Map of actual entire trained expert final adapter directory filenames to freshly measured SHA256",
+      "reference_conditional_recovery": "Map of actual entire trained reference final adapter directory filenames to freshly measured SHA256"
+    },
+    "controller": {"pid": "Independently recorded positive PID", "start_ticks": "Independently recorded /proc start ticks", "exited": true},
+    "owned_workers_gone": true,
+    "stages": "Eight objects in frozen order: joint_token_audit, train_expert_recovery, train_uniform_viable_recovery, train_reference_conditional_recovery, eval_frozen_canonical_BC, eval_uniform_viable_recovery, eval_expert_recovery, eval_reference_conditional_recovery. Each contains exact recorded name/pid/start_ticks/owned_session and exited:true. Reject PID reuse and any live owned session member; never signal prior processes."
+  },
+  "before_receipt": [
+    "Require final queue complete/current_stage needs_astra_learning_result_review and all eight worker returncodes0/owned_cleanup_complete true.",
+    "Require all three complete training summaries100updates and all four technical evaluation summaries exactly48/48 complete with no errors. Do not parse held-out episodes, events, result or success counts.",
+    "Require full4model barrier bytes, common audit and all input/code/model/runtime inventories unchanged. Additions to any model/adapter directory fail even if all previously listed files match.",
+    "The caller supplies the review program an independently recorded receipt SHA256. Candidate/schema alone cannot serve as evidence."
+  ],
+  "offline_reviewer": {
+    "command": "python analysis/review_recovery_learning_complete_v1.py --adoption-json <adoption> --postqueue-receipt <receipt> --postqueue-sha256 <independently-recorded-SHA> --output <exclusive-new-review.json>",
+    "portable_inputs": "All local source files plus small frozen metadata, joint token audit, score/label records, training states/config/summaries/final inventories/1600exposure and101metric rows, four evaluation config/request/summary/cost/episodes/events and controllerresult. Large weights, remote originals and runtime bytes rely on the measured receipt; they need not be copied locally.",
+    "outcome_barrier": "No held-out episode/event/result content until complete metadata, exits, all4model barrier, diagnostic gate review, joint score/SFT audit and all3training evidence pass. Reviewer writes durable progress marker before its first outcome read.",
+    "failure": "All192 outcomes null and no contrasts on any incomplete or changed evidence. Preserve controller and reviewer unblinding states separately; false is never substituted when controller state is unknown.",
+    "complete_output": "recovery_learning_result_review_passed true means complete integrity review. exploratory_practical_screen_passed is separately recomputed:reference-expert>=3 and reference-uniform>=3 and reference>frozenBC. All48 paired outcomes,6families,every scene and denominators reported; positive remains exploratory, with no automatic unseen/newseed/goal-completion claim."
+  }
+}

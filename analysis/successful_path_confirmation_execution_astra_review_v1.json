@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "kind": "independent_successful_path_confirmation_execution_astra_review",
+  "reviewed_utc": "2026-10-12T18:36:22Z",
+  "confirmation_execution_review_passed": true,
+  "execution_authorized": false,
+  "current_learning_gate_assessed": false,
+  "candidate_sha256": "19538894e51b1ee546c8461a6500100fbb6d33ae4f352c531e5d8153522083f9",
+  "controller_sha256": "0ced555e37bf8ccf0c37bb4b50107bd920e36042f3ffdf6daa84461716a7d94d",
+  "verdict": "PASS for this exact local implementation candidate. No unresolved implementation blocker found within the reviewed scope. This is neither an entry-gate decision nor permission to deploy or launch.",
+  "scope": "Independent local static review and pure synthetic fixtures for the fixed60 three-seed nine-model confirmation controller; no current development outcome, unseen observation or unseen outcome was accessed.",
+  "evidence_sha256": {
+    "analysis/successful_path_confirmation_candidate_v1.json": "19538894e51b1ee546c8461a6500100fbb6d33ae4f352c531e5d8153522083f9",
+    "analysis/run_successful_path_confirmation_candidate_v1.py": "0ced555e37bf8ccf0c37bb4b50107bd920e36042f3ffdf6daa84461716a7d94d",
+    "analysis/test_successful_path_confirmation_candidate_v1.py": "c659cf7e6e01f6712efb98df8ad5cf01f78551b4e807dbbc42deb4303251643f",
+    "analysis/confirmation_execution_schema_v1.json": "f3544ff73db2cc6c186546f932c61afc007132b7adbded0ca5d4c62385e9e979",
+    "analysis/confirmation_candidate_review_v1.json": "6e0a7778f68c07779a601be1a69779ba88fa48f6948f4ebd38eb4d81db4f6882",
+    "analysis/review_successful_path_complete_batch_v1.py": "df11f6b860a49d2906e20e3cd472ffbf565a01648e83cc290a0cc4da8aa34117",
+    "scripts/run_successful_path_learning_v1.py": "99926d02303f56de560f1589109685ab3f863e058393d2eefb1c8f256c945f6c",
+    "scripts/launch_gpu.py": "249caa657288883c1cde0a3c4042a4ac01952d972aaac38ec9174f4bf5f505cc",
+    "gnrl/evaluate.py": "759a8892b6e53c617b554e4d13c3fb73da67601184f674eb62d799d69c87d8c9",
+    "gnrl/train_sft.py": "0aeee657295e4736de78d9c56cb4929e08652fcd1498d7ce1154f5c39f679345",
+    "gnrl/successful_path_token_audit_v1.py": "0e231ecb8b6840a536888219c74b42883f2c8ced6dd25d56812f93d253e5598b"
+  },
+  "verified_implementation_boundaries": [
+    "A distinct future adoption must bind the candidate, exact controller/tests/schema/shared validator, execution review, complete current entry review, inherited current adoption and final locks, source inventory, model provenance and full inventory, runtime binaries, original game/metadata files and unseen manifest. Existing output directories and overlapping future directories are rejected.",
+    "Seed42 reuse is limited to the current same60 final step100 adapters, checked against frozen data, base model, seed-specific token exposure and causal protocol after the complete current strict directional gate. This review does not establish that gate.",
+    "Each new seed123/456 reuses frozen per-example causal tokenization evidence and recomputes exactly800 trainer shuffle indices. Six new100-step trainings use the fixed order and fresh trainer processes; actual summary and final training_state target tokens/protocol are checked against the matching audit.",
+    "All nine final adapters and complete checkpoint inventories are validated and hash-locked before any unseen evaluation. The nine evaluations use the fixed order and common134-task manifest with no new development evaluation, checkpoint selection, retry or automatic follow-up.",
+    "Each model receives the same900000 generated-token ceiling,100 actions per episode and14400-second stage ceiling. Six training stages receive7200-second individual ceilings. Global172800 seconds includes waiting, verification and audits, with a predeclared15-second cleanup reserve and global timer. These ceilings do not promise completion of every worst-case stage.",
+    "Only physicalGPU2 is launched serially through launch_gpu.py, which resolves UUIDs, checks active compute/memory and holds a per-device lock. Workers use the existing project interpreter; the controller requires system Python with native pidfd support. Cleanup signals only verified members of the owned session, using pidfd and start-time/session identity checks.",
+    "During the nine-model batch, the monitor consults only identity, environment seed, errors, stop reasons and record counts. Technical/error/budget rows halt the owned stage. Success and policy-quality values do not select a continuation, change budgets or tune the method.",
+    "Incomplete reporting retains all1206 planned cells, null outcomes and null primary contrasts/practical-target assessment. Scientific failures are only evaluated in a complete verified batch; technical or absent cells are never recoded as scientific false outcomes.",
+    "After all nine complete and hash-locked, the shared validator checks actual won transitions, observation continuity, no actions after done, raw completion/action equality, actual command-list membership, terminal consistency and action-token bounds. Aggregate successes, environment steps and token counts are checked against summaries before analysis, and initial observations/admissible lists are compared across all models without claiming raw-state equality.",
+    "The primary task-weighted differences, per-seed paired gains/losses/ties, full table, family/scene counts, equal-scene and leave-one-scene-out sensitivity match the candidate. The50000 crossed seed/scene bootstrap uses the fixed613207 RNG seed and is descriptive. Both controls require at least21 net successes across402 paired cells and strictly positive differences at each seed for the practical target."
+  ],
+  "review_finding_resolved": {
+    "initial_controller_sha256": "36bc95eb8aee5a23f77f2012a322e221d1e80ffec6aaf42acd615e82c088f5cc",
+    "problem": "A validation, hashing or budget failure after all-nine outcome access would incorrectly emit not_unblinded and say records remained blinded.",
+    "resolution": "The reviewed controller persists outcome_unblinded=true and an unblinding timestamp before opening the nine outcome files. A later incomplete report explicitly says unblinding began and labels observed cells observed_validation_incomplete, retaining null outcomes and suppressing contrasts. A pure fixture covers both pre- and post-unblinding failure states with all1206 cells.",
+    "status": "resolved_in_bound_controller"
+  },
+  "prior_execution_findings": {
+    "F1_technical_stop_and_missing_semantics": "resolved by technical-only asynchronous monitoring, owned cleanup, explicit accounting limitation and full1206-cell incomplete reporting",
+    "F2_seed_and_budget_implementation": "resolved by separate analysis controller, seed-specific schedule derivation, explicit budgets and unchanged frozen workers",
+    "F3_total_budget_overhead": "resolved by global timer, remaining-time stage caps, cleanup reserve and explicit no-completion-guarantee language"
+  },
+  "tests": {
+    "interpreter": "C:/Users/zrx/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+    "command_arguments": ["-B", "-m", "unittest", "analysis.test_successful_path_confirmation_candidate_v1", "-v"],
+    "tests_run": 13,
+    "failures": 0,
+    "errors": 0,
+    "exit_code": 0,
+    "reported_test_seconds": 0.328,
+    "scope": "Pure local synthetic fixtures only; model/simulator/process-launch behavior mocked where applicable. Independently rerun after the final correction."
+  },
+  "limitations_and_future_requirements": [
+    "Linux pidfd/kernel/process behavior and real worker execution were inspected in source, not exercised from this Windows local review. Future launch must use the actual frozen runtime bindings and reviewed inherited helpers.",
+    "An evaluator can begin the next episode before its flushed technical-error row is detected. The controller stops the owned session promptly; any unflushed environment interaction count remains unknown, not zero.",
+    "The current complete development batch, final seed42 checkpoint eligibility and strict reference-over-both-controls screen are deliberately unassessed here. A separate complete independent result/entry review and parent adoption remain mandatory.",
+    "No remote file or runtime byte was read by this reviewer. This pass binds locally inspected bytes; the future adoption and runtime verification must match actual remote bytes before launch.",
+    "Any failure after outcome_unblinded becomes true has consumed the untouched-outcome boundary even if aggregate analysis did not finish. No repair, retry or budget change is authorized by this review."
+  ],
+  "actions_taken": {
+    "new_local_files": ["analysis/successful_path_confirmation_execution_astra_review_v1.json"],
+    "remote_reads": 0,
+    "remote_writes": 0,
+    "remote_source_changes": 0,
+    "model_jobs": 0,
+    "environment_jobs": 0,
+    "current_dev_outcomes_read": false,
+    "unseen_observations_or_outcomes_read": false
+  }
+}

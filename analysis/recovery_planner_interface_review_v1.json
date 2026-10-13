@@ -1,0 +1,223 @@
+{
+  "kind": "recovery_planner_interface_review",
+  "version": 1,
+  "created_utc": "2026-10-12T19:08:44.231822+00:00",
+  "scope": "read_only_installed_source_interface_review",
+  "authorization": {
+    "this_review_runs_environment": false,
+    "this_review_runs_model": false,
+    "this_review_deploys": false,
+    "source_files_modified": false,
+    "new_local_artifact_only": true,
+    "smoke_is_future_proposal_requiring_parent_registration_and_authorization": true
+  },
+  "verdict": {
+    "python_interface_replans_after_each_actual_step": true,
+    "expert_plan_is_reset_cached_walkthrough": false,
+    "native_off_policy_recovery_empirically_verified": false,
+    "cpu_smoke_required_before_recovery_pool_use": true,
+    "explanation": "Installed Python sources request a native current-state replan after legal and invalid commands. They do not merely reuse reset expert_plan. Actual recovery after learner deviations remains unverified: native solver implementation is in a shared library and existing reset-only expert collection is not an off-policy recovery test."
+  },
+  "runtime_resolution": {
+    "method": "Read-only stdlib importlib.machinery.PathFinder.find_spec against project Python sys.path, without importing simulator packages or loading native library. Exact source files and native library bytes were read and hashed through SSH; no environment/model calls.",
+    "project_python": "/data1/jsy/GNRL_20261012/.venv/bin/python",
+    "resolved_project_python": "/data1/jsy/zhangranxu-adrs-week-20260929/runtime/bin/python3.12",
+    "package_origins_prefix": "/home/jsy/zhangranxu-adrs-week-20260929/deps/",
+    "resolved_sources_prefix": "/data1/jsy/zhangranxu-adrs-week-20260929/deps/",
+    "native_library": {
+      "path": "/data1/jsy/zhangranxu-adrs-week-20260929/deps/fast_downward/libdownward.so",
+      "bytes": 44818968,
+      "sha256": "f88dc07d4d6c0e03d1d302e488a02c9752a56c0f42d47f918b8e96ce4f8433e5",
+      "loaded_by_review": false,
+      "native_cpp_source_found_in_inspected_package": false
+    }
+  },
+  "installed_source_evidence": [
+    {
+      "path": "/data1/jsy/zhangranxu-adrs-week-20260929/deps/alfworld/agents/environment/alfred_tw_env.py",
+      "sha256": "4d9166363e32f0fa70c63530a900785ddb45c79387a02ebcb9a21252869a8924",
+      "findings": [
+        {
+          "lines": "87-88",
+          "evidence": "PLANNER assigns current self.state[policy_commands] to self.state[extra.expert_plan]."
+        },
+        {
+          "lines": "92-103",
+          "evidence": "load requests policy_commands for PLANNER; step calls wrapped step then _gather_infos."
+        }
+      ]
+    },
+    {
+      "path": "/data1/jsy/zhangranxu-adrs-week-20260929/deps/textworld/envs/pddl/pddl.py",
+      "sha256": "3795f5fb7471c7a4551e137267785ffb3e21e49653d17491d6be963b41f454b4",
+      "findings": [
+        {
+          "lines": "72-108",
+          "evidence": "_gather_infos reads current goal/facts/applicable actions and calls self._pddl_state.replan(self._entity_infos) when policy_commands requested; lost is hardcoded False."
+        },
+        {
+          "lines": "135-171",
+          "evidence": "step applies matched operator, or returns Nothing happens on ValueError; both paths then call _gather_infos. extra.walkthrough is explicitly copied from prev_state."
+        }
+      ]
+    },
+    {
+      "path": "/data1/jsy/zhangranxu-adrs-week-20260929/deps/textworld/envs/pddl/logic/__init__.py",
+      "sha256": "7c5ea3b0ddc21dc105c1e5c5979006a9d47365b556c10c048973bd62eb0ad35e",
+      "findings": [
+        {
+          "lines": "245-260",
+          "evidence": "apply invokes native apply_operator and updates exposed facts from its effects."
+        },
+        {
+          "lines": "265-287",
+          "evidence": "replan calls native downward_lib.replan, returns [] on false, otherwise reads get_last_plan and maps operators to current surface names."
+        }
+      ]
+    },
+    {
+      "path": "/data1/jsy/zhangranxu-adrs-week-20260929/deps/textworld/core.py",
+      "sha256": "439bda7539816637c05f5bcd181101e8d96d4a5c8a76e2d9245c004e0647d176",
+      "findings": [
+        {
+          "lines": "328-352",
+          "evidence": "Wrapper delegates attribute access, unwrapped, step and reset to wrapped environment."
+        }
+      ]
+    },
+    {
+      "path": "/data1/jsy/zhangranxu-adrs-week-20260929/deps/fast_downward/interface.py",
+      "sha256": "c5c23ec7d6d8acd845fb6788c8edd01f7d527ee1f0148ba333e7bacc517c151b",
+      "findings": [
+        {
+          "lines": "97-157",
+          "evidence": "ctypes loads copied native libdownward.so; binds get_state, apply_operator, replan(bool), get_last_plan_length, get_last_plan and check_solution. These bindings do not expose the native replanning algorithm source."
+        }
+      ]
+    },
+    {
+      "path": "/data1/jsy/zhangranxu-adrs-week-20260929/deps/fast_downward/__init__.py",
+      "sha256": "052d91ed1d55c4685856ee988a02581c7b17c40dbb18f9f03e37119c8dc49fcf",
+      "findings": [
+        {
+          "lines": "1-4",
+          "evidence": "Package exports native interface loading functions."
+        }
+      ]
+    }
+  ],
+  "local_file_sha256": {
+    "gnrl/alfworld_env.py": "76f530bf70da3635f125c6320dba7369a7f9ac4c04c4a627110103ee3720a2fd",
+    "gnrl/two_object_blocks.py": "4b1d8fae79b9d84f3c88ee493791d711a3af0812d3142c2f37e286e188e9ef9e",
+    "gnrl/alfworld_probe.py": "09c2586b75be6e5271532330ffcc4d7bd576d5360053fdb0347a05b432fc8491",
+    "gnrl/macro_project.py": "eea5703241d1adb5d25d311986fca9619af105f492246e968434f0e7081b61c2",
+    "configs/state_contract_v1.json": "bb55226ee05565be8ca5f0008c9c3066bc8d3f99f1b8232d30c520d4caf34f72",
+    "data/manifests/train120.json": "724c18f5711bfb3d9ef002005dda34c40471617eb44f921c78f8fa7f42759af0",
+    "outputs/environment_check.json": "c42eb356fa515e216f02a255e903ab7b6d21de1bc02204fb4a1687af32dc6d3e",
+    "outputs/environment_freeze.txt": "f4cb7e354191c54948bc527e482fcf2c85aeb54359bc70b354200b61a5a58124"
+  },
+  "local_source_evidence": [
+    {
+      "path": "gnrl/alfworld_env.py",
+      "lines": "96-145",
+      "finding": "Default expert is handcoded: planner must be explicit. StepResult preserves only first plan action. Full current backend state remains accessible through env.env.state."
+    },
+    {
+      "path": "gnrl/alfworld_env.py",
+      "lines": "149-180",
+      "finding": "step accounts every attempted action, including invalid actions. restore resets and actually replays all prefix actions; snapshot is a JSON view, not a native checkpoint."
+    },
+    {
+      "path": "gnrl/two_object_blocks.py",
+      "lines": "83-110",
+      "finding": "collect_planner follows fresh expert_action from reset only; validate_useful_plan rejects noops/loops and must not automatically reject a legitimate recovery trajectory or learner prefix."
+    },
+    {
+      "path": "gnrl/alfworld_probe.py",
+      "lines": "159-174",
+      "finding": "collect_expert also follows live expert_action but never creates a deliberate off-policy prefix."
+    }
+  ],
+  "usable_interfaces": {
+    "construction": "AlfworldReplayEnv(gamefile, max_steps=100, expert_type=\"planner\", seed=42)",
+    "next_action": "After adapter.reset()/adapter.step(actual_action), read returned StepResult.expert_action; verify membership in its current admissible_commands before executing through the adapter and shared budget.",
+    "full_plan_teacher_only": "Read and copy adapter.env.state[\"extra.expert_plan\"] and adapter.env.state[\"policy_commands\"]; require equality and first-item agreement with current.expert_action. Reading these views should not alter canonical state or observation.",
+    "forbidden_suffix_source": "extra.walkthrough is reset-cached and must not be used as a recovery plan.",
+    "private_interface_not_needed_for_smoke": "adapter.env.unwrapped._pddl_state.replan(_entity_infos) is the underlying private call. Prefer automatic step-triggered refresh. An extra manual replan is another solver call, not an execution or proof of viability.",
+    "accounting": "Never call adapter.env.step directly. Retain complete actual prefix, including invalid commands; remaining horizon is 100 minus all actual prefix/branch steps.",
+    "empty_plan": "Empty plan with won terminal is distinct from empty plan while nonterminal. The latter is a recorded planner failure/no-plan, not a license to use reset plan, change task or retry. Backend lost=False does not establish recoverability.",
+    "student_boundary": "Plans, raw goal predicates, planner suffixes and privileged teacher evidence stay out of student prompts. A later learner rollout must use only its actual causal history."
+  },
+  "future_minimal_cpu_smoke": {
+    "status": "proposed_for_parent_preregistration_not_executed",
+    "selection": "Freeze train120 manifest bytes; in original games array order select first task for each of six families. Verify family against task metadata before execution. Never silently replace a task or branch because recovery fails or is inapplicable.",
+    "selected_games_by_family": {
+      "look_at_obj_in_light": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Laptop-None-DeskLamp-216/trial_T20190907_185556_000181/game.tw-pddl",
+      "pick_and_place_simple": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-Cloth-None-Drawer-409/trial_T20190908_032838_597592/game.tw-pddl",
+      "pick_clean_then_place_in_recep": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Kettle-None-StoveBurner-1/trial_T20190908_172105_948396/game.tw-pddl",
+      "pick_cool_then_place_in_recep": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Apple-None-Microwave-22/trial_T20190908_000314_718780/game.tw-pddl",
+      "pick_heat_then_place_in_recep": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Potato-None-GarbageCan-6/trial_T20190909_132625_893504/game.tw-pddl",
+      "pick_two_obj_and_place": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-TissueBox-None-GarbageCan-230/trial_T20190908_050916_526395/game.tw-pddl"
+    },
+    "fixed_settings": {
+      "seed": 42,
+      "episode_max_steps": 100,
+      "expert_type": "planner",
+      "cuda_visible_devices": "",
+      "model_calls": 0,
+      "case_order": [
+        "baseline",
+        "legal_navigation_deviation",
+        "invalid_noop",
+        "wrong_object_held"
+      ]
+    },
+    "budget_proposal_from_implementing_agent": {
+      "max_started_environment_steps": 6000,
+      "max_started_resets": 200,
+      "max_wall_seconds": 900,
+      "status": "Candidate values communicated by implementing agent; parent must freeze them with source and output schema before any execution. Count all prefix replays and independent verification. Owned-process wall deadline must also cover a blocked native planner."
+    },
+    "baseline_rule": "For each fixed task collect one live-planner baseline from reset, taking fresh expert_action each step until original won/terminated or explicit failure/budget. Keep all baseline states and plans teacher-side. No full-plan preexecution assumption. If baseline fails, retain failure and mark dependent branch coverage unavailable; do not switch tasks.",
+    "prefix_rule": "For branch selection scan baseline pre-action states in chronological order, never by recovery result. Freeze first qualifying prefix and lexicographically first qualifying action. Restore that full prefix by actual seeded replay and verify raw canonical state and observation before the one branch action. No searching another prefix/action after failure.",
+    "cases": [
+      {
+        "case": "legal_navigation_deviation",
+        "selection": "Earliest baseline nonterminal state with an admissible command beginning go to that differs from current expert_action; choose lexicographically first. Execute exactly once.",
+        "checks": "Require actual location/physical-fact change and a changed prefix. If unexpectedly physical no-op, record branch_validation_failed, not a new choice. Read postbranch fresh expert_plan, execute dynamically to original goal and independently replay complete actions.",
+        "not_applicable": "No qualifying navigation command anywhere on baseline; report explicitly, do not select another game."
+      },
+      {
+        "case": "invalid_noop",
+        "selection": "Use baseline initial state and fixed literal __gnrl_invalid_recovery_smoke_v1__; require it absent from current admissible commands. If unexpectedly admissible, record technical mismatch without replacement.",
+        "checks": "Execute invalid command through adapter. Verify unchanged raw physical facts/native moves and incremented adapter elapsed_steps/interactions; record actual feedback. Plan equality to prebranch is allowed because physical state is unchanged. Dynamically recover and independently replay including invalid action within original 100-step horizon.",
+        "not_applicable": "No nonterminal baseline initial state; report explicitly."
+      },
+      {
+        "case": "wrong_object_held",
+        "selection": "Earliest baseline nonterminal state with legal take command whose grounded object raw type is not original metadata object_target; exclude current expert_action and lexicographically choose first. Use raw entity map/goal metadata for unambiguous teacher-side grounding; if grounding is ambiguous report technical failure. No extra exploration or task substitution.",
+        "checks": "Execute actual pickup and verify holds on that exact wrong object, with unchanged original goal. Read refreshed plan; execute each fresh expert_action until original goal or failure and independently replay. Recovery may need putback/undo; do not impose canonical no-loop filter.",
+        "not_applicable": "No qualifying wrong-object pickup in baseline states. Record N/A rather than claiming wrong-object recovery covered."
+      }
+    ],
+    "dynamic_suffix_rule": "At every actual suffix state, capture current plan and verify expert_action is its first action and is currently admissible; execute only that action, then obtain new state/plan. Terminate at won AND terminated AND not truncated, or explicit no-plan, nonadmissible action, max_steps, technical error or global budget. Do not demand string change in plan; success after actual state-changing deviation is the test.",
+    "independent_replay": "For baseline and every executed branch trace, use a fresh sequential expert_type=None adapter, same game/seed/max_steps, replay the entire exact command list, verify each observation, canonical before/after state, generated admissible commands and terminal status. Compare actual success, not expert_action fields (absent with no expert). Replay failures are retained even if planner rollout reported success.",
+    "records": "One record for each of six families x four cases, including explicit not_applicable/not_run/failed records. Log original game/domain/metadata hashes, seed, prefix/actions, before/after canonical states and observations, plan view agreement and nonmutation check, raw goal unchanged evidence, every actual transition, terminal won/terminated/truncated, error reason, step/reset counts and walltime. Keep native replan call timing/count limitations explicit rather than pretending a plan read invokes the solver.",
+    "failure_reporting": "Do not pool N/A into successes or failures. Separately report attempted, passed, failed, not_applicable and not_run by family/case; a timeout or partial run is incomplete, not smoke pass. No retries, replacement tasks, fabricated suffix observations, command repair or success-based continuation of compute.",
+    "coverage_limit": "Six fixed tasks and three deviations per task probe installed interface behavior only. A case marked N/A is untested; even complete smoke success does not prove recovery for arbitrary later learner states. Every later viable action still requires its own real branch and actual dynamic suffix execution."
+  },
+  "not_established": [
+    "Native planner completeness/runtime bounds on arbitrary off-policy states",
+    "Recovery when holding an arbitrary wrong object",
+    "An empty native plan distinguishing infeasibility from solver failure",
+    "Learner continuation improvement or any training benefit"
+  ],
+  "execution_receipt": {
+    "new_environment_resets": 0,
+    "new_environment_steps": 0,
+    "model_calls": 0,
+    "gpu_jobs": 0,
+    "deployments": 0,
+    "current_partial_dev_outcomes_read": false
+  }
+}

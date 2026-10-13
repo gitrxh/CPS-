@@ -1,0 +1,425 @@
+{
+  "schema_version": 1,
+  "kind": "independent_astra_complete_successful_path_result_and_entry_review",
+  "reviewed_utc": "2026-10-12T18:53:57.827826+00:00",
+  "complete_result_review_passed": true,
+  "technical_completeness_verified": true,
+  "confirmation_entry_gate_passed": false,
+  "execution_authorized": false,
+  "current_learning_adoption_sha256": "588c1dfb69ed41ed13b70891e36dabb84846135e7271fde2bebda9b3e273c10c",
+  "complete_batch_report_sha256": "fe069c4b199ae59ca5ff54de1169eb3e7becba9969d78f042462e2fca9af1973",
+  "decision": "DO NOT ADOPT, DEPLOY OR LAUNCH successful_path_confirmation_candidate_v1. The fully completed same60 seed42 batch fails the prespecified strict reference-over-both-controls screen. Retain the confirmation candidate unexecuted and preserve this negative result.",
+  "outcome_access_boundary": "Actual current development results were first accessed by this reviewer only after the parent explicitly confirmed full batch completion and authorized complete-result review. No unseen result was accessed.",
+  "arms": {
+    "canonical": {
+      "successes": 15,
+      "failures": 9,
+      "denominator": 24,
+      "success_rate": 0.625,
+      "environment_steps": 1032,
+      "invalid_actions": 710,
+      "invalid_action_rate": 0.687984496124031,
+      "generated_tokens": 7100,
+      "training_target_tokens": 6510,
+      "training_input_tokens": 574931
+    },
+    "uniform": {
+      "successes": 9,
+      "failures": 15,
+      "denominator": 24,
+      "success_rate": 0.375,
+      "environment_steps": 1570,
+      "invalid_actions": 746,
+      "invalid_action_rate": 0.4751592356687898,
+      "generated_tokens": 11527,
+      "training_target_tokens": 6512,
+      "training_input_tokens": 574523
+    },
+    "reference": {
+      "successes": 7,
+      "failures": 17,
+      "denominator": 24,
+      "success_rate": 0.2916666666666667,
+      "environment_steps": 1772,
+      "invalid_actions": 1248,
+      "invalid_action_rate": 0.7042889390519187,
+      "generated_tokens": 12180,
+      "training_target_tokens": 6515,
+      "training_input_tokens": 574012
+    }
+  },
+  "reference_comparisons": {
+    "canonical": {
+      "gains": 0,
+      "losses": 8,
+      "ties_success": 7,
+      "ties_failure": 9,
+      "ties": 16,
+      "difference_successes": -8,
+      "rate_difference": -0.3333333333333333,
+      "percentage_point_difference": -33.333333333333336,
+      "gain_task_indices": [],
+      "loss_task_indices": [
+        4,
+        6,
+        7,
+        12,
+        13,
+        15,
+        18,
+        20
+      ]
+    },
+    "uniform": {
+      "gains": 3,
+      "losses": 5,
+      "ties_success": 4,
+      "ties_failure": 12,
+      "ties": 16,
+      "difference_successes": -2,
+      "rate_difference": -0.08333333333333333,
+      "percentage_point_difference": -8.333333333333334,
+      "gain_task_indices": [
+        3,
+        9,
+        23
+      ],
+      "loss_task_indices": [
+        4,
+        7,
+        8,
+        12,
+        14
+      ]
+    }
+  },
+  "families": {
+    "look_at_obj_in_light": {
+      "denominator": 4,
+      "canonical": 3,
+      "uniform": 2,
+      "reference": 3
+    },
+    "pick_and_place_simple": {
+      "denominator": 4,
+      "canonical": 4,
+      "uniform": 3,
+      "reference": 1
+    },
+    "pick_clean_then_place_in_recep": {
+      "denominator": 4,
+      "canonical": 2,
+      "uniform": 2,
+      "reference": 2
+    },
+    "pick_cool_then_place_in_recep": {
+      "denominator": 4,
+      "canonical": 3,
+      "uniform": 2,
+      "reference": 0
+    },
+    "pick_heat_then_place_in_recep": {
+      "denominator": 4,
+      "canonical": 1,
+      "uniform": 0,
+      "reference": 0
+    },
+    "pick_two_obj_and_place": {
+      "denominator": 4,
+      "canonical": 2,
+      "uniform": 0,
+      "reference": 1
+    }
+  },
+  "paired_tasks": [
+    {
+      "index": 0,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/look_at_obj_in_light-Pillow-None-DeskLamp-323/trial_T20190908_053153_077977/game.tw-pddl",
+      "family": "look_at_obj_in_light",
+      "canonical": true,
+      "uniform": true,
+      "reference": true
+    },
+    {
+      "index": 1,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/look_at_obj_in_light-CD-None-DeskLamp-302/trial_T20190907_154618_526741/game.tw-pddl",
+      "family": "look_at_obj_in_light",
+      "canonical": false,
+      "uniform": false,
+      "reference": false
+    },
+    {
+      "index": 2,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/look_at_obj_in_light-AlarmClock-None-DeskLamp-323/trial_T20190909_044715_250790/game.tw-pddl",
+      "family": "look_at_obj_in_light",
+      "canonical": true,
+      "uniform": true,
+      "reference": true
+    },
+    {
+      "index": 3,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/look_at_obj_in_light-KeyChain-None-DeskLamp-327/trial_T20190906_202601_548273/game.tw-pddl",
+      "family": "look_at_obj_in_light",
+      "canonical": true,
+      "uniform": false,
+      "reference": true
+    },
+    {
+      "index": 4,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_and_place_simple-SprayBottle-None-Toilet-418/trial_T20190906_190942_706186/game.tw-pddl",
+      "family": "pick_and_place_simple",
+      "canonical": true,
+      "uniform": true,
+      "reference": false
+    },
+    {
+      "index": 5,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_and_place_simple-SoapBottle-None-CounterTop-417/trial_T20190910_112922_368384/game.tw-pddl",
+      "family": "pick_and_place_simple",
+      "canonical": true,
+      "uniform": true,
+      "reference": true
+    },
+    {
+      "index": 6,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_and_place_simple-Vase-None-CoffeeTable-207/trial_T20190909_091246_807206/game.tw-pddl",
+      "family": "pick_and_place_simple",
+      "canonical": true,
+      "uniform": false,
+      "reference": false
+    },
+    {
+      "index": 7,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_and_place_simple-Mug-None-SideTable-329/trial_T20190909_032340_274147/game.tw-pddl",
+      "family": "pick_and_place_simple",
+      "canonical": true,
+      "uniform": true,
+      "reference": false
+    },
+    {
+      "index": 8,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_clean_then_place_in_recep-Cloth-None-Drawer-423/trial_T20190908_140701_251653/game.tw-pddl",
+      "family": "pick_clean_then_place_in_recep",
+      "canonical": false,
+      "uniform": true,
+      "reference": false
+    },
+    {
+      "index": 9,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_clean_then_place_in_recep-SoapBar-None-Drawer-423/trial_T20190906_202340_749336/game.tw-pddl",
+      "family": "pick_clean_then_place_in_recep",
+      "canonical": true,
+      "uniform": false,
+      "reference": true
+    },
+    {
+      "index": 10,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_clean_then_place_in_recep-ButterKnife-None-Drawer-30/trial_T20190908_052007_212776/game.tw-pddl",
+      "family": "pick_clean_then_place_in_recep",
+      "canonical": false,
+      "uniform": false,
+      "reference": false
+    },
+    {
+      "index": 11,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_clean_then_place_in_recep-ButterKnife-None-DiningTable-16/trial_T20190909_114508_617301/game.tw-pddl",
+      "family": "pick_clean_then_place_in_recep",
+      "canonical": true,
+      "uniform": true,
+      "reference": true
+    },
+    {
+      "index": 12,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_cool_then_place_in_recep-Bread-None-CounterTop-7/trial_T20190909_045605_307949/game.tw-pddl",
+      "family": "pick_cool_then_place_in_recep",
+      "canonical": true,
+      "uniform": true,
+      "reference": false
+    },
+    {
+      "index": 13,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_cool_then_place_in_recep-Plate-None-Cabinet-27/trial_T20190906_173120_350651/game.tw-pddl",
+      "family": "pick_cool_then_place_in_recep",
+      "canonical": true,
+      "uniform": false,
+      "reference": false
+    },
+    {
+      "index": 14,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_cool_then_place_in_recep-Tomato-None-Microwave-18/trial_T20190909_012524_159092/game.tw-pddl",
+      "family": "pick_cool_then_place_in_recep",
+      "canonical": false,
+      "uniform": true,
+      "reference": false
+    },
+    {
+      "index": 15,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_cool_then_place_in_recep-Cup-None-Microwave-17/trial_T20190906_192817_654400/game.tw-pddl",
+      "family": "pick_cool_then_place_in_recep",
+      "canonical": true,
+      "uniform": false,
+      "reference": false
+    },
+    {
+      "index": 16,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_heat_then_place_in_recep-Tomato-None-Fridge-24/trial_T20190908_033721_967359/game.tw-pddl",
+      "family": "pick_heat_then_place_in_recep",
+      "canonical": false,
+      "uniform": false,
+      "reference": false
+    },
+    {
+      "index": 17,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_heat_then_place_in_recep-Plate-None-Cabinet-1/trial_T20190908_070946_578973/game.tw-pddl",
+      "family": "pick_heat_then_place_in_recep",
+      "canonical": false,
+      "uniform": false,
+      "reference": false
+    },
+    {
+      "index": 18,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_heat_then_place_in_recep-Mug-None-Cabinet-26/trial_T20190909_062333_424779/game.tw-pddl",
+      "family": "pick_heat_then_place_in_recep",
+      "canonical": true,
+      "uniform": false,
+      "reference": false
+    },
+    {
+      "index": 19,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_heat_then_place_in_recep-Potato-None-Fridge-11/trial_T20190909_011341_436523/game.tw-pddl",
+      "family": "pick_heat_then_place_in_recep",
+      "canonical": false,
+      "uniform": false,
+      "reference": false
+    },
+    {
+      "index": 20,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_two_obj_and_place-SprayBottle-None-GarbageCan-419/trial_T20190908_164236_518264/game.tw-pddl",
+      "family": "pick_two_obj_and_place",
+      "canonical": true,
+      "uniform": false,
+      "reference": false
+    },
+    {
+      "index": 21,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_two_obj_and_place-Knife-None-Drawer-18/trial_T20190907_065232_689984/game.tw-pddl",
+      "family": "pick_two_obj_and_place",
+      "canonical": false,
+      "uniform": false,
+      "reference": false
+    },
+    {
+      "index": 22,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_two_obj_and_place-CreditCard-None-Safe-323/trial_T20190907_001129_214240/game.tw-pddl",
+      "family": "pick_two_obj_and_place",
+      "canonical": false,
+      "uniform": false,
+      "reference": false
+    },
+    {
+      "index": 23,
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/valid_seen/pick_two_obj_and_place-ToiletPaper-None-Drawer-423/trial_T20190907_111251_461099/game.tw-pddl",
+      "family": "pick_two_obj_and_place",
+      "canonical": true,
+      "uniform": false,
+      "reference": true
+    }
+  ],
+  "technical_checks": {
+    "planned_and_observed_episodes": 72,
+    "episodes_per_arm": 24,
+    "unique_paired_tasks": 24,
+    "environment_seed": 20261012,
+    "training_seed": 42,
+    "optimizer_steps_per_arm": 100,
+    "environment_steps_all_arms": 4374,
+    "all_three_summary_barrier_passed": true,
+    "technical_errors": 0,
+    "all_failures_retained": true,
+    "all_unsuccessful_episodes_reached_100_actions": true,
+    "all_stop_reasons": "environment_done, including simulator time-limit terminations",
+    "initial_observation_and_admissible_equality": true,
+    "raw_initial_state_equality_not_recorded": true,
+    "summary_success_step_token_totals_recomputed": true,
+    "actual_won_flags_and_trajectory_continuity_verified": true,
+    "action_membership_and_raw_completions_recomputed": true,
+    "independent_complete_review_rerun_exactly_matches_parent_saved_review": true
+  },
+  "interpretation": [
+    "Canonical succeeds on15/24 tasks (62.5%), uniform9/24 (37.5%), and reference7/24 (29.17%). Reference is8 tasks or33.33 percentage points below canonical and2 tasks or8.33 percentage points below uniform.",
+    "Every reference success is also a canonical success: the paired reference-versus-canonical comparison has0 gains and8 losses, with7 jointly successful and9 jointly failed tasks. Against uniform, reference has3 gains and5 losses, with4 jointly successful and12 jointly failed tasks.",
+    "This is a technically complete negative scientific result for the fixed same60 finite-pool greedy reference-ranking method at this recipe/seed. It is not technical incompleteness, and no error, missing episode or budget exhaustion explains the failed entry screen.",
+    "Uniform has a lower observed invalid-action fraction than canonical while also achieving fewer task successes. Neither invalid-action rate nor training NLL or action likelihood can replace the registered task-success endpoint or rescue reference ranking.",
+    "Keep all six family results. Favorable small family differences against uniform do not override the full24-task comparison; reference loses heavily on simple placement and cooling relative to canonical.",
+    "The reused exploratory24-task development set and one training seed do not justify a universal claim that every reference-selection method is harmful. They do justify rejecting activation of this exact conditional confirmation candidate. Do not append seeds, tune budgets, alter controls or use unseen134 to rescue this version.",
+    "The earlier distinct120-task two-object negative result remains separate research evidence and must not be overwritten or pooled into this same60 result."
+  ],
+  "remote_integrity_evidence": {
+    "source": "outputs/successful_path_postqueue_integrity_v1.json",
+    "sha256": "8bfa87ad8dadf9b27efef69fa68b041731db7e8071f211076f5a9ac936bfc79c",
+    "complete": true,
+    "locked_files_verified_remotely": 223,
+    "source_inventory_files": 46,
+    "original_game_metadata_files": 168,
+    "full_model_inventory_verified": true,
+    "controller_identity_live": false,
+    "owned_workers_remaining": false,
+    "reviewer_direct_remote_access": false,
+    "limitation": "Remote byte checks and process absence are supported by the parent-produced receipt, whose adoption/report/status hashes were checked locally; this reviewer did not independently rerun remote checks."
+  },
+  "verified_file_sha256": {
+    "configs/successful_path_learning_adoption_v1.json": "588c1dfb69ed41ed13b70891e36dabb84846135e7271fde2bebda9b3e273c10c",
+    "outputs/successful_path_eval_canonical_dev24_v1/summary.json": "bade139db799696a0b00a01445b60673d56f98c7312913b1e9882ff09b330cd4",
+    "outputs/successful_path_eval_uniform_dev24_v1/summary.json": "d481e3b09a5d2711760d4066bc15a4cf7dc9cebef078b113e14b1f083a6a0d2f",
+    "outputs/successful_path_eval_reference_dev24_v1/summary.json": "451423491ac15a698fe5b819c1b9a0e1151f73192600752e0a21df311d077c71",
+    "outputs/successful_path_learning_queue_v1/status.json": "76a3c543e39f1018f22fe28d7840c459e13561680b0772e192f53a5e3c4a3563",
+    "outputs/successful_path_learning_queue_v1/locked_sha256.json": "3e139a80e20bbc67c8f0b21563154ca95f32f2884358de1192f4d49dac92d839",
+    "outputs/successful_path_learning_queue_v1/all_training_complete.json": "382bc1a4b1c50018bb081448a5119d4e4dfaa8163decff1c3728142c9cc7fd0d",
+    "data/manifests/dev24.json": "7cee405bdadb61c0193cbe10c72f96b145b7796d88c52cd20974a4603efa03a6",
+    "outputs/successful_path_learning_queue_v1/original_game_locks.json": "fe8904d8081ac6025557f46fc37ae3323b8da041bb4ac65bface9d2de3d622e3",
+    "outputs/successful_path_learning_queue_v1/token_exposure_audit.json": "eaffe6db9e635285afa7fab77eb2941b13c532fbc71246762f64521395dda078",
+    "checkpoints/successful_path_canonical_seed42_v1/summary.json": "7c10205a3125fcb3689eea9843a6978e2389d07ae57256123e65507bc699a41f",
+    "checkpoints/successful_path_canonical_seed42_v1/config.json": "e9b65cb71f074a018f3a5f3aa4050438edbda6004a5ca05432f1c75443eb785d",
+    "checkpoints/successful_path_canonical_seed42_v1/final/training_state.json": "d34d7a4fac3b26e8125c203ec9ecda76705ee9a382cd10473897dd6d5464f5de",
+    "checkpoints/successful_path_canonical_seed42_v1/final/adapter_config.json": "2f000ede54b315cf82c51790d96c6c719cf2e1e02620c7dff2dc920263f6e598",
+    "checkpoints/successful_path_canonical_seed42_v1/metrics.jsonl": "ecf3a3aacf48603c4ec423f3b55996ec7914ae3c3170ea60726a37d39171f225",
+    "outputs/successful_path_eval_canonical_dev24_v1/config.json": "e205dd33095af7b443113398e7b7544b49ccd21817c52fee1a18d59c9bfc6c67",
+    "outputs/successful_path_eval_canonical_dev24_v1/episodes.jsonl": "e354d01e739337aa6f917c8eb4b91490b708ea02c8d5d9fb6879ee184330fe1c",
+    "checkpoints/successful_path_uniform_seed42_v1/summary.json": "c4030a6db13b0ae8c276c5bc652ab792f6cfe7bcd58b3cc6f6649a8f2c3f2077",
+    "checkpoints/successful_path_uniform_seed42_v1/config.json": "0c7f144366f7fece99663f97450ec8af12be4f540806b4390c0668d8f8b90636",
+    "checkpoints/successful_path_uniform_seed42_v1/final/training_state.json": "801589fdfb325da2c4f7d589a4e925de8063a1b94aa0dd447c8362fbc61d3e05",
+    "checkpoints/successful_path_uniform_seed42_v1/final/adapter_config.json": "2008399640ebe05d7791f5a2aa997f8c7e563501c3d332f2d26456d7602c055b",
+    "checkpoints/successful_path_uniform_seed42_v1/metrics.jsonl": "8564d17418e25e320282b08864087dbfb74f4e04b48e9927d34e7b4c9648db39",
+    "outputs/successful_path_eval_uniform_dev24_v1/config.json": "9b174faa30138c60ff43156352ef66b106832d907b239bcc2f02253c9ea15774",
+    "outputs/successful_path_eval_uniform_dev24_v1/episodes.jsonl": "e54f5308daa303304c9d5093bec2122d9d8e762766f18f91bc746f4f4f38281f",
+    "checkpoints/successful_path_reference_seed42_v1/summary.json": "9319a3848888581719d2892e3b654db29ebc5fb2d031060c364f539a5006df6e",
+    "checkpoints/successful_path_reference_seed42_v1/config.json": "73765b71baec9baeb79fbbd5654b347fb356d0d7e03061f87aebac937b7a7164",
+    "checkpoints/successful_path_reference_seed42_v1/final/training_state.json": "df0f2afe49b094b27b35b6b39bc525d62d52777513fe671e9ba3532abd3e28f9",
+    "checkpoints/successful_path_reference_seed42_v1/final/adapter_config.json": "e674c9add942680579399e968cf84b00600802a83758ae9309cd4403726a2baf",
+    "checkpoints/successful_path_reference_seed42_v1/metrics.jsonl": "35c2995d0aa0648a5450245888d170061dd25e0cde75bb4d44f763e42bef120c",
+    "outputs/successful_path_eval_reference_dev24_v1/config.json": "61550554c826e09fdece4c59125969bb38a1ca0fb6c9535f7c511e18b596fb29",
+    "outputs/successful_path_eval_reference_dev24_v1/episodes.jsonl": "3cf9c4c496403cdcab54893de39391b6abf31d887f55c40322a6ae3a7c0ad07c",
+    "outputs/successful_path_learning_queue_v1/complete_batch_report.json": "fe069c4b199ae59ca5ff54de1169eb3e7becba9969d78f042462e2fca9af1973",
+    "outputs/successful_path_selection_v1/selection_summary.json": "8d71ce092f035bab21ebd55d68e526e6232f5d46a2e1da085b380ca0304bb915",
+    "outputs/successful_paths_cpu_v2/summary.json": "fc7cb1a513d29ae317b66f863e3c3e9e86579567bf28a337d8ad4c4cd7ce0bd4",
+    "outputs/successful_paths_cpu_v1/summary.json": "a5fc62b13fc0b60179da366f19fe44ab9da4acecae8fb2b1a415455f3e4e71c0",
+    "analysis/review_successful_path_complete_batch_v1.py": "df11f6b860a49d2906e20e3cd472ffbf565a01648e83cc290a0cc4da8aa34117",
+    "analysis/successful_path_complete_review_v1/review.json": "1d56cae54a134f588410bb7b1522c461d3248dba3fb5391f86b858d4d44161ce",
+    "analysis/successful_path_confirmation_candidate_v1.json": "19538894e51b1ee546c8461a6500100fbb6d33ae4f352c531e5d8153522083f9",
+    "outputs/successful_path_postqueue_integrity_v1.json": "8bfa87ad8dadf9b27efef69fa68b041731db7e8071f211076f5a9ac936bfc79c"
+  },
+  "verification_limits": [
+    "Large checkpoint weights and original server game/model files are checked through bound receipts and the postqueue integrity record, not reread from this local review.",
+    "Full trajectory evidence is independently recomputed from saved actual simulator transitions; no simulator rerun or counterfactual branch was performed.",
+    "Reported forward-token totals remain evaluator-reported; generated tokens, action admissibility, steps and task success are independently recomputed."
+  ],
+  "actions_taken": {
+    "only_new_file": "analysis/successful_path_complete_astra_result_review_v1.json",
+    "remote_reads": 0,
+    "remote_writes": 0,
+    "new_model_jobs": 0,
+    "new_environment_jobs": 0,
+    "confirmation_adoption_created": false,
+    "unseen_outcomes_accessed": false
+  }
+}

@@ -1,0 +1,545 @@
+{
+  "schema_version": 1,
+  "kind": "next_experiment_candidate",
+  "version": "v2",
+  "status": "reviewed_candidate_with_pre_execution_clarifications_not_main_study_adopted",
+  "execution_authorized": false,
+  "name": "One-round learner-state viable-action conditional sampling versus ordinary expert recovery",
+  "decision": {
+    "stop_previous_route": true,
+    "stopped_route": "Original unadapted3B likelihood ranking and temperature sweeps on existing expert-state successful-path pools. Do not activate either failed confirmation candidate.",
+    "one_next_experiment": "Test finite-set conditional action sampling on states actually visited by the adapted learner, with an actual learner-continuation train-only falsification gate and ordinary expert-recovery control.",
+    "why": "Two complete negative selector screens and a clean data/prompt audit undermine another ranking run on the same pools. This alternative addresses learner-induced states and reference staleness while retaining a falsifiable projection increment. It is not a claim that recovery or DAgger is new."
+  },
+  "evidence": {
+    "sha256": {
+      "sources/deep-research-report.md": "fffcc3430d2b148c19ee0eaabc47037698d176b6852ed3539fb4a6072c947d15",
+      "outputs/phase1_failure_audit_v1.json": "6d2ac5eb6d8fcb65b2bac6101bfee664b020d0ad6d4b3e1b3a40c003fad2ffa5",
+      "analysis/successful_path_complete_astra_result_review_v1.json": "6fc2c35c4d1d09775dd955ea19066884393cf5691a56025b15d3195249ecc03c",
+      "analysis/successful_path_train_support_audit_v1.json": "f9139865c749aa46df67c70005670418e40e239e509a27467359048c0c90f3a2",
+      "analysis/successful_path_data_diagnosis_v1.json": "c6a5d9caec8c3bbb8d4e9b8517b3b2578ae652a2c4da2733587648e38a4281de",
+      "configs/successful_path_learning_adoption_v1.json": "588c1dfb69ed41ed13b70891e36dabb84846135e7271fde2bebda9b3e273c10c",
+      "configs/successful_path_selection_candidate_v1.json": "947c02793e57908442ba9413b19abe52ba6b0dda9ce70b718c0d1379e4d5d7f7",
+      "data/manifests/train120.json": "724c18f5711bfb3d9ef002005dda34c40471617eb44f921c78f8fa7f42759af0",
+      "data/manifests/dev24.json": "7cee405bdadb61c0193cbe10c72f96b145b7796d88c52cd20974a4603efa03a6",
+      "gnrl/alfworld_env.py": "76f530bf70da3635f125c6320dba7369a7f9ac4c04c4a627110103ee3720a2fd",
+      "gnrl/policy.py": "c36ecf8c81df6cceffcdce784a88a81809afd8b55df6fc5fcd8330bf1397b82e"
+    },
+    "previous_train120_screen": {
+      "canonical": 13,
+      "uniform": 16,
+      "reference": 15,
+      "denominator": 24,
+      "passed": false
+    },
+    "current_same60_screen": {
+      "canonical": 15,
+      "uniform": 9,
+      "reference": 7,
+      "denominator": 24,
+      "reference_vs_canonical_gains": 0,
+      "reference_vs_canonical_losses": 8,
+      "passed": false
+    },
+    "temperature1_support": "40 non-singleton pools have mean maximum mass0.8992 and median0.9884. A T=1 draw changes approximately4.033/60 tasks versus greedy in expectation. Another draw or temperature sweep is not a substantive rescue.",
+    "data_confound_audit": "No detected cross-arm task/input-format or stale-history confound:60 identical task/initial contexts,1047 causal examples checked, canonical bytes and180 retained traces match native/pool origins. The negative result remains negative.",
+    "failure_audit_limit": "Invalid/repeated actions motivate a hypothesis, not an established causal diagnosis. No current dev failure identity selects the next cohort or anchor."
+  },
+  "source_report_correspondence": {
+    "source_material_not_operational_instructions": true,
+    "sections": [
+      "Environment-consistent projection, source lines358-675",
+      "DAgger/recovery controls, lines690-812",
+      "Base support/reference staleness/learner-state shift, lines901-956"
+    ],
+    "retained_core": "Privileged future information defines a truly executable recovery constraint; a frozen learner distribution conditions on that finite feasible action set; ordinary action-only SFT learns the sampled labels. Every changed action and successor is obtained in the real simulator.",
+    "changed_estimand": "Local viable-action projection at learner-induced states, not exact-state BRP or full-path ECPS/MH. Different candidate actions may reach different actual states. Expert-success continuations only certify finite-pool viability.",
+    "novelty_boundary": "DAgger already addresses learner-induced state distributions. Only a gain over ordinary expert recovery on identical states and update budgets would support an incremental projection contribution. It would not establish publication novelty."
+  },
+  "prior_mechanism_hypothesis": {
+    "H1": "At fixed learner-induced histories, some teacher-viable first actions are easier for the adapted learner to continue successfully than others. Conditional probability under that same frozen learner preferentially selects these recoverable actions.",
+    "H0": "Reference probability among teacher-viable actions does not improve actual learner-continuation success or downstream task success versus uniform/expert labels.",
+    "why_existing_evidence_does_not_answer": "Earlier selection acted on expert-origin successful paths and scored with the original base. It neither isolated labels at identical learner histories nor tested whether the learner can finish after the selected action.",
+    "reference_choice": "Use the standard canonical-BC role, not a dynamic best-arm or checkpoint choice. Disclose that its dev result was already known when designing this new exploratory experiment. Adapted-versus-base scoring is descriptive, not a claimed isolated causal effect of adaptation."
+  },
+  "frozen_start_policy": {
+    "base": "/home/jsy/zhangranxu-adrs-week-20260929/models/Qwen2.5-3B-Instruct",
+    "adapter": "checkpoints/successful_path_canonical_seed42_v1/final",
+    "roles": [
+      "state collector",
+      "conditional-probability reference",
+      "learner-continuation policy",
+      "common initialization for three trained arms"
+    ],
+    "binding": "Bind every final adapter/config/tokenizer/state byte through completed learning locks and model/runtime inventories before execution.",
+    "student_protocol": "Original causal task/history/current observation/admissible-command prompt; greedy generation;2048 context;64 action tokens including EOS;100 environment actions;seed20261012. No admissible decoding, task-text repair or object-number postprocessing at evaluation."
+  },
+  "training_cohort": {
+    "source": "data/manifests/train120.json",
+    "rule": "Ordered set difference of train120 and the frozen same60 cohort:remaining10 tasks per family. These are training tasks, not held-out evidence. They were absent from the chosen same60 canonical adapter's SFT data.",
+    "tasks": 60,
+    "frozen_gamefiles": [
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Pencil-None-DeskLamp-328/trial_T20190906_201130_178664/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Book-None-DeskLamp-303/trial_T20190909_085406_916808/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Pillow-None-DeskLamp-328/trial_T20190908_114619_968426/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Book-None-DeskLamp-305/trial_T20190908_215714_132085/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Pillow-None-DeskLamp-302/trial_T20190909_150929_316139/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Pillow-None-DeskLamp-307/trial_T20190908_190608_801964/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Pillow-None-DeskLamp-216/trial_T20190907_220649_204897/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Mug-None-DeskLamp-323/trial_T20190907_041032_086791/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Book-None-DeskLamp-324/trial_T20190907_014417_271891/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-AlarmClock-None-DeskLamp-314/trial_T20190908_042426_942777/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-Newspaper-None-ArmChair-212/trial_T20190907_222259_937961/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-RemoteControl-None-CoffeeTable-209/trial_T20190909_062232_520101/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-CellPhone-None-Safe-323/trial_T20190907_234512_145231/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-CellPhone-None-Safe-323/trial_T20190907_234526_733036/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-Pencil-None-Desk-307/trial_T20190909_075126_209289/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-ToiletPaper-None-ToiletPaperHanger-427/trial_T20190908_121628_520773/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-HandTowel-None-Toilet-427/trial_T20190907_173906_510898/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-CellPhone-None-Desk-312/trial_T20190908_021820_773170/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-Candle-None-Toilet-413/trial_T20190909_104025_525772/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-ToiletPaper-None-GarbageCan-416/trial_T20190906_202104_886119/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Pan-None-StoveBurner-5/trial_T20190907_124437_794732/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Fork-None-SideTable-3/trial_T20190908_002604_591830/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-ButterKnife-None-DiningTable-27/trial_T20190907_062853_238120/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Bowl-None-Cabinet-13/trial_T20190909_022941_058533/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Apple-None-SideTable-21/trial_T20190908_041728_759551/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Spatula-None-DiningTable-4/trial_T20190909_002645_047114/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Spatula-None-DiningTable-19/trial_T20190909_081320_054592/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Ladle-None-Cabinet-2/trial_T20190908_220534_690455/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Pan-None-StoveBurner-5/trial_T20190907_124309_833040/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Kettle-None-Cabinet-3/trial_T20190909_151546_297502/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Pot-None-CounterTop-5/trial_T20190908_073440_035026/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Plate-None-Cabinet-27/trial_T20190906_173250_466409/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Cup-None-Microwave-6/trial_T20190909_012531_072144/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Bread-None-DiningTable-15/trial_T20190908_195722_260654/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Apple-None-GarbageCan-2/trial_T20190906_195837_992466/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Bowl-None-CounterTop-17/trial_T20190909_042203_048291/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Bowl-None-Shelf-1/trial_T20190907_073835_452186/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Pan-None-StoveBurner-26/trial_T20190907_103701_866410/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Pan-None-StoveBurner-27/trial_T20190907_182355_408484/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Tomato-None-Microwave-5/trial_T20190908_132219_315033/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Bread-None-Fridge-15/trial_T20190906_215435_171947/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Egg-None-GarbageCan-11/trial_T20190908_220000_908386/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Cup-None-Cabinet-15/trial_T20190908_055531_226087/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Cup-None-Cabinet-6/trial_T20190908_165422_447082/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Egg-None-Fridge-20/trial_T20190907_224507_776787/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Mug-None-Cabinet-22/trial_T20190908_073225_811379/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Mug-None-CoffeeMachine-26/trial_T20190907_113653_821141/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Cup-None-Cabinet-6/trial_T20190908_165456_939103/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Cup-None-Cabinet-28/trial_T20190909_052944_317093/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Cup-None-Cabinet-1/trial_T20190909_090847_096524/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-Book-None-DiningTable-329/trial_T20190909_002648_871253/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-CreditCard-None-ArmChair-214/trial_T20190909_033027_298680/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-SaltShaker-None-Cabinet-3/trial_T20190908_102252_413545/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-CellPhone-None-Sofa-218/trial_T20190907_231928_721968/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-AlarmClock-None-Desk-313/trial_T20190909_054612_605208/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-RemoteControl-None-ArmChair-217/trial_T20190909_120033_039874/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-CellPhone-None-Bed-322/trial_T20190906_181156_010327/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-KeyChain-None-ArmChair-217/trial_T20190906_213125_603187/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-CreditCard-None-ArmChair-223/trial_T20190909_110442_533707/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-PepperShaker-None-DiningTable-18/trial_T20190918_215048_043255/game.tw-pddl"
+    ],
+    "anchors": "States immediately after4,8,16 actual greedy learner actions, if still active:at most180 anchors. Run each whole original learner episode once. Already-terminated/unsupported slots remain explicit unavailable entries; do not replace tasks/timesteps.",
+    "records": "Exact original task string, actual history including errors, current observation/commands, raw canonical state including elapsed_steps/moves, prefix actions, terminal status, game/metadata/model/source hashes.",
+    "same_prompt_all_arms": true,
+    "no_dev_failure_selection": true
+  },
+  "candidate_pool": {
+    "maximum_unique_first_actions_per_anchor": 8,
+    "fixed_proposal": "Include native planner first action. Include the recorded frozen learner next action if distinct, admissible and not information-only. Fill remaining slots from distinct admissible non-information-only commands ordered by SHA256(recovery_projection_v1_action_pool|relative_game|elapsed_steps|command). Neither likelihood nor downstream success chooses the8 proposed commands.",
+    "information_only": "Use existing gnrl.alfworld_env.information_only_action. Planner first action is retained even if information-only. Unsupported planner behavior is reported, not replaced.",
+    "teacher": "Existing native planner expert. Its arbitrary-prefix behavior must pass bounded preflight. No alternative LLM teacher or second planning algorithm in this version.",
+    "execution": "Seeded reset, exact learner-prefix replay, verify canonical state/observation/admissibles. Execute changed first action, then follow native planner from resulting actual state to original-goal success within original total100-action budget. Record fresh transitions throughout; never splice old expert suffix observations.",
+    "viability": "Retain a distinct command only when its fresh branch ends won=true under the unmodified original game within budget. Planner baseline action must itself have a successful certificate for an anchor to be eligible for all three arms. Keep all acquisition failures in reported denominators.",
+    "lock": "Finish and hash-lock all proposals, failures, successful certificates and costs before scoring or continuation comparisons. No expansion of low-yield pools.",
+    "semantics": "Original benchmark/PDDL success; preserve simulator abstractions. No claim of physical correctness or equal terminal states.",
+    "planner_source_evidence": "Parent read-only inspection reports planner recomputes from current PddlState after each step,including invalid actions. This supports implementation feasibility only;actual bounded CPU replay/invalid-action recovery smoke remains required before acquisition."
+  },
+  "conditional_distribution_and_labels": {
+    "formula": "For certified finite commands C_h:q(a|h)=exp(log pi_BC(a+EOS|h))/sum_b_in_C_h exp(log pi_BC(b+EOS|h));T=1, no length normalization, clipping, temperature search or greedy replacement.",
+    "scope": "Precisely normalized distribution over this proposed, planner-certified finite action set. No claim of full successful-action support, unbiased path-space sampling or MH stationarity.",
+    "expert_recovery": "One native planner first-action label at each common eligible anchor. Necessary single-round DAgger-style recovery comparator.",
+    "uniform_viable_recovery": "One uniform command from same deduplicated C_h at each same anchor.",
+    "reference_conditional_recovery": "One q draw at each same anchor. Draw once, store uniform/CDF values; no redraw.",
+    "draws": "u=first64bits(SHA256(salt|relative_game|elapsed_steps))/2^64. Salts:recovery_projection_v1_uniform and recovery_projection_v1_conditional. Commands sorted by exact UTF-8 bytes for CDF.",
+    "before_gate": "Draw/freeze all three datasets before inspecting learner-continuation results. Q outcomes cannot filter anchors, select labels or change probabilities.",
+    "student_visibility": "Only original task, actual previous observations/actions, current observation/commands and selected action+EOS target. Teacher plan, future observations, state facts, success labels, scores and Q values never enter prompts.",
+    "replay_validation": "Independently reset/prefix-replay every retained candidate first action and compare actual next state/observation with its certificate. Any mismatch stops. Count reset/prefix costs."
+  },
+  "train_only_diagnostic_gate": {
+    "purpose": "Test whether reference probability selects actions the actual learner can continue, rather than merely actions an oracle can rescue. No training/new held-out rollout before passing.",
+    "fixed_anchor_count": 36,
+    "rule": "Before rollout,within each complementary training family sort10 identities by SHA256(recovery_projection_v1_diagnostic36|relative_game). Ranks0,1 use after4 actions;2,3 after8;4,5 after16. Six distinct tasks per family. No replacement of unavailable anchors.",
+    "frozen_anchors": [
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Book-None-DeskLamp-303/trial_T20190909_085406_916808/game.tw-pddl",
+        "family": "look_at_obj_in_light",
+        "after_actions": 4
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Pillow-None-DeskLamp-216/trial_T20190907_220649_204897/game.tw-pddl",
+        "family": "look_at_obj_in_light",
+        "after_actions": 4
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Mug-None-DeskLamp-323/trial_T20190907_041032_086791/game.tw-pddl",
+        "family": "look_at_obj_in_light",
+        "after_actions": 8
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Pillow-None-DeskLamp-302/trial_T20190909_150929_316139/game.tw-pddl",
+        "family": "look_at_obj_in_light",
+        "after_actions": 8
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Book-None-DeskLamp-324/trial_T20190907_014417_271891/game.tw-pddl",
+        "family": "look_at_obj_in_light",
+        "after_actions": 16
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Pillow-None-DeskLamp-328/trial_T20190908_114619_968426/game.tw-pddl",
+        "family": "look_at_obj_in_light",
+        "after_actions": 16
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-Candle-None-Toilet-413/trial_T20190909_104025_525772/game.tw-pddl",
+        "family": "pick_and_place_simple",
+        "after_actions": 4
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-CellPhone-None-Safe-323/trial_T20190907_234512_145231/game.tw-pddl",
+        "family": "pick_and_place_simple",
+        "after_actions": 4
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-Pencil-None-Desk-307/trial_T20190909_075126_209289/game.tw-pddl",
+        "family": "pick_and_place_simple",
+        "after_actions": 8
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-ToiletPaper-None-ToiletPaperHanger-427/trial_T20190908_121628_520773/game.tw-pddl",
+        "family": "pick_and_place_simple",
+        "after_actions": 8
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-Newspaper-None-ArmChair-212/trial_T20190907_222259_937961/game.tw-pddl",
+        "family": "pick_and_place_simple",
+        "after_actions": 16
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-CellPhone-None-Desk-312/trial_T20190908_021820_773170/game.tw-pddl",
+        "family": "pick_and_place_simple",
+        "after_actions": 16
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Pan-None-StoveBurner-5/trial_T20190907_124437_794732/game.tw-pddl",
+        "family": "pick_clean_then_place_in_recep",
+        "after_actions": 4
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-ButterKnife-None-DiningTable-27/trial_T20190907_062853_238120/game.tw-pddl",
+        "family": "pick_clean_then_place_in_recep",
+        "after_actions": 4
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Bowl-None-Cabinet-13/trial_T20190909_022941_058533/game.tw-pddl",
+        "family": "pick_clean_then_place_in_recep",
+        "after_actions": 8
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Apple-None-SideTable-21/trial_T20190908_041728_759551/game.tw-pddl",
+        "family": "pick_clean_then_place_in_recep",
+        "after_actions": 8
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Spatula-None-DiningTable-4/trial_T20190909_002645_047114/game.tw-pddl",
+        "family": "pick_clean_then_place_in_recep",
+        "after_actions": 16
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Fork-None-SideTable-3/trial_T20190908_002604_591830/game.tw-pddl",
+        "family": "pick_clean_then_place_in_recep",
+        "after_actions": 16
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Apple-None-GarbageCan-2/trial_T20190906_195837_992466/game.tw-pddl",
+        "family": "pick_cool_then_place_in_recep",
+        "after_actions": 4
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Bread-None-DiningTable-15/trial_T20190908_195722_260654/game.tw-pddl",
+        "family": "pick_cool_then_place_in_recep",
+        "after_actions": 4
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Pot-None-CounterTop-5/trial_T20190908_073440_035026/game.tw-pddl",
+        "family": "pick_cool_then_place_in_recep",
+        "after_actions": 8
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Tomato-None-Microwave-5/trial_T20190908_132219_315033/game.tw-pddl",
+        "family": "pick_cool_then_place_in_recep",
+        "after_actions": 8
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Pan-None-StoveBurner-27/trial_T20190907_182355_408484/game.tw-pddl",
+        "family": "pick_cool_then_place_in_recep",
+        "after_actions": 16
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Plate-None-Cabinet-27/trial_T20190906_173250_466409/game.tw-pddl",
+        "family": "pick_cool_then_place_in_recep",
+        "after_actions": 16
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Mug-None-CoffeeMachine-26/trial_T20190907_113653_821141/game.tw-pddl",
+        "family": "pick_heat_then_place_in_recep",
+        "after_actions": 4
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Egg-None-Fridge-20/trial_T20190907_224507_776787/game.tw-pddl",
+        "family": "pick_heat_then_place_in_recep",
+        "after_actions": 4
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Cup-None-Cabinet-1/trial_T20190909_090847_096524/game.tw-pddl",
+        "family": "pick_heat_then_place_in_recep",
+        "after_actions": 8
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Cup-None-Cabinet-15/trial_T20190908_055531_226087/game.tw-pddl",
+        "family": "pick_heat_then_place_in_recep",
+        "after_actions": 8
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Bread-None-Fridge-15/trial_T20190906_215435_171947/game.tw-pddl",
+        "family": "pick_heat_then_place_in_recep",
+        "after_actions": 16
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Mug-None-Cabinet-22/trial_T20190908_073225_811379/game.tw-pddl",
+        "family": "pick_heat_then_place_in_recep",
+        "after_actions": 16
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-PepperShaker-None-DiningTable-18/trial_T20190918_215048_043255/game.tw-pddl",
+        "family": "pick_two_obj_and_place",
+        "after_actions": 4
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-CreditCard-None-ArmChair-214/trial_T20190909_033027_298680/game.tw-pddl",
+        "family": "pick_two_obj_and_place",
+        "after_actions": 4
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-AlarmClock-None-Desk-313/trial_T20190909_054612_605208/game.tw-pddl",
+        "family": "pick_two_obj_and_place",
+        "after_actions": 8
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-Book-None-DiningTable-329/trial_T20190909_002648_871253/game.tw-pddl",
+        "family": "pick_two_obj_and_place",
+        "after_actions": 8
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-RemoteControl-None-ArmChair-217/trial_T20190909_120033_039874/game.tw-pddl",
+        "family": "pick_two_obj_and_place",
+        "after_actions": 16
+      },
+      {
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-CellPhone-None-Bed-322/trial_T20190906_181156_010327/game.tw-pddl",
+        "family": "pick_two_obj_and_place",
+        "after_actions": 16
+      }
+    ],
+    "actual_Q": "For EVERY retained command at each available fixed diagnostic anchor, independently reset/replay prefix,verify state,execute that command,then let frozen canonical BC act greedily to original total100-action horizon/termination. Q_h(a)=actual won. Never substitute planner success,score/NLL or critic estimates. At most288 learner branches.",
+    "metrics": "Vq=sum q(a)Q_h(a);Vu=mean Q_h(a);Ve=Q_h(planner_first_action). Average pairwise differences over all36 planned anchors. Already-terminal/unavailable/no-certified-expert slots contribute0 to differences because intervention is unavailable; preserve explicit status,never present these as observed failed Q episodes.",
+    "all_required": [
+      "At least12/36 planned anchors have at least2 certified commands,covering at least4 families.",
+      "At least8 diagnostic anchors contain both successful and unsuccessful actual learner continuations. Otherwise probability-utility contrast is not identified.",
+      "Mean(Vq-Vu) over fixed36 slots is at least2/36 (approximately5.56 percentage points).",
+      "Mean(Vq-Ve) over fixed36 slots is at least0.",
+      "Frozen conditional labels differ from expert and uniform labels on at least12 eligible training anchors against each comparator. No redraw if degenerate.",
+      "All planned technical records complete;replay,prompt,hash and token checks have zero errors."
+    ],
+    "threshold_status": "Preregistered operational mechanism/futility criteria,not significance tests,powered estimates or guarantees of learning. Training continuation outcomes are not held-out benefit.",
+    "secondary": "Score original unadapted base on same locked C_h and report its q-weighted Q using the same executed branches. Fixed descriptive comparison only;cannot select reference/change labels/rescue failed gate.",
+    "unblinding": "Inspect complete36-slot diagnostic table only after all available candidate Q rollouts finish. Monitor technical status/counts only during execution.",
+    "failure": "Any scientific gate failure stops this version before training and new held-out evaluation. No lower threshold,new subset,temperature,checkpoint,horizon or seed. Preserve negative diagnostic.",
+    "missingness_contract": {
+      "structural_unavailable": "Only completed original collection terminal/no-admissible slots or completed planner search with no certified expert;Q values remain null,paired intervention differences explicitly0 on fixed36 denominator. Report counts by reason and diagnostic eligible-subset values descriptively.",
+      "technical_missing": "Exception,incomplete record,budget stop,hash/replay/token error,missing planned candidate branch:gate=null and complete=false,never a structural zero. Do not calculate a pass from the available prefix.",
+      "estimand": "Availability-weighted intervention increment across the fixed36 planned training slots,not the average Q or observed success rate of36 actually executed episodes."
+    }
+  },
+  "conditional_training": {
+    "jobs": 3,
+    "order": [
+      "expert_recovery",
+      "uniform_viable_recovery",
+      "reference_conditional_recovery"
+    ],
+    "initialization": "Identical original3B plus frozen canonical final LoRA loaded trainable. Continue existing adapter weights with fresh identical AdamW. Do not stack an adapter or reuse prior optimizer state.",
+    "steps_each": 100,
+    "seed": 42,
+    "batch_size": 1,
+    "gradient_accumulation": 8,
+    "per_step": "Exactly4 common original canonical BC examples and4 common eligible recovery anchors,interleaved BC0,recovery0,...,BC3,recovery3. Separate deterministic shuffles of349 BC indices and common anchor indices,seeds613300 and613301,reshuffle on wrap. Same index schedule all arms.",
+    "exposures_each": {
+      "original_BC": 400,
+      "recovery": 400
+    },
+    "settings": "lr0.0002,LoRA rank16/alpha32/dropout0.05,action-only token-weighted accumulation,bfloat16,AdamW weight_decay0,gradient clipping1,context2048/action64. Freeze code and exact per-arm token audits;match trained target totals/final step100 state.",
+    "matching": "Same source histories,400+400 exposures and100 updates. Token counts may differ and must be reported;no padding/resampling. Equal updates are not equal total compute.",
+    "checkpoint": "Final step100 only. Lock all three models before first research evaluation. No training-loss checkpoint choice or new iteration."
+  },
+  "new_research_evaluation": {
+    "status": "Exploratory new seen-task evaluation,not confirmation or old dev24. Metadata-only manifest freeze before any new task observation/rollout and before acquisition begins.",
+    "split": "Official valid_seen,48 tasks,8 per family.",
+    "selection": "Enumerate complete supported/solvable valid_seen inventory with existing frozen filters. Exclude every previously evaluated task and every task sharing its family/object/receptacle/device/scene recipe key,plus any train identity. Within family choose first8 by SHA256(recovery_projection_v1_research_seen48|relative_game). Freeze source universe,exclusions,selected game/metadata hashes. If any family has fewer8 eligible,STOP;no quota/split fallback.",
+    "exposure_registry": "Register all previous evaluation manifests,including both old/current dev24. Select by membership/metadata only,never outcomes. Audit task/semantic-key overlaps;disclose scene overlap with train/old dev. New seen tasks are not new-room generalization.",
+    "unseen134": "Remain unopened:zero unseen134 evaluations and no confirmation adoption.",
+    "fixed_order": [
+      "frozen_canonical_BC",
+      "uniform_viable_recovery",
+      "expert_recovery",
+      "reference_conditional_recovery"
+    ],
+    "models": 4,
+    "tasks_per_model": 48,
+    "episodes": 192,
+    "protocol": "Greedy original prompt;environment_seed20261012;100 steps;context2048/action64;max_generated_tokens350000 per model;max_scored_tokens10000000;wall7200 seconds per model.",
+    "primary": "Full48-task paired success difference:reference_conditional minus expert_recovery. Secondary required contrast:minus uniform_viable. Frozen BC is acquisition-benefit context,not sole evidence of projection gain.",
+    "practical_screen": "Reference must gain at least3/48 successes over BOTH equally trained recovery controls and strictly exceed frozen BC. Exploratory practical screen,not p-value/confirmation. Report all4 counts,full48 table,paired gains/losses,6families and every scene with denominators.",
+    "analysis": "No independent-episode significance claim from correlated tasks/scenes and one seed. Report exact differences and heterogeneity. NLL/invalid-action rates are secondary and cannot replace success.",
+    "complete_only": "Complete/hash-lock all192 episodes before performance access. Any technical/budget incompleteness:all192 statuses,null outcomes,no partial comparison;retain whether unblinding began. No retry/favorable subset.",
+    "after": "Failure against either recovery control stops this likelihood-projection route for this ALFWorld setup. If recovery variants improve BC similarly,attribute gain to recovery supervision,not sampling. Positive screen supports only bounded exploratory incremental effect;no automatic seeds,unseen reopening or goal-completion claim.",
+    "frozen_metadata_artifacts": {
+      "manifest": "outputs/recovery_seen48_freeze_v1/manifest.json",
+      "manifest_sha256": "a718d0f77cccba4c839a0612baeec72d48d444d05232c9edd6ad64c021a9548a",
+      "report": "outputs/recovery_seen48_freeze_v1/report.json",
+      "report_sha256": "d2f4221e9274115e489f1c570db515c731e488b4e318193d99afcb591dfd6e8e",
+      "selected_tasks": 48,
+      "new_environment_calls": 0,
+      "new_model_calls": 0,
+      "original_candidate_binding_preserved": true,
+      "registry_scope": "All8 historical completed project episodes.jsonl files plus originaldev24;24unique previous eval identities. Root confirmed no concurrent evaluation writer; known earlier technical setup attempts did not add other evaluated identities.",
+      "recipe_key_fields": [
+        "task_type",
+        "object_target",
+        "parent_target",
+        "mrecep_target",
+        "toggle_target",
+        "object_sliced",
+        "scene.floor_plan"
+      ]
+    }
+  },
+  "finite_budgets": {
+    "physical_gpu": 2,
+    "max_concurrent_GPU_jobs": 1,
+    "CPU_worker_cap": 4,
+    "automatic_retries": 0,
+    "new_training_jobs_if_gate_passes": 3,
+    "new_heldout_model_evaluations_if_gate_passes": 4,
+    "new_unseen_evaluations": 0,
+    "collection_episodes": 60,
+    "max_anchors": 180,
+    "max_oracle_branches": 1440,
+    "max_diagnostic_learner_branches": 288,
+    "max_candidate_replay_checks": 1440,
+    "heldout_episodes": 192,
+    "environment_step_upper": {
+      "collection": 6000,
+      "oracle_including_prefix": 144000,
+      "diagnostic_including_prefix": 28800,
+      "candidate_first_action_replay": 24480,
+      "heldout": 19200,
+      "sum": 222480,
+      "preflight_extra": 0,
+      "hard_global_step_calls_started": 224000
+    },
+    "max_total_reset_calls": 3600,
+    "planned_rollout_generated_token_upper": 3456000,
+    "max_total_generated_tokens": 4000000,
+    "max_scored_target_tokens": 500000,
+    "max_scoring_forward_tokens": 7000000,
+    "max_training_target_tokens_each": 2000000,
+    "stage_wall_seconds": {
+      "preflight": 1800,
+      "collection": 7200,
+      "oracle_CPU": 43200,
+      "scoring": 7200,
+      "diagnostic_continuation": 21600,
+      "candidate_replay": 7200,
+      "each_training": 7200,
+      "each_heldout_model": 7200
+    },
+    "global_wall_seconds_including_waits_verification_cleanup": 171840,
+    "cleanup_reserve_seconds": 30,
+    "feasibility": "Approximately0.5seconds per environment action makes diagnostic28800-step maximum about4GPU-hours,not the20-hour144000-step all180-anchor alternative. Timing is no guarantee;stage limit is capped by remaining global time. No post-outcome enlargement.",
+    "accounting": "Log all reset,prefix replay,failed planner,validation,learner-continuation,generation,scoring/training costs. Count env.step when started. Separate common acquisition/diagnostic research overhead from selector-specific scoring and cheaper deployable expert-only recovery. No equal-total-compute claim.",
+    "separate_prior_smoke": {
+      "adoption": "configs/recovery_preflight_adoption_v1.json",
+      "adoption_sha256": "6d304bca5ac2dd2ce80fffb1a9e1d6c9a9689eef557c061ed33bb0e1403c0eb1",
+      "max_started_steps": 6000,
+      "max_started_resets": 200,
+      "inner_wall_seconds": 900,
+      "outer_deadline_and_cleanup_max_seconds": 935,
+      "main_study_step_limit": 224000,
+      "combined_step_limit": 230000,
+      "main_study_reset_limit": 3600,
+      "combined_reset_limit": 3800,
+      "main_study_wall_limit_seconds": 171840,
+      "combined_budgeted_execution_wall_limit_seconds": 172800,
+      "explanation": "Prior CPU smoke is a separate evidence and cost ledger. Main study222480 derived worst-case calls fit224000. Combined cap uses6000+224000 and200+3600. Execution wall budgeting includes960seconds allowance for prior smoke and its cleanup;offline method design/review waiting is separately reported."
+    }
+  },
+  "implementation_and_adoption": {
+    "current_action": "Source preparation and independent review only. Metadata freeze and prior CPU smoke are separately adopted. Main study acquisition,scoring,diagnostic,training and new evaluation remain unadopted.",
+    "prerequisites": [
+      "Independent Astra review of candidate and future implementation;explicit parent adoption.",
+      "Freeze source/runtime/model/data/game/metadata inventories and unique output paths;preserve all negative history.",
+      "Implement explicit learner-state records and replay-safe planner continuation. Existing initial-state recipe compiler is not assumed to recover arbitrary states.",
+      "Separate reviewed trainer loading common trainable adapter and fixed4+4 schedule;do not silently reuse fresh-LoRA trainer with changed semantics.",
+      "Verify planner-enabled versus student/no-planner prefix replays agree in full canonical state/causal observations. Expert side information must not change student dynamics.",
+      "Freeze research48 metadata manifest/exclusions before acquisition;bind start policy and all3 final adapters before held-out rollout.",
+      "launch_gpu.py UUID guard;system-Python pidfd owned-session controller;existing project workers. Writes only under /home/jsy/GNRL_20261012."
+    ],
+    "technical_stop": "Replay/hash mismatch,unsupported contract,OOM,nonfinite training,budget exhaustion or missing records stops. Normally returned planner inability within100 is acquisition failure,not permission for teacher/task substitution. Exceptions are technical failures.",
+    "futility_stop": "No action-utility variation,failed actual-continuation gate,degenerate labels or failure against recovery controls ends this version. No nearby-definition/temperature/checkpoint sweeps.",
+    "substantive_alternative_if_stopped": "Preserve absence of incremental support for current ALFWorld likelihood projection. Plain expert recovery can be an engineering baseline if effective,but does not satisfy the sampling claim. Stronger reference/teacher or another environment needs a separately justified question and budget,not a relabeled success."
+  },
+  "primary_literature_checked": [
+    {
+      "title": "A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning",
+      "url": "https://proceedings.mlr.press/v15/ross11a.html",
+      "use": "Existing DAgger baseline and learner-induced observation-distribution motivation;recovery aggregation is not new."
+    },
+    {
+      "title": "Finetuning with Sampling: SFT Learns Better Than You Think",
+      "url": "https://arxiv.org/abs/2610.02140",
+      "use": "Data-distribution adaptation to reference learner,rather than a new SFT loss;text MCMC results do not establish this agent intervention."
+    }
+  ],
+  "actions_this_design_turn": {
+    "new_local_file": "analysis/next_experiment_candidate_v1.json",
+    "model_calls": 0,
+    "simulator_calls": 0,
+    "training": 0,
+    "evaluation": 0,
+    "remote_reads": 0,
+    "remote_writes": 0,
+    "unseen_outcomes_accessed": false
+  },
+  "created_utc": "2026-10-12T19:14:51.390542+00:00",
+  "identity_serialization": "relative_game means the exact POSIX path suffix after /json_2.1.1/;elapsed_steps is an unpadded decimal integer;UTF-8 encoding and literal | separators. Freeze these definitions in implementation fixtures.",
+  "parent_revision": {
+    "source": "analysis/next_experiment_candidate_v1.json",
+    "sha256": "7a9192723e495c04d01419c6e758304a5dff8efa349c152eb7b68ca620737b1c",
+    "review": "analysis/recovery_projection_candidate_review_v1.json",
+    "review_sha256": "6fc5133b4763ed8adbf1045d2003d8b9ff741cfb859b59310fa4fe26abf86146",
+    "change_scope": "Pre-execution budget reconciliation and missingness semantics only;no scientific hypothesis,cohort,36 anchor,selection,gates,training or evaluation protocol changed."
+  }
+}

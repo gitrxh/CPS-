@@ -1,0 +1,56 @@
+{
+  "kind": "recovery_acquisition_resume_parent_adoption",
+  "version": 1,
+  "adopted": true,
+  "adopted_by": "root_after_independent_GPT_6_Astra_review",
+  "retry_authorized": true,
+  "retry_reason": "user-requested interruption recovery",
+  "authorized_stages": [
+    "oracle",
+    "replay"
+  ],
+  "old_parent": "configs/recovery_acquisition_adoption_v1.json",
+  "inventory": "outputs/recovery_resume_inventory_v1.json",
+  "resume_review": "analysis/recovery_acquisition_resume_astra_review_v1.json",
+  "expected_completed_records": 131,
+  "old_processes": [
+    {
+      "pid": 455646,
+      "start_ticks": 30336263,
+      "session": 455646
+    },
+    {
+      "pid": 460710,
+      "start_ticks": 30553085,
+      "session": 460710
+    },
+    {
+      "pid": 455656,
+      "start_ticks": 30337474,
+      "session": 455656
+    }
+  ],
+  "output_paths": {
+    "queue": "outputs/recovery_projection_resume_queue_v1",
+    "oracle": "outputs/recovery_projection_oracle_resume_v1",
+    "replay": "outputs/recovery_projection_replay_resume_v1"
+  },
+  "execution_preferences": {
+    "background": true,
+    "external_monitoring": false,
+    "scheduled_reports": false,
+    "automatic_retries": false,
+    "stop_after": "needs_astra_resumed_acquisition_review"
+  },
+  "scientific_settings_changed": false,
+  "original_deadlines_preserved": true,
+  "adopted_utc": "2026-10-13 04:25:15 UTC",
+  "user_instruction": "Run in the background without monitoring or scheduled reports; verify startup once.",
+  "file_sha256": {
+    "analysis/resume_recovery_acquisition_v1.py": "d1785d3ba35604ad7a7291e76ae189664e4d24508a275e1a3fde4c49f3e2c751",
+    "analysis/test_resume_recovery_acquisition_v1.py": "5874c0a1c6c1cee08b42eb17ecef943e64f2b22a2b95b4819623b4cf9721e287",
+    "analysis/recovery_acquisition_resume_astra_review_v1.json": "dd5d8db3a0b03c2ccfad589884f6f091c9d0c0a08d7c090e9aadc10e79dc7511",
+    "configs/recovery_acquisition_adoption_v1.json": "1d1f1dae4a3c99649160ef6343f3e66d297aaf57c92573437b2d8e7ca74ddd55",
+    "outputs/recovery_resume_inventory_v1.json": "38ca390d0c0375074de058751856e8ee952fd417d638e5bb32309b949ab26ae2"
+  }
+}

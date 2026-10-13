@@ -1,0 +1,34 @@
+{
+  "kind": "independent_recovery_diagnostic_result_tools_review",
+  "reviewer": "root GPT-6 Astra independent source review",
+  "created_utc": "2026-10-12T20:01:45.479989+00:00",
+  "review_passed": true,
+  "execution_authorized": false,
+  "source_sha256": {
+    "analysis/verify_recovery_diagnostic_postqueue_v1.py": "efa7ce6466394f410848cc61bc55626573035a0d42cceb7b2b84ac270eee24e6",
+    "analysis/test_verify_recovery_diagnostic_postqueue_v1.py": "86068d8b1473aa8afe6b5328f03f7808c961652b21a2db9144ffd7bf53363f30",
+    "analysis/review_recovery_diagnostic_complete_v1.py": "15c6a2700ad07ce06741bfe4e782f015f9008c99c65e67d29d49e7b1453974b7",
+    "analysis/test_review_recovery_diagnostic_complete_v1.py": "8e26fc206e7bddca66ef16011c857072e0aba37be6a3d8a5fe049a3db31c161d"
+  },
+  "validation": {
+    "complete_review_pure_fixtures_root_ran": 9,
+    "postqueue_verifier_pure_fixtures_author_ran": 8,
+    "root_read_full_verifier": true,
+    "root_read_full_result_reviewer": true,
+    "real_environment_model_calls": 0,
+    "remote_deployment": false
+  },
+  "verified_contracts": [
+    "All actual-Q/score artifact parsing follows completed score180/diagnostic metadata and exited PID/start/session receipt barriers.",
+    "Independent score-event padded-token recount covers adapted and base reference; Q recount includes actual prefix,forced action,learner actions and generated tokens.",
+    "Independent fixed36 gate recomputation keeps structural unavailability null-Q and zero paired increment, with technical missing rejected rather than imputed.",
+    "Postqueue verifier requires explicit expected adoption SHA and PID/start ticks, resolves real workspace symlink, measures all frozen bytes and owned process exits without signalling.",
+    "All verification inherits original absolute main-study deadline, explicit caps and exclusive new output receipts. No retries, training or heldout jobs are launched."
+  ],
+  "known_limits": [
+    "Diagnostic rollout forward-token totals rely on durable policy counters because per-generation prompt token IDs/counts are not stored.",
+    "Prefix replay steps/resets rely on complete verified-prefix records and durable counters; individual prefix events are not separately logged.",
+    "No current partial result was read. Actual postqueue and result review remain pending the fixed acquisition and diagnostic completions."
+  ],
+  "unresolved_findings": []
+}

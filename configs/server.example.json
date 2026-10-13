@@ -1,0 +1,13 @@
+{
+  "host": "YOUR_SSH_HOST",
+  "port": 22,
+  "user": "YOUR_SSH_USER",
+  "ssh_key": "C:/Users/YOU/.ssh/id_ed25519",
+  "remote_root": "/absolute/path/to/your/project",
+  "allowed_physical_gpu_indices": [0, 1, 2, 3],
+  "model_3b": "/absolute/path/to/Qwen2.5-3B-Instruct",
+  "model_7b": "/absolute/path/to/optional-model",
+  "alfworld_data": "/absolute/path/to/alfworld",
+  "base_runtime": "/absolute/path/to/python-runtime",
+  "credentials_persisted": false
+}

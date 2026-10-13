@@ -1,0 +1,163 @@
+{
+  "version": 1,
+  "created_local_date": "2026-10-13",
+  "status": "conditional_candidate_only_not_adopted_not_deployed_not_executed",
+  "execution_authorized_by_this_file": false,
+  "method": "Outcome-constrained successful-path selection from a finite verified pool",
+  "scientific_question": "On the same60 training tasks and the same environment-verified, canonical-length/cost candidate pools, does a frozen reference model's preferred successful path improve exploratory development performance relative to unchanged canonical and uniform-valid paths?",
+  "independent_method_rationale": {
+    "change_from_phase1": "Phase1 retained exact-state alternatives only for two-object delivery order. This method expands the feasible candidate set through different legal object, target-receptacle and device assignments satisfying the unchanged original goal across task families. Endpoints may differ, so it is an outcome-constrained method, not exact-state BRP.",
+    "separate_questions": "CPU coverage tests whether useful alternative successful paths exist under a fixed search budget. The matched learning experiment separately tests whether reference preference selects better supervision than uniform choice from those same paths. Expanded coverage alone is not a learning result.",
+    "why_controls_are_needed": "All arms share privileged teacher search, original goals, task identities, initial states and per-task action length/operator cost. This limits explanations based on additional teacher access, easier tasks or shorter demonstrations. Reference versus uniform isolates the finite-pool selection rule; reference versus canonical checks improvement over the original planner path.",
+    "remaining_confounders": "Different goal witnesses can change final facts, observation histories and token lengths. Whole-sequence likelihood may favor particular surface names or tokenizations. Same action length and cost do not eliminate these differences or uniquely establish a reasoning mechanism.",
+    "terminology": "An ECPS-direction finite-pool approximation with greedy likelihood selection. No exact constrained-distribution sampling, MH, full-state equivalence, hidden-object search or general optimal-planning claim."
+  },
+  "information_known_before_this_candidate": {
+    "complete_phase1_dev24_successes": {"canonical": 13, "uniform": 16, "learner_selected": 15},
+    "phase1_strict_directional_gate": false,
+    "phase1_decision": "No additional-seed confirmation and no unseen evaluation for that selector version. The next method is a separate exploratory study, not continuation until the old result becomes significant.",
+    "first_successful_path_cpu_attempt": {"output": "outputs/successful_paths_cpu_v1", "completed_pools": 25, "planned_pools": 60, "environment_steps": 507, "resets": 102, "complete": false, "coverage_gate_passed": false},
+    "cpu_technical_repair_boundary": "The v1 attempt failed to extract a canonical witness for a real successful clean-Mug/CoffeeMachine trace with no placement action. The original game retains a target-containment relation while the mug is held. Any reviewed v2 repair must preserve original goal/trace/stratum/cohort, use actual terminal goal witnesses, and retain the failed v1 evidence. This candidate does not assume the repair or subsequent CPU gate succeeds.",
+    "phase0_bounded_search": "The primitive-permutation search exhausted its fixed budget at94/107 tasks with5 nontrivial candidates across5 tasks; its incomplete cohort does not qualify for learning and that bounded version is ended.",
+    "new_method_learning_outcomes_known": false
+  },
+  "mandatory_cpu_entry_gate": {
+    "registered_search_plan": "configs/successful_path_selection_candidate_v1.json",
+    "expected_search_plan_sha256": "947c02793e57908442ba9413b19abe52ba6b0dda9ce70b718c0d1379e4d5d7f7",
+    "accepted_acquisition_output": null,
+    "resolution": "Only a later parent learning adoption may name one complete, reviewed acquisition output and bind its exact files and accepted producer/validator versions. The incomplete v1 output cannot be selected.",
+    "requirements": [
+      "All60 frozen tasks, first10 per family from the original train120 manifest, appear exactly once in frozen order with seed20261012. No replacement, filtering or partial-prefix cohort.",
+      "Acquisition complete=true, coverage_gate_passed=true, stop_reason=complete, no technical/replay errors, and recorded costs within60tasks/8members per task/420 new recipes/100000 started environment calls/3600-second CPU budget plus owned-process cleanup grace.",
+      "Independently rerun the dedicated outcome-compatible pool validator and recompute coverage from all actual candidates, rather than trusting summary flags.",
+      "At least10 non-two-object tasks have meaningful alternatives in the canonical length/cost stratum across at least3 other families, each contributing at least2 tasks. Delivery-order-only alternatives do not satisfy this expansion requirement.",
+      "Canonical source bytes, full initial state and initial observation, original game/domain/problem/metadata hashes, own-trace replay evidence, success/won/done and actual intended original-goal witness are valid for every pool member.",
+      "Every retained candidate has exactly the unchanged canonical action count and audited additive operator cost. No padding, no information-only/noop aliases, no goal rewriting and no copied counterfactual observations.",
+      "All pools use the separate successful_path_candidate_pool schema. Do not weaken or call the old exact-endpoint validator as though unequal final states were equivalent."
+    ],
+    "teacher_semantics": "Record retained-containment/held-object goal cases and any other simulator abstraction explicitly. They may remain unchanged canonical identity supervision in all arms; do not silently invent new recipe support or equate symbolic task success with a physically completed real-world placement."
+  },
+  "same60_same_pool_data": {
+    "cohort_source": "fixed_training_cohort.frozen_gamefiles in the registered search plan",
+    "training_tasks": 60,
+    "same_order_and_seed_for_all_arms": true,
+    "arms": {
+      "canonical": "Original native-planner trace already present as pool member0, preserving canonical_source_line_utf8 bytes. No shortest-path recanonicalization or replacement by a newly proposed path.",
+      "uniform": "One seeded uniform draw from exactly the same stored verified pool, including original, with the stored candidate order frozen.",
+      "reference": "Greedy argmax of summed complete-trajectory action-token-plus-EOS log probability under the frozen base reference policy; original remains a candidate."
+    },
+    "pool_hash": "SHA256 of the entire immutable pool serialized with sorted keys, compact separators and ensure_ascii=false, using the dedicated selector's reviewed digest implementation. Also bind the acquisition JSONL file SHA256.",
+    "uniform_seed": 42,
+    "uniform_algorithm": "For each pool, compute seed_int=int(SHA256(UTF8('42:' + pool_sha256)).hexdigest(),16), then random.Random(seed_int).randrange(len(candidates)). This is a deterministic replayable uniform pseudorandom draw, independent of model scores. Record seed derivation, pool order and selected index.",
+    "reference_ties": "Compare raw finite summed scores without an epsilon. If canonical is among exact maxima, choose canonical; otherwise choose the lexicographically smallest candidate_id among maxima. Record ties; a tied choice is not a strict likelihood improvement.",
+    "no_120_checkpoint_reuse": "Train every arm afresh from the original3B base model. Do not initialize from any phase0/phase1 adapter or checkpoint, and do not fill the training set with the other60 tasks.",
+    "comparability_to_previous_phase": "This experiment uses60 tasks rather than phase1's120. Its canonical result is the contemporaneous control. A difference from prior120-task results cannot be attributed solely to candidate expansion or the selector.",
+    "pairing_receipt": "A separate immutable receipt maps all three arms' ordered(gamefile,seed) to the same pool hash, candidate IDs, action digest and source line hash. Preserve original canonical bytes instead of adding selection metadata to those original rows.",
+    "pretraining_nondegeneracy": "After complete scoring and before any training, require reference-selected candidate IDs to differ from canonical on at least one task and from uniform on at least one task. If either entire comparison is identical, report a degenerate selector comparison and stop without spending training budget; do not redraw uniform or change scores to create differences. No larger change-count threshold is tuned after inspection."
+  },
+  "reference_scoring": {
+    "model": "Qwen2.5-3B-Instruct",
+    "model_path": "/home/jsy/zhangranxu-adrs-week-20260929/models/Qwen2.5-3B-Instruct",
+    "adapter_path": null,
+    "reference_model_provenance": "outputs/reference_model_provenance_v1.json",
+    "objective": "For each complete candidate trajectory sum raw log probabilities of every command token plus its EOS, each conditioned on the task and that candidate's actual causal observation/action history and current admissible commands. No per-token mean, length normalization, successor-state-only approximation or suffix-history reuse.",
+    "prompt_protocol": "alfworld-causal-v1; same allowlisted task/history/current observation/admissible-command fields and same prompt builder used for scoring, SFT and evaluation. Hidden teacher assignments, raw facts, planner actions and future observations are excluded.",
+    "max_context_tokens": 2048,
+    "max_action_tokens_including_eos": 64,
+    "score_batch_size": 2,
+    "max_score_seconds": 3600,
+    "max_scored_action_tokens": 1000000,
+    "max_forward_tokens": 32000000,
+    "budget_basis": "The registered maximum480 paths times24 actions times2048 context tokens is23592960 before caching;32million is a finite scoring ceiling with padding/accounting headroom. Actual counts and cache hits must be reported.",
+    "completeness": "Score every member of every one of the60 pools completely and validate all scores as finite. No best-so-far selection, candidate omission, identity fallback for a scoring failure, or training on a completed prefix. Any incomplete/nonfinite scoring yields gate=false and stops the learning queue.",
+    "technical_fix_policy": "A reproducible implementation error requires a reviewed new version and recorded failed attempt before a fresh adopted run. No score-rule, budget, context or reference-model changes within this candidate."
+  },
+  "full_trace_token_exposure_audit": {
+    "timing": "After full paired selection and before any optimizer step, perform an offline audit with the frozen model tokenizer only. Write and hash its complete report.",
+    "required_measurements": [
+      "Per task and arm: selected candidate ID, action count, audited operator cost, complete target-token count including one EOS per command, summed prompt input tokens, and causal prompt hashes.",
+      "Verify each scored causal prompt/action token sequence matches the corresponding SFT example under the same2048/64-token builder. Report whole-turn history drops, over-budget mandatory context errors and any changed prompts.",
+      "Across arms: identical ordered(gamefile,step) example keys and equal example counts, but separately count changed target actions, changed causal inputs and changed trajectories.",
+      "Replay the trainer's seed42 example-index shuffle and100 optimizer steps with batch1 and accumulation8. Record the exact800 sampled example indices, per-arm target-token exposure, input-token exposure and number of changed sampled inputs.",
+      "Store the unchanged original action/observation data hash separately from derived training examples. Verify no teacher state/assignment/future-information fields enter student tokens."
+    ],
+    "matching_policy": "Use the same100 optimizer updates and same index-sampling schedule. Do not pad, drop, resample, reweight or change steps to equalize token totals. The existing trainer weights microbatch losses by actual target tokens within an accumulation window.",
+    "interpretation": "100 updates are not exact-token matching or equal total compute. Report actual measured token exposure and all acquisition/scoring/training costs; any token-length preference of raw sequence likelihood is part of this tested method and a stated limitation."
+  },
+  "matched_training": {
+    "model": "Qwen2.5-3B-Instruct",
+    "fresh_base_initialization_per_arm": true,
+    "training_seed": 42,
+    "optimizer_steps": 100,
+    "batch_size": 1,
+    "gradient_accumulation": 8,
+    "learning_rate": 0.0002,
+    "lora_rank": 16,
+    "lora_alpha": 32,
+    "lora_dropout": 0.05,
+    "max_context_tokens": 2048,
+    "max_action_tokens": 64,
+    "max_target_tokens": 2000000,
+    "optimizer": "The unchanged reviewed gnrl.train_sft implementation: AdamW, weight_decay0, gradient clipping1.0, identical precision and gradient-checkpointing settings for all arms.",
+    "arm_order": ["canonical", "uniform", "reference"],
+    "checkpoint_selection": "Final checkpoint at exactly optimizer step100 only; no best-dev or intermediate-checkpoint selection. Verify training config, actual optimizer steps and audit-predicted target-token counts for every arm.",
+    "output_namespace": "New successful_path learning directories only, distinct from all phase0/phase1 checkpoints and evaluations; refuse overwrite or implicit resume. Exact paths are frozen by the later adoption.",
+    "no_tuning": "Do not change hyperparameters, LoRA setup, update count, family composition, candidate stratum, scoring rule or seeds based on loss or any development outcome."
+  },
+  "exploratory_evaluation": {
+    "manifest": "data/manifests/dev24.json",
+    "manifest_sha256": "7cee405bdadb61c0193cbe10c72f96b145b7796d88c52cd20974a4603efa03a6",
+    "tasks_per_arm": 24,
+    "total_planned_episodes": 72,
+    "environment_seed": 20261012,
+    "selection": "generate",
+    "do_sample": false,
+    "episode_max_steps": 100,
+    "max_context_tokens": 2048,
+    "max_action_tokens": 64,
+    "max_generated_tokens_per_arm": 100000,
+    "decoding": "Reuse the same reviewed generated-command policy, common admissible-command input and whitespace-only output handling as phase1. No admissible reranking, expert fallback, retries or action correction.",
+    "schedule": "Finish and hash all three100-step checkpoints before beginning the three development evaluations. Run all three evaluations in arm_order. During the batch monitor technical stage/count only; inspect no partial success rates for decisions.",
+    "pairing_and_completion": "Each arm must complete the exact24 unique ordered tasks with the same seed and zero technical errors. Bind manifest/game bytes, checkpoint/config hashes and compare first observations/admissible lists across arms. Verify success totals against all recorded episodes. No incomplete subset comparison, technical-error exclusion or replacement tasks.",
+    "initial_state_record_limit": "The existing frozen evaluator does not store raw initial canonical state. Report direct observation/admissible equality and same game bytes/seed honestly; do not claim an unavailable raw-state comparison. A future logging extension would need a separately reviewed hash-locked file before any arm starts.",
+    "development_reuse": "dev24 has already informed multiple exploratory methods and is not an untouched validation set. All findings here are exploratory; no nominal p-value removes adaptive reuse or project-wide multiplicity.",
+    "unseen": "No reads of unseen outcomes, unseen rollouts, automatic confirmation or split expansion under this candidate."
+  },
+  "analysis_and_stopping": {
+    "primary_metric": "Completed task success out of24, with policy failures and100-step failures retained. Report all three arm counts/rates and complete six-family tables.",
+    "primary_comparisons": ["reference minus uniform", "reference minus canonical"],
+    "paired_reporting": "Show task-level gain/loss/tie counts, rate differences and the complete matched task table. If reusing summarize_pilot bootstrap/McNemar outputs, label them descriptive single-seed development statistics without multiplicity-adjusted confirmatory status.",
+    "secondary_descriptive": ["uniform minus canonical", "per-family results with only4 tasks per family", "invalid-action rate and its action-attempt denominator", "full rollout lengths including failures", "actual input/target/generation tokens and elapsed costs"],
+    "directional_screen": "Reference must strictly exceed both canonical and uniform full-dev success counts to be called a directional exploratory signal. A tie or failure against either control is no directional benefit for this version. This is a reporting/screening convention, not significance or a confirmation authorization.",
+    "fixed_stop": "Stop after this single complete three-arm batch regardless of score, success rate, interval width or p-value. No extra seeds, additional updates, best-checkpoint search, family selection, pool enlargement or reruns to chase significance.",
+    "negative_or_mixed_result": "Report the complete result and end this version's positive efficacy claim. Do not hide improvements over canonical if reference fails against uniform, and do not promote candidate coverage or likelihood gains into efficacy evidence.",
+    "positive_signal": "Requires a new explicitly adopted confirmation protocol before any new runs. The earlier phase2 candidate was tied to the120-task exact-state phase1 study and is not automatically applicable to this60-task outcome-constrained method.",
+    "technical_failure": "Stop the queue on mismatched hashes/identities, incomplete acquisition or scoring, missing token audit, nonfinite training, failure to reach100 updates, incomplete evaluation, or resource-budget exhaustion. Preserve artifacts and classify as technically incomplete, not scientific loss or success. No automatic performance-conditioned retries."
+  },
+  "execution_budget_if_later_adopted": {
+    "physical_gpu": 2,
+    "max_concurrent_gpu_jobs": 1,
+    "scoring_jobs": 1,
+    "training_jobs": 3,
+    "development_evaluation_jobs": 3,
+    "max_score_wall_seconds": 3600,
+    "max_train_or_eval_stage_wall_seconds": 7200,
+    "max_queue_elapsed_seconds_including_waits": 28800,
+    "automatic_retry_jobs": 0,
+    "no_new_cpu_candidate_search": true,
+    "resource_guard": "Use existing GPU UUID/allocation locks, finite stage/process-group timeouts and cleanup on every exit. Wait only within the fixed queue deadline; never interrupt unrelated work or expand onto other GPUs."
+  },
+  "required_later_adoption_bindings": [
+    "This candidate JSON and the original successful-path search plan",
+    "Reviewed accepted CPU producer, runner and dedicated outcome-validator versions, including any minimal v2 canonical-witness repair and its independent tests/review",
+    "Accepted CPU adoption/summary/candidate_pools/canonical_baseline/canonical_source_index/events and original native120 source/summary",
+    "Frozen train120-derived60 ordered IDs, dev24 manifest and original game/domain/metadata hashes; CPU complete/coverage receipt",
+    "New dedicated successful-path selector and its tests; do not substitute macro_project exact-state selection validation",
+    "Full base-model provenance manifest and every model/tokenizer/config file hash. Verify actual bytes or a reliable immutable cache identity; a path alone is insufficient",
+    "Allowlisted prompt/tokenizer, policy, SFT/evaluator and queue source hashes; reference model has no adapter",
+    "All three final selected datasets, same-pool pairing receipt, full scoring ledger and complete token-exposure audit before training",
+    "Each final trained checkpoint's complete file hashes and train config/summary before any evaluation; each complete evaluation config/summary/episodes afterward"
+  ],
+  "source_lifetime": "Hash existing inputs at adoption and verify before every stage and after completion. New later artifacts are locked immediately upon successful validation. Refuse source changes or output overwrite; preserve failed attempts under distinct versions.",
+  "current_action": "Plan only. Do not deploy this file, score candidates, train models, evaluate tasks or reuse checkpoints until a later parent learning adoption explicitly names complete accepted inputs and this protocol."
+}

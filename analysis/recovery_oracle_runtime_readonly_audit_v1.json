@@ -1,0 +1,57 @@
+{
+  "kind": "recovery_oracle_runtime_readonly_source_audit",
+  "execution_authorized": false,
+  "current_phase_change_recommended": false,
+  "process_context": {
+    "reported_worker_pid": 460710,
+    "reported_start_ticks": 30553085,
+    "reported_observation": "Parent reports approximately100% of one CPU core, continuing durable step growth, and a slower complete record after69 completed records.",
+    "independent_live_profile_performed": false,
+    "interpretation": "Consistent with ongoing CPU work; not evidence of a hang. Source inspection cannot assign this worker's elapsed time to a specific function."
+  },
+  "local_source_sha256": {
+    "gnrl/recovery_projection_v1.py": "4ce8b22d45048436e84ff8c408945deac568d552f767942664e84b9abaea5987",
+    "gnrl/alfworld_env.py": "76f530bf70da3635f125c6320dba7369a7f9ac4c04c4a627110103ee3720a2fd",
+    "scripts/collect_recovery_projection_v1.py": "774ade3ceba2a29f5381347f8a96d2f524409485993d3c1ec89189d43f6a8e31"
+  },
+  "remote_source_root": "/data1/jsy/zhangranxu-adrs-week-20260929/deps",
+  "remote_measured_sha256": {
+    "alfworld/agents/environment/alfred_tw_env.py": "4d9166363e32f0fa70c63530a900785ddb45c79387a02ebcb9a21252869a8924",
+    "textworld/envs/pddl/pddl.py": "3795f5fb7471c7a4551e137267785ffb3e21e49653d17491d6be963b41f454b4",
+    "textworld/envs/pddl/logic/__init__.py": "7c5ea3b0ddc21dc105c1e5c5979006a9d47365b556c10c048973bd62eb0ad35e",
+    "textworld/core.py": "439bda7539816637c05f5bcd181101e8d96d4a5c8a76e2d9245c004e0647d176",
+    "fast_downward/interface.py": "c5c23ec7d6d8acd845fb6788c8edd01f7d527ee1f0148ba333e7bacc517c151b",
+    "fast_downward/__init__.py": "052d91ed1d55c4685856ee988a02581c7b17c40dbb18f9f03e37119c8dc49fcf",
+    "fast_downward/libdownward.so": "f88dc07d4d6c0e03d1d302e488a02c9752a56c0f42d47f918b8e96ce4f8433e5"
+  },
+  "confirmed_call_chain": [
+    "certify_anchor (recovery_projection_v1.py:352)为每个available anchor创建planner环境；首候选和其余每个候选均restore_anchor，执行reset及全部4/8/16真实prefix动作。它不复用原观察，也没有native state checkpoint。",
+    "AlfredExpert.load (alfred_tw_env.py:90-96)在expert_type=planner时设置request_infos.policy_commands=True。EnvInfos默认该项False；extras中的expert_plan名称本身不是native规划开关。expert_type=None不装专家wrapper，因此正常没有policy_commands规划请求。",
+    "PddlEnv.reset (:110)重建PddlState，随后_gather_infos；PddlEnv.step (:135)执行或拒绝命令后也无条件_gather_infos。后者(:107-108)只要policy_commands=True就调用当前PddlState.replan，因此有效、无效以及终止步均进入这条规划调用路径。",
+    "PddlState.replan (logic/__init__.py:265)同步调用ctypes绑定的downward_lib.replan，再取完整plan并转成命令。AlfredExpert._gather_infos只把policy_commands映射为extra.expert_plan；额外native搜索发生在底层PddlEnv，而不是这里。",
+    "PddlState.__init__ (:147-185)每次都做未优化及优化两次pddl2sas，随后load_sas/load_sas_replan。PddlEnv.load在环境构造时也先创建一次PddlState；后续reset并非廉价清零。pddl2sas (interface.py:160+)每次解析、normalize、翻译并生成SAS字符串，未见该函数缓存。",
+    "_gather_infos每步还重建facts、适用算子、模板和admissible_commands。本实际PDDL路径没有一个可直接套用通用TextWorld tracking优化的独立开关；facts/admissible并非native replan的触发条件。"
+  ],
+  "why_a_record_can_be_slow": {
+    "repeated_prefix": "k=16且8候选时，仅重复prefix就有128个真实step、8个reset，以及136次policy_commands重规划调用，尚未计算候选后缀；reset还贡献16次PDDL→SAS翻译，环境首次load另有2次。前缀中间状态的expert_action未被restore_anchor使用。",
+    "record_granularity": "worker只有certify_anchor完成全部候选后才写一条records并增加completed_records；期间可以持续执行最多8条到原100步上限的分支。completed_records长时间不动与durable step增长并不矛盾。",
+    "other_real_costs": "每次环境调用前后原子写cost ledger；每个oracle transition写并flush事件，branch_complete再次序列化整段trace，最终pool再次保存各分支。full-state复制、比较、hash和JSON也有CPU/I/O成本。",
+    "inference_not_measurement": "问题规模、重规划难度、重复无效prefix或更长分支可能解释前69条之后变慢；没有读取当前anchor或任何outcome，也没有栈/采样profiler，不能确定当前是哪项主导、是哪类任务或给出加速倍数。安装目录未找到native C++实现；本审计只确认进入libdownward.replan，未证明其内部算法、线程数或缓存行为。"
+  },
+  "future_optimization_assessment": {
+    "substantive_opportunity": true,
+    "first_candidate": "今后可研究延迟按需规划：仍真实reset/replay并逐步核对完整neutral state/observation，但不计算不会被使用的prefix中间expert plans；在必须读取anchor教师动作及每次实际oracle后缀决策处，使用原native planner求同一计划。不能仅把policy_commands=False直接塞进当前wrapper，因为AlfredExpert仍读取该字段，且native搜索可能有隐藏状态/随机性。",
+    "second_candidate": "缓存精确相同domain/problem/翻译选项的不可变SAS产物，同时每次仍重新初始化独立native动态状态。需处理返回task对象/translator全局options的可变性，不能简单缓存共享PddlState或Python deepcopy native对象。",
+    "required_equivalence_evidence": "任何未来实现都先另行冻结验证：相同输入/seed/prefix下每步raw facts、observation、admissibles、moves/elapsed、done/won以及实际使用的全部planner commands相等；确定性proposal顺序、teacher首动作、每条分支轨迹和certificate结果也相等。须包含无效prefix、难规划和终止边界。当前只说明可检验的实质机会，尚未证实语义等价或性能收益。",
+    "excluded_changes": "改变planner算法/超时、少跑候选、跳过真实prefix、直接复用旧观察、改teacher、并发顺序或扩预算会改变合同或需新方法论审查，不属于已证明保义的优化。此次不实施任何一种。"
+  },
+  "actions": {
+    "remote_operations": "Read-only package/source listings, source excerpts and SHA256 measurements through existing SSH transport.",
+    "current_records_events_outcomes_parsed": 0,
+    "new_environment_model_calls": 0,
+    "process_signals_or_profiler_attach": 0,
+    "source_deployments_edits_or_budget_changes": 0,
+    "new_jobs_or_restarts": 0,
+    "only_written_file": "analysis/recovery_oracle_runtime_readonly_audit_v1.json"
+  }
+}

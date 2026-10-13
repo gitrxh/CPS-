@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "kind": "independent_recovery_learning_result_reviewer_astra_review",
+  "reviewer": "confirmation_execution_review independent Astra assignment",
+  "recovery_learning_result_reviewer_review_passed": true,
+  "execution_authorized": false,
+  "review_program": "analysis/review_recovery_learning_complete_v1.py",
+  "reviewer_sha256": "aac58559220062ed6ccc9bf179910a01218b732bb83a11841a0dc6d288969613",
+  "tests": "analysis/test_review_recovery_learning_complete_v1.py",
+  "test_sha256": "a3312879e2926e18cc6ebf37556f7d315dbe3022a934f23e93ab0ad4ac0eb922",
+  "receipt_schema_sha256": "f32f0ac3a9d564e6b185459ef0cc1cd4e8d8712b8309241154e1cce5b9a968b7",
+  "candidate_sha256": "09f62bbb2001e36bda12d56d261788764710b4ec91eca17af91e0470e9068b47",
+  "bound_dependencies": {
+    "analysis/review_recovery_acquisition_complete_v1.py": "42fe7a2f7c840d61514b58926edc935bfc2518dc10fa6eadbbe0ea55dc2390cd",
+    "gnrl/train_recovery_v1.py": "7bab87b2e3db2f818441306c0a70dc4e0364d055695a75e89d6c83f0ed126dbe",
+    "gnrl/recovery_evaluate_v1.py": "e90ccc42e41531766dec1286a35b7d35b541051d914855b2e690cc0cd1e28347",
+    "scripts/run_recovery_learning_queue_v1.py": "a616e832c5b6a0c6960852d82d34dbeef0b89cef7aeb20b7411fd1b5d4b55ff9"
+  },
+  "resolved_findings": [
+    {
+      "issue": "bound_read(rows=True) returned the helper JSONL generator. Real downstream labels, selections, exposure logs, metrics and episodes require length/indexing/repeated traversal; event equality also compared a generator with a list. Complete real evidence would fail despite the original arithmetic-only fixtures passing.",
+      "fix": "Materialize the hash-checked JSONL iterator as an ordered list inside bound_read. No gate, protocol, sampling, cost or outcome rule changed.",
+      "regression_coverage": "Temporary real JSONL hash/materialization test; synthetic complete score-to-SFT audit plus100-step/1600-exposure validation; all192 temporary episode/event files through review's actual file-read and result-comparison path, with a corrupted event negative case. The latter isolates the post-barrier path using a synthetic metadata barrier."
+    }
+  ],
+  "validation": {
+    "command": "C:\\Users\\zrx\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe -B -m unittest analysis.test_review_recovery_learning_complete_v1 -v",
+    "pure_fixtures_passed": 9,
+    "real_model_or_tokenizer_loads": 0,
+    "real_environment_calls": 0,
+    "actual_experiment_outcomes_read": 0,
+    "remote_actions": 0,
+    "source_edits": ["analysis/review_recovery_learning_complete_v1.py", "analysis/test_review_recovery_learning_complete_v1.py"],
+    "active_source_edits": 0
+  },
+  "reviewed_contracts": {
+    "barrier_and_bindings": "Before reading held-out episode/event/result content, requires complete eight-stage queue, successful cleanup, externally SHA-pinned postqueue receipt with exact process identities and final maps, local source hashes and exact helper, true prior diagnostic gate review, frozen48 metadata, score/SFT audit, full three-training evidence and complete technical48-per-arm summaries. Both all_models_locked_sha256 and four-arm all_models_adapter_sha256 agree with the independently measured receipt and final locks.",
+    "worker_interface": "Joint audit, training state/config/summary, actual1600 exposure rows and101 metric rows, evaluation requests/config/summary/costs/episodes/events match the reviewed trainer/evaluator/controller outputs. Original BC and selected recovery token hashes/context and schedule are rechecked; no actual tokenizer/model is needed in the reviewer.",
+    "independent_arithmetic": "Uses evaluator's frozen actual-transition validator but independently constructs192 outcomes from raw won states, fixed48 paired gains/losses and success-rate differences, six family and scene denominators. Independently recomputes the exact practical screen and compares the complete stored controller result; does not call controller.complete_table to compute real results.",
+    "costs": "Recomputes training exposure/token/update totals and evaluation transition/generated-token/policy-call counts. Checks all counter lineage from diagnostic through four models, caps, closed calls and summary-ledger equality. Durable reset and forward-token ledger evidence remains explicitly distinguished from quantities derivable from episode/event traces; no equal-total-compute or NLL-as-success claim.",
+    "unblinding_and_failure": "Durable reviewer progress marks outcome access before the first held-out read. Controller unblinding is tracked separately and remains null if unknown. Any incomplete, corrupted or mismatched evidence produces192 null cells, null contrasts and null scientific screen. Complete negative results retain integrity-pass true and scientific-screen false. No downstream job is authorized."
+  },
+  "remaining_findings": [],
+  "limitations": [
+    "This approves the local review implementation after the documented repair, not any future learning result or execution.",
+    "Remote model/runtime/game hashes and process exits rely on the externally pinned measured postqueue receipt. Pure fixtures cannot establish future runtime integrity.",
+    "Complete-result arithmetic is exploratory one-seed seen-task evidence. It does not establish unseen generalization, independent-episode significance, or completion of the research goal."
+  ]
+}

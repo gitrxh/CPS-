@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "kind": "independent_recovery_evaluator_review",
+  "reviewer": "successful_path_queue independent Astra assignment",
+  "created_utc": "2026-10-12T19:48:30.187892+00:00",
+  "recovery_evaluator_review_passed": true,
+  "execution_authorized": false,
+  "evaluator_sha256": "e90ccc42e41531766dec1286a35b7d35b541051d914855b2e690cc0cd1e28347",
+  "test_sha256": "f110627b019ad5780950c6515a86ce590cdb5650ba048a32ba09d61b10615adb",
+  "candidate_sha256": "09f62bbb2001e36bda12d56d261788764710b4ec91eca17af91e0470e9068b47",
+  "source_evidence_sha256": {
+    "gnrl/evaluate.py": "759a8892b6e53c617b554e4d13c3fb73da67601184f674eb62d799d69c87d8c9",
+    "gnrl/policy.py": "c36ecf8c81df6cceffcdce784a88a81809afd8b55df6fc5fcd8330bf1397b82e",
+    "gnrl/alfworld_env.py": "76f530bf70da3635f125c6320dba7369a7f9ac4c04c4a627110103ee3720a2fd",
+    "gnrl/recovery_projection_v1.py": "4ce8b22d45048436e84ff8c408945deac568d552f767942664e84b9abaea5987",
+    "gnrl/train_recovery_v1.py": "7bab87b2e3db2f818441306c0a70dc4e0364d055695a75e89d6c83f0ed126dbe"
+  },
+  "validation": {
+    "pure_fixtures_passed": 16,
+    "command": "C:\\Users\\zrx\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe -B tests/test_recovery_evaluate_v1.py",
+    "ast_parse_passed": true,
+    "actual_model_loads": 0,
+    "actual_environment_calls": 0,
+    "remote_actions": 0,
+    "deployments": 0
+  },
+  "resolved_findings": [
+    {
+      "finding": "Episode validator trusted neutral flags without checking their agreement with raw canonical state; no episode total bound generated-token evidence.",
+      "fix": "Validate every neutral state observation/commands/reward/counts and won/done/terminated/truncated logic; exact generated-token total is now stored and recomputed. Resealed contradictory raw-state fixtures fail."
+    },
+    {
+      "finding": "All-four barrier checked optimizer step alone, permitting missing audit/arm completion linkage.",
+      "fix": "Require four distinct adapter paths with original canonical role, joint token audit bound into barrier/request, full canonical initialization inventory/state equality, and each new arm final protocol/100+100 steps/800 examples/400+400 exposures/target-token/schedule/initial-adapter evidence. Bound training config and complete summary confirm actual arm identity and audited training completion."
+    },
+    {
+      "finding": "Deadline could expire during final byte verification yet stage still report complete.",
+      "fix": "Check shared deadline before model load, after model load, and before/after final full-byte verification. Pure mock expiry after all48 completed still produces incomplete technical summary."
+    },
+    {
+      "finding": "Entry contract did not require explicit parent reviewer identity, reviewed candidate binding or passed actual diagnostic gate for first model.",
+      "fix": "Require root_after_independent_GPT_6_Astra_review, exact candidate SHA in reviewer receipt, candidate/global-budget agreement, runtime-bound worker executable, prior global ledger and evaluable passed diagnostic gate for first evaluation."
+    }
+  ],
+  "verified_protocol": [
+    "Existing HFCausalPolicy remains unmodified: original causal prompt, greedy unfiltered generation,64 action tokens,2048 context,actual invalid commands preserved. Fake policy/environment comparison exactly matches original evaluate.rollout contexts/actions/success.",
+    "Each real environment would use expert_type=None,seed20261012,max_steps100 and exact frozen48 valid_seen manifest SHA; no unseen evaluation or alternate manifest.",
+    "All four model directories, original game/metadata, runtime and exhaustive source inventories are checked before and after each arm. No heldout success values are used to schedule another stage.",
+    "BudgetLedger records actual started/completed reset,environment and policy work, cumulative inherited totals,350000 generated tokens per model and7200second ceiling capped by remaining main deadline.",
+    "Model/environment/verification/budget errors produce incomplete summary and technical episode success=null when applicable. No partial performance aggregate is produced.",
+    "Output paths are normalized relative within project and exclusive-new; added adapter loader files and aliased/missing model roles are rejected."
+  ],
+  "new_controller_contract": {
+    "request_required": "joint_token_audit project-relative JSON path included in file_sha256; adopted_by exact parent identity.",
+    "barrier_required": "joint_token_audit_sha256 equal hash-bound audit bytes; adapters maps all4 roles to distinct complete final directory inventories.",
+    "training_completion_files": "For each new recovery adapter <train_output>/final, bind <train_output>/config.json and summary.json in request file_sha256; config arm/settings/tokenaudit/schedule and summary complete/100steps/targettokens/400+400 must match actual final state and joint audit.",
+    "review_required": "This receipt path and exact evaluator/candidate SHA.",
+    "first_evaluation_cost_lineage": "Inherit complete diagnostic stage costs with gate_evaluable=true and training_gate_passed=true; training costs are reported separately because training makes no environment or rollout-generation calls.",
+    "remaining_controller_responsibility": "Parent must require independent passed diagnostic-result review and all three reviewed training completions, supervise own workers/cleanup, share original global deadline, lock all192 episodes before result access, independently validate full tables and report all192 null outcomes on technical incompleteness."
+  },
+  "scope": "Component review only. Current remote acquisition source remains frozen; this evaluator and its tests were edited locally only and require later parent adoption/deployment after actual diagnostic gate passes."
+}

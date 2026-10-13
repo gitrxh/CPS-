@@ -1,0 +1,52 @@
+{
+  "kind": "recovery_acquisition_execution_review",
+  "version": 1,
+  "created_utc": "2026-10-12T19:25:00.371516+00:00",
+  "recovery_collection_review_passed": true,
+  "recovery_acquisition_controller_review_passed": true,
+  "module_sha256": "4ce8b22d45048436e84ff8c408945deac568d552f767942664e84b9abaea5987",
+  "runner_sha256": "774ade3ceba2a29f5381347f8a96d2f524409485993d3c1ec89189d43f6a8e31",
+  "controller_sha256": "a0e89b52a13d1541676498cb734a45034761c66e277706e575605599cf14ac3c",
+  "test_sha256": "45b54c14cfba30f268512f9e0d6b70be73fdc9fb1342e81e2af30ca8c5c18639",
+  "candidate_sha256": "09f62bbb2001e36bda12d56d261788764710b4ec91eca17af91e0470e9068b47",
+  "scope": "Only adopted collect/oracle/replay acquisition. No scoring, actualQ, training or held-out execution authorized by this review.",
+  "checks": {
+    "pure_collection_fixtures_passed": 14,
+    "pure_controller_fault_fixtures_passed": 2,
+    "actual_environment_model_calls": 0,
+    "actual_processes_started": 0,
+    "remote_calls": 0,
+    "candidate_v2_complementary60_order_verified": true,
+    "full60_to_180_to_180_contract": true,
+    "immutable_actual_prefix_and_causal_prompt_allowlist": true,
+    "changed_actions_and_dynamic_planner_suffix_actually_step_adapter": true,
+    "certified_first_action_replayed_without_expert": true,
+    "technical_error_not_structural_missing": true,
+    "durable_started_and_completed_cost_counters": true,
+    "prior_summary_totals_equal_inherited_ledger": true,
+    "main224000_steps_3600_resets_4m_generation": true,
+    "global171840_seconds_shared_by_three_stages": true,
+    "GPU2_only_launch_gpu_UUID_guard": true,
+    "CPU_oracle_replay_hide_CUDA": true,
+    "no_automatic_retries_or_success_gates": true,
+    "full_source_model_original_runtime_and_adapter_locks_checked": true,
+    "cleanup_owned_session_pidfd_start_ticks": true
+  },
+  "resolved_review_findings": [
+    {
+      "issue": "Signal interruption between Popen and recording start_ticks could bypass safe cleanup.",
+      "fix": "Controller blocks TERM/INT/HUP/ALRM around spawn and identity capture, then restores mask inside cleanup-protected outer try. Mock pending signal at first unmask confirms cleanup receives(pid345,start_ticks123), without creating a process.",
+      "verified": true
+    },
+    {
+      "issue": "Known adapter hashes alone would miss added loader-relevant files.",
+      "fix": "Every controller verify compares actual adapter recursive file inventory to frozen initial_adapter_sha256 set. Temporary fixture with added_loader.json is rejected before launch.",
+      "verified": true
+    }
+  ],
+  "limitations": [
+    "Pure fixtures and source review do not predict model/solver runtime or acquisition yield. Existing Linux own-child pidfd preflight is prior evidence; this turn starts no processes.",
+    "Controller may only be launched after explicit parent adoption binding these exact sources, successful actual smoke, research48 metadata freeze and runtime/model/original input locks.",
+    "Later score/diagnostic/training workers require independent reviews and stage adoptions; acquisition completion alone does not authorize them."
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "passed": true,
+  "real_environment_calls": 0,
+  "model_calls": 0,
+  "checks": [
+    "grounded_objecttype_not_display_text",
+    "stable_candidate_order",
+    "wrong_object_not_applicable",
+    "checked_only_excluded",
+    "physical_change",
+    "step_reset_wall_caps",
+    "frozen_manifest_six_tasks"
+  ],
+  "plan": {
+    "kind": "native_planner_recovery_smoke_v1",
+    "manifest_sha256": "724c18f5711bfb3d9ef002005dda34c40471617eb44f921c78f8fa7f42759af0",
+    "tasks": [
+      {
+        "family": "look_at_obj_in_light",
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Laptop-None-DeskLamp-216/trial_T20190907_185556_000181/game.tw-pddl"
+      },
+      {
+        "family": "pick_and_place_simple",
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-Cloth-None-Drawer-409/trial_T20190908_032838_597592/game.tw-pddl"
+      },
+      {
+        "family": "pick_clean_then_place_in_recep",
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Kettle-None-StoveBurner-1/trial_T20190908_172105_948396/game.tw-pddl"
+      },
+      {
+        "family": "pick_cool_then_place_in_recep",
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Apple-None-Microwave-22/trial_T20190908_000314_718780/game.tw-pddl"
+      },
+      {
+        "family": "pick_heat_then_place_in_recep",
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Potato-None-GarbageCan-6/trial_T20190909_132625_893504/game.tw-pddl"
+      },
+      {
+        "family": "pick_two_obj_and_place",
+        "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-TissueBox-None-GarbageCan-230/trial_T20190908_050916_526395/game.tw-pddl"
+      }
+    ],
+    "seed": 42,
+    "max_steps": 100,
+    "expert_type": "planner",
+    "limits": {
+      "steps": 6000,
+      "resets": 200,
+      "wall_seconds": 900
+    },
+    "cases": [
+      "invalid",
+      "legal_deviation",
+      "wrong_object"
+    ],
+    "invalid_action": "gnrl_nonexistent_command_recovery_smoke_v1",
+    "invalid_anchor": 0,
+    "gpu_jobs": 0,
+    "canonical_source": "one fresh native-planner trajectory per fixed task at seed42",
+    "selection": "earliest original anchor then sorted admissible command; first physical change for legal; first grounded wrong-type take",
+    "failure_policy": "no retries, no task replacement, no recovery-result-dependent candidate replacement",
+    "budget_scope": "all reset and step calls: canonical, restore/prefix, probes, recovery, and complete replay",
+    "episode_budget_scope": "100 actions including original prefix and deviation",
+    "source_sha256": {
+      "scripts/smoke_recovery_planner_v1.py": "bd6c4d6da76981e9addd93467ad50deacd147b7a4918f83663e827f1b75b42b1",
+      "gnrl/alfworld_env.py": "76f530bf70da3635f125c6320dba7369a7f9ac4c04c4a627110103ee3720a2fd",
+      "gnrl/two_object_blocks.py": "4b1d8fae79b9d84f3c88ee493791d711a3af0812d3142c2f37e286e188e9ef9e"
+    }
+  },
+  "status": "prepared_only_not_deployed_or_executed",
+  "limitations": [
+    "SIGALRM checks the Python-owned runtime deadline; launch with an external owned-process timeout as well because a native extension may defer Python signal handling.",
+    "No simulator or backend planner behavior was tested in this preparation."
+  ]
+}

@@ -1,0 +1,272 @@
+{
+  "version": 1,
+  "status": "candidate_only_conditional_on_phase1_no_directional_benefit_not_approved_not_launched",
+  "created_local_date": "2026-10-13",
+  "phase1_learning_outcomes_known_at_drafting": false,
+  "name": "Outcome-constrained successful-path selection with a finite verified pool",
+  "relationship_to_ecps": "An ECPS-direction finite-pool approximation: all candidates solve the original environment task and a frozen policy ranks the finite pool. This is neither exact-state BRP nor exact sampling from a globally defined constrained distribution. Greedy reference argmax remains a heuristic.",
+  "activation": "Consider this new method only if the complete phase1 learner arm fails to strictly exceed both canonical and uniform dev24 success counts. A technical failure in phase1 is not a scientific no-benefit result. This candidate itself authorizes no execution, model work or evaluation.",
+  "read_only_evidence": {
+    "source": "Actual embedded pddl_domain, pddl_problem and grammar in frozen train120 game.tw-pddl files, plus each sibling traj_data.json and existing adapter/state contract. No new dev outcomes were read.",
+    "domain_sha256_utf8": "0af55e7f92d12b09d28515aa730e4d03fddd17228ef1fd7b18a3ee8ba49b27b9",
+    "train_games_sharing_exact_domain_hash": 120,
+    "goal_inspection": "One actual frozen training problem per family was read in full from its :goal expression. Before execution, parse and validate every selected problem's original goal against the supported typed existential template; the six examples do not license silently assuming all60 templates match.",
+    "existing_support_limit": "The exact-state two-object compiler retained18 alternatives from20 tasks. Eight only exchange same-source object delivery order; ten exchange complete deliveries from distinct sources. This candidate instead varies legal goal object/target/device assignments across families.",
+    "existing_train_manifest_sha256": "724c18f5711bfb3d9ef002005dda34c40471617eb44f921c78f8fa7f42759af0"
+  },
+  "goal_contract": {
+    "never_modify": [
+      "Original game.tw-pddl bytes",
+      "pddl_problem goal or initial state",
+      "Environment reward/done computation",
+      "Goal object/receptacle types",
+      "Episode limit or reset seed"
+    ],
+    "verification": "Live execution in the unmodified original game must end won=true and done=true without truncation. A chosen assignment is teacher search bookkeeping, never a replacement goal. Store original game/domain/problem/grammar/metadata hashes and the parsed original goal.",
+    "family_goals": {
+      "pick_and_place_simple": "There exists an object of object_target type and a receptacle of parent_target type with inReceptacle(object,receptacle). Different eligible instances may satisfy the same unmodified existential goal.",
+      "pick_clean_then_place_in_recep": "A cleanable object of the requested type must itself have isClean and be in an eligible target receptacle. Cleaning another object does not satisfy the goal.",
+      "pick_heat_then_place_in_recep": "A heatable object of the requested type must itself have isHot and be in an eligible target receptacle.",
+      "pick_cool_then_place_in_recep": "A coolable object of the requested type must itself have isCool and be in an eligible target receptacle.",
+      "look_at_obj_in_light": "Hold an object of object_target type. Existentially choose an object of toggle_target type that is toggleable and isToggled, in a receptacle at the agent's current location. The inspected goal uses isToggled, not isOn; report this simulator abstraction faithfully.",
+      "pick_two_obj_and_place": "Two distinct objects of the requested type must both be in one identical eligible target receptacle instance. Two different same-type targets are invalid."
+    },
+    "unsupported": "Sliced objects, movable receptacle targets, additional unknown goal clauses, unparsed operators or ambiguous metadata are rejected with a reason. Do not relax the original goal or silently replace a task."
+  },
+  "fixed_training_cohort": {
+    "source_manifest": "data/manifests/train120.json",
+    "selection": "First10 tasks within each of the six existing family groups, preserving original manifest order. No selection by candidate yield, loss, dev results, success or object count.",
+    "tasks_per_family": 10,
+    "total_tasks": 60,
+    "frozen_gamefiles": [
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Laptop-None-DeskLamp-216/trial_T20190907_185556_000181/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-CreditCard-None-DeskLamp-314/trial_T20190906_201607_020913/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-CellPhone-None-DeskLamp-320/trial_T20190908_093252_166576/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-CD-None-DeskLamp-320/trial_T20190907_224439_174735/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Pillow-None-DeskLamp-324/trial_T20190908_155642_533831/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Pillow-None-DeskLamp-307/trial_T20190908_190558_647867/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Statue-None-DeskLamp-319/trial_T20190907_035529_591053/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Pillow-None-DeskLamp-218/trial_T20190909_043226_266806/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Laptop-None-DeskLamp-328/trial_T20190908_201601_178214/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-CD-None-DeskLamp-316/trial_T20190909_114536_775689/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-Cloth-None-Drawer-409/trial_T20190908_032838_597592/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-Candle-None-CounterTop-411/trial_T20190906_200827_470056/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-Pen-None-Shelf-310/trial_T20190909_113535_223329/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-RemoteControl-None-Sofa-207/trial_T20190909_153746_466577/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-Bowl-None-Fridge-6/trial_T20190906_231042_118272/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-SprayBottle-None-GarbageCan-426/trial_T20190908_052054_959981/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-Pen-None-Desk-310/trial_T20190908_030156_053101/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-Watch-None-CoffeeTable-213/trial_T20190909_010823_096862/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-SoapBottle-None-CounterTop-428/trial_T20190909_114242_588264/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-RemoteControl-None-ArmChair-230/trial_T20190909_020906_064567/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Kettle-None-StoveBurner-1/trial_T20190908_172105_948396/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Ladle-None-DiningTable-4/trial_T20190909_165603_183022/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Kettle-None-DiningTable-17/trial_T20190909_023440_415981/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-DishSponge-None-Drawer-430/trial_T20190908_122230_051247/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Lettuce-None-CounterTop-18/trial_T20190909_071129_660883/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Mug-None-CoffeeMachine-1/trial_T20190909_134634_406636/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Tomato-None-GarbageCan-15/trial_T20190908_190007_238896/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Cloth-None-Drawer-415/trial_T20190906_190118_700255/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Tomato-None-Fridge-18/trial_T20190909_045941_566760/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-DishSponge-None-Cart-430/trial_T20190906_233436_645915/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Apple-None-Microwave-22/trial_T20190908_000314_718780/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Mug-None-CoffeeMachine-24/trial_T20190907_185942_820847/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Pot-None-StoveBurner-1/trial_T20190907_165908_445437/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Apple-None-SideTable-21/trial_T20190907_180711_700359/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Plate-None-DiningTable-17/trial_T20190909_122939_032098/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Apple-None-DiningTable-16/trial_T20190909_075758_248823/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Apple-None-GarbageCan-19/trial_T20190908_121503_882955/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Mug-None-CoffeeMachine-2/trial_T20190907_044106_781028/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Tomato-None-Microwave-17/trial_T20190912_065518_499928/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Egg-None-Microwave-20/trial_T20190908_051908_943025/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Potato-None-GarbageCan-6/trial_T20190909_132625_893504/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Potato-None-Fridge-2/trial_T20190909_030720_576619/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Potato-None-SideTable-28/trial_T20190907_075841_463460/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Cup-None-CounterTop-22/trial_T20190909_023638_397924/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Mug-None-SideTable-28/trial_T20190908_212726_073302/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Mug-None-CoffeeMachine-3/trial_T20190906_233939_167170/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Cup-None-Cabinet-22/trial_T20190907_173342_454704/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Apple-None-GarbageCan-8/trial_T20190907_043118_286709/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Mug-None-Cabinet-25/trial_T20190909_095542_548585/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Plate-None-Fridge-1/trial_T20190908_010704_977592/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-TissueBox-None-GarbageCan-230/trial_T20190908_050916_526395/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-ToiletPaper-None-Shelf-415/trial_T20190908_172037_784467/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-KeyChain-None-Sofa-224/trial_T20190908_015657_698925/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-Pencil-None-Desk-313/trial_T20190906_200931_060619/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-Laptop-None-Ottoman-203/trial_T20190907_034356_767031/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-Candle-None-Shelf-429/trial_T20190909_075128_271977/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-CreditCard-None-DiningTable-311/trial_T20190908_072922_474814/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-Candle-None-CounterTop-406/trial_T20190908_045902_729862/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-Statue-None-DiningTable-228/trial_T20190906_222607_743673/game.tw-pddl",
+      "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-ToiletPaper-None-Toilet-408/trial_T20190909_080347_367417/game.tw-pddl"
+    ],
+    "ordered_gamefiles_sha256_compact_json": "c4e872ac38d43415ea137de7c841254a65fdbd078ade15542e14694242c6ae90",
+    "reset_seed": 20261012,
+    "cohort_rule": "All60 remain represented in the prospective same-cohort comparison, using canonical identity-only pools where no alternative passes. Any missing canonical, invalid reset or replay error makes acquisition incomplete."
+  },
+  "teacher_metadata_and_facts": {
+    "metadata": [
+      "task_type",
+      "pddl_params.object_target",
+      "pddl_params.parent_target",
+      "pddl_params.toggle_target",
+      "pddl_params.object_sliced",
+      "pddl_params.mrecep_target"
+    ],
+    "raw_predicates": [
+      "objectType",
+      "receptacleType",
+      "pickupable",
+      "canContain",
+      "inReceptacle",
+      "objectAtLocation",
+      "receptacleAtLocation",
+      "atLocation",
+      "openable",
+      "opened",
+      "holds",
+      "holdsAny",
+      "cleanable",
+      "heatable",
+      "coolable",
+      "isClean",
+      "isHot",
+      "isCool",
+      "toggleable",
+      "isToggled",
+      "isOn"
+    ],
+    "entity_grounding": "Use backend _entity_infos only to map exact raw IDs to executable surface names. Preserve raw IDs in candidate provenance and terminal-state differences; never merge different numbered instances.",
+    "assignment_tuple": "One goal object, one target receptacle and optional treatment device; for look use one held object plus one toggleable device and its containing receptacle; for two-object use two distinct goal objects, one common target and an order bit.",
+    "device_types": {
+      "clean": [
+        "SinkType",
+        "SinkBasinType"
+      ],
+      "heat": [
+        "MicrowaveType"
+      ],
+      "cool": [
+        "FridgeType"
+      ],
+      "look": [
+        "Metadata toggle_target plus Type"
+      ]
+    },
+    "eligibility": "Check typed goal membership, unique current source, pickup capability, treatment capability and canContain(target_type,object_type) when placement is needed. Authoritative admissibility and live environment success still decide validity. A goal object already in its chosen final target is not moved out and back to manufacture diversity."
+  },
+  "finite_assignment_enumeration": {
+    "max_retained_candidates_per_task_including_original": 8,
+    "max_new_recipe_attempts_per_task": 7,
+    "max_assignment_tuples_considered_per_task": 4096,
+    "original": "Load the existing native-planner canonical trace for the exact game/seed and independently replay with expert_type=None. It is always pool member0 and the canonical arm, and consumes no new recipe slot.",
+    "deterministic_order": "Derive canonical goal assignments from actual grounded effects and terminal goal witnesses. Round-robin through eligible single-axis changes: object choice, target receptacle choice, treatment/toggle device choice, then two-object pair/order choice where applicable. Use sorted raw-ID tuples within an axis. Fill remaining slots with multi-axis assignments sorted by SHA256(gamefile plus compact assignment JSON). Exclude the exact canonical assignment/order. Keep only the first7 distinct assignment recipes; no yield-dependent replenishment beyond seven attempts.",
+    "why_bounded": "A large Cartesian product must not grant some tasks unlimited search. Record counts by assignment axis, tuples skipped at4096, and all unsuccessful or inadmissible proposals.",
+    "baseline_reproduction": "If live recipe execution of a different assignment produces an identical action sequence or identical selected assignment, deduplicate it. Pure information actions, alias-only navigation changes, useless device toggles and exact physical loops do not count as meaningful alternatives."
+  },
+  "fixed_live_recipes": {
+    "shared_helpers": [
+      "Reset the exact original game with expert_type=None. Check initial canonical state and observation against the cached canonical trace before each attempt.",
+      "navigate(receptacle): consult current grounded location facts; issue go to only if required, and only if currently admissible.",
+      "open_if_needed(source_or_target): open only when openable and not opened and access is required for pickup/placement. Never insert closes or padding to match length.",
+      "take(object): locate its unique live source, navigate/open as required, verify exact command admissibility, then execute and record actual observation/state.",
+      "place(object,target): navigate/open as required, verify holding exact object and admissibility, execute move, and record actual observation/state.",
+      "After every action stop immediately if done. Count a path only if it reached the original goal, achieved the intended recorded assignment, and contains no appended actions after success."
+    ],
+    "pick_and_place_simple": "take the chosen eligible object; place it in the chosen eligible target.",
+    "pick_clean_then_place_in_recep": "take chosen object; navigate to chosen Sink/SinkBasin; execute clean OBJECT with DEVICE; verify isClean for that raw object; place in chosen target.",
+    "pick_heat_then_place_in_recep": "take chosen object; navigate to chosen Microwave; execute heat OBJECT with DEVICE; verify isHot; place in chosen target.",
+    "pick_cool_then_place_in_recep": "take chosen object; navigate to chosen Fridge; execute cool OBJECT with DEVICE; verify isCool; place in chosen target.",
+    "treatment_domain_detail": "Inspected treatment operators require holding the object and sharing the treatment receptacle's location. They do not require putting the object inside, opening/closing the appliance, or toggling it. Do not invent household-realism actions absent from this domain; actual admissible commands are authoritative.",
+    "look_at_obj_in_light": "take chosen goal object; navigate to the receptacle containing the chosen toggleable target device; if the original goal is not already complete and the chosen device is not isToggled, execute use DEVICE when admissible. Verify the held object's type, selected device's isToggled and agent/device location conjunction. No extra examine action is necessary for the inspected goal.",
+    "pick_two_obj_and_place": "Complete take/place for the first chosen object, then take/place for the second distinct chosen object into the same chosen target. Preserve single-slot inventory. Enumerate the reverse order as a separate tuple when budget permits.",
+    "finite_recipe_limit": 24,
+    "unsupported_assignment": "Abort that proposal on ambiguity, inadmissibility, wrong intended assignment, early success from another witness, excessive length, or failed goal. Record reason and keep the unchanged canonical pool; never alter goal facts to force feasibility."
+  },
+  "length_cost_stratification": {
+    "primary_stratum": "For each task retain only successful proposals with exactly the canonical original action count AND exactly the canonical original audited additive operator cost. The original is always included. Do not choose the shortest or largest group after seeing model scores.",
+    "operator_costs": {
+      "go to": 1,
+      "open": 1,
+      "close": 1,
+      "take": 1,
+      "move": 1,
+      "heat": 5,
+      "clean": 5,
+      "cool": 5,
+      "use": 5,
+      "slice": 5,
+      "look": 0,
+      "inventory": 0,
+      "help": 0,
+      "examine": 0
+    },
+    "cost_audit": "Before any execution, parse comment-stripped original domain actions and constant increase(total-cost,k) effects and verify the exact known operator-to-command map. Reject unknown/conditional cost expressions or changed domain hashes. Accumulate audited per-command costs; do not pretend total-cost is exposed by adapter facts or equal to moves.",
+    "forbidden_padding": "No look/examine, loops, redundant navigation, unnecessary opens/closes, or repeated toggle operations to match the stratum.",
+    "nonmatching_successes": "Keep their audit records outside the training/scoring pool with length/cost and rejection reason. A later variable-length or alternate-stratum study requires new registration and length/cost controls.",
+    "not_matched": "Equal action count and operator cost do not imply equal token count, textual difficulty, partial observability or final structured state. Report these residual differences and actual training exposures."
+  },
+  "validation_and_schema": {
+    "fresh_replay": "Every retained original and alternative is independently replayed from reset using its exact action sequence; compare all actual observations, per-step state records and terminal success to its own discovery trace. Full initial state is shared. Different candidates need not have equal terminal facts, object IDs, action multisets or last observation.",
+    "candidate_record": [
+      "kind=successful_path_candidate_pool",
+      "schema_version=1",
+      "gamefile/seed/split=train",
+      "game/domain/problem/grammar/metadata hashes",
+      "initial observation and canonical state",
+      "unmodified parsed original goal",
+      "canonical candidate ID",
+      "selected length/cost stratum",
+      "candidate ID/action digest",
+      "grounded assignment and proposal axis",
+      "complete actual transitions",
+      "action count and audited operator cost",
+      "goal witness and terminal state",
+      "independent replay evidence",
+      "differences from canonical terminal state",
+      "acquisition costs and rejection reasons"
+    ],
+    "new_validator_required": "Implement a new successful-path validator. Do not call existing macro_project.validate_pool as though different final states or action multisets satisfy exact-state BRP. Reuse HFCausalPolicy scoring and allowlisted causal prompt helpers, not the old equivalence contract.",
+    "student_input": "Only task, actual preceding observation/action history, current observation and the common admissible-command protocol. No raw facts, future observations, chosen hidden source, goal witnesses, assignment metadata or native plan in student prompts.",
+    "privilege_limit": "Initial hidden object/device locations guide every teacher recipe. First navigation can be correct without evidence available to the student. Same-pool arms control differential privileged candidate access, but cannot establish that a student learned hidden-object search or globally optimal planning."
+  },
+  "feasibility_budget_and_gate": {
+    "max_tasks": 60,
+    "max_pool_members_per_task": 8,
+    "max_total_retained_members": 480,
+    "max_new_recipe_attempts_total": 420,
+    "max_environment_steps_including_all_replay": 100000,
+    "max_cpu_wall_seconds": 3600,
+    "max_recipe_actions": 24,
+    "episode_max_steps": 100,
+    "gpu_jobs": 0,
+    "technical_execution": "Use one active game per process, expert_type=None for cached-canonical replay and all recipe passes. Apply an outer owned-process-group wall timeout. Stop at the first global budget reached; preserve partial audit outputs and mark incomplete.",
+    "coverage_gate": "All60 canonical traces must be present and verified with zero technical/replay errors. At least10 distinct NON-two-object tasks must each have at least two meaningful retained candidates in their canonical length/cost stratum, spanning at least3 of the other5 families with at least2 eligible tasks per counted family. Report total coverage across all6 families as well.",
+    "meaningful": "At least one goal-object, target-receptacle or treatment/toggle-device raw-ID assignment differs and live execution changes grounded task-relevant facts; two-object delivery-order alternatives are reported separately and cannot alone satisfy the expansion gate.",
+    "failure": "Sparse support or an exhausted budget is a bounded feasibility result. Do not relax the gate, add tasks after seeing coverage, pad paths, or launch learning on an unmatched subset."
+  },
+  "prospective_same_pool_learning_controls": {
+    "not_authorized_here": true,
+    "canonical": "Always the unchanged original native-planner trajectory in the chosen canonical length/cost stratum.",
+    "uniform": "Uniform choice from exactly the same verified candidate pool, including original; freeze the draw before training.",
+    "reference": "Greedy maximum full-sequence sum of action-token-plus-EOS log probabilities using each candidate's actual causal history. Same frozen reference policy for all tasks. Explicitly not exact posterior sampling.",
+    "cohort": "Prefer common native120 training context: insert these60 candidate pools and keep the remaining60 native originals as identity pools for every arm. Identity fallback preserves all task identities where proposals fail. All arms receive identical ordered task IDs and the same pool hashes; no arm-specific filtering.",
+    "matching": "Same architecture, optimizer settings, updates, seeds and example-order rules. Log action-target token counts, prompt lengths, candidate selection frequencies and actual token exposure; fixed updates are not equal total compute.",
+    "interpretation": "Compare reference versus uniform to isolate finite-pool selection preference, and versus unchanged canonical to test improvement beyond the source planner data. Changing legal goal witnesses is outcome consistency, not state equivalence. Coverage/score improvements alone are not downstream efficacy.",
+    "next_registration": "If CPU feasibility passes, write a separate fixed learning/evaluation plan before any scoring or training. Reused dev24 is exploratory, and unseen134 remains untouched until a separately frozen confirmation plan is adopted. Do not use this candidate to authorize automatic repeated testing."
+  },
+  "implementation_recommendation": {
+    "new_module_only": "gnrl.successful_path_pools_v1.py",
+    "new_tests_only": "tests/test_successful_path_pools_v1.py",
+    "new_contract_only": "configs/successful_path_cost_contract_v1.json",
+    "helpers_to_reuse": [
+      "AlfworldReplayEnv(expert_type=None)",
+      "transition_record",
+      "information_only_action",
+      "pure raw-predicate and entity-name helpers",
+      "exact causal prompt and raw action+EOS scoring helpers"
+    ],
+    "first_validation": "CPU fixtures for each of six goal templates, object/device typing, single-slot inventory, same-target two-object constraint, canContain, treatment preconditions, isToggled versus isOn, no-op exclusion, cost accounting, same-stratum retention and shifted final state acceptance. Then at most one real smoke per family drawn from the same60 manifest, charged to the global budget; no model needed.",
+    "explicit_non_reuse": "Do not weaken existing exact-state validators or modify phase0/phase1 modules. Keep all new artifacts in a separate outcome-path namespace."
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "kind": "recovery_training_implementation_preparation_v1",
+  "status": "implemented_not_deployed_not_executed",
+  "pure_tests": {
+    "command": "python -B -m unittest discover -s tests -p test_train_recovery_v1.py -v",
+    "passed": 10,
+    "failed": 0
+  },
+  "sha256": {
+    "gnrl/train_recovery_v1.py": "6a3f817f86b60e1da7a814b9f56ee3f293ecc963a7381604bf42a2850ae18782",
+    "tests/test_train_recovery_v1.py": "3c099f1e67eaf910663ff6ab5dec69cc13a159ee0c34fc351e0ce60a59ce2b1b",
+    "gnrl/train_sft.py": "0aeee657295e4736de78d9c56cb4929e08652fcd1498d7ce1154f5c39f679345",
+    "gnrl/policy.py": "c36ecf8c81df6cceffcdce784a88a81809afd8b55df6fc5fcd8330bf1397b82e",
+    "analysis/recovery_smoke_result_review_v1.json": "2f0b3970042acfcfca9724b5fb47950de2f1f6c2e5b4b6528a9c3ac974773966"
+  },
+  "execution": {
+    "environment_calls": 0,
+    "model_calls": 0,
+    "actual_tokenizer_calls": 0,
+    "training_jobs": 0,
+    "deployments": 0
+  },
+  "interface": {
+    "common": [
+      "--initial-adapter checkpoints/successful_path_canonical_seed42_v1/final",
+      "--bc-data outputs/successful_path_selection_v1/canonical_baseline.jsonl",
+      "--arm expert_recovery|uniform_viable_recovery|reference_conditional_recovery",
+      "--recovery-data <chosen-arm.jsonl>",
+      "--token-audit <common-audit.json>"
+    ],
+    "joint_audit_only": "Add --audit-only and exactly two --peer-recovery-data ARM=PATH arguments. Requires launch_gpu.py guard. Writes the common token-audit path exclusively; loads base tokenizer only, no model.",
+    "training": "Add --output <new-directory>. No peer flags: all peer paths are inherited from the audited inventory. Recompute all identities, contexts, encodings, schedule, input bytes, base/initial adapter inventories and runtime before model load. Require exact audit equality.",
+    "settings_override": "No CLI overrides for frozen optimization/schedule/settings. Base path and canonical final adapter path fixed; logical device must be cuda:0 under launcher guard."
+  },
+  "behavior": [
+    "Single PeftModel.from_pretrained(base, initial_adapter, is_trainable=True), existing default LoRA only; fresh AdamW and no optimizer restore.",
+    "Exactly100 optimizer updates, each BC0,recovery0,...,BC3,recovery3; 400 BC + 400 recovery exposures. Private RNG seeds613300/613301; shuffle existing permutation on wrap.",
+    "Action+EOS-only crossentropy, each accumulation window weighted by actual target token counts, clip1 and no token padding/resampling.",
+    "Only complete step100 final checkpoint qualifies. Partial/failing runs retain metrics, started-forward/completed-backward exposure log and incomplete summary.",
+    "Dataset hashes, source hashes, runtime package versions, original full base model inventory, original adapter full inventory against prior completed-learning locks, per-example token hashes/counts, exact schedule and final adapter inventory are bound."
+  ],
+  "limitations": [
+    "No live tokenizer/model/GPU test was permitted; model loading, token audit and optimizer paths require later adopted guarded execution.",
+    "This module does not authorize training or implement acquisition/diagnostic gates, controller, or held-out evaluation. Parent must enforce those gates and outer owned-process wall deadline."
+  ]
+}

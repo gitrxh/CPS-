@@ -1,0 +1,3554 @@
+{
+  "kind": "train_only_finite_pool_softmax_support_audit",
+  "temperature": 1.0,
+  "new_model_calls": 0,
+  "new_environment_calls": 0,
+  "new_samples_drawn": 0,
+  "dev_outcomes_read": false,
+  "remote_files_written": false,
+  "method_changed": false,
+  "source_sha256": {
+    "outputs/successful_path_selection_v1/selection_events.jsonl": "7bad58cf303d4754edab470b024ed69258ac92478ff0b302f235f97dfb694764",
+    "outputs/successful_path_selection_v1/selection_summary.json": "8d71ce092f035bab21ebd55d68e526e6232f5d46a2e1da085b380ca0304bb915",
+    "outputs/successful_path_selection_v1/pairing_receipt.json": "657b44ae9806ddcb10c92c718b37e36072db3a2af17d936cba8756e0d0c11191",
+    "outputs/successful_path_selection_v1/score_ledger.jsonl": "aa1eec93cc0743ba37667ec0849992965903f5201e414012b366ac5d81bf64d5"
+  },
+  "formula": "p_i = exp(logprob_i - max_logprob) / sum_j exp(logprob_j - max_logprob). H=-sum_i p_i log(p_i); effective support=exp(H), with inverse sum p_i^2 also reported. Total variation from the greedy point mass is exactly1-p_greedy.",
+  "aggregation_note": "Statistics weight tasks/pools equally. Singleton pools are reported separately through the non-singleton summary. Expectations are analytical; no random candidate draw or training data change was performed.",
+  "all60": {
+    "pools": 60,
+    "pool_members": 162,
+    "statistics": {
+      "maximum_mass": {
+        "min": 0.46087943429794515,
+        "q25": 0.9481405206901172,
+        "median": 0.9997760392817973,
+        "mean": 0.9327847733343924,
+        "q75": 1.0,
+        "max": 1.0
+      },
+      "entropy_nats": {
+        "min": -0.0,
+        "q25": 0.0,
+        "median": 0.0020275058810236826,
+        "mean": 0.16497372781969144,
+        "q75": 0.2039451538389086,
+        "max": 1.2040833213424764
+      },
+      "normalized_entropy": {
+        "min": 0.0,
+        "q25": 0.0,
+        "median": 0.0010255832226369283,
+        "mean": 0.16481251408222214,
+        "q75": 0.29423066205673015,
+        "max": 0.8986895900304691
+      },
+      "effective_support_exp_entropy": {
+        "min": 1.0,
+        "q25": 1.0,
+        "median": 1.0020311715282466,
+        "mean": 1.234673852786987,
+        "q75": 1.2262356002805217,
+        "max": 3.333701743745903
+      },
+      "effective_support_inverse_simpson": {
+        "min": 1.0,
+        "q25": 1.0,
+        "median": 1.0004481111046062,
+        "mean": 1.1675923053651374,
+        "q75": 1.1090674402561596,
+        "max": 2.5664939571645036
+      },
+      "canonical_mass": {
+        "min": 6.657210154117169e-12,
+        "q25": 0.002869629164053502,
+        "median": 0.31762552486360995,
+        "mean": 0.49947123921296066,
+        "q75": 1.0,
+        "max": 1.0
+      },
+      "uniform_selected_mass": {
+        "min": 3.317616973635195e-18,
+        "q25": 0.04035024733710746,
+        "median": 0.9697033194550879,
+        "mean": 0.6461760444943979,
+        "q75": 1.0,
+        "max": 1.0
+      },
+      "probability_temperature1_sample_differs_from_greedy": {
+        "min": 0.0,
+        "q25": 0.0,
+        "median": 0.00022396071820274255,
+        "mean": 0.06721522666560747,
+        "q75": 0.0518594793098828,
+        "max": 0.5391205657020548
+      },
+      "expected_logprob_regret_vs_greedy": {
+        "min": 0.0,
+        "q25": 0.0,
+        "median": 0.0018034990821145615,
+        "mean": 0.08342616384625433,
+        "q75": 0.15069208578357837,
+        "max": 0.5673514883398258
+      }
+    },
+    "maximum_mass_threshold_counts": {
+      "0.5": 59,
+      "0.75": 52,
+      "0.9": 46,
+      "0.95": 44,
+      "0.99": 40
+    },
+    "expected_sampled_tasks_differing_from_greedy": 4.032913599936449,
+    "expected_sampled_tasks_differing_from_canonical": 30.03172564722236,
+    "expected_sampled_tasks_differing_from_uniform_selected": 21.229437330336125,
+    "probability_at_least_one_sample_differs_from_greedy_assuming_independent_draws": 0.9925000118497384,
+    "actual_greedy_changes_from_canonical": 31,
+    "actual_greedy_changes_from_uniform_selected": 20
+  },
+  "non_singleton": {
+    "pools": 40,
+    "pool_members": 142,
+    "statistics": {
+      "maximum_mass": {
+        "min": 0.46087943429794515,
+        "q25": 0.8342018711444537,
+        "median": 0.9884166305542172,
+        "mean": 0.8991771600015885,
+        "q75": 0.999673598189272,
+        "max": 0.9999999999933429
+      },
+      "entropy_nats": {
+        "min": 1.7798255701726924e-10,
+        "q25": 0.0029234992547444738,
+        "median": 0.06733293492002693,
+        "mean": 0.24746059172953716,
+        "q75": 0.4708887119019798,
+        "max": 1.2040833213424764
+      },
+      "normalized_entropy": {
+        "min": 2.5677455237355153e-10,
+        "q25": 0.0014311854569515959,
+        "median": 0.048662856013983916,
+        "mean": 0.2472187711233332,
+        "q75": 0.5007351756695306,
+        "max": 0.8986895900304691
+      },
+      "effective_support_exp_entropy": {
+        "min": 1.0000000001779825,
+        "q25": 1.0029289838571747,
+        "median": 1.0696905968893256,
+        "mean": 1.3520107791804803,
+        "q75": 1.6038530621487685,
+        "max": 3.333701743745903
+      },
+      "effective_support_inverse_simpson": {
+        "min": 1.0000000000133142,
+        "q25": 1.0006530877050532,
+        "median": 1.023476957222346,
+        "mean": 1.2513884580477064,
+        "q75": 1.391284425213178,
+        "max": 2.5664939571645036
+      },
+      "canonical_mass": {
+        "min": 6.657210154117169e-12,
+        "q25": 5.630934487366725e-06,
+        "median": 0.03029668054491211,
+        "mean": 0.24920685881944107,
+        "q75": 0.3162363098258826,
+        "max": 0.9999999998464735
+      },
+      "uniform_selected_mass": {
+        "min": 3.317616973635195e-18,
+        "q25": 0.0025442063940659767,
+        "median": 0.5160523115951023,
+        "mean": 0.4692640667415969,
+        "q75": 0.966084458097402,
+        "max": 0.9999999999933429
+      },
+      "probability_temperature1_sample_differs_from_greedy": {
+        "min": 6.657119300257364e-12,
+        "q25": 0.00032640181072796093,
+        "median": 0.011583369445782754,
+        "mean": 0.10082283999841121,
+        "q75": 0.16579812885554635,
+        "max": 0.5391205657020548
+      },
+      "expected_logprob_regret_vs_greedy": {
+        "min": 1.7132543771703406e-10,
+        "q25": 0.0025970284139557177,
+        "median": 0.055677542128749015,
+        "mean": 0.12513924576938149,
+        "q75": 0.23174122722793014,
+        "max": 0.5673514883398258
+      }
+    },
+    "maximum_mass_threshold_counts": {
+      "0.5": 39,
+      "0.75": 32,
+      "0.9": 26,
+      "0.95": 24,
+      "0.99": 20
+    },
+    "expected_sampled_tasks_differing_from_greedy": 4.032913599936449,
+    "expected_sampled_tasks_differing_from_canonical": 30.03172564722236,
+    "expected_sampled_tasks_differing_from_uniform_selected": 21.229437330336125,
+    "probability_at_least_one_sample_differs_from_greedy_assuming_independent_draws": 0.9925000118497384,
+    "actual_greedy_changes_from_canonical": 31,
+    "actual_greedy_changes_from_uniform_selected": 20
+  },
+  "by_family": {
+    "look_at_obj_in_light": {
+      "pools": 10,
+      "pool_members": 16,
+      "statistics": {
+        "maximum_mass": {
+          "min": 0.9769410421704599,
+          "q25": 0.9999985371172124,
+          "median": 1.0,
+          "mean": 0.9974959562811311,
+          "q75": 1.0,
+          "max": 1.0
+        },
+        "entropy_nats": {
+          "min": -0.0,
+          "q25": 0.0,
+          "median": 0.0,
+          "mean": 0.012404393547343576,
+          "q75": 2.0696416103669278e-05,
+          "max": 0.10971640814671009
+        },
+        "normalized_entropy": {
+          "min": 0.0,
+          "q25": 0.0,
+          "median": 0.0,
+          "mean": 0.016864235173541933,
+          "q75": 2.985861687693815e-05,
+          "max": 0.1582873179374081
+        },
+        "effective_support_exp_entropy": {
+          "min": 1.0,
+          "q25": 1.0,
+          "median": 1.0,
+          "mean": 1.0130391808785764,
+          "q75": 1.0000206967016423,
+          "max": 1.1159615479758032
+        },
+        "effective_support_inverse_simpson": {
+          "min": 1.0,
+          "q25": 1.0,
+          "median": 1.0,
+          "mean": 1.0051150958222794,
+          "q75": 1.0000029257712817,
+          "max": 1.047180162490435
+        },
+        "canonical_mass": {
+          "min": 1.950459208013404e-06,
+          "q25": 0.9985153534018067,
+          "median": 1.0,
+          "mean": 0.8021081379388807,
+          "q75": 1.0,
+          "max": 1.0
+        },
+        "uniform_selected_mass": {
+          "min": 3.317616973635195e-18,
+          "q25": 0.9999985371172124,
+          "median": 1.0,
+          "mean": 0.8976939091557725,
+          "q75": 1.0,
+          "max": 1.0
+        },
+        "probability_temperature1_sample_differs_from_greedy": {
+          "min": 0.0,
+          "q25": 0.0,
+          "median": 0.0,
+          "mean": 0.002504043718869009,
+          "q75": 1.4628827875728945e-06,
+          "max": 0.02305895782954015
+        },
+        "expected_logprob_regret_vs_greedy": {
+          "min": 0.0,
+          "q25": 0.0,
+          "median": 0.0,
+          "mean": 0.009873151971312007,
+          "q75": 1.9233531889491605e-05,
+          "max": 0.0863874336039372
+        }
+      },
+      "maximum_mass_threshold_counts": {
+        "0.5": 10,
+        "0.75": 10,
+        "0.9": 10,
+        "0.95": 10,
+        "0.99": 9
+      },
+      "expected_sampled_tasks_differing_from_greedy": 0.02504043718869009,
+      "expected_sampled_tasks_differing_from_canonical": 1.9789186206111937,
+      "expected_sampled_tasks_differing_from_uniform_selected": 1.0230609084422746,
+      "probability_at_least_one_sample_differs_from_greedy_assuming_independent_draws": 0.02499474256745049,
+      "actual_greedy_changes_from_canonical": 2,
+      "actual_greedy_changes_from_uniform_selected": 1
+    },
+    "pick_and_place_simple": {
+      "pools": 10,
+      "pool_members": 23,
+      "statistics": {
+        "maximum_mass": {
+          "min": 0.7420008667494933,
+          "q25": 0.9954802273854797,
+          "median": 0.9999997413287178,
+          "mean": 0.9689703856448378,
+          "q75": 1.0,
+          "max": 1.0
+        },
+        "entropy_nats": {
+          "min": -0.0,
+          "q25": 0.0,
+          "median": 4.142275045341181e-06,
+          "mean": 0.07966442467425816,
+          "q75": 0.028697898284063807,
+          "max": 0.5709536520150003
+        },
+        "normalized_entropy": {
+          "min": 0.0,
+          "q25": 0.0,
+          "median": 2.3119264412009433e-06,
+          "mean": 0.11288958344496955,
+          "q75": 0.02611867717521068,
+          "max": 0.8237120023394838
+        },
+        "effective_support_exp_entropy": {
+          "min": 1.0,
+          "q25": 1.0,
+          "median": 1.000004142292203,
+          "mean": 1.1015089255338735,
+          "q75": 1.029253339329454,
+          "max": 1.7699541672032075
+        },
+        "effective_support_inverse_simpson": {
+          "min": 1.0,
+          "q25": 1.0,
+          "median": 1.000000517342867,
+          "mean": 1.0729339352354794,
+          "q75": 1.0090973388438778,
+          "max": 1.6204071772048145
+        },
+        "canonical_mass": {
+          "min": 6.657210154117169e-12,
+          "q25": 0.0001007455897083437,
+          "median": 0.15213287360299804,
+          "mean": 0.430465862513016,
+          "q75": 1.0,
+          "max": 1.0
+        },
+        "uniform_selected_mass": {
+          "min": 5.094869018611404e-10,
+          "q25": 0.22020017715399037,
+          "median": 0.9999997413287178,
+          "mean": 0.6793904405536983,
+          "q75": 1.0,
+          "max": 1.0
+        },
+        "probability_temperature1_sample_differs_from_greedy": {
+          "min": 0.0,
+          "q25": 0.0,
+          "median": 2.586712821162074e-07,
+          "mean": 0.031029614355162227,
+          "q75": 0.004519772614520273,
+          "max": 0.2579991332505067
+        },
+        "expected_logprob_regret_vs_greedy": {
+          "min": 0.0,
+          "q25": 0.0,
+          "median": 3.883603696296743e-06,
+          "mean": 0.04448196453882438,
+          "q75": 0.024164459797963063,
+          "max": 0.2725487843255632
+        }
+      },
+      "maximum_mass_threshold_counts": {
+        "0.5": 10,
+        "0.75": 9,
+        "0.9": 9,
+        "0.95": 9,
+        "0.99": 8
+      },
+      "expected_sampled_tasks_differing_from_greedy": 0.31029614355162227,
+      "expected_sampled_tasks_differing_from_canonical": 5.695341374869841,
+      "expected_sampled_tasks_differing_from_uniform_selected": 3.206095594463017,
+      "probability_at_least_one_sample_differs_from_greedy_assuming_independent_draws": 0.2965965128240152,
+      "actual_greedy_changes_from_canonical": 6,
+      "actual_greedy_changes_from_uniform_selected": 3
+    },
+    "pick_clean_then_place_in_recep": {
+      "pools": 10,
+      "pool_members": 36,
+      "statistics": {
+        "maximum_mass": {
+          "min": 0.6851529052118447,
+          "q25": 0.9712456075416002,
+          "median": 0.9987961137276544,
+          "mean": 0.9591054305602176,
+          "q75": 0.9998884413813958,
+          "max": 1.0
+        },
+        "entropy_nats": {
+          "min": -0.0,
+          "q25": 0.0010121445808482742,
+          "median": 0.009797465585597628,
+          "mean": 0.10264981683300149,
+          "q75": 0.1244478423598821,
+          "max": 0.6229241555281928
+        },
+        "normalized_entropy": {
+          "min": 0.0,
+          "q25": 0.0005113276192621612,
+          "median": 0.006162393439576082,
+          "mean": 0.144893170742831,
+          "q75": 0.1764569971130235,
+          "max": 0.8986895900304691
+        },
+        "effective_support_exp_entropy": {
+          "min": 1.0,
+          "q25": 1.0010139726569904,
+          "median": 1.0098568699971193,
+          "mean": 1.130367106765708,
+          "q75": 1.1346240173571993,
+          "max": 1.8643717918632905
+        },
+        "effective_support_inverse_simpson": {
+          "min": 1.0,
+          "q25": 1.0002232119135601,
+          "median": 1.0024122292822284,
+          "mean": 1.095508168130416,
+          "q75": 1.0596187277651397,
+          "max": 1.7588194345861392
+        },
+        "canonical_mass": {
+          "min": 5.785741905623204e-11,
+          "q25": 6.177967303917471e-06,
+          "median": 0.1761907490242196,
+          "mean": 0.4299268395865047,
+          "q75": 0.9858050741442971,
+          "max": 1.0
+        },
+        "uniform_selected_mass": {
+          "min": 7.772397723721307e-11,
+          "q25": 0.0001719883051501109,
+          "median": 0.8169227407767702,
+          "mean": 0.559456379598249,
+          "q75": 0.9888056291453684,
+          "max": 1.0
+        },
+        "probability_temperature1_sample_differs_from_greedy": {
+          "min": 0.0,
+          "q25": 0.00011155861860426275,
+          "median": 0.0012038862723456334,
+          "mean": 0.04089456943978235,
+          "q75": 0.028754392458399863,
+          "max": 0.3148470947881553
+        },
+        "expected_logprob_regret_vs_greedy": {
+          "min": 0.0,
+          "q25": 0.0009005629547874162,
+          "median": 0.008592661267725354,
+          "mean": 0.05521958671372832,
+          "q75": 0.09515080470040788,
+          "max": 0.2448109091859273
+        }
+      },
+      "maximum_mass_threshold_counts": {
+        "0.5": 10,
+        "0.75": 9,
+        "0.9": 9,
+        "0.95": 8,
+        "0.99": 7
+      },
+      "expected_sampled_tasks_differing_from_greedy": 0.40894569439782347,
+      "expected_sampled_tasks_differing_from_canonical": 5.700731604134953,
+      "expected_sampled_tasks_differing_from_uniform_selected": 4.40543620401751,
+      "probability_at_least_one_sample_differs_from_greedy_assuming_independent_draws": 0.37768090367588747,
+      "actual_greedy_changes_from_canonical": 6,
+      "actual_greedy_changes_from_uniform_selected": 4
+    },
+    "pick_cool_then_place_in_recep": {
+      "pools": 10,
+      "pool_members": 21,
+      "statistics": {
+        "maximum_mass": {
+          "min": 0.7912203864329763,
+          "q25": 0.9590698989323544,
+          "median": 0.99999900985839,
+          "mean": 0.9625188802711089,
+          "q75": 1.0,
+          "max": 1.0
+        },
+        "entropy_nats": {
+          "min": -0.0,
+          "q25": 0.0,
+          "median": 1.4179691960781574e-05,
+          "mean": 0.12231983268685724,
+          "q75": 0.16191094132454073,
+          "max": 0.6478710266431634
+        },
+        "normalized_entropy": {
+          "min": 0.0,
+          "q25": 0.0,
+          "median": 1.2906911844188602e-05,
+          "mean": 0.11629465894656858,
+          "q75": 0.23358811211457886,
+          "max": 0.49792347163476425
+        },
+        "effective_support_exp_entropy": {
+          "min": 1.0,
+          "q25": 1.0,
+          "median": 1.0000141798930264,
+          "mean": 1.1577455238221857,
+          "q75": 1.1795071058057844,
+          "max": 1.911467031666716
+        },
+        "effective_support_inverse_simpson": {
+          "min": 1.0,
+          "q25": 1.0,
+          "median": 1.000001980287316,
+          "mean": 1.0884706348009687,
+          "q75": 1.0861337442042083,
+          "max": 1.5237310203659153
+        },
+        "canonical_mass": {
+          "min": 1.8878555118177286e-06,
+          "q25": 0.22504497618321523,
+          "median": 0.9732421768676909,
+          "mean": 0.6842277335596331,
+          "q75": 1.0,
+          "max": 1.0
+        },
+        "uniform_selected_mass": {
+          "min": 0.003173465476727586,
+          "q25": 0.26280161177413325,
+          "median": 0.99999900985839,
+          "mean": 0.6958360425203209,
+          "q75": 1.0,
+          "max": 1.0
+        },
+        "probability_temperature1_sample_differs_from_greedy": {
+          "min": 0.0,
+          "q25": 0.0,
+          "median": 9.90141610035522e-07,
+          "mean": 0.037481119728891156,
+          "q75": 0.04093010106764561,
+          "max": 0.20877961356702368
+        },
+        "expected_logprob_regret_vs_greedy": {
+          "min": 0.0,
+          "q25": 0.0,
+          "median": 1.3189549370364166e-05,
+          "mean": 0.08150451932179521,
+          "q75": 0.1198656840822869,
+          "max": 0.413692294109996
+        }
+      },
+      "maximum_mass_threshold_counts": {
+        "0.5": 10,
+        "0.75": 10,
+        "0.9": 8,
+        "0.95": 7,
+        "0.99": 7
+      },
+      "expected_sampled_tasks_differing_from_greedy": 0.37481119728891155,
+      "expected_sampled_tasks_differing_from_canonical": 3.157722664403669,
+      "expected_sampled_tasks_differing_from_uniform_selected": 3.0416395747967906,
+      "probability_at_least_one_sample_differs_from_greedy_assuming_independent_draws": 0.33512294402444665,
+      "actual_greedy_changes_from_canonical": 3,
+      "actual_greedy_changes_from_uniform_selected": 3
+    },
+    "pick_heat_then_place_in_recep": {
+      "pools": 10,
+      "pool_members": 32,
+      "statistics": {
+        "maximum_mass": {
+          "min": 0.46087943429794515,
+          "q25": 0.6501633238974622,
+          "median": 0.8601756704619801,
+          "mean": 0.8075218210132464,
+          "q75": 0.9999839484986118,
+          "max": 1.0
+        },
+        "entropy_nats": {
+          "min": -0.0,
+          "q25": 0.0002028719717858025,
+          "median": 0.4029778479933849,
+          "mean": 0.4260908936721909,
+          "q75": 0.6707485118967722,
+          "max": 1.2040833213424764
+        },
+        "normalized_entropy": {
+          "min": 0.0,
+          "q25": 0.00018466202670257043,
+          "median": 0.4545556748905958,
+          "mean": 0.3441510729399008,
+          "q75": 0.5664954341284913,
+          "max": 0.8157204805455224
+        },
+        "effective_support_exp_entropy": {
+          "min": 1.0,
+          "q25": 1.0002028927293727,
+          "median": 1.4972652329653648,
+          "mean": 1.6776665228384917,
+          "q75": 1.959235043298666,
+          "max": 3.333701743745903
+        },
+        "effective_support_inverse_simpson": {
+          "min": 1.0,
+          "q25": 1.0000321036305944,
+          "median": 1.3172437442621692,
+          "mean": 1.5068648147366868,
+          "q75": 1.8381313851990893,
+          "max": 2.5664939571645036
+        },
+        "canonical_mass": {
+          "min": 3.515280891535856e-06,
+          "q25": 0.03423886333211914,
+          "median": 0.20632296233735464,
+          "mean": 0.33194733198476445,
+          "q75": 0.425760564458225,
+          "max": 1.0
+        },
+        "uniform_selected_mass": {
+          "min": 3.515280891535856e-06,
+          "q25": 0.03069468972379058,
+          "median": 0.2672762519245727,
+          "mean": 0.42394951949724247,
+          "q75": 0.8469259663427243,
+          "max": 1.0
+        },
+        "probability_temperature1_sample_differs_from_greedy": {
+          "min": 0.0,
+          "q25": 1.6051501388142375e-05,
+          "median": 0.13982432953802,
+          "mean": 0.19247817898675354,
+          "q75": 0.3498366761025378,
+          "max": 0.5391205657020548
+        },
+        "expected_logprob_regret_vs_greedy": {
+          "min": 0.0,
+          "q25": 0.00018682034004376168,
+          "median": 0.21442971885685583,
+          "mean": 0.17747443691044512,
+          "q75": 0.2586625697241479,
+          "max": 0.5673514883398258
+        }
+      },
+      "maximum_mass_threshold_counts": {
+        "0.5": 9,
+        "0.75": 6,
+        "0.9": 4,
+        "0.95": 4,
+        "0.99": 4
+      },
+      "expected_sampled_tasks_differing_from_greedy": 1.9247817898675352,
+      "expected_sampled_tasks_differing_from_canonical": 6.680526680152355,
+      "expected_sampled_tasks_differing_from_uniform_selected": 5.760504805027575,
+      "probability_at_least_one_sample_differs_from_greedy_assuming_independent_draws": 0.9167714272485388,
+      "actual_greedy_changes_from_canonical": 7,
+      "actual_greedy_changes_from_uniform_selected": 6
+    },
+    "pick_two_obj_and_place": {
+      "pools": 10,
+      "pool_members": 34,
+      "statistics": {
+        "maximum_mass": {
+          "min": 0.6573759459310329,
+          "q25": 0.8268368451867038,
+          "median": 0.9884166305542172,
+          "mean": 0.9010961662358135,
+          "q75": 0.9937191682974367,
+          "max": 1.0
+        },
+        "entropy_nats": {
+          "min": -0.0,
+          "q25": 0.038106525975459896,
+          "median": 0.06733293492002693,
+          "mean": 0.24671300550449735,
+          "q75": 0.550439384558902,
+          "max": 0.6462975001932467
+        },
+        "normalized_entropy": {
+          "min": 0.0,
+          "q25": 0.029802306421907395,
+          "median": 0.048662856013983916,
+          "mean": 0.25378236324552095,
+          "q75": 0.5253911571834438,
+          "max": 0.8627782093840048
+        },
+        "effective_support_exp_entropy": {
+          "min": 1.0,
+          "q25": 1.0388418930418983,
+          "median": 1.0696905968893256,
+          "mean": 1.3277158568830862,
+          "q75": 1.7397269311185797,
+          "max": 1.9084616528758604
+        },
+        "effective_support_inverse_simpson": {
+          "min": 1.0,
+          "q25": 1.0126405552220452,
+          "median": 1.023476957222346,
+          "mean": 1.2366611834649948,
+          "q75": 1.4279528234792536,
+          "max": 1.8207773967263776
+        },
+        "canonical_mass": {
+          "min": 6.631965181322928e-11,
+          "q25": 0.004292991016437634,
+          "median": 0.11439030970513478,
+          "mean": 0.3181515296949654,
+          "q75": 0.5643958294774011,
+          "max": 1.0
+        },
+        "uniform_selected_mass": {
+          "min": 2.499824650510294e-06,
+          "q25": 0.16907204788280017,
+          "median": 0.7865268124228036,
+          "mean": 0.620729975641104,
+          "q75": 0.9898849358984769,
+          "max": 1.0
+        },
+        "probability_temperature1_sample_differs_from_greedy": {
+          "min": 0.0,
+          "q25": 0.006280831702563328,
+          "median": 0.011583369445782754,
+          "mean": 0.09890383376418661,
+          "q75": 0.17316315481329628,
+          "max": 0.3426240540689671
+        },
+        "expected_logprob_regret_vs_greedy": {
+          "min": 0.0,
+          "q25": 0.031805886776519465,
+          "median": 0.055677542128749015,
+          "mean": 0.13200332362142086,
+          "q75": 0.24802659452964337,
+          "max": 0.40113699652149415
+        }
+      },
+      "maximum_mass_threshold_counts": {
+        "0.5": 10,
+        "0.75": 8,
+        "0.9": 6,
+        "0.95": 6,
+        "0.99": 5
+      },
+      "expected_sampled_tasks_differing_from_greedy": 0.9890383376418661,
+      "expected_sampled_tasks_differing_from_canonical": 6.818484703050346,
+      "expected_sampled_tasks_differing_from_uniform_selected": 3.7927002435889605,
+      "probability_at_least_one_sample_differs_from_greedy_assuming_independent_draws": 0.682442641042029,
+      "actual_greedy_changes_from_canonical": 7,
+      "actual_greedy_changes_from_uniform_selected": 3
+    }
+  },
+  "records": [
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Laptop-None-DeskLamp-216/trial_T20190907_185556_000181/game.tw-pddl",
+      "family": "look_at_obj_in_light",
+      "pool_sha256": "50ce4ae87c1c6762fe4e7d389211a7f180c7c036b19e3bd6d57c2c9edf62d181",
+      "pool_size": 1,
+      "maximum_mass": 1.0,
+      "entropy_nats": -0.0,
+      "normalized_entropy": 0.0,
+      "effective_support_exp_entropy": 1.0,
+      "effective_support_inverse_simpson": 1.0,
+      "canonical_mass": 1.0,
+      "uniform_selected_mass": 1.0,
+      "greedy_mass": 1.0,
+      "probability_temperature1_sample_differs_from_greedy": 0.0,
+      "probability_temperature1_sample_differs_from_canonical": 0.0,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.0,
+      "expected_logprob_regret_vs_greedy": 0.0,
+      "kl_softmax_to_uniform_nats": 0.0,
+      "kl_greedy_to_softmax_nats": -0.0,
+      "top_two_score_gap_nats": null,
+      "canonical_is_greedy": true,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "9051afca0ba433fbff8d3daf5d232923baa728999f1339dadda4e385ee87fa02",
+          "logprob": -49.971422124654055,
+          "mass": 1.0,
+          "canonical": true,
+          "uniform_selected": true,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-CreditCard-None-DeskLamp-314/trial_T20190906_201607_020913/game.tw-pddl",
+      "family": "look_at_obj_in_light",
+      "pool_sha256": "b427d849d6a9be0b1bfd35097904fc94133a04130f831939fd292f1dfe8c90dc",
+      "pool_size": 1,
+      "maximum_mass": 1.0,
+      "entropy_nats": -0.0,
+      "normalized_entropy": 0.0,
+      "effective_support_exp_entropy": 1.0,
+      "effective_support_inverse_simpson": 1.0,
+      "canonical_mass": 1.0,
+      "uniform_selected_mass": 1.0,
+      "greedy_mass": 1.0,
+      "probability_temperature1_sample_differs_from_greedy": 0.0,
+      "probability_temperature1_sample_differs_from_canonical": 0.0,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.0,
+      "expected_logprob_regret_vs_greedy": 0.0,
+      "kl_softmax_to_uniform_nats": 0.0,
+      "kl_greedy_to_softmax_nats": -0.0,
+      "top_two_score_gap_nats": null,
+      "canonical_is_greedy": true,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "a4fcccd4e8e1e1d3d9ba24b7ee1a474252bd6ba7ff68fa7d44b276b5ef31ea24",
+          "logprob": -13.350690200924873,
+          "mass": 1.0,
+          "canonical": true,
+          "uniform_selected": true,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-CellPhone-None-DeskLamp-320/trial_T20190908_093252_166576/game.tw-pddl",
+      "family": "look_at_obj_in_light",
+      "pool_sha256": "0476a8b05a5f0d290b0584c3867131ca4c7a03de0814db8996c8c3ede6305083",
+      "pool_size": 4,
+      "maximum_mass": 0.9980204712535845,
+      "entropy_nats": 0.014299929690062493,
+      "normalized_entropy": 0.010315218824457005,
+      "effective_support_exp_entropy": 1.014402662792578,
+      "effective_support_inverse_simpson": 1.0039668944992834,
+      "canonical_mass": 0.9980204712535845,
+      "uniform_selected_mass": 3.317616973635195e-18,
+      "greedy_mass": 0.9980204712535845,
+      "probability_temperature1_sample_differs_from_greedy": 0.001979528746415493,
+      "probability_temperature1_sample_differs_from_canonical": 0.001979528746415493,
+      "probability_temperature1_sample_differs_from_uniform_selected": 1.0,
+      "expected_logprob_regret_vs_greedy": 0.012318439087156276,
+      "kl_softmax_to_uniform_nats": 1.371994431429828,
+      "kl_greedy_to_softmax_nats": 0.001981490602906189,
+      "top_two_score_gap_nats": 6.222914978861809,
+      "canonical_is_greedy": true,
+      "uniform_selected_is_greedy": false,
+      "candidate_distribution": [
+        {
+          "candidate_id": "a4f58437dbfdf6dd2000efe0f591a8e0acb9fe39baee511be122c4c4e7d4ad78",
+          "logprob": -37.20160122215748,
+          "mass": 0.9980204712535845,
+          "canonical": true,
+          "uniform_selected": false,
+          "greedy": true
+        },
+        {
+          "candidate_id": "3b41e33588a9e6c54f69f1ec21499b9e1bf14951dfee217a35760f71bceff83c",
+          "logprob": -79.2143669128418,
+          "mass": 5.665355156325408e-19,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "3466d82ef27107a417cc06c0c40babf7b0ffadb2c114fd517018e0260a30602d",
+          "logprob": -77.44690465927124,
+          "mass": 3.317616973635195e-18,
+          "canonical": false,
+          "uniform_selected": true,
+          "greedy": false
+        },
+        {
+          "candidate_id": "fa6621e1096e937b5ea717bbbabe4637513ca2493e44a20d3cd1eff3c1e43213",
+          "logprob": -43.42451620101929,
+          "mass": 0.00197952874641543,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-CD-None-DeskLamp-320/trial_T20190907_224439_174735/game.tw-pddl",
+      "family": "look_at_obj_in_light",
+      "pool_sha256": "f239e029be0c3b5a80023736c62d7452c5e5b246186fb332d51e289c3c387d60",
+      "pool_size": 2,
+      "maximum_mass": 0.9999999998464735,
+      "entropy_nats": 3.622787414985844e-09,
+      "normalized_entropy": 5.226577437795024e-09,
+      "effective_support_exp_entropy": 1.0000000036227874,
+      "effective_support_inverse_simpson": 1.000000000307053,
+      "canonical_mass": 0.9999999998464735,
+      "uniform_selected_mass": 0.9999999998464735,
+      "greedy_mass": 0.9999999998464735,
+      "probability_temperature1_sample_differs_from_greedy": 1.53526524826475e-10,
+      "probability_temperature1_sample_differs_from_canonical": 1.53526524826475e-10,
+      "probability_temperature1_sample_differs_from_uniform_selected": 1.53526524826475e-10,
+      "expected_logprob_regret_vs_greedy": 3.469260890171154e-09,
+      "kl_softmax_to_uniform_nats": 0.6931471769371579,
+      "kl_greedy_to_softmax_nats": 1.535265248382602e-10,
+      "top_two_score_gap_nats": 22.597147967666388,
+      "canonical_is_greedy": true,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "3585299e5ff24e1ef186d5112814c7be9a3648db20519af9f02f6a2ba3590e6f",
+          "logprob": -34.01963907852769,
+          "mass": 0.9999999998464735,
+          "canonical": true,
+          "uniform_selected": true,
+          "greedy": true
+        },
+        {
+          "candidate_id": "4fbb29de26fa3c403216f2ef14136f59a3ffc81df65c65d7941f19faefefbb90",
+          "logprob": -56.61678704619408,
+          "mass": 1.5352649348206333e-10,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Pillow-None-DeskLamp-324/trial_T20190908_155642_533831/game.tw-pddl",
+      "family": "look_at_obj_in_light",
+      "pool_sha256": "867e72f0282bc7aa02f2900de07287b319e67730d793476628059ba2d4581bf5",
+      "pool_size": 2,
+      "maximum_mass": 0.9769410421704599,
+      "entropy_nats": 0.10971640814671009,
+      "normalized_entropy": 0.1582873179374081,
+      "effective_support_exp_entropy": 1.1159615479758032,
+      "effective_support_inverse_simpson": 1.047180162490435,
+      "canonical_mass": 0.023058957829540275,
+      "uniform_selected_mass": 0.9769410421704599,
+      "greedy_mass": 0.9769410421704599,
+      "probability_temperature1_sample_differs_from_greedy": 0.02305895782954015,
+      "probability_temperature1_sample_differs_from_canonical": 0.9769410421704597,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.02305895782954015,
+      "expected_logprob_regret_vs_greedy": 0.0863874336039372,
+      "kl_softmax_to_uniform_nats": 0.5834307724132352,
+      "kl_greedy_to_softmax_nats": 0.02332897454277284,
+      "top_two_score_gap_nats": 3.7463719844818115,
+      "canonical_is_greedy": false,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "ca4019c5f97799c8757f40deea886423fe19038f3a4ee726bc5e14d323b45bc8",
+          "logprob": -42.141130266245455,
+          "mass": 0.023058957829540275,
+          "canonical": true,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "9c1dd469b6ac825e41fc8aad808d33608d30ede5548bb5ed896598545bb2d9b6",
+          "logprob": -38.39475828176364,
+          "mass": 0.9769410421704599,
+          "canonical": false,
+          "uniform_selected": true,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Pillow-None-DeskLamp-307/trial_T20190908_190558_647867/game.tw-pddl",
+      "family": "look_at_obj_in_light",
+      "pool_sha256": "ededfd3858c661d790383dba86942a94c0fb40431565e02cc7e79d3a3ed134c7",
+      "pool_size": 1,
+      "maximum_mass": 1.0,
+      "entropy_nats": -0.0,
+      "normalized_entropy": 0.0,
+      "effective_support_exp_entropy": 1.0,
+      "effective_support_inverse_simpson": 1.0,
+      "canonical_mass": 1.0,
+      "uniform_selected_mass": 1.0,
+      "greedy_mass": 1.0,
+      "probability_temperature1_sample_differs_from_greedy": 0.0,
+      "probability_temperature1_sample_differs_from_canonical": 0.0,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.0,
+      "expected_logprob_regret_vs_greedy": 0.0,
+      "kl_softmax_to_uniform_nats": 0.0,
+      "kl_greedy_to_softmax_nats": -0.0,
+      "top_two_score_gap_nats": null,
+      "canonical_is_greedy": true,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "64da40914055e6f93e597c13f29b552ed9fc4361dce6e805093eaaee1361ccfc",
+          "logprob": -56.73469066619873,
+          "mass": 1.0,
+          "canonical": true,
+          "uniform_selected": true,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Statue-None-DeskLamp-319/trial_T20190907_035529_591053/game.tw-pddl",
+      "family": "look_at_obj_in_light",
+      "pool_sha256": "cb0975935c8478408de99f4a6dd65951ed6180edbf0a2fdcd5e5dccf9613c351",
+      "pool_size": 1,
+      "maximum_mass": 1.0,
+      "entropy_nats": -0.0,
+      "normalized_entropy": 0.0,
+      "effective_support_exp_entropy": 1.0,
+      "effective_support_inverse_simpson": 1.0,
+      "canonical_mass": 1.0,
+      "uniform_selected_mass": 1.0,
+      "greedy_mass": 1.0,
+      "probability_temperature1_sample_differs_from_greedy": 0.0,
+      "probability_temperature1_sample_differs_from_canonical": 0.0,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.0,
+      "expected_logprob_regret_vs_greedy": 0.0,
+      "kl_softmax_to_uniform_nats": 0.0,
+      "kl_greedy_to_softmax_nats": -0.0,
+      "top_two_score_gap_nats": null,
+      "canonical_is_greedy": true,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "68aeb3b529375c94b83340d11f49dfa6ad42f44e071422ec12e129e97f0eaa52",
+          "logprob": -30.665329933166504,
+          "mass": 1.0,
+          "canonical": true,
+          "uniform_selected": true,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Pillow-None-DeskLamp-218/trial_T20190909_043226_266806/game.tw-pddl",
+      "family": "look_at_obj_in_light",
+      "pool_sha256": "867631b994452156618f87269c0cba45888b629197f4b1c2ce7de3cf65fd2008",
+      "pool_size": 1,
+      "maximum_mass": 1.0,
+      "entropy_nats": -0.0,
+      "normalized_entropy": 0.0,
+      "effective_support_exp_entropy": 1.0,
+      "effective_support_inverse_simpson": 1.0,
+      "canonical_mass": 1.0,
+      "uniform_selected_mass": 1.0,
+      "greedy_mass": 1.0,
+      "probability_temperature1_sample_differs_from_greedy": 0.0,
+      "probability_temperature1_sample_differs_from_canonical": 0.0,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.0,
+      "expected_logprob_regret_vs_greedy": 0.0,
+      "kl_softmax_to_uniform_nats": 0.0,
+      "kl_greedy_to_softmax_nats": -0.0,
+      "top_two_score_gap_nats": null,
+      "canonical_is_greedy": true,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "412e289a65083cb11955f0ea0e998e249e5fdf56c277b65daa1d9c45ea7b2c3e",
+          "logprob": -22.062600627541542,
+          "mass": 1.0,
+          "canonical": true,
+          "uniform_selected": true,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-Laptop-None-DeskLamp-328/trial_T20190908_201601_178214/game.tw-pddl",
+      "family": "look_at_obj_in_light",
+      "pool_sha256": "c9cd201d3080797f7d57965b013a330e70643b03de0f94144d7c5ec9ad2edf06",
+      "pool_size": 1,
+      "maximum_mass": 1.0,
+      "entropy_nats": -0.0,
+      "normalized_entropy": 0.0,
+      "effective_support_exp_entropy": 1.0,
+      "effective_support_inverse_simpson": 1.0,
+      "canonical_mass": 1.0,
+      "uniform_selected_mass": 1.0,
+      "greedy_mass": 1.0,
+      "probability_temperature1_sample_differs_from_greedy": 0.0,
+      "probability_temperature1_sample_differs_from_canonical": 0.0,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.0,
+      "expected_logprob_regret_vs_greedy": 0.0,
+      "kl_softmax_to_uniform_nats": 0.0,
+      "kl_greedy_to_softmax_nats": -0.0,
+      "top_two_score_gap_nats": null,
+      "canonical_is_greedy": true,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "2290c7b35f45508b1b3a0cbf2974656327da33330fa280832630e7718fe5421f",
+          "logprob": -15.054152532364242,
+          "mass": 1.0,
+          "canonical": true,
+          "uniform_selected": true,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/look_at_obj_in_light-CD-None-DeskLamp-316/trial_T20190909_114536_775689/game.tw-pddl",
+      "family": "look_at_obj_in_light",
+      "pool_sha256": "81f2cde08095624b445b36236b8df6343be2be7bfd28d6da8e525712a6dc7964",
+      "pool_size": 2,
+      "maximum_mass": 0.9999980495407921,
+      "entropy_nats": 2.759401387575404e-05,
+      "normalized_entropy": 3.98097469767716e-05,
+      "effective_support_exp_entropy": 1.000027594394594,
+      "effective_support_inverse_simpson": 1.0000039009260244,
+      "canonical_mass": 1.950459208013404e-06,
+      "uniform_selected_mass": 0.9999980495407921,
+      "greedy_mass": 0.9999980495407921,
+      "probability_temperature1_sample_differs_from_greedy": 1.9504592079222505e-06,
+      "probability_temperature1_sample_differs_from_canonical": 0.999998049540792,
+      "probability_temperature1_sample_differs_from_uniform_selected": 1.9504592079222505e-06,
+      "expected_logprob_regret_vs_greedy": 2.564355276569208e-05,
+      "kl_softmax_to_uniform_nats": 0.6931195865460695,
+      "kl_greedy_to_softmax_nats": 1.9504611100702846e-06,
+      "top_two_score_gap_nats": 13.147443771362305,
+      "canonical_is_greedy": false,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "d62252a77c33b35dc36329d14bb98bd3ea4010c2b57bea55d40ad7c9eec3b5c3",
+          "logprob": -24.47140948905144,
+          "mass": 1.950459208013404e-06,
+          "canonical": true,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "4544e933743cedb195030a4eaad7a22c690e9b7ab030688a227de8ebc3bc0e5e",
+          "logprob": -11.323965717689134,
+          "mass": 0.9999980495407921,
+          "canonical": false,
+          "uniform_selected": true,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-Cloth-None-Drawer-409/trial_T20190908_032838_597592/game.tw-pddl",
+      "family": "pick_and_place_simple",
+      "pool_sha256": "920d0f6084d432e434d3205b3ee4ba8c3a209ab78d2f40ed4f78bc521e9cbf74",
+      "pool_size": 6,
+      "maximum_mass": 0.9999994826640929,
+      "entropy_nats": 8.284372108125345e-06,
+      "normalized_entropy": 4.6235961078495135e-06,
+      "effective_support_exp_entropy": 1.0000082844064235,
+      "effective_support_inverse_simpson": 1.0000010346724197,
+      "canonical_mass": 4.410896075223926e-07,
+      "uniform_selected_mass": 0.9999994826640929,
+      "greedy_mass": 0.9999994826640929,
+      "probability_temperature1_sample_differs_from_greedy": 5.173359071131145e-07,
+      "probability_temperature1_sample_differs_from_canonical": 0.9999995589103925,
+      "probability_temperature1_sample_differs_from_uniform_selected": 5.173359071131145e-07,
+      "expected_logprob_regret_vs_greedy": 7.76703606715577e-06,
+      "kl_softmax_to_uniform_nats": 1.7917511848559469,
+      "kl_greedy_to_softmax_nats": 5.17336040931381e-07,
+      "top_two_score_gap_nats": 14.6340172731434,
+      "canonical_is_greedy": false,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "1d3132be8bc451e3a69fdfbf2db6b246944db525fc336a6b8bf4a715a8dec3df",
+          "logprob": -43.486533925519325,
+          "mass": 4.410896075223926e-07,
+          "canonical": true,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "26922f3e9c8dbf51372ff9f0e29765e3094cdd50dadeb6c54e1dcc64903bf0c1",
+          "logprob": -46.11234477783,
+          "mass": 3.192652580364872e-08,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "c0758cb14593994de3d9b12c0e83a4e6bf46ef7587acb1c9ad46c80fd0326637",
+          "logprob": -49.8844562578015,
+          "mass": 7.344199420660114e-10,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "3a597e9b316f1e683dab839ef65e187acac63be6fa71c8737aee60103d659573",
+          "logprob": -49.0935113185551,
+          "mass": 1.6197481163667124e-09,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "6166af2b50c91b05f9b10d05e542b596ddfb5c3452b046e40f1791f1bbcadb8b",
+          "logprob": -45.8389315969107,
+          "mass": 4.1965605875773645e-08,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "5c3d7ebd3cfc3669230c387c3d3847868bc5c19103c7cfb9c857c2692a0c8099",
+          "logprob": -28.852516652375925,
+          "mass": 0.9999994826640929,
+          "canonical": false,
+          "uniform_selected": true,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-Candle-None-CounterTop-411/trial_T20190906_200827_470056/game.tw-pddl",
+      "family": "pick_and_place_simple",
+      "pool_sha256": "b2cb011249c2b0158daa0f93d6f57ccf5a4d029537f81badb94b5f23d0e3ceb3",
+      "pool_size": 2,
+      "maximum_mass": 0.7420008667494933,
+      "entropy_nats": 0.5709536520150003,
+      "normalized_entropy": 0.8237120023394838,
+      "effective_support_exp_entropy": 1.7699541672032075,
+      "effective_support_inverse_simpson": 1.6204071772048145,
+      "canonical_mass": 0.25799913325050666,
+      "uniform_selected_mass": 0.7420008667494933,
+      "greedy_mass": 0.7420008667494933,
+      "probability_temperature1_sample_differs_from_greedy": 0.2579991332505067,
+      "probability_temperature1_sample_differs_from_canonical": 0.7420008667494933,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.2579991332505067,
+      "expected_logprob_regret_vs_greedy": 0.2725487843255632,
+      "kl_softmax_to_uniform_nats": 0.12219352854494503,
+      "kl_greedy_to_softmax_nats": 0.29840486768943714,
+      "top_two_score_gap_nats": 1.0563941858708858,
+      "canonical_is_greedy": false,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "ae0fd10201c750703b4223fd608b353bb9935b591188ed47802554268e978190",
+          "logprob": -11.398197561502457,
+          "mass": 0.25799913325050666,
+          "canonical": true,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "d845be784a041106acf9e8ed81b91fdac31efa556885a0c71798b9eb99c9f0b8",
+          "logprob": -10.34180337563157,
+          "mass": 0.7420008667494933,
+          "canonical": false,
+          "uniform_selected": true,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-Pen-None-Shelf-310/trial_T20190909_113535_223329/game.tw-pddl",
+      "family": "pick_and_place_simple",
+      "pool_sha256": "37e4d5780b753031a85fb31f5568ed0fad226f5698f01b191c1d5dcd6258a3f3",
+      "pool_size": 1,
+      "maximum_mass": 1.0,
+      "entropy_nats": -0.0,
+      "normalized_entropy": 0.0,
+      "effective_support_exp_entropy": 1.0,
+      "effective_support_inverse_simpson": 1.0,
+      "canonical_mass": 1.0,
+      "uniform_selected_mass": 1.0,
+      "greedy_mass": 1.0,
+      "probability_temperature1_sample_differs_from_greedy": 0.0,
+      "probability_temperature1_sample_differs_from_canonical": 0.0,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.0,
+      "expected_logprob_regret_vs_greedy": 0.0,
+      "kl_softmax_to_uniform_nats": 0.0,
+      "kl_greedy_to_softmax_nats": -0.0,
+      "top_two_score_gap_nats": null,
+      "canonical_is_greedy": true,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "510d12825c8c38965268da38ae4d1ea54fbfe621719c9c39e68813ec70388262",
+          "logprob": -45.08556878566742,
+          "mass": 1.0,
+          "canonical": true,
+          "uniform_selected": true,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-RemoteControl-None-Sofa-207/trial_T20190909_153746_466577/game.tw-pddl",
+      "family": "pick_and_place_simple",
+      "pool_sha256": "0f9da866b1f499bb610d897d8c63c68923857371a40ebdd4e66a7c7738bacab6",
+      "pool_size": 2,
+      "maximum_mass": 0.9999999999933429,
+      "entropy_nats": 1.7798255701726924e-10,
+      "normalized_entropy": 2.5677455237355153e-10,
+      "effective_support_exp_entropy": 1.0000000001779825,
+      "effective_support_inverse_simpson": 1.0000000000133142,
+      "canonical_mass": 6.657210154117169e-12,
+      "uniform_selected_mass": 0.9999999999933429,
+      "greedy_mass": 0.9999999999933429,
+      "probability_temperature1_sample_differs_from_greedy": 6.657119300257364e-12,
+      "probability_temperature1_sample_differs_from_canonical": 0.9999999999933428,
+      "probability_temperature1_sample_differs_from_uniform_selected": 6.657119300257364e-12,
+      "expected_logprob_regret_vs_greedy": 1.7132543771703406e-10,
+      "kl_softmax_to_uniform_nats": 0.6931471803819628,
+      "kl_greedy_to_softmax_nats": 6.657119300279522e-12,
+      "top_two_score_gap_nats": 25.735320614909142,
+      "canonical_is_greedy": false,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "c29a2831f5e448608c1676b90306b8696b0b1df7dc5f6a38fd1a3b0eebef406b",
+          "logprob": -33.52790415187701,
+          "mass": 6.657210154117169e-12,
+          "canonical": true,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "43d216a54c2ee14b41edb93571baf620ea0ecf5ba06e30efa7ed510e1d958b23",
+          "logprob": -7.792583536967868,
+          "mass": 0.9999999999933429,
+          "canonical": false,
+          "uniform_selected": true,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-Bowl-None-Fridge-6/trial_T20190906_231042_118272/game.tw-pddl",
+      "family": "pick_and_place_simple",
+      "pool_sha256": "7c0bb52fb6d09c01922f426392c3b96453a00aa9f1d2502512190ba46c032e8c",
+      "pool_size": 1,
+      "maximum_mass": 1.0,
+      "entropy_nats": -0.0,
+      "normalized_entropy": 0.0,
+      "effective_support_exp_entropy": 1.0,
+      "effective_support_inverse_simpson": 1.0,
+      "canonical_mass": 1.0,
+      "uniform_selected_mass": 1.0,
+      "greedy_mass": 1.0,
+      "probability_temperature1_sample_differs_from_greedy": 0.0,
+      "probability_temperature1_sample_differs_from_canonical": 0.0,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.0,
+      "expected_logprob_regret_vs_greedy": 0.0,
+      "kl_softmax_to_uniform_nats": 0.0,
+      "kl_greedy_to_softmax_nats": -0.0,
+      "top_two_score_gap_nats": null,
+      "canonical_is_greedy": true,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "ae1f83c1ef61fe9e97a912fff94d367256571ff373f04752b9ab00254047be95",
+          "logprob": -26.562051104439888,
+          "mass": 1.0,
+          "canonical": true,
+          "uniform_selected": true,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-SprayBottle-None-GarbageCan-426/trial_T20190908_052054_959981/game.tw-pddl",
+      "family": "pick_and_place_simple",
+      "pool_sha256": "78f41b7ac5b151647511d1072152e18728ad155acbbff9cb9f9087446d556214",
+      "pool_size": 3,
+      "maximum_mass": 0.9939753942724904,
+      "entropy_nats": 0.03824074309049331,
+      "normalized_entropy": 0.0348082244163262,
+      "effective_support_exp_entropy": 1.038981330349104,
+      "effective_support_inverse_simpson": 1.0121262695895954,
+      "canonical_mass": 0.00038716406243161165,
+      "uniform_selected_mass": 0.0056374416650780464,
+      "greedy_mass": 0.9939753942724904,
+      "probability_temperature1_sample_differs_from_greedy": 0.006024605727509624,
+      "probability_temperature1_sample_differs_from_canonical": 0.9996128359375683,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.9943625583349219,
+      "expected_logprob_regret_vs_greedy": 0.03219791620551096,
+      "kl_softmax_to_uniform_nats": 1.0603715455776164,
+      "kl_greedy_to_softmax_nats": 0.006042826884982385,
+      "top_two_score_gap_nats": 5.1722820949798916,
+      "canonical_is_greedy": false,
+      "uniform_selected_is_greedy": false,
+      "candidate_distribution": [
+        {
+          "candidate_id": "226e069ae19b1857cd509f5f230d318c3a906c002ff9d9ddc71d03a370af3aff",
+          "logprob": -26.972265118383802,
+          "mass": 0.00038716406243161165,
+          "canonical": true,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "8dd0bd7906e79ae7f02e47771df8718d2f860ad7c6eb701e0b603629cb0b9782",
+          "logprob": -24.293928019411396,
+          "mass": 0.0056374416650780464,
+          "canonical": false,
+          "uniform_selected": true,
+          "greedy": false
+        },
+        {
+          "candidate_id": "c662ba35fe88b9e1feaadb74cc24149666361758417a7e33c4df48ed5ecef908",
+          "logprob": -19.121645924431505,
+          "mass": 0.9939753942724904,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-Pen-None-Desk-310/trial_T20190908_030156_053101/game.tw-pddl",
+      "family": "pick_and_place_simple",
+      "pool_sha256": "ddb3eddf7ba944f3417d1714f8623ce68f8af2b3b09f5c56a439d8ca1760042f",
+      "pool_size": 1,
+      "maximum_mass": 1.0,
+      "entropy_nats": -0.0,
+      "normalized_entropy": 0.0,
+      "effective_support_exp_entropy": 1.0,
+      "effective_support_inverse_simpson": 1.0,
+      "canonical_mass": 1.0,
+      "uniform_selected_mass": 1.0,
+      "greedy_mass": 1.0,
+      "probability_temperature1_sample_differs_from_greedy": 0.0,
+      "probability_temperature1_sample_differs_from_canonical": 0.0,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.0,
+      "expected_logprob_regret_vs_greedy": 0.0,
+      "kl_softmax_to_uniform_nats": 0.0,
+      "kl_greedy_to_softmax_nats": -0.0,
+      "top_two_score_gap_nats": null,
+      "canonical_is_greedy": true,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "fc64049dbb72dc638a79489add36991ef78c35eba4402bc0a2d92b36924a681b",
+          "logprob": -20.775361412670463,
+          "mass": 1.0,
+          "canonical": true,
+          "uniform_selected": true,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-Watch-None-CoffeeTable-213/trial_T20190909_010823_096862/game.tw-pddl",
+      "family": "pick_and_place_simple",
+      "pool_sha256": "075651d2320760f38904a1067532dc7ba9e2265a23120d9a6a91512cc5724b76",
+      "pool_size": 1,
+      "maximum_mass": 1.0,
+      "entropy_nats": -0.0,
+      "normalized_entropy": 0.0,
+      "effective_support_exp_entropy": 1.0,
+      "effective_support_inverse_simpson": 1.0,
+      "canonical_mass": 1.0,
+      "uniform_selected_mass": 1.0,
+      "greedy_mass": 1.0,
+      "probability_temperature1_sample_differs_from_greedy": 0.0,
+      "probability_temperature1_sample_differs_from_canonical": 0.0,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.0,
+      "expected_logprob_regret_vs_greedy": 0.0,
+      "kl_softmax_to_uniform_nats": 0.0,
+      "kl_greedy_to_softmax_nats": -0.0,
+      "top_two_score_gap_nats": null,
+      "canonical_is_greedy": true,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "23b66ae7039d3fe799803013779793d109459b992f393729c4f5295c2190ff3d",
+          "logprob": -35.73402001289651,
+          "mass": 1.0,
+          "canonical": true,
+          "uniform_selected": true,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-SoapBottle-None-CounterTop-428/trial_T20190909_114242_588264/game.tw-pddl",
+      "family": "pick_and_place_simple",
+      "pool_sha256": "c006d06d599169a310a3a16bd353eb8d1498a70dd9771eb0b4d7296be3223f40",
+      "pool_size": 2,
+      "maximum_mass": 0.9537333860445105,
+      "entropy_nats": 0.1873722032222221,
+      "normalized_entropy": 0.2703209483891389,
+      "effective_support_exp_entropy": 1.206076106931513,
+      "effective_support_inverse_simpson": 1.096794324267926,
+      "canonical_mass": 0.046266613955489436,
+      "uniform_selected_mass": 0.046266613955489436,
+      "greedy_mass": 0.9537333860445105,
+      "probability_temperature1_sample_differs_from_greedy": 0.04626661395548948,
+      "probability_temperature1_sample_differs_from_canonical": 0.9537333860445105,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.9537333860445105,
+      "expected_logprob_regret_vs_greedy": 0.14000108707445774,
+      "kl_softmax_to_uniform_nats": 0.5057749773377231,
+      "kl_greedy_to_softmax_nats": 0.04737111614776438,
+      "top_two_score_gap_nats": 3.0259635427210014,
+      "canonical_is_greedy": false,
+      "uniform_selected_is_greedy": false,
+      "candidate_distribution": [
+        {
+          "candidate_id": "fe711d7fa396b6389fab6666043ae88c0db7d568799cf106e2be49d5cb6d7672",
+          "logprob": -19.651332135515986,
+          "mass": 0.046266613955489436,
+          "canonical": true,
+          "uniform_selected": true,
+          "greedy": false
+        },
+        {
+          "candidate_id": "3a5c32f65c2adabb1f1326e302cb767897818f6455325c8102ad866d44561c7b",
+          "logprob": -16.625368592794985,
+          "mass": 0.9537333860445105,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_and_place_simple-RemoteControl-None-ArmChair-230/trial_T20190909_020906_064567/game.tw-pddl",
+      "family": "pick_and_place_simple",
+      "pool_sha256": "077f083ca8d10f09935c213739c4807a214bad5f92a0e9bceeb131a877cc35cf",
+      "pool_size": 4,
+      "maximum_mass": 0.9999947267244478,
+      "entropy_nats": 6.936386477529738e-05,
+      "normalized_entropy": 5.00354518641071e-05,
+      "effective_support_exp_entropy": 1.0000693662705038,
+      "effective_support_inverse_simpson": 1.0000105466067246,
+      "canonical_mass": 5.272765467254392e-06,
+      "uniform_selected_mass": 5.094869018611404e-10,
+      "greedy_mass": 0.9999947267244478,
+      "probability_temperature1_sample_differs_from_greedy": 5.273275552220014e-06,
+      "probability_temperature1_sample_differs_from_canonical": 0.9999947272345328,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.9999999994905131,
+      "expected_logprob_regret_vs_greedy": 6.409057531935858e-05,
+      "kl_softmax_to_uniform_nats": 1.3862249972551153,
+      "kl_greedy_to_softmax_nats": 5.273289455986418e-06,
+      "top_two_score_gap_nats": 12.15295030316338,
+      "canonical_is_greedy": false,
+      "uniform_selected_is_greedy": false,
+      "candidate_distribution": [
+        {
+          "candidate_id": "af32e6a98a86a0c137e055e838dd4cdaef5bb073761a7bf1e7a18d2ce1dc82f7",
+          "logprob": -37.2298503308557,
+          "mass": 5.272765467254392e-06,
+          "canonical": true,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "b5dd306c17b8634eb297a63fa1e0f3662c972512d36453109c40c56dc5bd21a6",
+          "logprob": -53.22196515696123,
+          "mass": 5.980689165350459e-13,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "23eab646b61c55b9b1590db96f8e903639e7b772239cf846a9db87f9eaeed22c",
+          "logprob": -25.076900027692318,
+          "mass": 0.9999947267244478,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": true
+        },
+        {
+          "candidate_id": "1252a893bc9f74518ca4dc80c8796e542ebfa9fcbb5359ad7fde96e49af069a6",
+          "logprob": -46.47451172582805,
+          "mass": 5.094869018611404e-10,
+          "canonical": false,
+          "uniform_selected": true,
+          "greedy": false
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Kettle-None-StoveBurner-1/trial_T20190908_172105_948396/game.tw-pddl",
+      "family": "pick_clean_then_place_in_recep",
+      "pool_sha256": "b4e39638d183ec1cff106ac8248c539d29559821543bc881227c02e73c02e734",
+      "pool_size": 6,
+      "maximum_mass": 0.9975856399472526,
+      "entropy_nats": 0.017708616996930184,
+      "normalized_entropy": 0.009883367327512773,
+      "effective_support_exp_entropy": 1.0178663442230034,
+      "effective_support_inverse_simpson": 1.0048411754726894,
+      "canonical_mass": 6.781027650260039e-06,
+      "uniform_selected_mass": 0.9975856399472526,
+      "greedy_mass": 0.9975856399472526,
+      "probability_temperature1_sample_differs_from_greedy": 0.002414360052747422,
+      "probability_temperature1_sample_differs_from_canonical": 0.9999932189723497,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.002414360052747422,
+      "expected_logprob_regret_vs_greedy": 0.015291337677229722,
+      "kl_softmax_to_uniform_nats": 1.7740508522311247,
+      "kl_greedy_to_softmax_nats": 0.0024172793197005135,
+      "top_two_score_gap_nats": 6.098481211694889,
+      "canonical_is_greedy": false,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "183d280a23c89c2b46f7720749806e4bba001b428a8d12d1f52c13426b9825a3",
+          "logprob": -48.580181169178104,
+          "mass": 6.781027650260039e-06,
+          "canonical": true,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "e536e45cce079aca1dddb103c83b6181a2c3d5b842ae67352109420356688398",
+          "logprob": -42.77969776352984,
+          "mass": 0.0022408534280398238,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "048e7060521b368410e8e405f7d4e4af584dbb2ce62c7a17baf1b560bf03b8d0",
+          "logprob": -50.00321128888754,
+          "mass": 1.6341103725094375e-06,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "a98c15254a293a92fa8a0185913743d68ea5971ce7dd1b449f7c4924af551485",
+          "logprob": -45.62847224005964,
+          "mass": 0.00012977959524625371,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "a171d894ba25ee134610b9ab7111644daa47775c62ba5a541d88628e421bb840",
+          "logprob": -36.68121655183495,
+          "mass": 0.9975856399472526,
+          "canonical": false,
+          "uniform_selected": true,
+          "greedy": true
+        },
+        {
+          "candidate_id": "75f2ab2397bf00913a0d242fd2fbd022ca98806fbdb14699c89118676719f939",
+          "logprob": -46.93009005532076,
+          "mass": 3.53118914385213e-05,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Ladle-None-DiningTable-4/trial_T20190909_165603_183022/game.tw-pddl",
+      "family": "pick_clean_then_place_in_recep",
+      "pool_sha256": "afa43d0d20990f7beedeaec8e57f8807abff7cadf3b9329398141b6068e5c8c0",
+      "pool_size": 2,
+      "maximum_mass": 0.9486925763416957,
+      "entropy_nats": 0.20234702595938941,
+      "normalized_entropy": 0.29192505089024146,
+      "effective_support_exp_entropy": 1.224272788841227,
+      "effective_support_inverse_simpson": 1.1078490420631697,
+      "canonical_mass": 0.9486925763416957,
+      "uniform_selected_mass": 0.9486925763416957,
+      "greedy_mass": 0.9486925763416957,
+      "probability_temperature1_sample_differs_from_greedy": 0.05130742365830432,
+      "probability_temperature1_sample_differs_from_canonical": 0.05130742365830432,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.05130742365830432,
+      "expected_logprob_regret_vs_greedy": 0.14967654826029372,
+      "kl_softmax_to_uniform_nats": 0.49080015460055587,
+      "kl_greedy_to_softmax_nats": 0.052670477699095775,
+      "top_two_score_gap_nats": 2.917249348887708,
+      "canonical_is_greedy": true,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "beb7bb3193d1349a7580ce65d6c9b890c0a4f80e4490bd84cd981d6ed301ae0f",
+          "logprob": -25.415129235203494,
+          "mass": 0.9486925763416957,
+          "canonical": true,
+          "uniform_selected": true,
+          "greedy": true
+        },
+        {
+          "candidate_id": "b4e980a6f82468993b2443324bac62bad7ae9ae12524fed9075889ac27b57af3",
+          "logprob": -28.332378584091202,
+          "mass": 0.0513074236583042,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Kettle-None-DiningTable-17/trial_T20190909_023440_415981/game.tw-pddl",
+      "family": "pick_clean_then_place_in_recep",
+      "pool_sha256": "ce8427107c612f5e16911b4825d89c29fe8a2ee975bd662b2860af1c4fe71e1e",
+      "pool_size": 2,
+      "maximum_mass": 0.6851529052118447,
+      "entropy_nats": 0.6229241555281928,
+      "normalized_entropy": 0.8986895900304691,
+      "effective_support_exp_entropy": 1.8643717918632905,
+      "effective_support_inverse_simpson": 1.7588194345861392,
+      "canonical_mass": 0.31484709478815526,
+      "uniform_selected_mass": 0.6851529052118447,
+      "greedy_mass": 0.6851529052118447,
+      "probability_temperature1_sample_differs_from_greedy": 0.3148470947881553,
+      "probability_temperature1_sample_differs_from_canonical": 0.6851529052118448,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.3148470947881553,
+      "expected_logprob_regret_vs_greedy": 0.2448109091859273,
+      "kl_softmax_to_uniform_nats": 0.07022302503175248,
+      "kl_greedy_to_softmax_nats": 0.37811324634226556,
+      "top_two_score_gap_nats": 0.7775549250363838,
+      "canonical_is_greedy": false,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "d7aeee4bb102adf666b2622c3db03ee9caf06ac8d6d0e376c1502e9f639e3cbd",
+          "logprob": -34.12778796456405,
+          "mass": 0.31484709478815526,
+          "canonical": true,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "2b4281bff1cb158879494a08afe530dcfe415443ed4935cb4c8c441725af770d",
+          "logprob": -33.350233039527666,
+          "mass": 0.6851529052118447,
+          "canonical": false,
+          "uniform_selected": true,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-DishSponge-None-Drawer-430/trial_T20190908_122230_051247/game.tw-pddl",
+      "family": "pick_clean_then_place_in_recep",
+      "pool_sha256": "1a8b4ba339705c9f7f94a8a8b28ddfcb1139388bdee32122872351a839c71133",
+      "pool_size": 8,
+      "maximum_mass": 0.9995711570967468,
+      "entropy_nats": 0.0038194926284652654,
+      "normalized_entropy": 0.0018367876912662635,
+      "effective_support_exp_entropy": 1.0038267961861025,
+      "effective_support_inverse_simpson": 1.0008580643055,
+      "canonical_mass": 5.785741905623204e-11,
+      "uniform_selected_mass": 1.0508024839764841e-05,
+      "greedy_mass": 0.9995711570967468,
+      "probability_temperature1_sample_differs_from_greedy": 0.0004288429032531793,
+      "probability_temperature1_sample_differs_from_canonical": 0.9999999999421426,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.9999894919751602,
+      "expected_logprob_regret_vs_greedy": 0.0033905577457968737,
+      "kl_softmax_to_uniform_nats": 2.0756220490513706,
+      "kl_greedy_to_softmax_nats": 0.00042893488266843423,
+      "top_two_score_gap_nats": 7.784198057372123,
+      "canonical_is_greedy": false,
+      "uniform_selected_is_greedy": false,
+      "candidate_distribution": [
+        {
+          "candidate_id": "7e72802e9b88e0d52bdb7b3c6dc6d77c54556db903ef6c9f9a464f9439083276",
+          "logprob": -50.12030613522802,
+          "mass": 5.785741905623204e-11,
+          "canonical": true,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "1cad233bdf54a64f8e5a1148e6cca5fff18a371890231c4814cf7cea3530a84b",
+          "logprob": -34.33189370340551,
+          "mass": 0.0004160825032466106,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "590e1a31326b0fed53b5f7b4c9b776a3748d355c7e9d95c89d2977398f598ef1",
+          "logprob": -38.010638033403666,
+          "mass": 1.0508024839764841e-05,
+          "canonical": false,
+          "uniform_selected": true,
+          "greedy": false
+        },
+        {
+          "candidate_id": "af81f34e197cf437d0ece5d35c5d550c50b9325ab6c09a4f6439eb425558dee6",
+          "logprob": -26.54769564603339,
+          "mass": 0.9995711570967468,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": true
+        },
+        {
+          "candidate_id": "cc3b01e7366c47f07a5b21178768094c1b46ed399f1f56fe3850db203b39a524",
+          "logprob": -41.50860680338519,
+          "mass": 3.1796004960399875e-07,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "989af199fb28e070ba34d6c996d1f7984548bb0be3eb0d7358a4cdd55054d238",
+          "logprob": -42.49516082533228,
+          "mass": 1.1855437579130064e-07,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "c3cc52639661389f19c41d95c68dd083476e94bcaac15d45c5b17c446f771f69",
+          "logprob": -39.8701390731585,
+          "mass": 1.63662827552936e-06,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "d16d7185293ce9e53bdef731f89c9a4488b70707954f141b69e52a7648caa6fd",
+          "logprob": -42.08217174949823,
+          "mass": 1.7917460881103952e-07,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Lettuce-None-CounterTop-18/trial_T20190909_071129_660883/game.tw-pddl",
+      "family": "pick_clean_then_place_in_recep",
+      "pool_sha256": "93f013919d34e919b977701fa551da26dca8f9b0e00375b6ec8122eb8a64609e",
+      "pool_size": 3,
+      "maximum_mass": 0.9981759067451642,
+      "entropy_nats": 0.014518141934846948,
+      "normalized_entropy": 0.013214982286833741,
+      "effective_support_exp_entropy": 1.0146240420276929,
+      "effective_support_inverse_simpson": 1.0036563853035694,
+      "canonical_mass": 0.9981759067451642,
+      "uniform_selected_mass": 0.000656429146081149,
+      "greedy_mass": 0.9981759067451642,
+      "probability_temperature1_sample_differs_from_greedy": 0.0018240932548357902,
+      "probability_temperature1_sample_differs_from_canonical": 0.0018240932548357902,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.9993435708539189,
+      "expected_logprob_regret_vs_greedy": 0.012692382996026534,
+      "kl_softmax_to_uniform_nats": 1.0840941467332628,
+      "kl_greedy_to_softmax_nats": 0.0018257589388204426,
+      "top_two_score_gap_nats": 6.750924255116843,
+      "canonical_is_greedy": true,
+      "uniform_selected_is_greedy": false,
+      "candidate_distribution": [
+        {
+          "candidate_id": "e1ace47ae044c61ffbf3377cfd031298b6d5dc79a30c8d16b61cfc1197894fa2",
+          "logprob": -20.27881133178016,
+          "mass": 0.9981759067451642,
+          "canonical": true,
+          "uniform_selected": false,
+          "greedy": true
+        },
+        {
+          "candidate_id": "514ec1ae322983e18bb2a0541f9889978468c3e17a7e8ad9e6535d40420bbbff",
+          "logprob": -27.605681369648664,
+          "mass": 0.000656429146081149,
+          "canonical": false,
+          "uniform_selected": true,
+          "greedy": false
+        },
+        {
+          "candidate_id": "e0478f2851acc9919704ac5ff0795d3b62f5ac73d80910b7f322ec28ad6f5d2f",
+          "logprob": -27.029735586897004,
+          "mass": 0.0011676641087546204,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Mug-None-CoffeeMachine-1/trial_T20190909_134634_406636/game.tw-pddl",
+      "family": "pick_clean_then_place_in_recep",
+      "pool_sha256": "a9c2c7becd52a942bafdf99b563d7f09a13adcb26cd35ae7c30a352a04b46f87",
+      "pool_size": 1,
+      "maximum_mass": 1.0,
+      "entropy_nats": -0.0,
+      "normalized_entropy": 0.0,
+      "effective_support_exp_entropy": 1.0,
+      "effective_support_inverse_simpson": 1.0,
+      "canonical_mass": 1.0,
+      "uniform_selected_mass": 1.0,
+      "greedy_mass": 1.0,
+      "probability_temperature1_sample_differs_from_greedy": 0.0,
+      "probability_temperature1_sample_differs_from_canonical": 0.0,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.0,
+      "expected_logprob_regret_vs_greedy": 0.0,
+      "kl_softmax_to_uniform_nats": 0.0,
+      "kl_greedy_to_softmax_nats": -0.0,
+      "top_two_score_gap_nats": null,
+      "canonical_is_greedy": true,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "cdaf1687147c099d4faf6bbb29142838e4c44baaaafa840109df2b3e55dae744",
+          "logprob": -31.813783315861656,
+          "mass": 1.0,
+          "canonical": true,
+          "uniform_selected": true,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Tomato-None-GarbageCan-15/trial_T20190908_190007_238896/game.tw-pddl",
+      "family": "pick_clean_then_place_in_recep",
+      "pool_sha256": "4a8a79497d2537cdf97f20ddafab20fd6a82125bc08ab7453835652123e2c7bc",
+      "pool_size": 1,
+      "maximum_mass": 1.0,
+      "entropy_nats": -0.0,
+      "normalized_entropy": 0.0,
+      "effective_support_exp_entropy": 1.0,
+      "effective_support_inverse_simpson": 1.0,
+      "canonical_mass": 1.0,
+      "uniform_selected_mass": 1.0,
+      "greedy_mass": 1.0,
+      "probability_temperature1_sample_differs_from_greedy": 0.0,
+      "probability_temperature1_sample_differs_from_canonical": 0.0,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.0,
+      "expected_logprob_regret_vs_greedy": 0.0,
+      "kl_softmax_to_uniform_nats": 0.0,
+      "kl_greedy_to_softmax_nats": -0.0,
+      "top_two_score_gap_nats": null,
+      "canonical_is_greedy": true,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "d6d89d00c478db2126b2502338d4d73e9636ed89174bcf6bfa2e743a8c5774a4",
+          "logprob": -24.995389844683814,
+          "mass": 1.0,
+          "canonical": true,
+          "uniform_selected": true,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Cloth-None-Drawer-415/trial_T20190906_190118_700255/game.tw-pddl",
+      "family": "pick_clean_then_place_in_recep",
+      "pool_sha256": "c5c066fc1435e235cbc0b6138a484bffcee84287e446a20e68f6c453fa3bc4f0",
+      "pool_size": 8,
+      "maximum_mass": 0.9994163207101445,
+      "entropy_nats": 0.005076789236348308,
+      "normalized_entropy": 0.0024414195516393906,
+      "effective_support_exp_entropy": 1.005089697966546,
+      "effective_support_inverse_simpson": 1.0011680732608874,
+      "canonical_mass": 5.976947188469948e-06,
+      "uniform_selected_mass": 7.772397723721307e-11,
+      "greedy_mass": 0.9994163207101445,
+      "probability_temperature1_sample_differs_from_greedy": 0.0005836792898554766,
+      "probability_temperature1_sample_differs_from_canonical": 0.9999940230528115,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.9999999999222761,
+      "expected_logprob_regret_vs_greedy": 0.004492939539424176,
+      "kl_softmax_to_uniform_nats": 2.0743647524434876,
+      "kl_greedy_to_softmax_nats": 0.0005838496969241238,
+      "top_two_score_gap_nats": 7.497451567935059,
+      "canonical_is_greedy": false,
+      "uniform_selected_is_greedy": false,
+      "candidate_distribution": [
+        {
+          "candidate_id": "6fbc2c0993150fa35a6b7ce86ba88cc2221feae74d08a9dfffe11832de388dee",
+          "logprob": -44.226857361820294,
+          "mass": 5.976947188469948e-06,
+          "canonical": true,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "2181c80db0e1a5872d4703ed567ec5fabb4283fd73454579d1a31ad088384867",
+          "logprob": -39.69729215549887,
+          "mass": 0.0005541720179865128,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "b55595c53b7ba98267c9bea315deb75f1d17bf7821f8bf5c05741b2f33cdfacb",
+          "logprob": -51.701940629136516,
+          "mass": 3.389159466544451e-09,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "eedeecd4f646b3b7b93b84c9253e33c0832bb03282ad69277b03307cb6596343",
+          "logprob": -43.876616576337256,
+          "mass": 8.483734308963214e-06,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "e2d9e32601a6c45b60ee2f97ecf504c4de0f46812cabadcdeca5abfdc706ad97",
+          "logprob": -55.4771140566736,
+          "mass": 7.772397723721307e-11,
+          "canonical": false,
+          "uniform_selected": true,
+          "greedy": false
+        },
+        {
+          "candidate_id": "6b034aa5c35fa0b0149a9596f53f0a060522f80ed1635040e0b62a837315773f",
+          "logprob": -32.19984058756381,
+          "mass": 0.9994163207101445,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": true
+        },
+        {
+          "candidate_id": "0e7b32c984a323da861cc73c80acbfcc37492234ba00a45ab0fd5774e6044117",
+          "logprob": -53.330788658437086,
+          "mass": 6.648019623709125e-10,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "737ffd1b2a8337a862340d4a35ce762f1382cf80867c132dc7dde56362867cd3",
+          "logprob": -43.303890514187515,
+          "mass": 1.5042458686300985e-05,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-Tomato-None-Fridge-18/trial_T20190909_045941_566760/game.tw-pddl",
+      "family": "pick_clean_then_place_in_recep",
+      "pool_sha256": "de740acc4959c2368edd0b7be938c63c0924787264ecc4bd4c35fce64719947e",
+      "pool_size": 2,
+      "maximum_mass": 0.962465596739716,
+      "entropy_nats": 0.16002758414753274,
+      "normalized_entropy": 0.2308710020550868,
+      "effective_support_exp_entropy": 1.1735432417352645,
+      "effective_support_inverse_simpson": 1.0778779118626232,
+      "canonical_mass": 0.03753440326028395,
+      "uniform_selected_mass": 0.962465596739716,
+      "greedy_mass": 0.962465596739716,
+      "probability_temperature1_sample_differs_from_greedy": 0.03753440326028401,
+      "probability_temperature1_sample_differs_from_canonical": 0.9624655967397161,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.03753440326028401,
+      "expected_logprob_regret_vs_greedy": 0.12177062704146727,
+      "kl_softmax_to_uniform_nats": 0.5331195964124126,
+      "kl_greedy_to_softmax_nats": 0.03825695710606546,
+      "top_two_score_gap_nats": 3.2442403891982394,
+      "canonical_is_greedy": false,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "126ecede1f0f0f67226cb860f7f1f9be5de38403767c74166a71c44654abb2d2",
+          "logprob": -35.320487440803845,
+          "mass": 0.03753440326028395,
+          "canonical": true,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "462c07477a29685ca871ab462254116394354a8d6b7b290ff75f6e8bcd67033d",
+          "logprob": -32.076247051605606,
+          "mass": 0.962465596739716,
+          "canonical": false,
+          "uniform_selected": true,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_clean_then_place_in_recep-DishSponge-None-Cart-430/trial_T20190906_233436_645915/game.tw-pddl",
+      "family": "pick_clean_then_place_in_recep",
+      "pool_sha256": "281e8fdc0ab71d5614bbc2c8ace3b55b97159632e72614cd19d4ed12d3ae51a7",
+      "pool_size": 3,
+      "maximum_mass": 0.999994202809612,
+      "entropy_nats": 7.636189830927725e-05,
+      "normalized_entropy": 6.950759526079372e-05,
+      "effective_support_exp_entropy": 1.0000763648139532,
+      "effective_support_inverse_simpson": 1.0000115944495802,
+      "canonical_mass": 5.656697051929725e-06,
+      "uniform_selected_mass": 1.4049333605951276e-07,
+      "greedy_mass": 0.999994202809612,
+      "probability_temperature1_sample_differs_from_greedy": 5.7971903879572295e-06,
+      "probability_temperature1_sample_differs_from_canonical": 0.9999943433029481,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.9999998595066639,
+      "expected_logprob_regret_vs_greedy": 7.056469111759692e-05,
+      "kl_softmax_to_uniform_nats": 1.0985359267698005,
+      "kl_greedy_to_softmax_nats": 5.79720719173037e-06,
+      "top_two_score_gap_nats": 12.082664598608972,
+      "canonical_is_greedy": false,
+      "uniform_selected_is_greedy": false,
+      "candidate_distribution": [
+        {
+          "candidate_id": "e4cbe8a9ec4bedea4ace7b2886a4feec2e34b71ddbcaf8f69dec5574b1b0c453",
+          "logprob": -46.273306695817155,
+          "mass": 5.656697051929725e-06,
+          "canonical": true,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "613c219a831c5e7cc3d8f610b946b148520d30546f376aea991a10d19aee669d",
+          "logprob": -34.19064209720818,
+          "mass": 0.999994202809612,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": true
+        },
+        {
+          "candidate_id": "2d15694e5b50a5d73a28b51be27735298604878c7e6a2927dcd2a10879dc678f",
+          "logprob": -49.96874207947985,
+          "mass": 1.4049333605951276e-07,
+          "canonical": false,
+          "uniform_selected": true,
+          "greedy": false
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Apple-None-Microwave-22/trial_T20190908_000314_718780/game.tw-pddl",
+      "family": "pick_cool_then_place_in_recep",
+      "pool_sha256": "149ecd1df6659042c97c492cb159c6be157ed513d19fe3461e089bed6f63f633",
+      "pool_size": 1,
+      "maximum_mass": 1.0,
+      "entropy_nats": -0.0,
+      "normalized_entropy": 0.0,
+      "effective_support_exp_entropy": 1.0,
+      "effective_support_inverse_simpson": 1.0,
+      "canonical_mass": 1.0,
+      "uniform_selected_mass": 1.0,
+      "greedy_mass": 1.0,
+      "probability_temperature1_sample_differs_from_greedy": 0.0,
+      "probability_temperature1_sample_differs_from_canonical": 0.0,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.0,
+      "expected_logprob_regret_vs_greedy": 0.0,
+      "kl_softmax_to_uniform_nats": 0.0,
+      "kl_greedy_to_softmax_nats": -0.0,
+      "top_two_score_gap_nats": null,
+      "canonical_is_greedy": true,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "e7d92f1464c2c57d00ef1813ff979318699832b33e5757b6f86d71f458697ab6",
+          "logprob": -20.233164065910387,
+          "mass": 1.0,
+          "canonical": true,
+          "uniform_selected": true,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Mug-None-CoffeeMachine-24/trial_T20190907_185942_820847/game.tw-pddl",
+      "family": "pick_cool_then_place_in_recep",
+      "pool_sha256": "b4398fb51595f4aedf2b8a6d2765496b0ea367ca1c148ad2c0ab5f3b7c327405",
+      "pool_size": 1,
+      "maximum_mass": 1.0,
+      "entropy_nats": -0.0,
+      "normalized_entropy": 0.0,
+      "effective_support_exp_entropy": 1.0,
+      "effective_support_inverse_simpson": 1.0,
+      "canonical_mass": 1.0,
+      "uniform_selected_mass": 1.0,
+      "greedy_mass": 1.0,
+      "probability_temperature1_sample_differs_from_greedy": 0.0,
+      "probability_temperature1_sample_differs_from_canonical": 0.0,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.0,
+      "expected_logprob_regret_vs_greedy": 0.0,
+      "kl_softmax_to_uniform_nats": 0.0,
+      "kl_greedy_to_softmax_nats": -0.0,
+      "top_two_score_gap_nats": null,
+      "canonical_is_greedy": true,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "0fc614246d22a2e2d25403d5822d6d06705157bdca9ba99476ede04c709047bc",
+          "logprob": -6.254861018132942,
+          "mass": 1.0,
+          "canonical": true,
+          "uniform_selected": true,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Pot-None-StoveBurner-1/trial_T20190907_165908_445437/game.tw-pddl",
+      "family": "pick_cool_then_place_in_recep",
+      "pool_sha256": "56d059ad7fe5907e0cbe4c0c676af488392cf96c8e4cc5f91964ae52ea5c1ffe",
+      "pool_size": 7,
+      "maximum_mass": 0.7912203864329763,
+      "entropy_nats": 0.6478710266431634,
+      "normalized_entropy": 0.33293984666131027,
+      "effective_support_exp_entropy": 1.911467031666716,
+      "effective_support_inverse_simpson": 1.5237310203659153,
+      "canonical_mass": 0.00195812022603125,
+      "uniform_selected_mass": 0.011013785442405643,
+      "greedy_mass": 0.7912203864329763,
+      "probability_temperature1_sample_differs_from_greedy": 0.20877961356702368,
+      "probability_temperature1_sample_differs_from_canonical": 0.9980418797739687,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.9889862145575944,
+      "expected_logprob_regret_vs_greedy": 0.413692294109996,
+      "kl_softmax_to_uniform_nats": 1.29803912241215,
+      "kl_greedy_to_softmax_nats": 0.23417873253316757,
+      "top_two_score_gap_nats": 1.5244328721273632,
+      "canonical_is_greedy": false,
+      "uniform_selected_is_greedy": false,
+      "candidate_distribution": [
+        {
+          "candidate_id": "f21bfa3babcf2b75e03608cf4f375a692ae97a6a751c65af0be6d7158beafbde",
+          "logprob": -31.23131527807709,
+          "mass": 0.00195812022603125,
+          "canonical": true,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "e1a0091f87b6ec32cbe1b00d7ee793bafecf5fa03f6f0bd6ccab9bed19899126",
+          "logprob": -31.56782936278978,
+          "mass": 0.0013985987743939117,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "78437221f68dd386b160f797633f1a4812f47844ea24b324a25f9af0955173c8",
+          "logprob": -31.854717723741487,
+          "mass": 0.0010497819742386798,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "a686bba2d9d75b5769c8b03aecf2b8766408f171dce05b90a19797e7f77590a3",
+          "logprob": -28.855192261551565,
+          "mass": 0.021075431142604174,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "bcad6768baa36903335eb7d3bcdbb0d631225fc3854f06ab73ac806a6b3da046",
+          "logprob": -25.229723676318827,
+          "mass": 0.7912203864329763,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": true
+        },
+        {
+          "candidate_id": "168c0319fa38daf5bbb4233b59fe190084ebc90f8c6ed71050fb51dd5a96dc4c",
+          "logprob": -26.75415654844619,
+          "mass": 0.17228389600735006,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "52acb3125ad074ddb86eed936cd6b087fd413a0e915491e43213e88223d0d7e4",
+          "logprob": -29.504152512559813,
+          "mass": 0.011013785442405643,
+          "canonical": false,
+          "uniform_selected": true,
+          "greedy": false
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Apple-None-SideTable-21/trial_T20190907_180711_700359/game.tw-pddl",
+      "family": "pick_cool_then_place_in_recep",
+      "pool_sha256": "31d4ffa1a05d597f8086e358c58ea6abdd6a2650ff4e327c04f87589fb17dbf0",
+      "pool_size": 2,
+      "maximum_mass": 0.8906595083026781,
+      "entropy_nats": 0.34513425049825674,
+      "normalized_entropy": 0.49792347163476425,
+      "effective_support_exp_entropy": 1.412179492742763,
+      "effective_support_inverse_simpson": 1.2418816599225648,
+      "canonical_mass": 0.8906595083026781,
+      "uniform_selected_mass": 0.8906595083026781,
+      "greedy_mass": 0.8906595083026781,
+      "probability_temperature1_sample_differs_from_greedy": 0.10934049169732185,
+      "probability_temperature1_sample_differs_from_canonical": 0.10934049169732185,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.10934049169732185,
+      "expected_logprob_regret_vs_greedy": 0.22934118038693238,
+      "kl_softmax_to_uniform_nats": 0.34801293006168854,
+      "kl_greedy_to_softmax_nats": 0.11579307011132439,
+      "top_two_score_gap_nats": 2.097495418456674,
+      "canonical_is_greedy": true,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "0a39dbb033099f1b91b186fe9c11cfbe100e6b99acdf4f9bd4548a83e0990156",
+          "logprob": -32.6112004566603,
+          "mass": 0.8906595083026781,
+          "canonical": true,
+          "uniform_selected": true,
+          "greedy": true
+        },
+        {
+          "candidate_id": "3914b108eb945bdce59d9a4a04451f94ab82e58b2793a75c594216577ffa68d8",
+          "logprob": -34.70869587511697,
+          "mass": 0.10934049169732175,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Plate-None-DiningTable-17/trial_T20190909_122939_032098/game.tw-pddl",
+      "family": "pick_cool_then_place_in_recep",
+      "pool_sha256": "22689fd4e5616cd06cfd9fae0180de4c6521f41f24aed946f4d75d9c47c914d6",
+      "pool_size": 2,
+      "maximum_mass": 0.9968265345232723,
+      "entropy_nats": 0.021425152865764602,
+      "normalized_entropy": 0.030909961789726555,
+      "effective_support_exp_entropy": 1.021656319427921,
+      "effective_support_inverse_simpson": 1.0063670723114455,
+      "canonical_mass": 0.003173465476727586,
+      "uniform_selected_mass": 0.003173465476727586,
+      "greedy_mass": 0.9968265345232723,
+      "probability_temperature1_sample_differs_from_greedy": 0.0031734654767276993,
+      "probability_temperature1_sample_differs_from_canonical": 0.9968265345232724,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.9968265345232724,
+      "expected_logprob_regret_vs_greedy": 0.018246641268850762,
+      "kl_softmax_to_uniform_nats": 0.6717220276941807,
+      "kl_greedy_to_softmax_nats": 0.0031785115969138853,
+      "top_two_score_gap_nats": 5.749752566291136,
+      "canonical_is_greedy": false,
+      "uniform_selected_is_greedy": false,
+      "candidate_distribution": [
+        {
+          "candidate_id": "52cec28a985e2aee304294996814a56769acc91987d413c41b6545990bc95079",
+          "logprob": -33.46128394681364,
+          "mass": 0.003173465476727586,
+          "canonical": true,
+          "uniform_selected": true,
+          "greedy": false
+        },
+        {
+          "candidate_id": "bfbd5cbfec594a2b355e9ed685fd024c81f5a07f579b29b51a9bbc6f8fedd67b",
+          "logprob": -27.7115313805225,
+          "mass": 0.9968265345232723,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Apple-None-DiningTable-16/trial_T20190909_075758_248823/game.tw-pddl",
+      "family": "pick_cool_then_place_in_recep",
+      "pool_sha256": "99e5af86097a92f05fc5b5c1e3182f88acbe73271ff43350a961dcc9d7542534",
+      "pool_size": 2,
+      "maximum_mass": 0.9464843537353818,
+      "entropy_nats": 0.20873953747746612,
+      "normalized_entropy": 0.3011474955561963,
+      "effective_support_exp_entropy": 1.2321240345984057,
+      "effective_support_inverse_simpson": 1.1127226348351291,
+      "canonical_mass": 0.9464843537353818,
+      "uniform_selected_mass": 0.05351564626461831,
+      "greedy_mass": 0.9464843537353818,
+      "probability_temperature1_sample_differs_from_greedy": 0.053515646264618244,
+      "probability_temperature1_sample_differs_from_canonical": 0.053515646264618244,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.9464843537353816,
+      "expected_logprob_regret_vs_greedy": 0.1537386983534323,
+      "kl_softmax_to_uniform_nats": 0.4844076430824792,
+      "kl_greedy_to_softmax_nats": 0.055000839124033855,
+      "top_two_score_gap_nats": 2.8727803751680767,
+      "canonical_is_greedy": true,
+      "uniform_selected_is_greedy": false,
+      "candidate_distribution": [
+        {
+          "candidate_id": "4a0eb4d8d2710f47552c07a17da84abd2ffbe295ce8840fcc6a219c28f0e2daf",
+          "logprob": -28.001511323636805,
+          "mass": 0.9464843537353818,
+          "canonical": true,
+          "uniform_selected": false,
+          "greedy": true
+        },
+        {
+          "candidate_id": "710b040ddac0cf81a87746803e1e90d069d55c5760bf62952f1c8b51004f2360",
+          "logprob": -30.874291698804882,
+          "mass": 0.05351564626461831,
+          "canonical": false,
+          "uniform_selected": true,
+          "greedy": false
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Apple-None-GarbageCan-19/trial_T20190908_121503_882955/game.tw-pddl",
+      "family": "pick_cool_then_place_in_recep",
+      "pool_sha256": "569412b4488f084243ef3f2066bdacb259cbb3442aefb8a5f8b59d582523fa44",
+      "pool_size": 3,
+      "maximum_mass": 0.9999980197167799,
+      "entropy_nats": 2.8359383921563148e-05,
+      "normalized_entropy": 2.5813823688377205e-05,
+      "effective_support_exp_entropy": 1.0000283597860526,
+      "effective_support_inverse_simpson": 1.000003960574632,
+      "canonical_mass": 1.8878555118177286e-06,
+      "uniform_selected_mass": 0.9999980197167799,
+      "greedy_mass": 0.9999980197167799,
+      "probability_temperature1_sample_differs_from_greedy": 1.980283220071044e-06,
+      "probability_temperature1_sample_differs_from_canonical": 0.9999981121444882,
+      "probability_temperature1_sample_differs_from_uniform_selected": 1.980283220071044e-06,
+      "expected_logprob_regret_vs_greedy": 2.637909874072833e-05,
+      "kl_softmax_to_uniform_nats": 1.0985839292841881,
+      "kl_greedy_to_softmax_nats": 1.9802851808344485e-06,
+      "top_two_score_gap_nats": 13.180067042641895,
+      "canonical_is_greedy": false,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "11fd6f833df70ef9d6c41a2fe5be481583b00c86940d9e63ed53644eafef0770",
+          "logprob": -29.680147163740912,
+          "mass": 1.8878555118177286e-06,
+          "canonical": true,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "2d25cd5be189e08127a2d9e981ea799205c4f7b084652d9eb6df22d0ddf31389",
+          "logprob": -32.69691717215028,
+          "mass": 9.242770816493923e-08,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "62a977b8136a709539a79f68aa9b81d4a3b47b5a3457f5c5d17373d4eb8ce5a0",
+          "logprob": -16.500080121099018,
+          "mass": 0.9999980197167799,
+          "canonical": false,
+          "uniform_selected": true,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Mug-None-CoffeeMachine-2/trial_T20190907_044106_781028/game.tw-pddl",
+      "family": "pick_cool_then_place_in_recep",
+      "pool_sha256": "c573c1a78911b313085eaecd84c9c4cb9d85054f47fdb77875e89118e2d7bb82",
+      "pool_size": 1,
+      "maximum_mass": 1.0,
+      "entropy_nats": -0.0,
+      "normalized_entropy": 0.0,
+      "effective_support_exp_entropy": 1.0,
+      "effective_support_inverse_simpson": 1.0,
+      "canonical_mass": 1.0,
+      "uniform_selected_mass": 1.0,
+      "greedy_mass": 1.0,
+      "probability_temperature1_sample_differs_from_greedy": 0.0,
+      "probability_temperature1_sample_differs_from_canonical": 0.0,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.0,
+      "expected_logprob_regret_vs_greedy": 0.0,
+      "kl_softmax_to_uniform_nats": 0.0,
+      "kl_greedy_to_softmax_nats": -0.0,
+      "top_two_score_gap_nats": null,
+      "canonical_is_greedy": true,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "95ae44ae0dc7bdd0df7cfb1051cd2f855a2fbe1dd91ed0770b42cec06b223cf5",
+          "logprob": -18.48178608771559,
+          "mass": 1.0,
+          "canonical": true,
+          "uniform_selected": true,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Tomato-None-Microwave-17/trial_T20190912_065518_499928/game.tw-pddl",
+      "family": "pick_cool_then_place_in_recep",
+      "pool_sha256": "49218080471479d417d09570fd4ff559e411d966499b99274fe8a16874de3c4d",
+      "pool_size": 1,
+      "maximum_mass": 1.0,
+      "entropy_nats": -0.0,
+      "normalized_entropy": 0.0,
+      "effective_support_exp_entropy": 1.0,
+      "effective_support_inverse_simpson": 1.0,
+      "canonical_mass": 1.0,
+      "uniform_selected_mass": 1.0,
+      "greedy_mass": 1.0,
+      "probability_temperature1_sample_differs_from_greedy": 0.0,
+      "probability_temperature1_sample_differs_from_canonical": 0.0,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.0,
+      "expected_logprob_regret_vs_greedy": 0.0,
+      "kl_softmax_to_uniform_nats": 0.0,
+      "kl_greedy_to_softmax_nats": -0.0,
+      "top_two_score_gap_nats": null,
+      "canonical_is_greedy": true,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "a7e555ee44a30f2999c66eaf46dca8c560494992d12d27725638ad9a959b93cf",
+          "logprob": -16.204684107135108,
+          "mass": 1.0,
+          "canonical": true,
+          "uniform_selected": true,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_cool_then_place_in_recep-Egg-None-Microwave-20/trial_T20190908_051908_943025/game.tw-pddl",
+      "family": "pick_cool_then_place_in_recep",
+      "pool_sha256": "49409acd353dd84456c5b8439e3f0c9494213e61a2525c620a0ae44117bca8f7",
+      "pool_size": 1,
+      "maximum_mass": 1.0,
+      "entropy_nats": -0.0,
+      "normalized_entropy": 0.0,
+      "effective_support_exp_entropy": 1.0,
+      "effective_support_inverse_simpson": 1.0,
+      "canonical_mass": 1.0,
+      "uniform_selected_mass": 1.0,
+      "greedy_mass": 1.0,
+      "probability_temperature1_sample_differs_from_greedy": 0.0,
+      "probability_temperature1_sample_differs_from_canonical": 0.0,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.0,
+      "expected_logprob_regret_vs_greedy": 0.0,
+      "kl_softmax_to_uniform_nats": 0.0,
+      "kl_greedy_to_softmax_nats": -0.0,
+      "top_two_score_gap_nats": null,
+      "canonical_is_greedy": true,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "19e65834b8afd09dd7ee2c5eab880f6f94fe87803e0143aaa8793f8de50c11ad",
+          "logprob": -25.348627344006673,
+          "mass": 1.0,
+          "canonical": true,
+          "uniform_selected": true,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Potato-None-GarbageCan-6/trial_T20190909_132625_893504/game.tw-pddl",
+      "family": "pick_heat_then_place_in_recep",
+      "pool_sha256": "838fb6be34b1aa465790cbe3492ad411c7f1f378995bdb3739ab003b83bc7b70",
+      "pool_size": 1,
+      "maximum_mass": 1.0,
+      "entropy_nats": -0.0,
+      "normalized_entropy": 0.0,
+      "effective_support_exp_entropy": 1.0,
+      "effective_support_inverse_simpson": 1.0,
+      "canonical_mass": 1.0,
+      "uniform_selected_mass": 1.0,
+      "greedy_mass": 1.0,
+      "probability_temperature1_sample_differs_from_greedy": 0.0,
+      "probability_temperature1_sample_differs_from_canonical": 0.0,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.0,
+      "expected_logprob_regret_vs_greedy": 0.0,
+      "kl_softmax_to_uniform_nats": 0.0,
+      "kl_greedy_to_softmax_nats": -0.0,
+      "top_two_score_gap_nats": null,
+      "canonical_is_greedy": true,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "94a655ec450ee5105589df82ef5587bfd3306df5bff4d45e4eeec75b04fc3ec6",
+          "logprob": -22.09983089659363,
+          "mass": 1.0,
+          "canonical": true,
+          "uniform_selected": true,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Potato-None-Fridge-2/trial_T20190909_030720_576619/game.tw-pddl",
+      "family": "pick_heat_then_place_in_recep",
+      "pool_sha256": "f7cef9955f8f3c79fd87bdbf731dd9081178dd89826b5b23d86c505b61ab0916",
+      "pool_size": 3,
+      "maximum_mass": 0.9999809214668477,
+      "entropy_nats": 0.00023551913358209965,
+      "normalized_entropy": 0.00021437875400759316,
+      "effective_support_exp_entropy": 1.0002355468703907,
+      "effective_support_inverse_simpson": 1.0000381579037123,
+      "canonical_mass": 3.515280891535856e-06,
+      "uniform_selected_mass": 3.515280891535856e-06,
+      "greedy_mass": 0.9999809214668477,
+      "probability_temperature1_sample_differs_from_greedy": 1.9078533152305788e-05,
+      "probability_temperature1_sample_differs_from_canonical": 0.9999964847191085,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.9999964847191085,
+      "expected_logprob_regret_vs_greedy": 0.0002164404184322494,
+      "kl_softmax_to_uniform_nats": 1.0983767695345277,
+      "kl_greedy_to_softmax_nats": 1.9078715149834245e-05,
+      "top_two_score_gap_nats": 11.070578968152404,
+      "canonical_is_greedy": false,
+      "uniform_selected_is_greedy": false,
+      "candidate_distribution": [
+        {
+          "candidate_id": "8e3105e6cedfea17f8e53faa11a2cabf6266eb0c788c95a023489b39a216d033",
+          "logprob": -27.611631713807583,
+          "mass": 3.515280891535856e-06,
+          "canonical": true,
+          "uniform_selected": true,
+          "greedy": false
+        },
+        {
+          "candidate_id": "322b696217d19f1db720494b4f97cb39e61259e89d640136d09fc85f0983ab51",
+          "logprob": -26.123838637024164,
+          "mass": 1.5563252260748115e-05,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "d8f1fbe72cb178c7228a4d23fbd254a7c97802fe921a101adf6c61cd3de4ca33",
+          "logprob": -15.05325966887176,
+          "mass": 0.9999809214668477,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Potato-None-SideTable-28/trial_T20190907_075841_463460/game.tw-pddl",
+      "family": "pick_heat_then_place_in_recep",
+      "pool_sha256": "81fc33d246417b80fae68ae6f7a3f45ab69a9870953b12ded97ba2eef42a1183",
+      "pool_size": 1,
+      "maximum_mass": 1.0,
+      "entropy_nats": -0.0,
+      "normalized_entropy": 0.0,
+      "effective_support_exp_entropy": 1.0,
+      "effective_support_inverse_simpson": 1.0,
+      "canonical_mass": 1.0,
+      "uniform_selected_mass": 1.0,
+      "greedy_mass": 1.0,
+      "probability_temperature1_sample_differs_from_greedy": 0.0,
+      "probability_temperature1_sample_differs_from_canonical": 0.0,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.0,
+      "expected_logprob_regret_vs_greedy": 0.0,
+      "kl_softmax_to_uniform_nats": 0.0,
+      "kl_greedy_to_softmax_nats": -0.0,
+      "top_two_score_gap_nats": null,
+      "canonical_is_greedy": true,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "c605dec59e4de36b0b6c75f38d646631b183ae329b621bb326708cd00fa2eb82",
+          "logprob": -18.78887728205882,
+          "mass": 1.0,
+          "canonical": true,
+          "uniform_selected": true,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Cup-None-CounterTop-22/trial_T20190909_023638_397924/game.tw-pddl",
+      "family": "pick_heat_then_place_in_recep",
+      "pool_sha256": "7650471159cb9b1a3621c210e11f11a882dd72f627d5e43bd247d181cb157514",
+      "pool_size": 5,
+      "maximum_mass": 0.46087943429794515,
+      "entropy_nats": 0.9791681606687753,
+      "normalized_entropy": 0.608391385031989,
+      "effective_support_exp_entropy": 2.6622407640196357,
+      "effective_support_inverse_simpson": 2.3452791486471627,
+      "canonical_mass": 0.46087943429794515,
+      "uniform_selected_mass": 0.05497531644927768,
+      "greedy_mass": 0.46087943429794515,
+      "probability_temperature1_sample_differs_from_greedy": 0.5391205657020548,
+      "probability_temperature1_sample_differs_from_canonical": 0.5391205657020548,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.9450246835507223,
+      "expected_logprob_regret_vs_greedy": 0.20454935967108107,
+      "kl_softmax_to_uniform_nats": 0.630269751765325,
+      "kl_greedy_to_softmax_nats": 0.7746188009976944,
+      "top_two_score_gap_nats": 0.004498585360124707,
+      "canonical_is_greedy": true,
+      "uniform_selected_is_greedy": false,
+      "candidate_distribution": [
+        {
+          "candidate_id": "b77d33b9e1343bf42499cfb23a8c246f31ad8e675d1b7ecc41e05fd28005288f",
+          "logprob": -24.904485520208254,
+          "mass": 0.46087943429794515,
+          "canonical": true,
+          "uniform_selected": false,
+          "greedy": true
+        },
+        {
+          "candidate_id": "8bcc7a9883e8a2b494cc77d9145b3bd4e995e05891356c5362ed8ff8f3acd918",
+          "logprob": -27.030737705528736,
+          "mass": 0.05497531644927768,
+          "canonical": false,
+          "uniform_selected": true,
+          "greedy": false
+        },
+        {
+          "candidate_id": "d68ee5f58c8c2f11c31f63db4399f1dc6c69e44276c8ed10ecf0a56352a6e2ac",
+          "logprob": -24.90898410556838,
+          "mass": 0.45881078530771074,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "b38660b4d5ebd0a83403129fd7c5497362473df5e558ce9ab3585921a5793cd0",
+          "logprob": -29.497608475387096,
+          "mass": 0.004664653349762067,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "547514c07651638117a7059e94f07668205c2212654618faacdab49d1af304d7",
+          "logprob": -28.00894778780639,
+          "mass": 0.020669810595304417,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Mug-None-SideTable-28/trial_T20190908_212726_073302/game.tw-pddl",
+      "family": "pick_heat_then_place_in_recep",
+      "pool_sha256": "75fb1742afe735ea459c5803f56427cd2549ea572181cee20ebd31f0b78e9b6b",
+      "pool_size": 3,
+      "maximum_mass": 0.8401760197720824,
+      "entropy_nats": 0.4393801654642622,
+      "normalized_entropy": 0.3999410620073618,
+      "effective_support_exp_entropy": 1.5517450951628564,
+      "effective_support_inverse_simpson": 1.36716725999083,
+      "canonical_mass": 0.1598238265899738,
+      "uniform_selected_mass": 0.1598238265899738,
+      "greedy_mass": 0.8401760197720824,
+      "probability_temperature1_sample_differs_from_greedy": 0.15982398022791755,
+      "probability_temperature1_sample_differs_from_canonical": 0.8401761734100262,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.8401761734100262,
+      "expected_logprob_regret_vs_greedy": 0.2652363037152227,
+      "kl_softmax_to_uniform_nats": 0.6592321232038476,
+      "kl_greedy_to_softmax_nats": 0.17414386174903942,
+      "top_two_score_gap_nats": 1.659539292450063,
+      "canonical_is_greedy": false,
+      "uniform_selected_is_greedy": false,
+      "candidate_distribution": [
+        {
+          "candidate_id": "731700335b3a47ff5f7763d97ee8f25a4f3eb2a5b6eaef65f44612f9ca598414",
+          "logprob": -24.769035340403207,
+          "mass": 0.1598238265899738,
+          "canonical": true,
+          "uniform_selected": true,
+          "greedy": false
+        },
+        {
+          "candidate_id": "4af131dac21c708424d4ccb211e3fe457136e43770ac5a188315568594d3ee69",
+          "logprob": -38.624019203241915,
+          "mass": 1.536379437622029e-07,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "12559363ddb180ed9562e34bc284b8b303b17a925a4247c5e348d722d96c606c",
+          "logprob": -23.109496047953144,
+          "mass": 0.8401760197720824,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Mug-None-CoffeeMachine-3/trial_T20190906_233939_167170/game.tw-pddl",
+      "family": "pick_heat_then_place_in_recep",
+      "pool_sha256": "00118c4856d299b0ccdc64d7664629a3126fb8455a4e55da31b86eec777cb6c2",
+      "pool_size": 2,
+      "maximum_mass": 0.7471779019152646,
+      "entropy_nats": 0.5654143512151325,
+      "normalized_entropy": 0.8157204805455224,
+      "effective_support_exp_entropy": 1.7601769631065047,
+      "effective_support_inverse_simpson": 1.6072161939832148,
+      "canonical_mass": 0.2528220980847355,
+      "uniform_selected_mass": 0.7471779019152646,
+      "greedy_mass": 0.7471779019152646,
+      "probability_temperature1_sample_differs_from_greedy": 0.25282209808473544,
+      "probability_temperature1_sample_differs_from_canonical": 0.7471779019152645,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.25282209808473544,
+      "expected_logprob_regret_vs_greedy": 0.27396238418575447,
+      "kl_softmax_to_uniform_nats": 0.12773282934481278,
+      "kl_greedy_to_softmax_nats": 0.2914519670293779,
+      "top_two_score_gap_nats": 1.083617240190506,
+      "canonical_is_greedy": false,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "4d7341835dc8e54421fb95244ea5f2ef47db867d71a4d4a1d3757f6703585e06",
+          "logprob": -12.727241784334183,
+          "mass": 0.2528220980847355,
+          "canonical": true,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "499f474ae114f933cc2ded4306c07140c33c0e6f09abe2b258efc7bdebe7e57b",
+          "logprob": -11.643624544143677,
+          "mass": 0.7471779019152646,
+          "canonical": false,
+          "uniform_selected": true,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Cup-None-Cabinet-22/trial_T20190907_173342_454704/game.tw-pddl",
+      "family": "pick_heat_then_place_in_recep",
+      "pool_sha256": "41c7110fbb4b4b7a6c9254e35b86a8717615440ae4e7fcebdc05645b735e05ac",
+      "pool_size": 8,
+      "maximum_mass": 0.5290185227943858,
+      "entropy_nats": 1.2040833213424764,
+      "normalized_entropy": 0.579041678839301,
+      "effective_support_exp_entropy": 3.333701743745903,
+      "effective_support_inverse_simpson": 2.5664939571645036,
+      "canonical_mass": 0.32040395493906465,
+      "uniform_selected_mass": 0.022601147481961546,
+      "greedy_mass": 0.5290185227943858,
+      "probability_temperature1_sample_differs_from_greedy": 0.47098147720561423,
+      "probability_temperature1_sample_differs_from_canonical": 0.6795960450609353,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.9773988525180385,
+      "expected_logprob_regret_vs_greedy": 0.5673514883398258,
+      "kl_softmax_to_uniform_nats": 0.8753582203373593,
+      "kl_greedy_to_softmax_nats": 0.6367318330026506,
+      "top_two_score_gap_nats": 0.5014408871065825,
+      "canonical_is_greedy": false,
+      "uniform_selected_is_greedy": false,
+      "candidate_distribution": [
+        {
+          "candidate_id": "d32319dabe93f19d87ffcaac26cc36351ee6329ece9ee85f19ba7e1acf6fd82e",
+          "logprob": -30.0038196912501,
+          "mass": 0.32040395493906465,
+          "canonical": true,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "ec6306e0125e0dbaeec3a0a11847d000509fdc60d01c8be70eb8c633b49401e5",
+          "logprob": -33.661015234538354,
+          "mass": 0.008267953482420947,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "b2be70564ce9c2ddb15fc1a49925120f85c0e72e96a2ab6e4b205fb9abf87ad5",
+          "logprob": -33.25220408337191,
+          "mass": 0.012443497119695593,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "f4193058b8e6bb15b9d16fe8f951e1bea97148e2ff51ea2dc310d1cff1162c40",
+          "logprob": -32.655401571595576,
+          "mass": 0.022601147481961546,
+          "canonical": false,
+          "uniform_selected": true,
+          "greedy": false
+        },
+        {
+          "candidate_id": "650f202b517bdfad82a539db2bd0a9e315dcb11734c7e43544955f3cc23ad5e6",
+          "logprob": -33.563115318422206,
+          "mass": 0.009118332356332413,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "b6262024863580d13314506324065c588b5049a372d85266ab0bf6305e35bcb3",
+          "logprob": -32.68986050132662,
+          "mass": 0.02183560182148183,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "d7a21c272dfcea4dbb929cc9fcacc89ee827b2cc274ec376006d8183aa5ae7d8",
+          "logprob": -29.502378804143518,
+          "mass": 0.5290185227943858,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": true
+        },
+        {
+          "candidate_id": "3c5b03e82317f5e8b95443b7a38743142402e7093f84d6fb803026c2a522ff56",
+          "logprob": -31.438585285446607,
+          "mass": 0.07631099000465712,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Apple-None-GarbageCan-8/trial_T20190907_043118_286709/game.tw-pddl",
+      "family": "pick_heat_then_place_in_recep",
+      "pool_sha256": "b9cea0c10d900229df9c7656d4a97f0522e766bf58b9062fa6ceeaebc68a975a",
+      "pool_size": 2,
+      "maximum_mass": 0.8801753211518776,
+      "entropy_nats": 0.3665755305225076,
+      "normalized_entropy": 0.5288566999960626,
+      "effective_support_exp_entropy": 1.442785370767873,
+      "effective_support_inverse_simpson": 1.2673202285335083,
+      "canonical_mass": 0.11982467884812244,
+      "uniform_selected_mass": 0.8801753211518776,
+      "greedy_mass": 0.8801753211518776,
+      "probability_temperature1_sample_differs_from_greedy": 0.11982467884812242,
+      "probability_temperature1_sample_differs_from_canonical": 0.8801753211518776,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.11982467884812242,
+      "expected_logprob_regret_vs_greedy": 0.2389413677509234,
+      "kl_softmax_to_uniform_nats": 0.3265716500374377,
+      "kl_greedy_to_softmax_nats": 0.12763416277158418,
+      "top_two_score_gap_nats": 1.9940914513426833,
+      "canonical_is_greedy": false,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "7c055cb9165638e5694bf22e9a9dab686e8962f8b29978c2dc55499d1f61ddd7",
+          "logprob": -23.338005011726636,
+          "mass": 0.11982467884812244,
+          "canonical": true,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "e1dac62d5b38a0cf44b57af2f3bd1fbf326cf3108f74a6f31164c39ce585c8fb",
+          "logprob": -21.343913560383953,
+          "mass": 0.8801753211518776,
+          "canonical": false,
+          "uniform_selected": true,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Mug-None-Cabinet-25/trial_T20190909_095542_548585/game.tw-pddl",
+      "family": "pick_heat_then_place_in_recep",
+      "pool_sha256": "dde72ad08fee47604327a9d2aade935c581204f2d4a7226412bd431c05ea2316",
+      "pool_size": 4,
+      "maximum_mass": 0.6178251312248614,
+      "entropy_nats": 0.7058598987906521,
+      "normalized_entropy": 0.5091702877738298,
+      "effective_support_exp_entropy": 2.0255877366960533,
+      "effective_support_inverse_simpson": 1.9151031156043807,
+      "canonical_mass": 0.005710258160118037,
+      "uniform_selected_mass": 0.3747286772591717,
+      "greedy_mass": 0.6178251312248614,
+      "probability_temperature1_sample_differs_from_greedy": 0.3821748687751386,
+      "probability_temperature1_sample_differs_from_canonical": 0.994289741839882,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.6252713227408283,
+      "expected_logprob_regret_vs_greedy": 0.2243100780426306,
+      "kl_softmax_to_uniform_nats": 0.6804344623292384,
+      "kl_greedy_to_softmax_nats": 0.4815498207480215,
+      "top_two_score_gap_nats": 0.5000032214447856,
+      "canonical_is_greedy": false,
+      "uniform_selected_is_greedy": false,
+      "candidate_distribution": [
+        {
+          "candidate_id": "da0250e029949c07088a97f7d120d55e0b97ef554ec44e9e93345b5c7ffa8044",
+          "logprob": -38.00882017519325,
+          "mass": 0.005710258160118037,
+          "canonical": true,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "089e190cfdaa5e94b97ba2ffa667344fc1ec46834300e4463b12495daa5521c8",
+          "logprob": -33.32487895153463,
+          "mass": 0.6178251312248614,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": true
+        },
+        {
+          "candidate_id": "cf93110ffc37f5712f598b1c919c29609133cced7c7ed75b3bb4fa07df74378f",
+          "logprob": -39.199539183755405,
+          "mass": 0.0017359333558489636,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "4855cdc6df7d5b2bb9549d15d81299f3398dfa5fcfdeb2accbcf6246e72b700a",
+          "logprob": -33.824882172979414,
+          "mass": 0.3747286772591717,
+          "canonical": false,
+          "uniform_selected": true,
+          "greedy": false
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_heat_then_place_in_recep-Plate-None-Fridge-1/trial_T20190908_010704_977592/game.tw-pddl",
+      "family": "pick_heat_then_place_in_recep",
+      "pool_sha256": "f293555ca86a2360ad7a854465ba8b0f8c16c4b0a1ee84a6df4bcd08cee1a119",
+      "pool_size": 3,
+      "maximum_mass": 0.9999849575091999,
+      "entropy_nats": 0.00019198958452037012,
+      "normalized_entropy": 0.00017475645093422952,
+      "effective_support_exp_entropy": 1.0001920080157,
+      "effective_support_inverse_simpson": 1.000030085539555,
+      "canonical_mass": 5.5536467936777215e-06,
+      "uniform_selected_mass": 9.488844006381575e-06,
+      "greedy_mass": 0.9999849575091999,
+      "probability_temperature1_sample_differs_from_greedy": 1.5042490800087904e-05,
+      "probability_temperature1_sample_differs_from_canonical": 0.9999944463532063,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.9999905111559936,
+      "expected_logprob_regret_vs_greedy": 0.00017694698058093243,
+      "kl_softmax_to_uniform_nats": 1.0984202990835894,
+      "kl_greedy_to_softmax_nats": 1.504260393948724e-05,
+      "top_two_score_gap_nats": 11.565378721919842,
+      "canonical_is_greedy": false,
+      "uniform_selected_is_greedy": false,
+      "candidate_distribution": [
+        {
+          "candidate_id": "9b6b1077011fa22c75bc8d46a6daf4f305c9af9fcff8bbea98642ec8dfc0bd41",
+          "logprob": -31.535550019470975,
+          "mass": 5.5536467936777215e-06,
+          "canonical": true,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "d572c4a1b379f87547d42fbde2ba27ac085dfc4cf248a2783a12ecc54ca67844",
+          "logprob": -30.99988801794825,
+          "mass": 9.488844006381575e-06,
+          "canonical": false,
+          "uniform_selected": true,
+          "greedy": false
+        },
+        {
+          "candidate_id": "f4a4b51d18b05c942e5fe40f8bd6b0b9be9afb2753c2b041c86edd115680e3fa",
+          "logprob": -19.43450929602841,
+          "mass": 0.9999849575091999,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-TissueBox-None-GarbageCan-230/trial_T20190908_050916_526395/game.tw-pddl",
+      "family": "pick_two_obj_and_place",
+      "pool_sha256": "9df17fb7c2773d9fa32c39fa1c89c0920f0cfa275eff2ea398d7f8143a251cb1",
+      "pool_size": 2,
+      "maximum_mass": 0.7145445198834942,
+      "entropy_nats": 0.5980322832830811,
+      "normalized_entropy": 0.8627782093840048,
+      "effective_support_exp_entropy": 1.818536911993336,
+      "effective_support_inverse_simpson": 1.6890217077821645,
+      "canonical_mass": 0.28545548011650573,
+      "uniform_selected_mass": 0.7145445198834942,
+      "greedy_mass": 0.7145445198834942,
+      "probability_temperature1_sample_differs_from_greedy": 0.2854554801165058,
+      "probability_temperature1_sample_differs_from_canonical": 0.7145445198834943,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.2854554801165058,
+      "expected_logprob_regret_vs_greedy": 0.2619223088738808,
+      "kl_softmax_to_uniform_nats": 0.09511489727686417,
+      "kl_greedy_to_softmax_nats": 0.3361099744092004,
+      "top_two_score_gap_nats": 0.9175592241808772,
+      "canonical_is_greedy": false,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "3433007a8018172d63d98e6bea92d71d9b82fb3d85dfa433a9285926fa7e1dd5",
+          "logprob": -44.32966686692089,
+          "mass": 0.28545548011650573,
+          "canonical": true,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "b88c859bc0fe6be6c9140d1a42d2ef59644de9e46f300b80d41bed333c32ada9",
+          "logprob": -43.41210764274001,
+          "mass": 0.7145445198834942,
+          "canonical": false,
+          "uniform_selected": true,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-ToiletPaper-None-Shelf-415/trial_T20190908_172037_784467/game.tw-pddl",
+      "family": "pick_two_obj_and_place",
+      "pool_sha256": "e25bd86ada6c1f035a758501248f47c10f6713d47aa8a8d74eef52630f4fa533",
+      "pool_size": 4,
+      "maximum_mass": 0.9913532412427366,
+      "entropy_nats": 0.05878771437189133,
+      "normalized_entropy": 0.04240637199476223,
+      "effective_support_exp_entropy": 1.060550077302223,
+      "effective_support_inverse_simpson": 1.0174924441438877,
+      "canonical_mass": 0.003632963069804417,
+      "uniform_selected_mass": 0.9913532412427366,
+      "greedy_mass": 0.9913532412427366,
+      "probability_temperature1_sample_differs_from_greedy": 0.008646758757263395,
+      "probability_temperature1_sample_differs_from_canonical": 0.9963670369301956,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.008646758757263395,
+      "expected_logprob_regret_vs_greedy": 0.050103355493101104,
+      "kl_softmax_to_uniform_nats": 1.3275066467479992,
+      "kl_greedy_to_softmax_nats": 0.008684358878790177,
+      "top_two_score_gap_nats": 5.609022332122549,
+      "canonical_is_greedy": false,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "f5e6174197759af28f12192b07168d925c67e46d2e64e66d9d2b6a44aa0af23f",
+          "logprob": -57.10856527858414,
+          "mass": 0.003632963069804417,
+          "canonical": true,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "07b0a8bd4793b210a6d32d9a5a7e46c87aefd2e8c9b807b84a685f2603cecce0",
+          "logprob": -57.861116514890455,
+          "mass": 0.001711717669893274,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "4a3c1403f5fc5ca12836f49e01bea125a2877d49dd161c719bb255ea9fa76942",
+          "logprob": -51.49954294646159,
+          "mass": 0.9913532412427366,
+          "canonical": false,
+          "uniform_selected": true,
+          "greedy": true
+        },
+        {
+          "candidate_id": "e915d31f5ad02d8364e8800711170d8b83cbd77ac7b998e21cbe0735374b8518",
+          "logprob": -57.20406189397909,
+          "mass": 0.003302078017565943,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-KeyChain-None-Sofa-224/trial_T20190908_015657_698925/game.tw-pddl",
+      "family": "pick_two_obj_and_place",
+      "pool_sha256": "9267f2b73344c889df48cfae1a01e45ed639b6880b1b7b63be017dbd87762011",
+      "pool_size": 2,
+      "maximum_mass": 0.9937269251436628,
+      "entropy_nats": 0.03806718570222939,
+      "normalized_entropy": 0.054919340033205595,
+      "effective_support_exp_entropy": 1.038801023110233,
+      "effective_support_inverse_simpson": 1.0126248463766283,
+      "canonical_mass": 0.006273074856337282,
+      "uniform_selected_mass": 0.9937269251436628,
+      "greedy_mass": 0.9937269251436628,
+      "probability_temperature1_sample_differs_from_greedy": 0.006273074856337213,
+      "probability_temperature1_sample_differs_from_canonical": 0.9937269251436627,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.006273074856337213,
+      "expected_logprob_regret_vs_greedy": 0.03177435243782624,
+      "kl_softmax_to_uniform_nats": 0.655079994857716,
+      "kl_greedy_to_softmax_nats": 0.006292833264403171,
+      "top_two_score_gap_nats": 5.06519580357417,
+      "canonical_is_greedy": false,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "ce297d7c99fa5b297416b57364a8ba4f7672e98b21f49c2a9466b234d02e9e33",
+          "logprob": -53.74099814039073,
+          "mass": 0.006273074856337282,
+          "canonical": true,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "15ae1dc80d5110f7e0461dcd68a060fcdb5e43bd23a3a695ef327797d0661bd7",
+          "logprob": -48.67580233681656,
+          "mass": 0.9937269251436628,
+          "canonical": false,
+          "uniform_selected": true,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-Pencil-None-Desk-313/trial_T20190906_200931_060619/game.tw-pddl",
+      "family": "pick_two_obj_and_place",
+      "pool_sha256": "385f734501b9e904911bfde23cd215afacc699ea39b163a6c760de9214bf9452",
+      "pool_size": 1,
+      "maximum_mass": 1.0,
+      "entropy_nats": -0.0,
+      "normalized_entropy": 0.0,
+      "effective_support_exp_entropy": 1.0,
+      "effective_support_inverse_simpson": 1.0,
+      "canonical_mass": 1.0,
+      "uniform_selected_mass": 1.0,
+      "greedy_mass": 1.0,
+      "probability_temperature1_sample_differs_from_greedy": 0.0,
+      "probability_temperature1_sample_differs_from_canonical": 0.0,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.0,
+      "expected_logprob_regret_vs_greedy": 0.0,
+      "kl_softmax_to_uniform_nats": 0.0,
+      "kl_greedy_to_softmax_nats": -0.0,
+      "top_two_score_gap_nats": null,
+      "canonical_is_greedy": true,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "e92e9ed4ab4837f3131b8a080db80f4a55fc51fdc751ed7b3377ed41da7bc98e",
+          "logprob": -44.044979715836234,
+          "mass": 1.0,
+          "canonical": true,
+          "uniform_selected": true,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-Laptop-None-Ottoman-203/trial_T20190907_034356_767031/game.tw-pddl",
+      "family": "pick_two_obj_and_place",
+      "pool_sha256": "cefa84103dd2664740b24afa96aa3da9efec279f80eac41c6bdca241cc988774",
+      "pool_size": 2,
+      "maximum_mass": 0.8585091049621131,
+      "entropy_nats": 0.40766068838636466,
+      "normalized_entropy": 0.5881300535003894,
+      "effective_support_exp_entropy": 1.5032969884943106,
+      "effective_support_inverse_simpson": 1.3209035312763497,
+      "canonical_mass": 0.14149089503788695,
+      "uniform_selected_mass": 0.8585091049621131,
+      "greedy_mass": 0.8585091049621131,
+      "probability_temperature1_sample_differs_from_greedy": 0.14149089503788692,
+      "probability_temperature1_sample_differs_from_canonical": 0.8585091049621131,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.14149089503788692,
+      "expected_logprob_regret_vs_greedy": 0.2551026953490163,
+      "kl_softmax_to_uniform_nats": 0.28548649217358063,
+      "kl_greedy_to_softmax_nats": 0.15255799303734843,
+      "top_two_score_gap_nats": 1.802961916953791,
+      "canonical_is_greedy": false,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "205b9166742f87c4c797ed03a739fe8c8fdf4594316e02b4132dd96affd41f93",
+          "logprob": -41.56180418108124,
+          "mass": 0.14149089503788695,
+          "canonical": true,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "55c7f008c525ee0ce4d1b206e8bc093be879aeac2355c63e1a84c181ef4c11ff",
+          "logprob": -39.75884226412745,
+          "mass": 0.8585091049621131,
+          "canonical": false,
+          "uniform_selected": true,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-Candle-None-Shelf-429/trial_T20190909_075128_271977/game.tw-pddl",
+      "family": "pick_two_obj_and_place",
+      "pool_sha256": "6d8b3d8eba55bc2c41662696fe5807be6ae21c0a192131ea717e23518b7803cc",
+      "pool_size": 8,
+      "maximum_mass": 0.9854800198656979,
+      "entropy_nats": 0.07587815546816253,
+      "normalized_entropy": 0.036489679535239954,
+      "effective_support_exp_entropy": 1.078831116476428,
+      "effective_support_inverse_simpson": 1.0294614703008045,
+      "canonical_mass": 6.311903136252727e-07,
+      "uniform_selected_mass": 0.9854800198656979,
+      "greedy_mass": 0.9854800198656979,
+      "probability_temperature1_sample_differs_from_greedy": 0.014519980134302113,
+      "probability_temperature1_sample_differs_from_canonical": 0.9999993688096864,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.014519980134302113,
+      "expected_logprob_regret_vs_greedy": 0.061251728764396926,
+      "kl_softmax_to_uniform_nats": 2.003563386211673,
+      "kl_greedy_to_softmax_nats": 0.014626426703765568,
+      "top_two_score_gap_nats": 4.217678006971255,
+      "canonical_is_greedy": false,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "ab26f76d0e10362cabf0f34bda5801a115a979d95bb579209317535203329186",
+          "logprob": -63.82756706082728,
+          "mass": 6.311903136252727e-07,
+          "canonical": true,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "7d6f9ae2c7185fd6721d554336a9635b2e4c9df65c6035cdd78001aa4ebb07be",
+          "logprob": -49.56653507403098,
+          "mass": 0.9854800198656979,
+          "canonical": false,
+          "uniform_selected": true,
+          "greedy": true
+        },
+        {
+          "candidate_id": "d39a3cf60f0b6894781f3b6772222e28bb1b8799b8e3f4adab7dd591d9c18d84",
+          "logprob": -70.46145741397049,
+          "mass": 8.300387191536283e-10,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "50864c6f7abe8904544d6f16a05812c3e9281b7b8d5946ef913ef2fa2c0d6399",
+          "logprob": -53.784213081002235,
+          "mass": 0.014518894139533936,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "d7ad7eb525ca1f70f66bf0fdfa0f5b87dbfa3b84ca8395b33d3ff6c3e4d46ba2",
+          "logprob": -71.13604550075252,
+          "mass": 4.2279366164433995e-10,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "3949ab69efcb5f02b5d2a9c76c46ab6492f2f9c1320745e261d7b345f970392f",
+          "logprob": -71.76857003022451,
+          "mass": 2.2460869010537632e-10,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "3f830c2b62d022bb0c31a661548803534a7c917a18d466d7ea0b7f2bd22d963e",
+          "logprob": -67.67893954378087,
+          "mass": 1.3413141569232094e-08,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "094d68a2464b37ca7694505cb8b1694be02e9444ba57ae4d92969d025d0387f5",
+          "logprob": -64.18859552231152,
+          "mass": 4.399138718526247e-07,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-CreditCard-None-DiningTable-311/trial_T20190908_072922_474814/game.tw-pddl",
+      "family": "pick_two_obj_and_place",
+      "pool_sha256": "188d3b9615746c31c9ced5ecd322c8a1c2555aa4d57c498e893d8a8405229ab5",
+      "pool_size": 6,
+      "maximum_mass": 0.8162794252615673,
+      "entropy_nats": 0.6041355462377076,
+      "normalized_entropy": 0.337174468232607,
+      "effective_support_exp_entropy": 1.8296698600563333,
+      "effective_support_inverse_simpson": 1.4636359208802217,
+      "canonical_mass": 0.08728972437238261,
+      "uniform_selected_mass": 2.499824650510294e-06,
+      "greedy_mass": 0.8162794252615673,
+      "probability_temperature1_sample_differs_from_greedy": 0.18372057473843273,
+      "probability_temperature1_sample_differs_from_canonical": 0.9127102756276174,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.9999975001753495,
+      "expected_logprob_regret_vs_greedy": 0.40113699652149415,
+      "kl_softmax_to_uniform_nats": 1.1876239229903474,
+      "kl_greedy_to_softmax_nats": 0.2029985497162134,
+      "top_two_score_gap_nats": 2.1359566145110875,
+      "canonical_is_greedy": false,
+      "uniform_selected_is_greedy": false,
+      "candidate_distribution": [
+        {
+          "candidate_id": "ac166f4c498786aa6cfef533306e86a88edd883703843a963e46f9967c818de6",
+          "logprob": -44.45181825757027,
+          "mass": 0.08728972437238261,
+          "canonical": true,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "b44927d066c7be0e11875821ad4da0e09d07ccc588668813d768c21ad5fcc375",
+          "logprob": -62.19736513867974,
+          "mass": 1.7146284809879952e-09,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "1bc6b0b4374eb54eb67d9d4bd109c4d8fe6e3877a5c639f225d1e4cd6da08587",
+          "logprob": -44.35225089394953,
+          "mass": 0.09642833739069734,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "2ba4f6bf7580b8863794759c7974d4e76b949f649993ab8db10543ea7517f9ad",
+          "logprob": -60.29978884756565,
+          "mass": 1.1436073701173979e-08,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "270b7525ef97ace71f63bba0602cbeeefc1dfe5f4f711a1f3f9fc31b6c08d6a3",
+          "logprob": -54.91258569806814,
+          "mass": 2.499824650510294e-06,
+          "canonical": false,
+          "uniform_selected": true,
+          "greedy": false
+        },
+        {
+          "candidate_id": "19d17af3fcfef81537b38b8625a44baca44d09fcc4344b928e2cd58ff3c22f5d",
+          "logprob": -42.21629427943844,
+          "mass": 0.8162794252615673,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": true
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-Candle-None-CounterTop-406/trial_T20190908_045902_729862/game.tw-pddl",
+      "family": "pick_two_obj_and_place",
+      "pool_sha256": "f55c686c46f378b6f12b9eb2cf3fc78f51cf1294576327acf85a73df1cc48ddc",
+      "pool_size": 3,
+      "maximum_mass": 0.6573759459310329,
+      "entropy_nats": 0.6462975001932467,
+      "normalized_entropy": 0.5882853367467591,
+      "effective_support_exp_entropy": 1.9084616528758604,
+      "effective_support_inverse_simpson": 1.8207773967263776,
+      "canonical_mass": 0.6573759459310329,
+      "uniform_selected_mass": 0.6573759459310329,
+      "greedy_mass": 0.6573759459310329,
+      "probability_temperature1_sample_differs_from_greedy": 0.3426240540689671,
+      "probability_temperature1_sample_differs_from_canonical": 0.3426240540689671,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.3426240540689671,
+      "expected_logprob_regret_vs_greedy": 0.22679829207152458,
+      "kl_softmax_to_uniform_nats": 0.45231478847486306,
+      "kl_greedy_to_softmax_nats": 0.4194992081217221,
+      "top_two_score_gap_nats": 0.6529812783119269,
+      "canonical_is_greedy": true,
+      "uniform_selected_is_greedy": true,
+      "candidate_distribution": [
+        {
+          "candidate_id": "4e10d6914e7084f69a68c0def9420bff5e1dc890292c4378d70d1d54cca661ca",
+          "logprob": -44.91182906617178,
+          "mass": 0.6573759459310329,
+          "canonical": true,
+          "uniform_selected": true,
+          "greedy": true
+        },
+        {
+          "candidate_id": "b927b595e32f384f13d3f12227395fc4544340acbcaafbab82c9490bb3017b5a",
+          "logprob": -45.5648103444837,
+          "mass": 0.3421587438062903,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "8e3e40e801e037dd1d8baff774b4e9e880d7ff854d403b4f33b3bb0272c65ccb",
+          "logprob": -52.16513600136386,
+          "mass": 0.0004653102626768518,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-Statue-None-DiningTable-228/trial_T20190906_222607_743673/game.tw-pddl",
+      "family": "pick_two_obj_and_place",
+      "pool_sha256": "baad35aace5cd05ec80d17c7d2822a7ec5ef0620d68709ec1192067be41ffdbd",
+      "pool_size": 2,
+      "maximum_mass": 0.9999965823090708,
+      "entropy_nats": 4.6434607138901664e-05,
+      "normalized_entropy": 6.699097744492069e-05,
+      "effective_support_exp_entropy": 1.0000464356852419,
+      "effective_support_inverse_simpson": 1.0000068354052194,
+      "canonical_mass": 0.9999965823090708,
+      "uniform_selected_mass": 3.4176909292257236e-06,
+      "greedy_mass": 0.9999965823090708,
+      "probability_temperature1_sample_differs_from_greedy": 3.4176909291527835e-06,
+      "probability_temperature1_sample_differs_from_canonical": 3.4176909291527835e-06,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.9999965823090707,
+      "expected_logprob_regret_vs_greedy": 4.30169103694247e-05,
+      "kl_softmax_to_uniform_nats": 0.6931007459528064,
+      "kl_greedy_to_softmax_nats": 3.417696769471734e-06,
+      "top_two_score_gap_nats": 12.586541984113865,
+      "canonical_is_greedy": true,
+      "uniform_selected_is_greedy": false,
+      "candidate_distribution": [
+        {
+          "candidate_id": "cfbbac0196c0d0512b57e22d6613911667334251d174932997d009ea6c68812d",
+          "logprob": -20.674449642770924,
+          "mass": 0.9999965823090708,
+          "canonical": true,
+          "uniform_selected": false,
+          "greedy": true
+        },
+        {
+          "candidate_id": "0d62e42880b187d7a3965ed1ac4d9af5bbaf35603c6ef9ec52fef969dd5588fd",
+          "logprob": -33.26099162688479,
+          "mass": 3.4176909292257236e-06,
+          "canonical": false,
+          "uniform_selected": true,
+          "greedy": false
+        }
+      ]
+    },
+    {
+      "gamefile": "/data1/jsy/zhangranxu-adrs-week-20260929/data/alfworld/json_2.1.1/train/pick_two_obj_and_place-ToiletPaper-None-Toilet-408/trial_T20190909_080347_367417/game.tw-pddl",
+      "family": "pick_two_obj_and_place",
+      "pool_sha256": "7917919331b92e9ece2a1107fcfc6765d3a6a4ac6caad3c9cd9382af73b97345",
+      "pool_size": 4,
+      "maximum_mass": 0.9936958977587583,
+      "entropy_nats": 0.03822454679515143,
+      "normalized_entropy": 0.027573182050796542,
+      "effective_support_exp_entropy": 1.038964502836895,
+      "effective_support_inverse_simpson": 1.0126876817582962,
+      "canonical_mass": 6.631965181322928e-11,
+      "uniform_selected_mass": 0.006304081866722611,
+      "greedy_mass": 0.9936958977587583,
+      "probability_temperature1_sample_differs_from_greedy": 0.006304102241241671,
+      "probability_temperature1_sample_differs_from_canonical": 0.9999999999336804,
+      "probability_temperature1_sample_differs_from_uniform_selected": 0.9936959181332774,
+      "expected_logprob_regret_vs_greedy": 0.03190048979259915,
+      "kl_softmax_to_uniform_nats": 1.3480698143247392,
+      "kl_greedy_to_softmax_nats": 0.006324057002552325,
+      "top_two_score_gap_nats": 5.060233883035835,
+      "canonical_is_greedy": false,
+      "uniform_selected_is_greedy": false,
+      "candidate_distribution": [
+        {
+          "candidate_id": "5553f98d4c31635796f4286295408b9570127ab9f08514e55f35d811f2f015f0",
+          "logprob": -62.03400459908153,
+          "mass": 6.631965181322928e-11,
+          "canonical": true,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "a277be93b7c6440e6ca13f9e9f75cf168ecfa4a29ab5d3702b6a9126c3bda761",
+          "logprob": -56.30971086534555,
+          "mass": 2.0308199392636994e-08,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": false
+        },
+        {
+          "candidate_id": "617b3d9ecf2783e56f07e4722e7455e1ef02805bbf6c5abdc7bf010e2093a304",
+          "logprob": -38.6037938008667,
+          "mass": 0.9936958977587583,
+          "canonical": false,
+          "uniform_selected": false,
+          "greedy": true
+        },
+        {
+          "candidate_id": "0bbd7c3e1d0e25e7ec1361554f742ea9d505ef6540c97167288b6ce187783ff9",
+          "logprob": -43.66402768390253,
+          "mass": 0.006304081866722611,
+          "canonical": false,
+          "uniform_selected": true,
+          "greedy": false
+        }
+      ]
+    }
+  ],
+  "interpretation": {
+    "what_is_exact": "Temperature1 softmax is the precisely normalized distribution of the stored reference path likelihoods restricted to each explicitly enumerated finite candidate set, subject to the already-recorded numerical/model prompt protocol. It is not a probability estimate over unenumerated successful paths.",
+    "greedy_gap": "Greedy is a point-mass/MAP choice. This audit measures how much finite-pool probability it discards, not an estimate of downstream learning effects. Higher entropy and1-max_mass imply potentially different supervision under a hypothetical conditional draw.",
+    "projection_limit": "The proposed pool is a deterministic, privileged recipe subset with original-success and canonical length/cost restrictions. Its normalized likelihoods do not correct candidate proposal bias, establish full successful-path support, implement MH, or establish the original distribution-projection objective. Different endpoint states are explicitly allowed.",
+    "scope": "No development results were consulted; these calculations do not authorize sampling, temperature changes, another method or additional evaluation.",
+    "singleton_limit": "20 singleton pools have maximum mass1 and entropy0 by construction. They provide no evidence that the reference distribution over all successful trajectories is concentrated; the40 non-singleton pools are the primary diagnostic.",
+    "numerical_summary": "Within the40 non-singleton pools, mean maximum mass is0.8992, median0.9884;26/40 exceed0.9. Mean entropy is0.2475 nats and mean exp(entropy) effective support1.352. Independent temperature1 finite-pool draws would differ from greedy on4.033 of60 tasks in expectation, with99.25% probability of at least one difference. Mean canonical and frozen-uniform-selected masses are0.2492 and0.4693 within these40 pools."
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "kind": "recovery_projection_candidate_review",
+  "version": 1,
+  "created_utc": "2026-10-12T19:11:47.310590+00:00",
+  "scope": "Read-only implementation feasibility, accounting, estimand clarity and freeze-rule review. Scientific adoption and consequential design judgment remain with independent Astra review and parent.",
+  "reviewed_sha256": {
+    "analysis/next_experiment_candidate_v1.json": "7a9192723e495c04d01419c6e758304a5dff8efa349c152eb7b68ca620737b1c",
+    "scripts/freeze_recovery_seen48_v1.py": "e1808a452e36e34bd29a2d85c473ee4dadab461fe6948296d88aab24301b5120",
+    "analysis/recovery_planner_interface_review_v1.json": "1272e7cc54d265bc820c763ee00cc8dd35a0f9848a05f7e01affde2a320accae"
+  },
+  "verdict": "Technically implementable conditional candidate, not yet executable/adopted. Resolve independent-smoke accounting and exact missingness categories before freezing implementation. No fatal metadata selector rule deviation found in this read-only review; actual seen48 quota and history coverage remain to be verified before acquisition.",
+  "pure_local_checks": {
+    "training_cohort_exact_ordered_last10_per_family_of_train120": true,
+    "diagnostic36_hash_selection_and_timesteps_match": true,
+    "candidate_mutated": false,
+    "simulator_calls": 0,
+    "model_calls": 0,
+    "deployments": 0,
+    "evaluation_outcomes_opened_by_this_review": false
+  },
+  "budget_review": {
+    "main_environment_upper_arithmetic": {
+      "collection": 6000,
+      "oracle_including_prefix": 144000,
+      "diagnostic_including_prefix": 28800,
+      "candidate_first_action_replay": 24480,
+      "heldout": 19200,
+      "sum": 222480,
+      "hard_cap": 230000
+    },
+    "reset_upper_without_preflight": 3420,
+    "rollout_generation_conservative_upper": 3456000,
+    "generation_explanation": "(6000 collection + 28800 diagnostic including prefixes + 19200 heldout) * 64. Prefix replay does not generate, so this is conservative. Per-model heldout maximum 48*100*64=307200 fits 350000.",
+    "scoring_upper": "Two references x 1440 actions x context2048 = 5898240 padded forward-token upper, below7000000; target-token upper two x1440x64=184320 below500000. Additional score calls/retries cannot be hidden outside the ledger.",
+    "training_upper": "800 action examples x64=51200 target tokens per arm, below2000000; actual per-arm token audit/final-state equality still required. 400+400 exposures and equal updates do not imply equal total compute.",
+    "stage_wall_upper_sum_seconds": 138600,
+    "global_wall_seconds": 172800,
+    "remaining_for_waits_verification_cleanup_seconds": 34200,
+    "feasibility_limit": "38.5h sum of stated stage caps fits48h with9.5h residual. All waits/verification/cleanup count against one monotonic deadline; this is not a throughput guarantee. Maximum pool/candidate replan overhead may dominate CPU stage time. Hitting any cap must preserve incomplete status and stop rather than enlarge budget.",
+    "required_clarification": {
+      "id": "B1",
+      "issue": "candidate v1 preflight_extra=1000 is not the separate smoke6000-step maximum. Main3420 resets plus independent smoke200 gives3620, exceeding candidate3600 if combined.",
+      "resolution": "Freeze smoke as a prior independent CPU interface-validation ledger/adoption, report combined research expenditure separately, and start candidate main ledger explicitly; or issue a new candidate with reconciled accounting before acquisition. Parent already identified this; do not edit frozen v1.",
+      "step_headroom_note": "222480+6000=228480 fits230000 but does not cure wrong declared preflight allowance or reset count."
+    },
+    "implementation_requirements": [
+      "Reserve/check cost before started env.step/reset; CPU workers share atomic global counters so cap4 cannot overshoot global limits.",
+      "Generation budget checks must account maximum next decode chunk; technical budget stop cannot be treated as scientific failed Q or success.",
+      "System-Python pidfd owned-process deadline must terminate own blocked planner/session while preserving unrelated work."
+    ]
+  },
+  "estimand_review": {
+    "zero_difference_for_unavailable": "Honest for the explicitly defined average incremental value over36 preregistered intervention slots with a common no-intervention fallback. It is an availability-weighted operational estimand, not success rate among available anchors and not an imputation that unobserved Q=0.",
+    "recommended_exact_definition": "For scientifically eligible slots h, Dqu_h=sum_a q_h(a)Q_h(a)-mean_a Q_h(a), Dqe_h=sum_a q_h(a)Q_h(a)-Q_h(expert). For prespecified structural unavailability define both intervention differences0, retain Q/V as null and status reason. Report mean_h D over all36 and the explicit availability counts; optional available-only contrast is descriptive and cannot replace the frozen gate.",
+    "required_clarification": {
+      "id": "E1",
+      "issue": "Candidate uses already-terminated/unsupported/unavailable/no-certified-expert phrasing; unsupported runtime/prompt/replay behavior must not become scientific zero-difference missingness.",
+      "resolution": "Before execution enumerate structural statuses (terminated before anchor; no certified planner baseline after normally completed oracle attempts) separately from exceptions, replay/hash mismatch, token-context error, budget exhaustion or missing certificate/Q. The latter makes the entire diagnostic incomplete and no gate decision. Missing candidate Q inside an otherwise eligible pool also stops; do not drop actions or renormalize q."
+    },
+    "teacher_vs_learner": "Teacher certificate defines only finite-set reachability by the planner within remaining original100-action horizon. ActualQ is a separately executed forced first action then frozen learner rollout from identical actual history; teacher success, likelihood/NLL and critic estimates cannot substitute. Different successor states are intentional. Dynamic planner first action itself must be successfully certified so Ve and all arm labels have common support.",
+    "gate_limits": "At least12 multiaction anchors across4families and8 anchors with actualQ variation establish operational variation, not statistical significance or novelty. Expected q-weighted Q and the one realized frozen q-label draw are different objects; report both as defined, do not describe expected value as observed sampled-label outcome.",
+    "freeze_order": "Complete learner trajectories and pools; lock all proposals/failures/certificates; score and freeze q, one uniform draw and one conditional draw for all eligible anchors; finish all available36-slot actualQ branches before outcome access. Q cannot filter training anchors, change labels or rescue thresholds."
+  },
+  "controls_review": {
+    "primary": "Reference conditional recovery versus ordinary native-expert recovery on identical learner histories and common continued BC initialization, with fresh optimizer and identical400BC+400recovery exposure schedule.",
+    "required_secondary": "Reference conditional versus uniform from same certified sets. Frozen BC is useful acquisition-benefit context but insufficient to establish projection-specific gain.",
+    "paired_evaluation": "Lock all three final adapters before any of four48-task evaluations. Complete192 episodes and validate transitions/outcome derivation before contrasts. Missing technical records =>192 explicit statuses/null outcomes, no partial contrast; retain whether unblinding already began.",
+    "interpretation_boundary": "Reference chosen by canonical-BC role after prior dev results known is disclosed exploratory design. One seed/seen-task sample cannot establish independent episode significance, reference-adaptation causal effect, general arbitrary-state planner validity or unseen generalization."
+  },
+  "new_seen48_freeze_review": {
+    "script": "scripts/freeze_recovery_seen48_v1.py",
+    "read_only_findings": [
+      "Imports gnrl.alfworld_env but module imports simulator dependencies only inside constructor; metadata selector never creates one.",
+      "Lists supported/solvable valid_seen via existing list_games filter; reads trajectory metadata and hashes source bytes.",
+      "Previous registry scans outputs/**/episodes.jsonl, uses gamefile identities and source file hashes; adds current dev24 manifest and excludes train120 identities. No success fields used in selection.",
+      "Recipe key explicitly includes task_type/object_target/parent_target/mrecep_target/toggle_target/object_sliced/scene.floor_plan; this implements family/object/receptacle/device/scene exclusion.",
+      "Same48 rule exact SHA salt with normalized relative_game, lexicographic tie-break, first8 per family. Inadequate quota emits complete=false with selected=[] and no manifest; no fallback.",
+      "Freezes universe rows, exclusions, per-task metadata/game hashes, prior metadata, available counts and scene overlap. It does not evaluate unseen tasks."
+    ],
+    "no_fatal_selection_rule_deviation_found": true,
+    "preexecution_requirements": [
+      "Parent attest previous registry directory scope includes every previous evaluation/partial episode artifact, or explicitly add any external historical manifest. A glob cannot prove no historical evaluation was stored elsewhere or removed. Existing phase0/phase1/same60 source paths use outputs and dev24; no outcome-based filter is needed.",
+      "Require no concurrent writer while enumerating/reading/hashing prior registry files; lock the completed metadata report/manifest before acquisition.",
+      "If a prior unseen record is encountered, stop rather than continue claiming unopened unseen; failure report must not falsely claim it read no such metadata.",
+      "Bind candidate, producer, filter, manifest/report and original runtime/source/game inventories in later adoption; this script alone does not authorize subsequent acquisition.",
+      "Scene overlap remains disclosed. Training identity exclusion is the registered rule; do not silently substitute stronger train recipe exclusions after seeing quotas."
+    ],
+    "not_verified_here": [
+      "Remote full valid_seen inventory availability and per-family quota",
+      "Completeness of historical evaluation registry beyond registered outputs/current dev24",
+      "Actual source game and metadata bytes on remote at future freeze time"
+    ]
+  },
+  "final_required_actions_before_execution": [
+    "Independent Astra scientific review of estimator interpretation, thresholds and primary control.",
+    "Parent freeze independent-smoke accounting and missingness categories without rewriting candidate v1.",
+    "Actual bounded CPU smoke receipt, including unavailable cases and native recovery failures.",
+    "Metadata-only seen48 freeze with complete quota and prior exposure registry binding before new acquisition.",
+    "Separately reviewed implementation, pure fixtures, immutable source/runtime/model/data/adoption locks and explicit parent execution adoption."
+  ]
+}

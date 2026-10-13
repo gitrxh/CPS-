@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "kind": "independent_recovery_diagnostic_implementation_review",
+  "reviewer": "confirmation_execution_review independent Astra assignment",
+  "recovery_diagnostic_review_passed": true,
+  "execution_authorized": false,
+  "module_sha256": "76b2ecc1c3593870cb05a3f22a24b8f888a1714ca57a09118bbcf7144295e26e",
+  "runner_sha256": "01cbd3427e788a844f0f66afe890d61e721314ab3edbff3d4b359ab3da2bad2a",
+  "test_sha256": "a34e20e6b9b2114c5b8f625a89a871a17b5c59b91ef345bc04eba67626c68164",
+  "candidate_sha256": "09f62bbb2001e36bda12d56d261788764710b4ec91eca17af91e0470e9068b47",
+  "shared_collection_module_sha256": "4ce8b22d45048436e84ff8c408945deac568d552f767942664e84b9abaea5987",
+  "files": [
+    "gnrl/recovery_diagnostic_v1.py",
+    "scripts/score_recovery_diagnostic_v1.py",
+    "tests/test_recovery_diagnostic_v1.py"
+  ],
+  "verification": {
+    "pure_fixture_command": "C:\\Users\\zrx\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe -B -m unittest tests.test_recovery_diagnostic_v1 -v",
+    "pure_fixtures_passed": 12,
+    "models_loaded": 0,
+    "real_tokenizers_loaded": 0,
+    "real_environment_calls": 0,
+    "remote_actions": 0,
+    "source_edits_by_reviewer": 0
+  },
+  "findings": [],
+  "verified_contracts": [
+    "Complete 180 oracle slots and independent first-action replay records are required, with exact certificate, state and input-summary hash bindings.",
+    "Both references score full command plus EOS on the same exact causal prompt. Token lengths, prompt/action hashes and raw context hashes are checked. Stable T=1 softmax and one fixed SHA64/CDF draw implement the candidate without a score-conditioned pool expansion or redraw.",
+    "All three label files are generated and locked from complete selection rows before actual learner-continuation outcomes. Privileged oracle evidence, scores and Q do not enter student context.",
+    "Each eligible diagnostic command is executed after an exact replay, then the frozen learner continues from its actual successor to the original total 100-step boundary. Teacher success cannot substitute for Q.",
+    "Gate calculation requires exactly the complete expected set of actual Q branches at the fixed 36 planned anchors. Coverage, variation, q-uniform, q-expert and label-difference thresholds match candidate v2.",
+    "Only explicit structural unavailability receives null Q and zero intervention difference. Missing, duplicate, technical, replay or budget failures stop with no evaluable gate; no available-prefix calculation is admitted.",
+    "Score calls reserve padded forward and target work durably before invocation. The generation/environment ledger includes prefix, forced action and continuation work, cumulative limits and incomplete-call evidence.",
+    "The worker verifies all bound sources, runtime/data files, complete adapter directory and base inventory, physical GPU2 receipt, prior stage/cost lineage and absolute deadline. It performs no training or held-out rollout."
+  ],
+  "scope_limits": [
+    "This is a component implementation review, not adoption or launch authorization. The parent controller still owns process supervision, cleanup, cumulative deadline and serialized stage requests.",
+    "Pure fixtures do not establish empirical utility. Actual diagnostic results may fail the fixed gate, in which case candidate v2 stops before training and held-out evaluation.",
+    "Trainer score-to-SFT token binding is reviewed separately and is not certified by this receipt."
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "kind": "independent_recovery_diagnostic_controller_astra_review",
+  "reviewer": "confirmation_execution_review independent Astra assignment",
+  "recovery_diagnostic_controller_review_passed": true,
+  "execution_authorized": false,
+  "controller_sha256": "072fbb138bfebfc05860553b957ca6299d079af133162a76d99d06ce8cbed538",
+  "test_sha256": "0ff2e2c3932ef5211e65297c3d7f9f6f32aa715c28be7f69a20b8f6f69bbebf9",
+  "candidate_sha256": "09f62bbb2001e36bda12d56d261788764710b4ec91eca17af91e0470e9068b47",
+  "worker_module_sha256": "76b2ecc1c3593870cb05a3f22a24b8f888a1714ca57a09118bbcf7144295e26e",
+  "worker_runner_sha256": "01cbd3427e788a844f0f66afe890d61e721314ab3edbff3d4b359ab3da2bad2a",
+  "verification": {
+    "pure_fixture_command": "C:\\Users\\zrx\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe -B -m unittest tests.test_recovery_diagnostic_queue_v1 tests.test_recovery_diagnostic_v1 -q",
+    "pure_fixtures_passed": 23,
+    "models_or_real_tokenizers_loaded": 0,
+    "real_environment_calls": 0,
+    "remote_actions": 0,
+    "source_edits_by_reviewer": 0
+  },
+  "unresolved_findings": [],
+  "resolved_findings": [
+    {
+      "issue": "A cleanup exception could bypass the ordinary owned_run finally-path unblinding update.",
+      "resolution": "Top-level exception handling now calls mark_incomplete, which first attempts to preserve the durable worker unblinding flag, retains true if already known, records unknown rather than false when the receipt is unreadable, preserves the original technical exception and records the receipt error separately."
+    }
+  ],
+  "verified_contracts": [
+    "Scoring acceptance independently sums both-reference full target-token and padded forward-token work, requires limits exactly 500000 and 7000000 and verifies that no other shared work counter advanced in the score stage.",
+    "Normal worker failures, post-worker verification failures and cleanup exceptions retain the durable unblinding state. No failure receives an evaluable gate or a partial-prefix scientific decision.",
+    "Parent adoption requires complete acquisition, all prior locks retained, exited prior process identities, exact component/controller reviews and the independent complete acquisition result receipt.",
+    "The absolute main-study deadline and cumulative costs are inherited unchanged. GPU2 work is serialized through launch_gpu; fresh owned sessions, blocked spawn signals, pidfd cleanup and exclusive output paths are used.",
+    "All complete selection rows and three fixed label files are validated and locked before the actual-Q request. Full diagnostic results and costs are recomputed only after worker completion. No automatic retry, training or held-out evaluation is present."
+  ],
+  "postqueue_verifier": {
+    "file": "analysis/verify_recovery_acquisition_postqueue_v1.py",
+    "sha256": "4ff81723686a88df1f9ba218ac7f87b226d6b70fd272a488372e69778ab60031",
+    "postqueue_verifier_review_passed": true,
+    "review_type": "Static read-only code and exact schema compatibility review; verifier was not executed.",
+    "compatible_consumer": "analysis/review_recovery_acquisition_complete_v1.py",
+    "compatible_consumer_sha256": "42fe7a2f7c840d61514b58926edc935bfc2518dc10fa6eadbbe0ea55dc2390cd",
+    "findings": [],
+    "checks": [
+      "Requires exact original adoption SHA, completed acquisition queue, fixed controller PID/start ticks, all three stage exits and empty owned sessions before hashing artifacts.",
+      "Hashes workspace locks, original files, runtime files, all 28 base files and the complete initial-adapter inventory; verified maps contain measured hashes rather than unchecked copies.",
+      "Rechecks queue/adoption/source inventories and process exits before one exclusive-create receipt. It never parses records/events for outcomes, launches a model or simulator, or signals prior processes.",
+      "The produced receipt contains every metadata_barrier field, including exact stage identity tuples and exited flags. The consumer additionally validates complete 60/180/180 summaries before reading outcome records."
+    ]
+  },
+  "scope_limits": [
+    "All reviewed changes remain local. This receipt does not authorize deployment while acquisition is live, nor launch the diagnostic phase.",
+    "The postqueue verifier is intended only after the fixed acquisition controller and all owned workers exit. Actual remote byte/liveness verification remains future work.",
+    "Passing this implementation review is not a scientific gate result. The fixed actual-Q diagnostic may fail and then this candidate must stop before training."
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "kind": "recovery_acquisition_resume_astra_review",
+  "version": 1,
+  "reviewer": "independent GPT-6 Astra resume_acquisition_review",
+  "resume_review_passed": true,
+  "resume_script": "analysis/resume_recovery_acquisition_v1.py",
+  "resume_script_sha256": "d1785d3ba35604ad7a7291e76ae189664e4d24508a275e1a3fde4c49f3e2c751",
+  "test": "analysis/test_resume_recovery_acquisition_v1.py",
+  "test_sha256": "5874c0a1c6c1cee08b42eb17ecef943e64f2b22a2b95b4819623b4cf9721e287",
+  "interruption_inventory_sha256": "38ca390d0c0375074de058751856e8ee952fd417d638e5bb32309b949ab26ae2",
+  "pure_fixtures_passed": 13,
+  "test_command": "C:/Users/zrx/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe -m unittest analysis.test_resume_recovery_acquisition_v1",
+  "checks": {
+    "immutable_original_files_and_exact_original_source_runtime_model_bindings": true,
+    "single_explicit_user_interruption_recovery_only_no_automatic_retry": true,
+    "complete_ordered_131_pool_prefix_and_every_corresponding_event_validated": true,
+    "reused_record_and_event_lines_preserve_original_bytes": true,
+    "partial_next_anchor_excluded_from_canonical_events_but_originals_and_costs_retained": true,
+    "remaining_49_anchors_reexecuted_with_original_simulator_and_frozen_proposals": true,
+    "all_old_cost_counters_inherited_without_refund": true,
+    "historical_unconfirmed_step_gap_one_preserved_and_new_stage_calls_balanced": true,
+    "oracle_stage_limits_debited_by_all_old_stage_started_counters": true,
+    "original_global_deadline_1792005218_8364305_retained": true,
+    "original_oracle_deadline_1791878747_009107_retained_including_pause_and_preparation": true,
+    "stage_deadline_checked_after_verification_and_final_output_hashing": true,
+    "exact_old_controller_and_all_old_worker_identities_checked_for_exit": true,
+    "signal_masked_spawn_timeout_and_owned_pidfd_cleanup_preserved": true,
+    "cpu_only_oracle_and_replay_no_cuda_scoring_training_or_evaluation": true,
+    "controller_stops_at_needs_astra_resumed_acquisition_review": true
+  },
+  "limitations": [
+    "This is a source and pure-fixture review, not a real simulator run or a remote execution receipt. Linux process cleanup was reviewed in source and exercised with mocks; root must verify actual launch identity and preflight.",
+    "The interrupted historical step was started but its return was not durably confirmed. No completed interaction is invented; the historical gap remains explicit even when all canonical acquisition records are complete.",
+    "No partial scientific records or outcomes were opened by this reviewer. Production prefix parsing is limited to fixed-order structural and certificate validation and does not authorize outcome-dependent selection.",
+    "Original complete-acquisition and postqueue tools require resume-lineage adaptation before reviewing the final artifacts. This review does not authorize scoring, learner-Q diagnostics, training, held-out evaluation, or interpretation of method effectiveness.",
+    "The root must issue a separate exact-hash adoption for this single recovery. Existing original output directories must remain unchanged. A new failure or deadline exhaustion requires stopping and cannot trigger another automatic restart."
+  ]
+}

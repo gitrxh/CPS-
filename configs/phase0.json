@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "status": "locked_before_policy_evaluation",
+  "model": "Qwen2.5-3B-Instruct",
+  "environment": "ALFWorld text, official supported solvable tasks",
+  "train": "120 games, 20 per task family, seed 20261012",
+  "horizon1_initial_pilot": "24 train games, 4 per family; 4 evenly-spaced decision states each; up to64 distinct admissible alternatives; identity/noops excluded",
+  "development": "24 official valid_seen games, 4 per family",
+  "confirmatory": "official valid_unseen manifest frozen; no tuning on unseen outcomes",
+  "max_episode_steps": 100,
+  "training": {"optimizer_steps": 100, "batch_size": 1, "gradient_accumulation": 8, "lr": 0.0002, "lora_rank": 16, "lora_alpha": 32, "seed": 42, "max_context_tokens": 2048},
+  "main_decoding": "greedy generated command with explicit admissible-command list; identical across arms; candidate-list agent protocol",
+  "fallback": "equal-length macro permutation search horizons2,4,8, strict canonical endpoint and complete fresh suffix replay; compare identical candidate pool with uniform versus exact summed reference-logprob selector",
+  "readout": "Development success difference is preliminary; training loss and constructed likelihood improvement are not evidence of downstream advantage.",
+  "deviations_from_research_design": ["Initial audit24 before full120 audit to debug computational cost; no horizon1 conclusion beyond audited states", "Pilot one training seed; three seeds and unseen evaluation required for confirmatory result"]
+}
