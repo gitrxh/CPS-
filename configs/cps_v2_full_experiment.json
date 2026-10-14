@@ -1,0 +1,35 @@
+{
+  "name": "CPS-v2-causal-trajectory-projection",
+  "version": "v1",
+  "description": "Trajectory-level causal projection extension of CPS.",
+  "projection": {
+    "level": "trajectory",
+    "object": "environment_executable_successful_suffix",
+    "temperature": 1.0,
+    "require_success": true,
+    "max_suffix_steps": 20
+  },
+  "constraints": {
+    "real_environment_rollout": true,
+    "future_observation_leakage": false,
+    "planner_information_as_input": false,
+    "reuse_counterfactual_suffix": false
+  },
+  "baselines": [
+    "bc",
+    "expert_recovery",
+    "action_cps",
+    "trajectory_cps"
+  ],
+  "metrics": [
+    "task_success_rate",
+    "paired_success_delta",
+    "trajectory_length",
+    "projection_acceptance_rate"
+  ],
+  "ablation": {
+    "action_vs_trajectory": true,
+    "uniform_vs_policy_projection": true,
+    "with_without_success_constraint": true
+  }
+}
