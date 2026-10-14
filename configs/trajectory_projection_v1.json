@@ -1,0 +1,27 @@
+{
+  "name": "trajectory_projection_v1",
+  "description": "Causal trajectory projection sampling replacing action-only conditional sampling",
+  "projection": {
+    "level": "trajectory",
+    "temperature": 1.0,
+    "require_environment_success": true,
+    "max_suffix_length": 20,
+    "use_future_observation_in_prompt": false,
+    "use_oracle_state_in_prompt": false
+  },
+  "candidates": {
+    "source": "environment_rollout",
+    "verification": "real_simulator_execution",
+    "reuse_stored_observation": false
+  },
+  "baselines": [
+    "expert_recovery",
+    "uniform_viable_recovery",
+    "reference_conditional_recovery",
+    "trajectory_conditional_recovery"
+  ],
+  "training": {
+    "objective": "causal_supervised_finetuning",
+    "target": "action_tokens_and_eos_only"
+  }
+}
