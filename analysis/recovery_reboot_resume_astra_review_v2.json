@@ -1,0 +1,69 @@
+{
+  "kind": "recovery_acquisition_reboot_resume_astra_review",
+  "version": 2,
+  "reviewer": "independent GPT-6 Astra reboot_recovery_review",
+  "resume_review_passed": true,
+  "resume_script": "analysis/resume_recovery_acquisition_v2.py",
+  "resume_script_sha256": "272c111cd8017406f29a86544f6c455f51d94c48fd7b253c751f7fc854308387",
+  "test": "analysis/test_resume_recovery_acquisition_v2.py",
+  "test_sha256": "abbad3aec24761faa5a997612542847de62dd30981bb0520042de36938e1773d",
+  "design": "analysis/recovery_reboot_resume_design_v2.json",
+  "design_sha256": "29dc452803933b4c235e71d24182a7e8e1e672ad5cbb6b3c323a52d1bd1905e6",
+  "inventory": "outputs/recovery_reboot_resume_inventory_v2.json",
+  "inventory_sha256": "6f4ba069277bf6c77452cc9884960b1d4e5151d4d7eaa1fff9e9e24c8bec853f",
+  "validation": {
+    "v2_pure_fixtures_passed": 17,
+    "inherited_v1_pure_fixtures_passed": 13,
+    "commands": [
+      "C:/Users/zrx/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe -m unittest analysis.test_resume_recovery_acquisition_v1",
+      "C:/Users/zrx/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe -m unittest analysis.test_resume_recovery_acquisition_v2"
+    ],
+    "execution_scope": "Local source review and pure fixtures only. No chemistry-server access, real simulator calls, partial scientific outcome inspection, or process monitoring was performed by this reviewer."
+  },
+  "checks": {
+    "exact_design_review_script_test_and_inventory_hash_bindings": true,
+    "original_and_resume1_contracts_sources_runtime_games_adapter_model_and_artifacts_verified_before_execution": true,
+    "old_generations_immutable_and_new_output_namespaces_exclusive": true,
+    "original131_committed_records_and_events_proven_raw_byte_prefix_of_resume1": true,
+    "complete137_prefix_validated_against_original_collection_order_and_all_corresponding_events": true,
+    "complete137_raw_record_and_event_bytes_preserved_without_outcome_selection": true,
+    "only_validated_next_incomplete_anchor_events_excluded_with_historical_hash_and_cost_provenance_retained": true,
+    "remaining43_fixed_anchors_reexecuted_from_real_reset_with_unchanged_simulator_proposals_and_seed": true,
+    "independent_replay_uses_unchanged_real_simulator_replay_contract": true,
+    "all_historical_totals_inherited_once_and_original_oracle_limits_debited_by_both_prior_stage_counts": true,
+    "remaining_oracle_steps132558_resets663_generated_tokens0": true,
+    "both_historical_uncertain_step_returns_preserved_with_started_completed_gap2": true,
+    "new_stage_calls_must_balance_and_fresh_uncertain_calls_prevent_completion": true,
+    "original_global_deadline1792005218_8364305_unchanged": true,
+    "oracle_wall_extension_explicitly_disclosed_as_new_single43200second_window": true,
+    "parent_absolute_window_anchor_includes_preparation_and_never_renews_at_process_start": true,
+    "replay7200second_cap_and_global_cleanup_reserve_retained": true,
+    "deadline_rechecked_after_verification_prefix_work_and_output_hashing": true,
+    "historical_elapsed_observations_and_start_to_boot_upper_bound_separate_without_exact_compute_sum": true,
+    "actual_boot_id_and_btime_must_equal_frozen_inventory_before_execution": true,
+    "prior_launch_proven_preboot_without_inspecting_or_signaling_reused_numeric_ids": true,
+    "new_worker_boot_pid_start_ticks_and_session_bound": true,
+    "same_boot_owned_cleanup_uses_inherited_pidfd_postopen_identity_checks": true,
+    "signal_masked_spawn_timeout_and_owned_descendant_cleanup_retained": true,
+    "cpu4_threads_cuda_empty_oracle_then_replay_only": true,
+    "no_collection_rerun_scoring_training_heldout_evaluation_or_automatic_retry": true,
+    "completion_stops_at_needs_astra_reboot_resumed_acquisition_review": true,
+    "no_external_monitoring_or_scheduled_reporting_added": true
+  },
+  "launch_acceptance": {
+    "read_only_preflight": "Parent may use --preflight with full integrity/model/boot verification and validate_prefix=False.",
+    "prefix_gate": "The exact reviewed worker must successfully execute validate_inherited_prefix for the original 131 records/events and copy_prefix for all 137 inherited records/events before invoking certify_anchor, constructing a simulator, or making any fresh environment call. This ordering is enforced by the reviewed source.",
+    "once_only_startup_verification": "Verify the adopted boot and exact new controller/worker identities, both worker milestones inherited_prefix_verified(count=131) and prefix_copy_complete(count=137), and at least one fresh real completed environment step. Read technical counters only; do not inspect or interpret scientific outcomes.",
+    "alternative": "A parent preflight with validate_prefix=True is also acceptable, but repeating the complete structural prefix scan in both parent preflight and worker is not required.",
+    "after_verification": "Stop external monitoring and scheduled reporting. Preserve internal finite budget enforcement and owned-process cleanup."
+  },
+  "limits": [
+    "This receipt reviews the exact source and fixtures; it is not a remote preflight, launch receipt, completed acquisition, or scientific result. Parent must hash-bind this receipt and perform the authorized read-only preflight and one startup verification.",
+    "Actual production prefix validation is implemented and fixture-tested, but this reviewer did not open production scientific records. The reviewed worker prefix gate before all fresh simulator calls, with both milestones checked during the parent's once-only startup verification, satisfies the structural validation requirement; parent validate_prefix=True is optional.",
+    "Linux process ownership and pidfd cleanup were inspected in source and exercised through mocks on the local Windows host. Actual launch identities require the parent's one-time server verification.",
+    "The original oracle stage deadline expired. The new finite oracle allowance is an explicit stage-wall budget revision; only the original global deadline and interaction limits remain unchanged. Completion of the remaining 43 pools is not guaranteed.",
+    "Both historical started-but-unconfirmed step calls remain charged. Their completions are unknown; technical completion cannot erase these historical gaps or imply exact historical compute time.",
+    "Any new failure, budget exhaustion, additional reboot, or incomplete record stops this adoption. There is no automatic restart, replacement subset, outcome-based selection, or window renewal.",
+    "A later independent resume-lineage-aware acquisition review remains necessary before scoring, learner diagnostics, training, evaluation, or interpretation of effectiveness. This receipt authorizes none of those stages."
+  ]
+}

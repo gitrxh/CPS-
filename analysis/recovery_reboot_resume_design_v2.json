@@ -1,0 +1,129 @@
+{
+  "kind": "recovery_reboot_resume_astra_design",
+  "version": 2,
+  "reviewer": "independent GPT-6 Astra reboot_recovery_design",
+  "design_accepted_for_implementation_review": true,
+  "execution_authorized_by_this_file": false,
+  "authorization_context": "User explicitly requested resumed execution after being informed that reboot interrupted the prior run and the original oracle deadline expired. Parent will issue a separately hashed adoption and verify startup once.",
+  "scope": {
+    "authorized_stages": ["oracle", "replay"],
+    "cpu_only": true,
+    "scientific_settings_changed": false,
+    "collection_rerun": false,
+    "automatic_retries": 0,
+    "external_monitoring": false,
+    "scheduled_reports": false,
+    "stop_after": "needs_astra_reboot_resumed_acquisition_review",
+    "excluded": "Scoring, learner-continuation diagnostics, training, held-out evaluation, outcome interpretation, and unseen evaluation require separate adoption. Existing sources, environments, datasets, models, and original output directories remain immutable."
+  },
+  "evidence": {
+    "configs/recovery_projection_candidate_v2.json": "09f62bbb2001e36bda12d56d261788764710b4ec91eca17af91e0470e9068b47",
+    "outputs/recovery_reboot_resume_inventory_v2.json": "6f4ba069277bf6c77452cc9884960b1d4e5151d4d7eaa1fff9e9e24c8bec853f",
+    "outputs/recovery_resume_exit_snapshot_v1.json": "007d7350727baaac8c2e1344acf9fe59a31f0fc6d117b60a29b34e0d6f4b2121",
+    "additional_reviewed_sources": [
+      "AGENTS.md",
+      "configs/recovery_acquisition_resume_adoption_v1.json",
+      "analysis/recovery_acquisition_resume_astra_review_v1.json",
+      "analysis/resume_recovery_acquisition_v1.py",
+      "outputs/recovery_resume_inventory_v1.json"
+    ],
+    "review_access": "Local technical metadata, contracts, and source only; no remote calls, simulator calls, or partial scientific outcome inspection."
+  },
+  "wall_budget_revision": {
+    "original_deadlines_preserved": false,
+    "original_global_deadline_preserved": true,
+    "oracle_wall_budget_extended": true,
+    "original_oracle_deadline_unix": 1791878747.009107,
+    "original_global_deadline_unix": 1792005218.8364305,
+    "oracle_new_window_seconds": 43200,
+    "replay_wall_seconds": 7200,
+    "cleanup_reserve_seconds": 30,
+    "adoption_interface": {
+      "new_window_started_unix": "Parent freezes one absolute Unix timestamp immediately before deployment; this value must be hash-bound in the adoption.",
+      "new_oracle_deadline_unix": "min(new_window_started_unix + 43200, original_global_deadline_unix - 30)",
+      "replay_deadline_unix": "At replay stage start, min(stage_start_unix + 7200, original_global_deadline_unix - 30); persist in immutable stage request before launch."
+    },
+    "rules": [
+      "The new oracle window includes deployment, verification, hashing, prefix copying, launch overhead, processing, and final stage verification. Never renew it at controller or worker start.",
+      "Recheck absolute deadlines after preflight and final output hashing. No worker may start after its remaining window is exhausted.",
+      "Use monotonic countdowns derived from the adopted absolute deadlines for runtime watchdogs. Preserve existing owned-process cleanup reserves.",
+      "Global elapsed wall includes all interruption, reboot, offline preparation, and waiting since the original study start. It is never refunded.",
+      "A fresh failure, incomplete record, deadline exhaustion, or budget exhaustion stops this adoption. No automatic repeat, extended window, replacement subset, or rescue run."
+    ],
+    "justification": "A single finite 12-hour CPU oracle window is an operational recovery allowance selected before outcome access, matching the original oracle stage's nominal maximum duration. It is explicitly additional stage opportunity after expiry, not a claim that the original stage wall budget remains satisfied. It cannot guarantee completion of the remaining 43 pools.",
+    "historical_wall_reporting": {
+      "original_oracle_controller_elapsed_seconds": 22843.151138050947,
+      "resume1_last_durable_ledger_elapsed_seconds": 9150.172491054982,
+      "resume1_stage_start_to_reboot_upper_bound_seconds": 9872.943295,
+      "interpretation": "Last durable ledger elapsed excludes the final pending call through process disappearance. Stage-start-to-reboot is a conservative occupancy upper bound, not measured CPU time or proof of survival until reboot. Report these separately; never present their sum as exact compute."
+    }
+  },
+  "accounting_review": {
+    "collection_complete_records": 60,
+    "inherited_complete_oracle_records": 137,
+    "original_inherited_records": 131,
+    "resume1_new_complete_records": 6,
+    "remaining_oracle_records": 43,
+    "planned_oracle_records": 180,
+    "replay_previously_started": false,
+    "initial_totals": {
+      "environment_steps_started": 15207,
+      "environment_steps_completed": 15205,
+      "resets_started": 837,
+      "resets_completed": 837,
+      "generated_tokens": 28830,
+      "policy_calls_started": 3765,
+      "policy_calls_completed": 3765,
+      "forward_tokens": 5594038
+    },
+    "combined_prior_oracle_counts": {
+      "environment_steps_started": 11442,
+      "environment_steps_completed": 11440,
+      "resets_started": 777,
+      "resets_completed": 777,
+      "generated_tokens": 0,
+      "policy_calls_started": 0,
+      "policy_calls_completed": 0,
+      "forward_tokens": 0
+    },
+    "remaining_oracle_stage_limits": {
+      "environment_steps_started": 132558,
+      "resets_started": 663,
+      "generated_tokens": 0
+    },
+    "historical_gap": {"environment_steps": 2, "resets": 0, "policy_calls": 0},
+    "lineage_invariants": [
+      "Resume1 totals equal original oracle totals plus resume1 stage_counts, counter by counter. Collection totals plus combined prior oracle counts equal resume1 totals.",
+      "Resume2 starts from resume1 totals exactly once. Do not add original totals again or copy costs twice when copying 137 rows.",
+      "Remaining oracle stage allowance equals original oracle limit minus original stage_counts minus resume1 stage_counts. Retain unchanged global limits and debit all future calls normally.",
+      "Both historical uncertain step returns remain uncertain, fully charged as started calls. Clear no historical gap and invent no completion; retain each historical active-call provenance.",
+      "For a clean new stage, new started/completed counts balance, new active_call is null, and cumulative gap remains exactly two. Any fresh uncertain call stops technical completion and is disclosed separately.",
+      "Replay inherits final oracle totals and uses the unchanged original replay count and time caps. Copying old records is not a new simulator interaction; replaying an incomplete anchor is."
+    ]
+  },
+  "prefix_continuity": [
+    "Hash-lock all source generations and technical inventories before launch. Validate original131 is the exact byte prefix of resumed137 for records and corresponding committed events.",
+    "Stream the 137 complete resumed records in original collection-anchor order, validating every pool and associated committed event against the frozen contract. Preserve raw bytes, not merely JSON equality.",
+    "137 is a fixed complete contiguous prefix, not a subset selected by oracle result. No complete pool is recomputed or replaced.",
+    "Preserve all original artifacts and costs. Exclude only validated trailing events for the next incomplete anchor from the new canonical event stream; retain their count, bytes, and hash as historical provenance. Reject unexpected complete rows or out-of-order trailing events.",
+    "Reexecute the incomplete next anchor from its original causal history in the real simulator, then all remaining fixed anchors. Do not reuse partially advanced or counterfactual observations.",
+    "No scientific pass or failure is inferred from the prefix. Any residual technical missingness prevents complete-acquisition or gate claims."
+  ],
+  "boot_aware_identity_contract": {
+    "expected_current_boot_id": "4d6a31a7-be7f-4d85-ac49-fee1e591f203",
+    "expected_current_boot_time_unix": 1791875421,
+    "rules": [
+      "Require current boot identity and boot time to equal the frozen technical inventory before launch and worker execution. Another reboot invalidates this adoption.",
+      "Verify old stage/controller timestamps precede current boot and bind their original identities in historical provenance. An old process cannot survive reboot.",
+      "Never infer old ownership from a numeric PID or session ID after reboot, even if start ticks collide. Ignore such unrelated collisions when proving historical process exit; never signal them.",
+      "For every new owned process bind boot ID, PID, start ticks, and owned session; acquire pidfd before using it for cleanup. Preserve exact same-boot identity checks, signal-masked spawn, timeout, and descendant cleanup.",
+      "Do not apply pre-reboot numeric session membership rejection to post-reboot sessions. A genuinely same-boot matching live owner must still prevent duplicate execution."
+    ]
+  },
+  "remaining_acceptance_requirements": [
+    "Independent exact-source implementation review and pure-fixture validation of cumulative accounting, absolute deadlines, prefix preservation, and cross-boot identity collisions.",
+    "Parent creates a unique exact-hash v2 adoption and new output paths, explicitly disclosing the oracle wall extension.",
+    "Verify actual controller/worker startup once and stop external monitoring. Internal finite deadline enforcement and owned-child cleanup remain required.",
+    "Later scientific review requires complete artifacts and resume-aware lineage validation; this design review alone establishes neither execution success nor scientific improvement."
+  ]
+}

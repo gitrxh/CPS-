@@ -1,0 +1,86 @@
+{
+  "complete": true,
+  "phase": "score_and_actual_Q_only",
+  "stages": [
+    {
+      "name": "score",
+      "started_utc": "2026-10-14T03:33:05.298300+00:00",
+      "command": [
+        "/data1/jsy/GNRL_20261012/.venv/bin/python",
+        "-c",
+        "import os,signal,sys; signal.pthread_sigmask(signal.SIG_UNBLOCK, {signal.SIGTERM,signal.SIGINT,signal.SIGHUP,signal.SIGALRM}); os.execv(sys.argv[1], sys.argv[1:])",
+        "/data1/jsy/GNRL_20261012/.venv/bin/python",
+        "scripts/launch_gpu.py",
+        "--gpus",
+        "2",
+        "--receipt",
+        "/data1/jsy/GNRL_20261012/outputs/recovery_projection_diagnostic_reboot_queue_v2/score_gpu.json",
+        "--",
+        "/data1/jsy/GNRL_20261012/.venv/bin/python",
+        "scripts/score_recovery_diagnostic_reboot_v2.py",
+        "--adoption-json",
+        "/data1/jsy/GNRL_20261012/outputs/recovery_projection_diagnostic_reboot_queue_v2/score_request.json"
+      ],
+      "owned_cleanup_complete": true,
+      "pid": 1383667,
+      "start_ticks": 7336413,
+      "owned_session": 1383667,
+      "returncode": 0,
+      "elapsed_seconds": 866.9494381920085
+    },
+    {
+      "name": "diagnostic",
+      "started_utc": "2026-10-14T03:52:43.001980+00:00",
+      "command": [
+        "/data1/jsy/GNRL_20261012/.venv/bin/python",
+        "-c",
+        "import os,signal,sys; signal.pthread_sigmask(signal.SIG_UNBLOCK, {signal.SIGTERM,signal.SIGINT,signal.SIGHUP,signal.SIGALRM}); os.execv(sys.argv[1], sys.argv[1:])",
+        "/data1/jsy/GNRL_20261012/.venv/bin/python",
+        "scripts/launch_gpu.py",
+        "--gpus",
+        "2",
+        "--receipt",
+        "/data1/jsy/GNRL_20261012/outputs/recovery_projection_diagnostic_reboot_queue_v2/diagnostic_gpu.json",
+        "--",
+        "/data1/jsy/GNRL_20261012/.venv/bin/python",
+        "scripts/score_recovery_diagnostic_reboot_v2.py",
+        "--adoption-json",
+        "/data1/jsy/GNRL_20261012/outputs/recovery_projection_diagnostic_reboot_queue_v2/diagnostic_request.json"
+      ],
+      "owned_cleanup_complete": true,
+      "pid": 1388978,
+      "start_ticks": 7454184,
+      "owned_session": 1388978,
+      "returncode": 0,
+      "elapsed_seconds": 9970.980928337012
+    }
+  ],
+  "adoption_sha256": "4ac0a906f53045ac59f5d9058523cad775fb54b416f4c7b6a57263e7e4c3f757",
+  "physical_gpu": 2,
+  "main_study_started_unix": 1791833378.8364305,
+  "global_deadline_unix": 1792005218.8364305,
+  "cumulative_costs": {
+    "environment_steps_started": 47002,
+    "resets_started": 2378,
+    "generated_tokens": 146907,
+    "environment_steps_completed": 47000,
+    "resets_completed": 2378,
+    "policy_calls_started": 18837,
+    "policy_calls_completed": 18837,
+    "forward_tokens": 31428227
+  },
+  "gate_evaluable": true,
+  "training_gate_passed": false,
+  "outcome_unblinded": true,
+  "historical_gap": {
+    "environment_steps": 2,
+    "resets": 0,
+    "policy_calls": 0
+  },
+  "automatic_retry_authorized": false,
+  "current_stage": "needs_astra_diagnostic_review",
+  "updated_utc": "2026-10-14T06:47:33.935747+00:00",
+  "worker_outcome_unblinded_unix": 1791959620.6379073,
+  "outcome_unblinded_utc": "2026-10-14T06:39:07.704556+00:00",
+  "note": "Score and actual-Q complete only. No training, held-out or unseen jobs authorized."
+}

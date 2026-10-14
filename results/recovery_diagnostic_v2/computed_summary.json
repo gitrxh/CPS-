@@ -1,0 +1,45 @@
+{
+  "kind": "publication_descriptive_recomputation",
+  "diagnostic_sha256": "d4eac75280ea5f07afb6afd4b6c30af75350114c9537f7087bd35123c0efd8c0",
+  "scope": "Fixed training-state diagnostic; not held-out task-success evaluation or a full-trajectory ECPS/MH experiment.",
+  "fixed_slots": 36,
+  "available_slots": 29,
+  "unavailable_slots": 7,
+  "family_slot_counts": {
+    "look_at_obj_in_light": 6,
+    "pick_and_place_simple": 6,
+    "pick_clean_then_place_in_recep": 6,
+    "pick_cool_then_place_in_recep": 6,
+    "pick_heat_then_place_in_recep": 6,
+    "pick_two_obj_and_place": 6
+  },
+  "actual_learner_branches": 230,
+  "scored_slots": 180,
+  "scoring_calls": 1042,
+  "available_slot_means": {
+    "Vq": 0.3764729052583364,
+    "Vu": 0.3103448275862069,
+    "Ve": 0.7931034482758621,
+    "Vbase": 0.35477761823852605
+  },
+  "fixed_36_paired_differences": {
+    "q_minus_uniform": 0.05326984034699323,
+    "q_minus_expert": -0.33561904854189567
+  },
+  "unavailable_handling": "Q and utilities remain null; only paired differences contribute zero to the predeclared 36-slot denominator.",
+  "descriptive_breakdown": {
+    "all_Q_zero": 4,
+    "all_Q_one": 4,
+    "mixed_Q": 21,
+    "has_successful_action": 25
+  },
+  "recorded_gate_components": {
+    "multiaction_coverage": true,
+    "actual_Q_variation": true,
+    "q_over_uniform": false,
+    "q_over_expert": false,
+    "label_nondegeneracy": true
+  },
+  "training_gate_passed": false,
+  "verification_limit": "Hashes and summary arithmetic are verified. Raw trajectories, action weights, model weights, and branch traces are not included or independently replayed by this verifier."
+}

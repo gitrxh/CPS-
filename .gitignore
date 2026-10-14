@@ -25,6 +25,7 @@ __pycache__/
 /checkpoints/
 /outputs/*
 !/outputs/recovery_resume_inventory_v1.json
+!/outputs/recovery_reboot_resume_inventory_v2.json
 /locks/
 *.log
 *.jsonl

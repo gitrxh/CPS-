@@ -1,0 +1,51 @@
+{
+  "kind": "recovery_diagnostic_v2_publication_manifest",
+  "version": 1,
+  "artifacts": [
+    {
+      "published_path": "results/recovery_diagnostic_v2/diagnostic.json",
+      "original_path": "outputs/recovery_projection_diagnostic_reboot_v2/diagnostic.json",
+      "sha256": "d4eac75280ea5f07afb6afd4b6c30af75350114c9537f7087bd35123c0efd8c0",
+      "size_bytes": 29460,
+      "copy_mode": "byte_exact"
+    },
+    {
+      "published_path": "results/recovery_diagnostic_v2/diagnostic_summary.json",
+      "original_path": "outputs/recovery_projection_diagnostic_reboot_v2/summary.json",
+      "sha256": "3bd82416f7358ff7590bf19192353f8d86ab31f61923946f22fa9cf3056f4c30",
+      "size_bytes": 9702,
+      "copy_mode": "byte_exact"
+    },
+    {
+      "published_path": "results/recovery_diagnostic_v2/score_summary.json",
+      "original_path": "outputs/recovery_projection_score_reboot_v2/summary.json",
+      "sha256": "69e90347c02fb87ebbb75293883c6db7aca13725ec6a705ec488a2cebb465f86",
+      "size_bytes": 9939,
+      "copy_mode": "byte_exact"
+    },
+    {
+      "published_path": "results/recovery_diagnostic_v2/queue_status.json",
+      "original_path": "outputs/recovery_projection_diagnostic_reboot_queue_v2/status.json",
+      "sha256": "5d5fd01dcb119344132df673c9d699824fac992ee25e070106d7f4b50942122f",
+      "size_bytes": 3252,
+      "copy_mode": "byte_exact"
+    },
+    {
+      "published_path": "results/recovery_diagnostic_v2/acquisition_review.json",
+      "original_path": "outputs/recovery_reboot_acquisition_completion_astra_review_v2.json",
+      "sha256": "a4f7b94d3dcd53c2637f9987fd9c3f0ff5a5ccf1fbf9fb0ffb6099d3de0f5907",
+      "size_bytes": 122302,
+      "copy_mode": "byte_exact"
+    },
+    {
+      "published_path": "outputs/recovery_reboot_resume_inventory_v2.json",
+      "original_path": "outputs/recovery_reboot_resume_inventory_v2.json",
+      "sha256": "6f4ba069277bf6c77452cc9884960b1d4e5151d4d7eaa1fff9e9e24c8bec853f",
+      "size_bytes": 458655,
+      "copy_mode": "original_path_test_fixture"
+    }
+  ],
+  "derived_summary": "results/recovery_diagnostic_v2/computed_summary.json",
+  "verifier": "analysis/verify_published_recovery_v2.py",
+  "scope": "Compact original receipts and diagnostic cells plus the frozen reboot test fixture. Full raw trajectories, logs, checkpoints, private server configuration and local execution state are excluded. Historical absolute paths are provenance and require explicit local remapping for a new run."
+}

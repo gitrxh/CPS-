@@ -1,0 +1,84 @@
+{
+  "kind": "recovery_diagnostic_reboot_adoption_schema_description",
+  "version": 2,
+  "execution_authorized": false,
+  "new_files_to_deploy": [
+    "gnrl/recovery_diagnostic_lineage_reboot_v2.py",
+    "scripts/score_recovery_diagnostic_reboot_v2.py",
+    "scripts/run_recovery_diagnostic_queue_reboot_v2.py",
+    "tests/test_recovery_diagnostic_reboot_v2.py",
+    "analysis/prepare_recovery_diagnostic_reboot_adoption_v2.py",
+    "analysis/recovery_diagnostic_reboot_adoption_schema_v2.json"
+  ],
+  "additional_review_artifacts": [
+    "outputs/recovery_reboot_acquisition_completion_astra_review_v2.json",
+    "analysis/recovery_diagnostic_reboot_adaptation_astra_review_v2.json"
+  ],
+  "builder": "Run analysis/prepare_recovery_diagnostic_reboot_adoption_v2.py --output configs/recovery_diagnostic_reboot_adoption_v2.json after exact sources and passed reviews are deployed. It constructs JSON only, does not validate live exit/deadline barriers or launch workers.",
+  "adoption_contract": {
+    "kind": "recovery_diagnostic_parent_adoption",
+    "version": 2,
+    "adopted": true,
+    "adopted_by": "root_after_independent_GPT_6_Astra_review",
+    "physical_gpu": 2,
+    "authorized_stages": [
+      "score",
+      "diagnostic"
+    ],
+    "inherited_fields": [
+      "candidate",
+      "input_inventory",
+      "original_file_sha256",
+      "runtime_file_sha256"
+    ],
+    "additional_required_fields": [
+      "source_inventory",
+      "file_sha256",
+      "implementation_review",
+      "controller_review",
+      "adaptation_review",
+      "acquisition_parent_adoption",
+      "acquisition_status",
+      "acquisition_locks",
+      "acquisition_result_review",
+      "acquisition_job",
+      "acquisition_launch_receipt",
+      "acquisition_controller_identity",
+      "historical_gap",
+      "acquisition_resume_provenance",
+      "output_paths"
+    ],
+    "hash_union": "All prior original/reboot parent file_sha256 entries; original locked_sha256 from frozen inventory; every inventory_v2.files hash; completed reboot locks; current exhaustive gnrl/scripts/tests Python inventory; all new reviews, job/startup identity evidence, schema/builder, prior completed status and locks. Duplicate paths with differing hashes fail construction.",
+    "original_game_runtime_inventory": "Exactly inherit original336/runtime9 maps; never recompute a different approved list.",
+    "original_reviews": "Keep existing implementation_review and controller_review, matched to v1 source hashes.",
+    "new_review_fields": [
+      "recovery_diagnostic_reboot_adaptation_review_passed",
+      "controller_sha256",
+      "worker_sha256",
+      "lineage_sha256",
+      "test_sha256"
+    ],
+    "completion_review_fields": [
+      "recovery_acquisition_result_review_passed",
+      "recovery_reboot_acquisition_result_review_passed",
+      "acquisition_status_sha256",
+      "acquisition_locks_sha256",
+      "replay_cost_sha256"
+    ]
+  },
+  "unchanged_science": "Frozen candidate v2, 60 training games, environment seed20261012 and canonical seed42 adapter, complete180 oracle/replay, both-reference scoring, all three labels locked before fixed36 real learner continuation; no method, model, split, threshold, comparison or budget changes. Training/held-out/unseen are absent from this controller.",
+  "cost_lineage": "Frozen resume_v2.load_contract validates collect -> original interrupted oracle -> resume1 interrupted oracle. Add fresh v2 oracle counts once, then fresh v2 replay counts once. Score starts at final replay totals, diagnostic starts at score totals. Started-minus-completed remains exactly two historical steps, zero resets/policy calls; every new stage has balanced calls, no active call, no unknown generation. Stable snapshot fields must match; elapsed_seconds can differ between successive snapshots.",
+  "cutoff": "1792005218.8364305 UTC epoch (2026-10-15 03:13:38.8364305 Asia/Shanghai); inherited original start+171840 seconds. SIGALRM is armed before parent hash validation. Score ceiling7200 and diagnostic21600 are clipped by original remaining time with30second cleanup reserve. No retries.",
+  "process_contract": "Same-boot prior controller identity is bound to job+launch receipt; completed oracle/replay owned cleanup receipts and empty sessions required. New session exec wrapper unblocks termination/alarm signals before launch_gpu --gpus2; UUID guard remains mandatory. No old or foreign process is signalled.",
+  "test_command": "python -B -m unittest tests.test_recovery_diagnostic_reboot_v2 tests.test_recovery_diagnostic_v1 -v",
+  "baseline_additions": {
+    "gnrl/recovery_diagnostic_v1.py": "76b2ecc1c3593870cb05a3f22a24b8f888a1714ca57a09118bbcf7144295e26e",
+    "scripts/score_recovery_diagnostic_v1.py": "01cbd3427e788a844f0f66afe890d61e721314ab3edbff3d4b359ab3da2bad2a",
+    "scripts/run_recovery_diagnostic_queue_v1.py": "072fbb138bfebfc05860553b957ca6299d079af133162a76d99d06ce8cbed538",
+    "tests/test_recovery_diagnostic_v1.py": "a34e20e6b9b2114c5b8f625a89a871a17b5c59b91ef345bc04eba67626c68164",
+    "tests/test_recovery_diagnostic_queue_v1.py": "0ff2e2c3932ef5211e65297c3d7f9f6f32aa715c28be7f69a20b8f6f69bbebf9",
+    "analysis/recovery_diagnostic_implementation_review_v1.json": "41d8f712b92bfdb21904d44a3cfd66b996c6f0d905a12360afbe431864f251d3",
+    "analysis/recovery_diagnostic_controller_astra_review_v1.json": "a229056d81e6224b4130104cace216a2115e9f88a9be48f06dd4e7c91507f339"
+  },
+  "deployment_note": "Remote acquisition inventory contains only original50 source files. Deploy these seven previously reviewed diagnostic baseline additions as well as the six new files and two new reviews. Do not overwrite any original50 source file; builder binds the resulting exhaustive source inventory."
+}

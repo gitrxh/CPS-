@@ -1,0 +1,68 @@
+{
+  "kind": "recovery_acquisition_reboot_resume_parent_adoption",
+  "version": 2,
+  "adopted": true,
+  "adopted_by": "root_after_independent_GPT_6_Astra_review",
+  "adopted_utc": "2026-10-13T09:59:20.091826+00:00",
+  "retry_authorized": true,
+  "retry_reason": "user-requested server-reboot interruption recovery",
+  "user_instruction": "Resume execution; preserve the prior preference for background execution without continuous monitoring or scheduled reports.",
+  "authorized_stages": [
+    "oracle",
+    "replay"
+  ],
+  "expected_completed_records": 137,
+  "inventory": "outputs/recovery_reboot_resume_inventory_v2.json",
+  "old_parent": "configs/recovery_acquisition_adoption_v1.json",
+  "resume_parent": "configs/recovery_acquisition_resume_adoption_v1.json",
+  "resume_review": "analysis/recovery_reboot_resume_astra_review_v2.json",
+  "design": "analysis/recovery_reboot_resume_design_v2.json",
+  "file_sha256": {
+    "analysis/resume_recovery_acquisition_v2.py": "272c111cd8017406f29a86544f6c455f51d94c48fd7b253c751f7fc854308387",
+    "analysis/test_resume_recovery_acquisition_v2.py": "abbad3aec24761faa5a997612542847de62dd30981bb0520042de36938e1773d",
+    "analysis/recovery_reboot_resume_design_v2.json": "29dc452803933b4c235e71d24182a7e8e1e672ad5cbb6b3c323a52d1bd1905e6",
+    "analysis/recovery_reboot_resume_astra_review_v2.json": "78b69ad8c8c4475fa6122a1b245983e5cc4c2be5f69af21ed2c866616e75d504",
+    "outputs/recovery_reboot_resume_inventory_v2.json": "6f4ba069277bf6c77452cc9884960b1d4e5151d4d7eaa1fff9e9e24c8bec853f",
+    "analysis/resume_recovery_acquisition_v1.py": "d1785d3ba35604ad7a7291e76ae189664e4d24508a275e1a3fde4c49f3e2c751",
+    "analysis/test_resume_recovery_acquisition_v1.py": "5874c0a1c6c1cee08b42eb17ecef943e64f2b22a2b95b4819623b4cf9721e287",
+    "analysis/recovery_acquisition_resume_astra_review_v1.json": "dd5d8db3a0b03c2ccfad589884f6f091c9d0c0a08d7c090e9aadc10e79dc7511",
+    "configs/recovery_acquisition_adoption_v1.json": "1d1f1dae4a3c99649160ef6343f3e66d297aaf57c92573437b2d8e7ca74ddd55",
+    "outputs/recovery_resume_inventory_v1.json": "38ca390d0c0375074de058751856e8ee952fd417d638e5bb32309b949ab26ae2",
+    "configs/recovery_acquisition_resume_adoption_v1.json": "06a337001a461626be62b45f4360a87e93de2b82eafad0467e223b65babf4cd0",
+    "outputs/recovery_resume_exit_snapshot_v1.json": "007d7350727baaac8c2e1344acf9fe59a31f0fc6d117b60a29b34e0d6f4b2121"
+  },
+  "expected_boot_id": "4d6a31a7-be7f-4d85-ac49-fee1e591f203",
+  "output_paths": {
+    "queue": "outputs/recovery_projection_reboot_resume_queue_v2",
+    "oracle": "outputs/recovery_projection_oracle_reboot_resume_v2",
+    "replay": "outputs/recovery_projection_replay_reboot_resume_v2"
+  },
+  "new_window_started_unix": 1791885560.091826,
+  "oracle_wall_seconds": 43200,
+  "new_oracle_deadline_unix": 1791928760.091826,
+  "global_deadline_unix": 1792005218.8364305,
+  "original_deadlines_preserved": false,
+  "original_global_deadline_preserved": true,
+  "oracle_wall_budget_extended": true,
+  "original_interaction_limits_preserved": true,
+  "scientific_settings_changed": false,
+  "execution_preferences": {
+    "background": true,
+    "external_monitoring": false,
+    "scheduled_reports": false,
+    "automatic_retries": false,
+    "startup_verification_only": true,
+    "stop_after": "needs_astra_reboot_resumed_acquisition_review"
+  },
+  "parent_preflight": {
+    "full_model": true,
+    "validate_prefix": false,
+    "worker_prefix_gate_before_fresh_calls": true,
+    "startup_requires_prefix_milestones": [
+      131,
+      137
+    ]
+  },
+  "base_repository_commit": "5535b63dcfbd1ad75e2364a9366ec92cc8ccb034",
+  "recovery_version_provenance": "New recovery files are recorded by exact SHA256 above; the base commit is not claimed to contain these additions."
+}

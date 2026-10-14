@@ -1,0 +1,271 @@
+{
+  "kind": "recovery_diagnostic_stage_summary",
+  "stage": "diagnostic",
+  "complete": true,
+  "gate_evaluable": true,
+  "training_gate_passed": false,
+  "outcome_unblinded": true,
+  "request_sha256": "cfed8686e573dea5f73e5142f6e89c9834299daab15c6897ff6552b6bcaf8b0b",
+  "retry_authorized": false,
+  "outcome_unblinded_unix": 1791959620.6379073,
+  "diagnostic_sha256": "d4eac75280ea5f07afb6afd4b6c30af75350114c9537f7087bd35123c0efd8c0",
+  "records_sha256": "c2fe20db98ca0a78bfe5ad32e5764d33269c615970b393cf210d009d29972ce6",
+  "record_count": 230,
+  "costs": {
+    "schema_version": 1,
+    "kind": "recovery_cost_ledger",
+    "totals": {
+      "environment_steps_started": 47002,
+      "resets_started": 2378,
+      "generated_tokens": 146907,
+      "environment_steps_completed": 47000,
+      "resets_completed": 2378,
+      "policy_calls_started": 18837,
+      "policy_calls_completed": 18837,
+      "forward_tokens": 31428227
+    },
+    "stage_counts": {
+      "environment_steps_started": 17350,
+      "resets_started": 230,
+      "generated_tokens": 118077,
+      "environment_steps_completed": 17350,
+      "resets_completed": 230,
+      "policy_calls_started": 15072,
+      "policy_calls_completed": 15072,
+      "forward_tokens": 24021995
+    },
+    "stage_limits": {
+      "environment_steps_started": 28800,
+      "resets_started": 288,
+      "generated_tokens": 1843200
+    },
+    "global_limits": {
+      "environment_steps_started": 224000,
+      "resets_started": 3600,
+      "generated_tokens": 4000000
+    },
+    "calls_by_label": {
+      "diagnostic_prefix:reset": 230,
+      "diagnostic_prefix:step": 2048,
+      "diagnostic_forced_action:step": 230,
+      "diagnostic_continuation:generate": 15072,
+      "diagnostic_learner_action:step": 15072
+    },
+    "active_call": null,
+    "unknown_generation_after_error": false,
+    "elapsed_seconds": 9657.926587049995,
+    "historical_gap": {
+      "environment_steps": 2,
+      "resets": 0,
+      "policy_calls": 0
+    },
+    "acquisition_resume_provenance": {
+      "stage": "replay",
+      "old_parent": "configs/recovery_acquisition_adoption_v1.json",
+      "resume_parent": "configs/recovery_acquisition_resume_adoption_v1.json",
+      "inventory": "outputs/recovery_reboot_resume_inventory_v2.json",
+      "historical_gap": {
+        "environment_steps": 2,
+        "resets": 0,
+        "policy_calls": 0
+      },
+      "historical_ledgers": [
+        {
+          "schema_version": 1,
+          "kind": "recovery_cost_ledger",
+          "totals": {
+            "environment_steps_started": 14204,
+            "resets_started": 782,
+            "generated_tokens": 28830,
+            "environment_steps_completed": 14203,
+            "resets_completed": 782,
+            "policy_calls_started": 3765,
+            "policy_calls_completed": 3765,
+            "forward_tokens": 5594038
+          },
+          "stage_counts": {
+            "environment_steps_started": 10439,
+            "resets_started": 722,
+            "generated_tokens": 0,
+            "environment_steps_completed": 10438,
+            "resets_completed": 722,
+            "policy_calls_started": 0,
+            "policy_calls_completed": 0,
+            "forward_tokens": 0
+          },
+          "stage_limits": {
+            "environment_steps_started": 144000,
+            "resets_started": 1440,
+            "generated_tokens": 0
+          },
+          "global_limits": {
+            "environment_steps_started": 224000,
+            "resets_started": 3600,
+            "generated_tokens": 4000000
+          },
+          "calls_by_label": {
+            "oracle_prefix:reset": 722,
+            "oracle_prefix:step": 6245,
+            "oracle_branch:step": 4194
+          },
+          "active_call": {
+            "operation": "step",
+            "label": "oracle_prefix"
+          },
+          "unknown_generation_after_error": false,
+          "elapsed_seconds": 22795.247331108025
+        },
+        {
+          "schema_version": 1,
+          "kind": "recovery_cost_ledger",
+          "totals": {
+            "environment_steps_started": 15207,
+            "resets_started": 837,
+            "generated_tokens": 28830,
+            "environment_steps_completed": 15205,
+            "resets_completed": 837,
+            "policy_calls_started": 3765,
+            "policy_calls_completed": 3765,
+            "forward_tokens": 5594038
+          },
+          "stage_counts": {
+            "environment_steps_started": 1003,
+            "resets_started": 55,
+            "generated_tokens": 0,
+            "environment_steps_completed": 1002,
+            "resets_completed": 55,
+            "policy_calls_started": 0,
+            "policy_calls_completed": 0,
+            "forward_tokens": 0
+          },
+          "stage_limits": {
+            "environment_steps_started": 133561,
+            "resets_started": 718,
+            "generated_tokens": 0
+          },
+          "global_limits": {
+            "environment_steps_started": 224000,
+            "resets_started": 3600,
+            "generated_tokens": 4000000
+          },
+          "calls_by_label": {
+            "oracle_prefix:reset": 55,
+            "oracle_prefix:step": 549,
+            "oracle_branch:step": 454
+          },
+          "active_call": {
+            "operation": "step",
+            "label": "oracle_prefix"
+          },
+          "unknown_generation_after_error": false,
+          "elapsed_seconds": 9150.172491054982,
+          "resume_provenance": {
+            "stage": "oracle",
+            "old_parent": "configs/recovery_acquisition_adoption_v1.json",
+            "inventory": "outputs/recovery_resume_inventory_v1.json",
+            "old_cost_json": "outputs/recovery_projection_oracle_v1/cost_progress.json",
+            "historical_active_call": {
+              "operation": "step",
+              "label": "oracle_prefix"
+            },
+            "historical_gap": {
+              "environment_steps": 1,
+              "resets": 0,
+              "policy_calls": 0
+            },
+            "old_oracle_stage_counts": {
+              "environment_steps_started": 10439,
+              "resets_started": 722,
+              "generated_tokens": 0,
+              "environment_steps_completed": 10438,
+              "resets_completed": 722,
+              "policy_calls_started": 0,
+              "policy_calls_completed": 0,
+              "forward_tokens": 0
+            },
+            "old_oracle_calls_by_label": {
+              "oracle_prefix:reset": 722,
+              "oracle_prefix:step": 6245,
+              "oracle_branch:step": 4194
+            },
+            "old_oracle_controller_elapsed_seconds": 22843.151138050947,
+            "old_oracle_ledger_elapsed_seconds": 22795.247331108025,
+            "original_global_deadline_unix": 1792005218.8364305,
+            "original_oracle_deadline_unix": 1791878747.009107,
+            "wall_clock_policy": "Original absolute deadlines retained; user pause and recovery preparation count toward wall budget.",
+            "retry_authorized": true,
+            "retry_reason": "user-requested interruption recovery",
+            "automatic_retry_authorized": false
+          },
+          "historical_gap": {
+            "environment_steps": 1,
+            "resets": 0,
+            "policy_calls": 0
+          },
+          "combined_oracle_stage_counts": {
+            "environment_steps_started": 11442,
+            "resets_started": 777,
+            "generated_tokens": 0,
+            "environment_steps_completed": 11440,
+            "resets_completed": 777,
+            "policy_calls_started": 0,
+            "policy_calls_completed": 0,
+            "forward_tokens": 0
+          },
+          "combined_oracle_execution_seconds": 31993.32362910593
+        }
+      ],
+      "historical_active_calls": [
+        {
+          "operation": "step",
+          "label": "oracle_prefix"
+        },
+        {
+          "operation": "step",
+          "label": "oracle_prefix"
+        }
+      ],
+      "old_oracle_stage_counts": {
+        "environment_steps_started": 11442,
+        "resets_started": 777,
+        "generated_tokens": 0,
+        "environment_steps_completed": 11440,
+        "resets_completed": 777,
+        "policy_calls_started": 0,
+        "policy_calls_completed": 0,
+        "forward_tokens": 0
+      },
+      "historical_calls_by_label": [
+        {
+          "oracle_prefix:reset": 722,
+          "oracle_prefix:step": 6245,
+          "oracle_branch:step": 4194
+        },
+        {
+          "oracle_prefix:reset": 55,
+          "oracle_prefix:step": 549,
+          "oracle_branch:step": 454
+        }
+      ],
+      "historical_elapsed_observations": {
+        "original_controller_elapsed_seconds": 22843.151138050947,
+        "original_ledger_elapsed_seconds": 22795.247331108025,
+        "resume1_ledger_elapsed_lower_observation_seconds": 9150.172491054982,
+        "resume1_wall_occupancy_upper_bound_seconds": 9872.943295001984
+      },
+      "historical_elapsed_note": "Separate observed times and start-to-boot upper bound; no exact resume1 final duration or combined compute time inferred.",
+      "original_global_deadline_unix": 1792005218.8364305,
+      "original_oracle_deadline_unix": 1791878747.009107,
+      "new_window_started_unix": 1791885560.091826,
+      "new_oracle_deadline_unix": 1791928760.091826,
+      "oracle_wall_seconds": 43200,
+      "original_deadlines_preserved": false,
+      "original_global_deadline_preserved": true,
+      "oracle_wall_budget_extended": true,
+      "boot_id": "4d6a31a7-be7f-4d85-ac49-fee1e591f203",
+      "retry_authorized": true,
+      "retry_reason": "user-requested server-reboot interruption recovery",
+      "automatic_retry_authorized": false
+    }
+  }
+}

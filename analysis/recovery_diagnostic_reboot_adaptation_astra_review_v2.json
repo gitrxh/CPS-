@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "kind": "independent_recovery_diagnostic_reboot_adaptation_astra_review",
+  "reviewer": "reboot_diagnostic_execution_review independent GPT-6 Astra assignment",
+  "created_utc": "2026-10-14T03:30:35.646846+00:00",
+  "recovery_diagnostic_reboot_adaptation_review_passed": true,
+  "execution_authorized": false,
+  "controller_sha256": "b230d7cc8a4c2ec59774df659c50fe70724b30c8f48adfbee5c347eea613d317",
+  "worker_sha256": "02fc0d0885150e5c321ca76ab526bc826cc413551cf0a544d6029a6a934149f4",
+  "lineage_sha256": "203cf4e1707b99a6ba4874b42801c5a0eda8d7acf91fac67cfbbff0f33fa0376",
+  "test_sha256": "4c7bb04cf76afbdb220e3005e3043e0218667d7084602ded457c105b1044b4bf",
+  "candidate_sha256": "09f62bbb2001e36bda12d56d261788764710b4ec91eca17af91e0470e9068b47",
+  "files": [
+    "scripts/run_recovery_diagnostic_queue_reboot_v2.py",
+    "scripts/score_recovery_diagnostic_reboot_v2.py",
+    "gnrl/recovery_diagnostic_lineage_reboot_v2.py",
+    "tests/test_recovery_diagnostic_reboot_v2.py"
+  ],
+  "baseline_reviews": {
+    "analysis/recovery_diagnostic_implementation_review_v1.json": "41d8f712b92bfdb21904d44a3cfd66b996c6f0d905a12360afbe431864f251d3",
+    "analysis/recovery_diagnostic_controller_astra_review_v1.json": "a229056d81e6224b4130104cace216a2115e9f88a9be48f06dd4e7c91507f339"
+  },
+  "verification": {
+    "pure_fixture_command": "C:\\Users\\zrx\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe -B -m unittest tests.test_recovery_diagnostic_reboot_v2 tests.test_recovery_diagnostic_v1 -q",
+    "pure_fixtures_passed": 33,
+    "real_completed_ledger_check": "Locally copied frozen resume1 totals -> complete reboot_v2 oracle -> complete reboot_v2 replay passed validate_cost_lineage with summary comparisons and two historical step gaps.",
+    "final_replay_totals": {
+      "environment_steps_started": 29652,
+      "environment_steps_completed": 29650,
+      "resets_started": 2148,
+      "resets_completed": 2148,
+      "generated_tokens": 28830,
+      "policy_calls_started": 3765,
+      "policy_calls_completed": 3765,
+      "forward_tokens": 5594038
+    },
+    "legacy_exact_hash_check": "Existing component module/runner/test/candidate hashes and existing controller/controller-test hashes independently recomputed and matched.",
+    "models_loaded": 0,
+    "real_environment_calls": 0,
+    "remote_actions": 0,
+    "source_edits_by_reviewer": 0
+  },
+  "unresolved_findings": [],
+  "resolved_findings": [
+    {
+      "issue": "Successive BudgetLedger snapshots have different elapsed_seconds despite identical costs, so full dict comparison rejects valid completed stages.",
+      "resolution": "compare_summary excludes only elapsed_seconds; every other stable field, including historical provenance, must match. Pure tests include real consecutive snapshot drift and modified historical_gap rejection."
+    }
+  ],
+  "verified_contracts": [
+    "Parent permits exactly score then diagnostic; no train, held-out, unseen, retry, or continuation into later stages exists.",
+    "Frozen acquisition resume_v2 contract validates original and resume1 ancestors without applying historical inventory size or old-boot process scanning to the new phase. New exhaustive source inventory and all prior original/reboot/hash-lock/frozen-inventory entries are required. Original336 game/metadata and runtime9 inventories are inherited unchanged; base model and full adapter bytes are checked through inherited verification.",
+    "Prior completed acquisition requires technical_complete, both oracle/replay180 summaries, exact status/lock/replay-cost result-review bindings, same current boot, job+launch controller PID/start ticks, each completed owned worker session and read-only exited checks. These checks signal no historical process.",
+    "Global cutoff1792005218.8364305 and original start+171840 are preserved. Parent alarm is armed before expensive byte verification; stage ceilings and cleanup reserve remain capped by remaining original time.",
+    "Historical started-minus-completed gap stays exactly two environment steps, zero resets/policy calls. Original collection/history are validated, fresh oracle and replay counts each added once; score and diagnostic inherit immediate prior totals. Every new stage must balance calls with no active/unknown-generation state; reset, duplicate history, extra gap and erased gap fail.",
+    "New worker uses the unchanged scientific module. Input consumer and score-cost verifier ASTs match v1. Both references score full command plus EOS with unchanged fixed draws; all three causal label files are validated and hash-locked before actual-Q work.",
+    "Fixed36 diagnostic denominator and candidate actions are unchanged. Every forced action is replayed in the actual simulator and learner continuation consumes its actual successor; complete expected branch set is required. Structural unavailability retains null Q, technical missingness stops and cannot be converted to a scientific gate.",
+    "Both-reference scoring target/forward costs are recomputed and compared to durable work. Actual diagnostic resets, prefix+branch actions, generation tokens and policy-call counts are independently recomputed after the complete barrier. No partial-result gate or favorable subset is accepted.",
+    "GPU work goes through launch_gpu --gpus2, verified physical-index2 UUID receipt. Parent blocks spawn signals while establishing owned session identity; child exec wrapper unblocks SIGTERM/SIGINT/SIGHUP/SIGALRM before launcher. Existing pidfd cleanup remains limited to the owned session.",
+    "Worker/controller failure and cleanup failures preserve durable unblinding evidence and mark the diagnostic non-evaluable. Source/request bytes are rechecked at completion."
+  ],
+  "builder_static_review": {
+    "path": "analysis/prepare_recovery_diagnostic_reboot_adoption_v2.py",
+    "sha256": "e056a89ddefc38015211fb0d462ead722ef8bb81d9690736c71b4f146c77b571",
+    "passed": true,
+    "scope": "Static read only: conflict-detecting hash union, exact four-file adaptation review binding, no launch, exclusive JSON creation. Actual completed result receipt and remote artifacts still required."
+  },
+  "scope_limits": [
+    "Implementation review is not execution authorization or a scientific result. Root must construct and adopt the exact parent only after independent acquisition completion review passes.",
+    "No remote write, process start, simulator run or CUDA/model load was performed. Live remote validate_parent, byte/runtime/model verification, boot/PID barrier and deadline validity must pass on the actual deployment.",
+    "Pure fixtures and local copied ledger checks establish implementation behavior, not empirical action utility or held-out improvement. A negative actual-Q gate remains negative and authorizes no training."
+  ]
+}
